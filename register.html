@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration - MYNDO</title>
+        <link rel = "stylesheet" href = "css/registration.css">
+        <link rel = "stylesheet" href = "css/main-style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class = "bg"></div>
+
+        <form class = "all-infos" method = "get" onsubmit="return verify()">
+            <div class = "container-form form-1" id = "form-1">
+                <div class = "contain-form form-1" id = "form-1-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Register now</h1>
+                    <a href = "login.html" class = "fs-12 light-text">You are already a member? click here</a>
+                    <div class = "form">
+                        <div class="stepper-container step-1-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2"></div>
+                            <div class="step step-3"></div>
+                            <div class="step step-4"></div>
+                            <div class="step step-5"></div>
+                            <div class="step step-6"></div>
+                        </div><br>        
+                        <div class = "start-form" id = "form-step-1" method = "get">
+                            <div class = "double-info primo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Agency name </span><input class = "fs-10 light-text" type = "text" placeholder = "Agency name" name = "agencyName" required></div>
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Founder name </span><input class = "fs-10 light-text" type = "text" placeholder = "Founder name (John, Elvis)" name = "founderName" id = "founderName" required></div>
+                            </div>
+                            <div class = "double-info secondo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Number of employees </span><input class = "fs-10 light-text" type = "number" min = 0 step = 1 placeholder = "100" name = "numberOfEmployees" required></div>
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Foundation year </span><input class = "fs-10 light-text" type = "date" placeholder = "2020" name = "foundationYear" required></div>
+                            </div>
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Agency type </span><select class = "fs-10 light-text" id = "agencyType" name = "agency-type"><option value = "digital-agency">Digital agency</option><option value = "media-center">Media center</option><option value = "creative-agency">Creative agency</option><option value = "perform-agency">Perform agency</option><option value="advertising-agency">Advertising agency</option><option value="marketing-agency">Marketing agency</option><option value="branding-agency">Branding agency</option><option value="design-agency">Design agency</option><option value="web-agency">Web agency</option><option value="seo-agency">SEO agency</option><option value="social-media-agency">Social media agency</option><option value="public-relations-agency">Public relations agency</option><option value="event-agency">Event agency</option><option value="consulting-agency">Consulting agency</option><option value="production-agency">Production agency</option><option value="influencer-agency">Influencer agency</option><option value="digital-marketing-agency">Digital marketing agency</option><option value="content-agency">Content agency</option><option value="advertising-production-agency">Advertising production agency</option><option value="motion-graphics-agency">Motion graphics agency</option><option value="creative-consulting-agency">Creative consulting agency</option><option value="interactive-agency">Interactive agency</option><option value="media-buying-agency">Media buying agency</option></select></div>
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Your logo </span><input class = "fs-10 light-text" type = "file" accept=".png, .jpg, .jpeg" name = "agencyLogo" required></div>
+                            </div>
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Password</span><input type="password" minlength="6" placeholder="Password" id="password"></div>
+                            </div>
+                            <div class = "form-button">
+                                <div class = "vuoto"></div>
+                                <input type = "button" onclick = "secondStep()" value = "Continue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "container-form form-1" id = "form-2">
+                <div class = "contain-form-x" id = "form-2-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Step 2</h1>
+                    <div class = "form padding-20">
+                        <!-- <span class = "fs-20 light-text">STEP 2/6</span> -->
+                        <div class="stepper-container step-2-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3"></div>
+                            <div class="step step-4"></div>
+                            <div class="step step-5"></div>
+                            <div class="step step-6"></div>
+                        </div>  
+                        <div class = "start-form" id = "form-step-2" method = "get">
+                            <div class = "double-info primo">
+                                <div class = "one-info">
+                                    <span class = "fs-16 medium-bold-text">Managed billing</span>
+                                    <input type="number" placeholder = "50000" id = "billing-r" name = "managed-billing">
+                                </div>
+                                <div class = "one-info-plus">
+                                    <span class = "fs-16 medium-bold-text awacon-title">User preferences</span><br>
+                                    <div class = "select-awac" id = "select-awac">Open the menu ↓</div>
+                                    <div class = "container-awac" id = "container-awac">
+                                        <div class = "main-s-primo"><input type = "checkbox" name = "awareness" checked><span class = "fs-16 light-text">Awareness</span></div>
+                                        <div class = "main-s"><input type = "checkbox" name = "conversion"><span class = "fs-16 light-text">Conversion</span></div>
+                                        <div class = "main-s"><input type = "checkbox" name = "consideration"><span class = "fs-16 light-text">Consideration</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "double-info secondo">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Website </span><input type = "url" placeholder = "yourwebsite.com" name = "agencyWebsite" value = "https://" required></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Linkedin link (optional) </span><input type = "url" placeholder = "Linkedin link" name = "agencyLinkedin"></div>
+                            </div>
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Facebook link (optional) </span><input type = "url" placeholder = "Facebook link" name = "agencyFacebook"></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Email </span><input type = "email" placeholder = "your.email@your.site" id="email" name = "agencyEmail" required></div>
+                            </div>
+                            <div class = "form-button">
+                                <input type = "button" onclick = "returnFirst()" class = "back" value = "Back">
+                                <input type = "button" onclick = "thirdStep()" value = "Continue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "container-form form-1" id = "form-3">
+                <div class = "contain-form-x" id = "form-3-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Step 3</h1>
+                    <div class = "form padding-20">
+                        <!-- <span class = "fs-20 light-text">STEP 3/6</span> -->
+                        <div class="stepper-container step-2-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3 active"></div>
+                            <div class="step step-4"></div>
+                            <div class="step step-5"></div>
+                            <div class="step step-6"></div>
+                        </div>  
+                        <div class = "start-form" id = "form-step-3" method = "get">
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Location </span><select id = "location" name = "location" required><option value="" disabled selected>Select a city (you can choose more than one)</option><option value = "milan">Milan</option><option value = "naples">Naples</option><option value = "rome">Rome</option><option value="florence">Florence</option><option value="venice">Venice</option><option value="bologna">Bologna</option><option value="turin">Turin</option><option value="palermo">Palermo</option><option value="verona">Verona</option><option value="genoa">Genoa</option><option value="siena">Siena</option><option value="matera">Matera</option><option value="perugia">Perugia</option><option value="bari">Bari</option><option value="pisa">Pisa</option><option value="lecce">Lecce</option><option value="catania">Catania</option><option value="trieste">Trieste</option><option value="bergamo">Bergamo</option><option value="parma">Parma</option><option value="ferrara">Ferrara</option><option value="lucca">Lucca</option><option value="ravenna">Ravenna</option><option value="cagliari">Cagliari</option><option value="reggio-calabria">Reggio Calabria</option><option value="ancona">Ancona</option><option value="alessandria">Alessandria</option><option value="vicenza">Vicenza</option><option value="trento">Trento</option><option value="bolzano">Bolzano</option><option value="taranto">Taranto</option><option value="novara">Novara</option><option value="ascoli-piceno">Ascoli Piceno</option><option value="avellino">Avellino</option><option value="macerata">Macerata</option><option value="oristano">Oristano</option><option value="lucca">Lucca</option><option value="brindisi">Brindisi</option><option value="vibo-valentia">Vibo Valentia</option><option value="pescara">Pescara</option><option value="benevento">Benevento</option><option value="lodi">Lodi</option><option value="savigliano">Savigliano</option><option value = "more">Other</option></select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen location </span><div id = "citys" class = "choose-citys"></div></div>
+                            </div>
+                            <div class = "double-info sesto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main services </span><select id = "mainServices" name = "mainServices" required><option value="" disabled selected>Select a service (you can choose more than one)</option><option value = "seo">SEO</option><option value = "sea">SEA</option><option value = "develop">Develop</option><option value = "media">Media</option><option value = "creativity">Creativity</option><option value = "video-production">Video production</option><option value="content-creation">Content Creation</option><option value="copywriting">Copywriting</option><option value="social-media-management">Social Media Management</option><option value="email-marketing">Email Marketing</option><option value="affiliate-marketing">Affiliate Marketing</option><option value="influencer-marketing">Influencer Marketing</option><option value="brand-strategy">Brand Strategy</option><option value="web-design">Web Design</option><option value="app-development">App Development</option><option value="e-commerce-solutions">E-commerce Solutions</option><option value="graphic-design">Graphic Design</option><option value="ux-ui-design">UX/UI Design</option><option value="data-analytics">Data Analytics</option><option value="digital-strategy">Digital Strategy</option><option value="paid-advertising">Paid Advertising</option><option value="public-relations">Public Relations (PR)</option><option value="photography">Photography</option><option value="3d-modeling">3D Modeling</option><option value="voiceover-production">Voiceover Production</option></select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen services </span><div id = "services" class = "choose-citys"></div></div>
+                            </div>
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Distinctive services </span><select id = "distinctiveServices" name = "distinctiveServices" required><option value="" disabled selected>Select a service (you can choose more than one)</option><option value = "blockchain">Blockcahin</option><option value = "ai">AI</option><option value = "retail-media">Retail media</option><option value = "dropship">Dropship</option><option value="metaverse-solutions">Metaverse Solutions</option><option value="cloud-computing">Cloud Computing</option><option value="cybersecurity">Cybersecurity</option><option value="machine-learning">Machine Learning</option><option value="ar-vr-development">AR/VR Development</option><option value="iot-integration">IoT Integration</option><option value="big-data-analytics">Big Data Analytics</option><option value="data-mining">Data Mining</option><option value="devops">DevOps</option><option value="crm-solutions">CRM Solutions</option><option value="supply-chain-management">Supply Chain Management</option><option value="rpa">RPA (Robotic Process Automation)</option><option value="nlp">Natural Language Processing (NLP)</option><option value="e-learning-platforms">E-learning Platforms</option><option value="it-consulting">IT Consulting</option><option value="custom-software-development">Custom Software Development</option><option value="quantum-computing">Quantum Computing</option><option value="digital-transformation">Digital Transformation</option><option value="it-support-maintenance">IT Support & Maintenance</option><option value = "more">Other</option></select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen Distinctive </span><div id = "Dservices" class = "choose-citys"></div></div>
+                            </div>
+                            <div class = "form-button">
+                                <input type = "button" onclick = "returnSecond()" class = "back" value = "Back">
+                                <input type = "button" onclick = "fourthStep()" value = "Continue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "container-form form-1" id = "form-4">
+                <div class = "contain-form-x" id = "form-4-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Step 4</h1>
+                    <div class = "form padding-20">
+                        <!-- <span class = "fs-20 light-text">STEP 4/6</span> -->
+                        <div class="stepper-container step-4-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3 active"></div>
+                            <div class="step step-4 active"></div>
+                            <div class="step step-5"></div>
+                            <div class="step step-6"></div>
+                        </div>  
+                        <div class = "start-form" id = "form-step-4" method = "get">
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Managed media </span><select id = "managedMedia" name = "managedMedia" required><option value="" disabled selected>Select a media (you can choose more than one)</option><option value = "tv">TV</option><option value = "digital">Digital</option><option value = "press">Press</option><option value = "radio">Radio</option><option value = "connected">Connected</option><option value="outdoor">Outdoor</option><option value="cinema">Cinema</option><option value="podcast">Podcast</option><option value="influencer">Influencer</option><option value="mobile">Mobile</option><option value="email">Email</option><option value="display">Display</option><option value="search">Search</option><option value="programmatic">Programmatic</option><option value="social">Social</option><option value="content">Content</option><option value="affiliate">Affiliate</option><option value="sms">SMS</option><option value="print">Print</option><option value="event">Event</option><option value="native">Native</option></select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen managed media </span><div id = "ManMedia" class = "choose-citys"></div></div>
+                            </div>
+
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Managed platform </span><select id = "managedPlatform" name = "managedPlatform" required><option value="" disabled selected>Select a platform (you can choose more than one)</option><option value="google">Google</option><option value="microsoft">Microsoft</option><option value="amazon">Amazon</option><option value="apple">Apple</option><option value="oracle">Oracle</option><option value="ibm">IBM</option><option value="adobe">Adobe</option><option value="sap">SAP</option><option value="salesforce">Salesforce</option><option value="vmware">VMware</option><option value="red-hat">Red Hat</option><option value="hubspot">HubSpot</option><option value="compTIA">CompTIA</option><option value="cisco">Cisco</option><option value="autodesk">Autodesk</option><option value="atlassian">Atlassian</option><option value="moodle">Moodle</option><option value="linkedin">LinkedIn</option><option value="aws">AWS</option><option value="azure">Azure</option><option value="google-ads">Google Ads</option><option value="google-analytics">Google Analytics</option><option value="google-cloud">Google Cloud</option><option value="google-marketing-platform">Google Marketing Platform</option><option value="microsoft-office">Microsoft Office Specialist</option><option value="microsoft-azure">Microsoft Azure</option><option value="microsoft-certified-solutions-expert">Microsoft Certified Solutions Expert</option><option value="microsoft-dynamics">Microsoft Dynamics</option><option value="aws-solutions-architect">AWS Solutions Architect</option><option value="aws-developer-associate">AWS Developer Associate</option><option value="aws-sysops-administrator">AWS SysOps Administrator</option><option value="aws-cloud-practitioner">AWS Cloud Practitioner</option><option value="apple-certification">Apple Certified Support Professional</option><option value="oracle-database">Oracle Database Administrator</option><option value="oracle-java">Oracle Java</option><option value="oracle-cloud-infrastructure">Oracle Cloud Infrastructure</option><option value="ibm-cloud">IBM Cloud</option><option value="ibm-data-science">IBM Data Science</option><option value="ibm-cognitive-computing">IBM Cognitive Computing</option><option value="adobe-photoshop">Adobe Photoshop</option><option value="adobe-illustrator">Adobe Illustrator</option><option value="adobe-acrobat">Adobe Acrobat</option><option value="sap-certified-development-associate">SAP Certified Development Associate</option><option value="sap-certified-application-associate">SAP Certified Application Associate</option><option value="salesforce-admin">Salesforce Administrator</option><option value="salesforce-developer">Salesforce Developer</option><option value="salesforce-marketing-cloud">Salesforce Marketing Cloud</option><option value="vmware-vcp">VMware Certified Professional</option><option value="vmware-vcdx">VMware Certified Design Expert</option><option value="red-hat-rhce">Red Hat Certified Engineer (RHCE)</option><option value="red-hat-rhca">Red Hat Certified Architect (RHCA)</option><option value="hubspot-cms">HubSpot CMS Developer</option><option value="hubspot-marketing">HubSpot Inbound Marketing</option><option value="comptia-a-plus">CompTIA A+</option><option value="comptia-network-plus">CompTIA Network+</option><option value="comptia-security-plus">CompTIA Security+</option><option value="cisco-ccna">Cisco CCNA</option><option value="cisco-ccnp">Cisco CCNP</option><option value="cisco-ccie">Cisco CCIE</option><option value="autodesk-autocad">Autodesk AutoCAD</option><option value="autodesk-revit">Autodesk Revit</option><option value="atlassian-jira">Atlassian Jira Software Administrator</option><option value="atlassian-confluence">Atlassian Confluence Administrator</option><option value="moodle-certification">Moodle Certified Educator</option><option value="linkedin-learning">LinkedIn Learning Certifications</option><option value="aws-solutions-architect-associate">AWS Solutions Architect – Associate</option><option value="aws-certified-cloud-practitioner">AWS Certified Cloud Practitioner</option><option value="azure-solutions-architect">Azure Solutions Architect</option><option value="azure-developer-associate">Azure Developer Associate</option><option value="azure-fundamentals">Azure Fundamentals</option></select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen managed platform </span><div id = "ManPlatform" class = "choose-citys"></div></div>
+                            </div>
+
+                            <span class = "fs-20 medium-bold-text title-referral" style="color: #0097b2;">Add other certification</span>
+
+                            <div class = "double-info quinto infos-referral">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Platform </span><input type = "text" placeholder = "Google" name = "platformForCert" id = "platformForCert"></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Certification </span><input type = "text" placeholder = "Certification" name = "certificationFor" id = "certificationFor"></div>
+                            </div>
+                            <div class = "double-info quinto infos-referral">
+                                <input type = "button" value = "-" onclick = "removeCertification()">
+                                <input type = "text" placeholder = "Here we placed the new certification" name = "certificationPla" id = "certificationPla" readonly required>
+                                <input type = "button" value = "+" onclick = "addCertification()">
+                            </div>
+                            <div class = "form-button">
+                                <input type = "button" onclick = "returnThird()" class = "back" value = "Back">
+                                <input type = "button" onclick = "fiveStep()" value = "Continue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class = "container-form form-1" id = "form-5">
+                <div class = "contain-form-x" id = "form-5-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Step 5</h1>
+                    <div class = "form padding-20">
+                        <!-- <span class = "fs-20 light-text">STEP 5/6</span> -->
+                        <div class="stepper-container step-5-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3 active"></div>
+                            <div class="step step-4 active"></div>
+                            <div class="step step-5 active"></div>
+                            <div class="step step-6"></div>
+                        </div>  
+                        <div class = "start-form" id = "form-step-5" method = "get">
+                            <span class = "fs-18 medium-bold-text title-referral" style="color: #0097b2;">Add referral client</span><br>
+
+                            <div class = "double-info quinto infos-referral">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Name and surname </span><input type = "text" placeholder = "John Doe" name = "nameAndSurname" id = "nameAndSurname"></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Profession </span><input type = "text" placeholder = "UX/UI designer" name = "profession" id = "profession"></div>
+                            </div>
+                            <div class = "double-info quinto infos-referral">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Photo </span><input type = "file" name = "photo" id = "photo"></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client </span><input type = "text" placeholder = "Visual Studio Code" name = "mainClientRef" id = "mainClientRef"></div>
+                            </div>
+                            <div class = "double-info quinto infos-referral">
+                                <input type = "button" value = "-" onclick = "removeClient()">
+                                <input type = "text" placeholder = "John Doe" name = "nameAndSurnameRef" id = "nameAndSurnameRef" readonly required>
+                                <input type = "button" value = "+" onclick = "addClient()">
+                            </div>
+                            <div class = "form-button">
+                                <input type = "button" onclick = "returnFourth()" class = "back" value = "Back">
+                                <input type = "button" onclick = "sixStep()" value = "Continue">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "container-form form-1" id = "form-6">
+                <div class = "contain-form-x" id = "form-6-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Last step</h1>
+                    <div class = "form">
+                        <!-- <span class = "fs-20 light-text">STEP 6/6</span> -->
+                        <div class="stepper-container step-6-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3 active"></div>
+                            <div class="step step-4 active"></div>
+                            <div class="step step-5 active"></div>
+                            <div class="step step-6 active"></div>
+                        </div>  
+                        <div class = "start-form" method = "get">
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Brochure </span><input type = "file" name = "brochure" required></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Case study </span><input type = "file" name = "caseStudy" required></div>
+                            </div>
+                            <div class = "double-info primo">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client (logos) </span><input type = "file" id = "mainClient" name = "mainClient" multiple required></div>
+                                <div class = "one-info"></div>
+                            </div>
+                            <input type = "hidden" name = "selectedCitysFinal" id = "selectedCitysFinal">
+                            <input type = "hidden" name = "mainServicesFinal" id = "mainServicesFinal">
+                            <input type = "hidden" name = "distinctiveServiceFinal" id = "distinctiveServiceFinal">
+                            <input type = "hidden" name = "managedMediaFinal" id = "managedMediaFinal">
+                            <input type = "hidden" name = "managedPlatformFinal" id = "managedPlatformFinal">
+                            <input type = "hidden" name = "referralClientFinal" id = "referralClientFinal">
+                            <div class = "form-button">
+                                <input type = "button" onclick = "returnFive()" class = "back" value = "Back">
+                                <input type = "button" id="submit-button" value = "Register">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <script src = "script/registration.js"></script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+            import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+        
+            const firebaseConfig = {
+                apiKey: "AIzaSyDxTTVf3tQ2nAp3eTe7q5FAW9NRC01nDJQ",
+                authDomain: "login---listing.firebaseapp.com",
+                projectId: "login---listing",
+                storageBucket: "login---listing.firebasestorage.app",
+                messagingSenderId: "168231985672",
+                appId: "1:168231985672:web:e33e32eb9fa24d9378e7bd",
+                measurementId: "G-Q32EVYNFR7"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+
+
+            var signin_email_psw = function() {
+                let email = document.getElementById('email').value;
+                let password = document.getElementById('password').value;
+                
+                if (email.includes('@') && email !== "") {
+                    if (password !== "" && password.length >= 6) {
+                        createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            const user = userCredential.user;
+                            document.cookie = "email=" + email;
+                            window.location.href = 'listing.html'; 
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+
+                            alert("No users exists");
+                        });
+                    } else {
+                        alert("Insert the password (Min. 6 characther)");
+                    }
+                } else {
+                    alert("Insert a valid email");
+                    return;
+                }
+
+            };
+
+            let submitButton = document.getElementById('submit-button');
+            submitButton.addEventListener('click', signin_email_psw);
+        </script>
+        
+    </body>
+</html>

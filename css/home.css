@@ -24,6 +24,38 @@ body {
     border-top-left-radius: 140px;
 }
 
+.deebrain-under-menu li button {
+    padding: 10px;
+    background: none;
+    border-radius: 4px;
+    border: 1px solid #0097b2;
+    min-width: 100px;
+    color: #0097b2;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.deebrain-under-menu li button:hover {
+    background: #0097b2;
+    color: white;
+}
+
+.deebrain-under-menu li:nth-child(1) button {
+    padding: 10px;
+    background: #0097b2;
+    border-radius: 4px;
+    border: 1px solid #0097b2;
+    min-width: 100px;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.deebrain-under-menu li:nth-child(1) button:hover {
+    background: none;
+    color: #0097b2;
+}
+
 .container-left-home {
     height: 70%;
     display: flex;
