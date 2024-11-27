@@ -43,6 +43,9 @@
                                 <div class = "one-info"><span class = "fs-12 medium-bold-text">Agency type </span><select class = "fs-10 light-text" id = "agencyType" name = "agency-type"><option value = "digital-agency">Digital agency</option><option value = "media-center">Media center</option><option value = "creative-agency">Creative agency</option><option value = "perform-agency">Perform agency</option><option value="advertising-agency">Advertising agency</option><option value="marketing-agency">Marketing agency</option><option value="branding-agency">Branding agency</option><option value="design-agency">Design agency</option><option value="web-agency">Web agency</option><option value="seo-agency">SEO agency</option><option value="social-media-agency">Social media agency</option><option value="public-relations-agency">Public relations agency</option><option value="event-agency">Event agency</option><option value="consulting-agency">Consulting agency</option><option value="production-agency">Production agency</option><option value="influencer-agency">Influencer agency</option><option value="digital-marketing-agency">Digital marketing agency</option><option value="content-agency">Content agency</option><option value="advertising-production-agency">Advertising production agency</option><option value="motion-graphics-agency">Motion graphics agency</option><option value="creative-consulting-agency">Creative consulting agency</option><option value="interactive-agency">Interactive agency</option><option value="media-buying-agency">Media buying agency</option></select></div>
                                 <div class = "one-info"><span class = "fs-12 medium-bold-text">Your logo </span><input class = "fs-10 light-text" type = "file" accept=".png, .jpg, .jpeg" name = "agencyLogo" required></div>
                             </div>
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Password</span><input type="password" placeholder="Password" id="password"></div>
+                            </div>
                             <div class = "form-button">
                                 <div class = "vuoto"></div>
                                 <input type = "button" onclick = "secondStep()" value = "Continue">
@@ -89,7 +92,7 @@
                             </div>
                             <div class = "double-info terzo">
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Facebook link (optional) </span><input type = "url" placeholder = "Facebook link" name = "agencyFacebook"></div>
-                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Email </span><input type = "email" placeholder = "your.email@your.site" name = "agencyEmail" required></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Email </span><input type = "email" placeholder = "your.email@your.site" id="email" name = "agencyEmail" required></div>
                             </div>
                             <div class = "form-button">
                                 <input type = "button" onclick = "returnFirst()" class = "back" value = "Back">
@@ -257,7 +260,7 @@
                             <input type = "hidden" name = "referralClientFinal" id = "referralClientFinal">
                             <div class = "form-button">
                                 <input type = "button" onclick = "returnFive()" class = "back" value = "Back">
-                                <input type = "submit" value = "Register">
+                                <input type = "button" id="submit-button" value = "Register">
                             </div>
                         </div>
                     </div>
@@ -266,6 +269,56 @@
         </form>
 
         <script src = "script/registration.js"></script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+            import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+        
+            const firebaseConfig = {
+                apiKey: "AIzaSyDxTTVf3tQ2nAp3eTe7q5FAW9NRC01nDJQ",
+                authDomain: "login---listing.firebaseapp.com",
+                projectId: "login---listing",
+                storageBucket: "login---listing.firebasestorage.app",
+                messagingSenderId: "168231985672",
+                appId: "1:168231985672:web:e33e32eb9fa24d9378e7bd",
+                measurementId: "G-Q32EVYNFR7"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+
+
+            var signin_email_psw = function() {
+                let email = document.getElementById('email').value;
+                let password = document.getElementById('password').value;
+                
+                if (email.includes('@') && email !== "") {
+                    if (password !== "") {
+                        createUserWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            const user = userCredential.user;
+                            document.cookie = "email=" + email;
+                            window.location.href = 'index.html'; 
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+
+                            alert("No users exists");
+                        });
+                    } else {
+                        alert("Insert the password");
+                    }
+                } else {
+                    alert("Insert a valid email");
+                    return;
+                }
+
+            };
+
+            let submitButton = document.getElementById('submit-button');
+            submitButton.addEventListener('click', signin_email_psw);
+        </script>
         
     </body>
 </html>

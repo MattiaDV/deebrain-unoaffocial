@@ -600,6 +600,23 @@ div.Dservice > span {
     color: white;
 }
 
+.form div.start-form input[type = "password"] {
+    background: none;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #424242;
+    border-radius: 4px;
+    font-weight: 200;
+    color: #424242;
+    outline: none;
+}
+
+.form div.start-form input[type = "password"]:focus {
+    background: #424242;
+    color: white;
+}
+
 .form div.start-form input[type = "number"] {
     background: none;
     padding: 10px;
