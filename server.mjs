@@ -15,16 +15,54 @@ connectionDb.connect(function(err) {
         console.log("Connessione al database riuscita");
     }
 
-    let id_array = Array.from({ length: 205 }, (_, i) => i);
 
-    var params = {
-        ids: [110,111,112,113,114],
-    };
+    // Funzione per prelevare tutti i nomi delle location presenti nel database
+    let id_array_location = Array.from({ length: 440 }, (_, i) => i);
+
+    var params_location = id_array_location;
       
-    connectionDb.get('location_listing', params, function (err, partners) {
-        if (err) { return console.log(err); }
-        console.log(partners);
+    connectionDb.get('location_listing', params_location, function (err, partners) {
+        if (err) { 
+            console.error("Errore nella ricerda delle location presenti nel database: " + JSON.stringify(err)); 
+        }
+        for (let x = 0; x < partners.length; x++) {
+            if (partners[x].name !== false) {
+                console.log(partners[x].name);
+            }
+        }
     });
+
+    // Funzione per restituire tutti i main service presenti nel database
+    let id_array_main_service = Array.from({ length: 440 }, (_, i) => i);
+
+    var params_main_service = id_array_main_service;
+
+    connectionDb.get('main_services', params_main_service, function(err, main_serv) {
+        if (err) {
+            console.error("Errore nella ricerda dei main service presenti sul database: " + JSON.stringify(err));
+        }
+        for (let x = 0; x < main_serv.length; x++) {
+            if (main_serv[x].name !== false) {
+                console.log(main_serv[x].name);
+            }
+        }
+    })
+
+    // Funzione per restituire tutti i distinctive service presenti nel database
+    let id_array_distinctive_service = Array.from({ length: 440 }, (_, i) => i);
+
+    var params_distinctive_service = id_array_distinctive_service;
+
+    connectionDb.get('distinctive_services', params_distinctive_service, function(err, distinctive_service) {
+        if (err) {
+            console.error("Errore nella ricerda dei main service presenti sul database: " + JSON.stringify(err));
+        }
+        for (let x = 0; x < distinctive_service.length; x++) {
+            if (distinctive_service[x].name !== false) {
+                console.log(distinctive_service[x].name);
+            }
+        }
+    })
 });
 
 export default connectionDb;

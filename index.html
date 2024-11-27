@@ -293,7 +293,7 @@
                 let password = document.getElementById('password').value;
                 
                 if (email.includes('@') && email !== "") {
-                    if (password !== "") {
+                    if (password !== "" && password.length >= 6) {
                         createUserWithEmailAndPassword(auth, email, password)
                         .then((userCredential) => {
                             const user = userCredential.user;
@@ -307,7 +307,7 @@
                             alert("No users exists");
                         });
                     } else {
-                        alert("Insert the password");
+                        alert("Insert the password (Min. 6 characther)");
                     }
                 } else {
                     alert("Insert a valid email");
