@@ -109,6 +109,12 @@ function getNewAgencyFromDB(params) {
                                 });
                             });
 
+                            const formattedLocations = locations.map(loc => 
+                                loc.name.replace(' ', '-').toLowerCase()
+                            );
+
+                            console.log(formattedLocations);
+
                             const mainS = partner.mainServices; 
 
                             const mainSS = await new Promise((res, rej) => {
@@ -118,7 +124,7 @@ function getNewAgencyFromDB(params) {
                                 });
                             });
 
-                            const disS = partner.mainServices; 
+                            const disS = partner.distinctiveServices; 
 
                             const disSS = await new Promise((res, rej) => {
                                 connectionDb.get('main_services', disS, (err, distinctiveService) => {
@@ -147,7 +153,7 @@ function getNewAgencyFromDB(params) {
 
                             return {
                                 ...partner,
-                                locations: locations.map(loc => loc.name),
+                                formattedLocations: formattedLocations.map(loc => loc.name),
                                 mainSS: mainSS.map(mains => mains.name),
                                 disSS: disSS.map(dist => dist.name),
                                 mediaSS: mediaSS.map(med => med.name),
@@ -160,7 +166,7 @@ function getNewAgencyFromDB(params) {
                     const locationOptions = enrichedPartners
                     .filter(partner => partner.name !== false)
                     .map(partner => `
-                        <div class="card-account ${partner.agencyType} ${partner.locations.join(' ')} ${partner.mainSS.join(' ')} ${partner.disSS.join(' ')} ${partner.mediaSS.join(' ')} ${partner.platformSS.join(' ')}">
+                        <div class="card-account ${partner.agencyType.replace(' ', '-')} ${partner.formattedLocations.join(' ')} ${partner.mainSS.join(' ')} ${partner.disSS.join(' ')} ${partner.mediaSS.join(' ')} ${partner.platformSS.join(' ')}">
                             <div class="left-part-card">
                                 <img src="img/logo.png">
                             </div>

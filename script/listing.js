@@ -148,6 +148,7 @@ function filter() {
 function resetFilter() {
     for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
         document.getElementById(advancedFilter[resetA]).checked = true;
+        cards[resetA].style.display = "flex";
     }
 
     filter();
