@@ -84,6 +84,16 @@
                 });
             });}
 
+            document.addEventListener('DOMContentLoaded', function() {
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        const uid = user.uid;
+                    } else {
+                        window.lcoation.href = 'login.html';
+                    }
+                })
+            })
+
             function deleteAllCookies() {
                 const cookies = document.cookie.split("; ");
                 for (let cookie of cookies) {
