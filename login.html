@@ -69,7 +69,7 @@
                     .then((userCredential) => {
                         const user = userCredential.user;
                         document.cookie = "email=" + email;
-                        window.location.href = 'index.html'; 
+                        window.location.href = 'listing.html'; 
                     })
                     .catch((error) => {
                         const errorCode = error.code;

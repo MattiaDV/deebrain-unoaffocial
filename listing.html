@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listing - MYNDO</title>
+        <link rel = "stylesheet" href = "css/main-style.css">
+        <link rel = "stylesheet" href = "css/listing.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class = "header-deebrain">
+            <ul class = "deebrain-menu">
+                <li><img src = "img/logo-db.png"></li>
+                <ul class = "deebrain-under-menu">
+                    <li onclick = "window.location.href = 'home.html'">Home</li>
+                    <li onclick = "window.location.href = 'listing.html'">Listing</li>
+                    <li><details class = "account"><summary class = "summary"><div class = "account-header" id = "account-name">AC</div></summary><div class = "voci"><span class = "voce" onclick = "window.location.href = 'alkemy.html'">My page</span><span class = "voce" onclick = "window.location.href = 'edit.html'">Edit my page</span><span class = "voce" id="logout">Log out</span></div></details></li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class = "container-page">
+            <div class = "column-left-container">
+                <div class = "filter-listing" id = "filters">
+                        <span class = "fs-32 medium-bold-text title-list-fil">Filters</span>
+                        <ul class="cat">
+                            <details>
+                            <summary><li class="fs-16 medium-bold-text"><span class = "title-fil"><span>Type of agency </span><span>↓</span></span></summary>
+                                <ul class="subcategory">
+                                    <li class="fs-16 light-text"><input type="checkbox" id="search-digital-agency" checked> Digital agency</li>
+                                    <li class="fs-16 light-text"><input type="checkbox" id="search-media-center" checked> Media center</li>
+                                    <li class="fs-16 light-text"><input type="checkbox" id="search-creative-agency" checked> Creative agency</li>
+                                    <li class="fs-16 light-text"><input type="checkbox" id="search-perform-agency" checked> Perform agency</li>
+                                </ul>
+                            </li>
+                            </details>
+                            <details>
+                            <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Location </span><span>↓</span></span></summary>
+                                <ul class="subcategory">
+                                    <li class="fs-16 light-text"><input type="checkbox" id="search-rome" checked> Rome</li>
+                                    <li class="fs-16 light-text"><input type="checkbox" id="search-milan" checked> Milan</li>
+                                    <li class="fs-16 light-text"><input type="checkbox" id="search-naples" checked> Naples</li>
+                                </ul>
+                            </li>
+                            </details>
+                            <details>
+                               <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Main services </span><span>↓</span></span></summary> 
+                                    <ul class="subcategory">
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-seo" checked> SEO</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-sea" checked> SEA</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-develop" checked> Develop</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-media" checked> Media</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-creativity" checked> Creativity</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-video-production" checked> Video production</li>
+                                    </ul>
+                                </li>
+                            </details>
+                            <details>
+                                <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Distinctive services </span><span>↓</span></span></summary>
+                                    <ul class="subcategory">
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-blockchain" checked> Blockchain</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-ai" checked> AI</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-retail-media" checked> Retail media</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-dropship" checked> Dropship</li>
+                                    </ul>
+                                </li>
+                            </details>
+                            <details>
+                                <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Managed media</span><span>↓</span></span></summary>
+                                    <ul class="subcategory">
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-tv" checked> TV</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-digital" checked> Digital</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-press" checked> Press</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-radio" checked> Radio</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-connected" checked> Connected</li>
+                                    </ul>
+                                </li>
+                            </details>
+                            <details>
+                                <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Managed platform </span><span>↓</span></span></summary>
+                                    <ul class="subcategory">
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-google" checked> Google</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-microsoft" checked> Microsoft</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-amazon" checked> Amazon</li>
+                                    </ul>
+                                </li>
+                            </details>
+                            <details>
+                                <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Billing</span><span>↓</span></span></summary>
+                                    <ul class="subcategory">
+                                        <span class = "billing-foot fs-16 light-text" id = "billing-foot">100k€</span>
+                                        <li class="fs-16 light-text"><input type="range" min = 100 max = 5000 step = 100 value = 100 id = "billing"></li>
+                                    </ul>
+                                </li>
+                            </details>
+                            <details>
+                                <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Conversion & Awareness</span><span>↓</span></span></summary>
+                                    <ul class="subcategory">
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-conversion" checked> Conversion</li>
+                                        <li class="fs-16 light-text"><input type="checkbox" id="search-awareness" checked> Awarness</li>
+                                    </ul>
+                                </li>
+                            </details>
+                        </ul>
+
+                        <div class = "buttons">
+                            <li class="fs-16 medium-bold-text category"><span class = "title-fil"><button class = "fs-18 light-text button-lis" onclick = "filter()" style = "margin-top: 0;" id = "upper-b">Apply filter</button></span></li>
+                            <li class="fs-16 medium-bold-text category"><span class = "title-fil"><button class = "upper-b fs-18 light-text button-lis" onclick = "resetFilter()" id = "upper-r">Reset filter</button></span></li>
+                        </div>
+
+                </div>
+            </div>
+            <div class = "column-right-container">
+                <div class = "container-list">
+                    <div class = "upper-part-page">
+                        <span class = "fs-70 medium-bold-text title-list">
+                            Listing
+                        </span>
+                        <span class = "description fs-12 light-text subtitle-list">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel, voluptates est? Reprehenderit mollitia incidunt tenetur optio laboriosam accusantium, quibusdam modi? Culpa adipisci ea harum labore quas nihil tempore incidunt deserunt!
+                        </span>
+                    </div>
+                    <div class = "container-cards">
+                        <div class = "card-account digital-agency rome milan seo sea develop digital blockchain ai tv google microsoft amazon awareness conversion">
+                            <div class = "left-part-card">
+                                <img src = "img/logo.png">
+                            </div>
+                            <div class = "right-part-card">
+                                <div class = "upper-part-card">
+                                    <span class = "fs-16 medium-bold-text">
+                                        Alkemy
+                                    </span>
+                                    <span class = "fs-12 light-text">
+                                        Digital agency
+                                    </span>
+                                </div>
+                                <div class = "buttonss-listing-infos">
+                                    <div class = "location-a">
+                                        <span class = "loco"><svg fill="#0097b2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 395.71 395.71" xml:space="preserve" stroke="#0097b2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738 c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388 C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191 c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"></path> </g> </g></svg>Rome-Milan, ITA</span>
+                                        <div class = "a">
+                                            Conversion / Awareness
+                                        </div>
+                                    </div>
+                                    <ul class = "infos-card">
+                                        <li class = "light-text fs-16"><span class = "info-agency agency-type digital-agency light-text fs-18">Digital agency</span></li>
+                                        <li class = "light-text fs-16"><span class = "info-agency number-employee light-text fs-18">100 eomployees</span></li>
+                                        <li class = "light-text fs-16"><span class = "info-agency managed-billing light-text fs-18">5M€ Billing</span></li>
+                                    </ul>
+                                </div>
+                                <div class = "bb">
+                                    <button class = "fs-18 light-text buttons-style-listing" onclick = "window.location.href = 'alkemy.html';">Read more</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "card-account media-center rome media ai press google awareness">
+                            <div class = "left-part-card">
+                                <img src = "img/logo.png">
+                            </div>
+                            <div class = "right-part-card">
+                                <div class = "upper-part-card">
+                                    <span class = "fs-16 medium-bold-text">
+                                        Agency 1
+                                    </span>
+                                    <span class = "fs-12 light-text">
+                                        Media center
+                                    </span>
+                                </div>
+                                <div class = "buttonss-listing-infos">
+                                    <div class = "location-a">
+                                        <span class = "loco"><svg fill="#0097b2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 395.71 395.71" xml:space="preserve" stroke="#0097b2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738 c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388 C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191 c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"></path> </g> </g></svg>Rome, ITA</span>
+                                        <div class = "a">
+                                            Awareness
+                                        </div>
+                                    </div>
+                                    <ul class = "infos-card">
+                                        <li class = "light-text fs-16"><span class = "info-agency agency-type digital-agency light-text fs-18">Media center</span></li>
+                                        <li class = "light-text fs-16"><span class = "info-agency number-employee light-text fs-18">100 eomployees</span></li>
+                                        <li class = "light-text fs-16"><span class = "info-agency managed-billing light-text fs-18">5M€ Billing</span></li>
+                                    </ul>
+                                </div>
+                                <div class = "bb">
+                                    <button class = "fs-18 light-text buttons-style-listing" onclick = "window.location.href = 'alkemy.html';">Read more</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "card-account creative-agency naples creativity retail-media radio microsoft conversion">
+                            <div class = "left-part-card">
+                                <img src = "img/logo.png">
+                            </div>
+                            <div class = "right-part-card">
+                                <div class = "upper-part-card">
+                                    <span class = "fs-16 medium-bold-text">
+                                        Agency 2
+                                    </span>
+                                    <span class = "fs-12 light-text">
+                                        Creative agency
+                                    </span>
+                                </div>
+                                <div class = "buttonss-listing-infos">
+                                    <div class = "location-a">
+                                        <span class = "loco"><svg fill="#0097b2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 395.71 395.71" xml:space="preserve" stroke="#0097b2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738 c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388 C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191 c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"></path> </g> </g></svg>Naples, ITA</span>
+                                        <div class = "a">
+                                            Conversion
+                                        </div>
+                                    </div>
+                                    <ul class = "infos-card">
+                                        <li class = "light-text fs-16"><span class = "info-agency agency-type digital-agency light-text fs-18">Creative agency</span></li>
+                                        <li class = "light-text fs-16"><span class = "info-agency number-employee light-text fs-18">100 eomployees</span></li>
+                                        <li class = "light-text fs-16"><span class = "info-agency managed-billing light-text fs-18">5M€ Billing</span></li>
+                                    </ul>
+                                </div>
+                                <div class = "bb">
+                                    <button class = "fs-18 light-text buttons-style-listing" onclick = "window.location.href = 'alkemy.html';">Read more</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "card-account perform-agency naples video-production dropship connected amazon awareness">
+                            <div class = "left-part-card">
+                                <img src = "img/logo.png">
+                            </div>
+                            <div class = "right-part-card">
+                                <div class = "upper-part-card">
+                                    <span class = "fs-16 medium-bold-text">
+                                        Agency 3
+                                    </span>
+                                    <span class = "fs-12 light-text">
+                                        Perform agency
+                                    </span>
+                                </div>
+                                <div class = "buttonss-listing-infos">
+                                    <div class = "location-a">
+                                        <span class = "loco"><svg fill="#0097b2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 395.71 395.71" xml:space="preserve" stroke="#0097b2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738 c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388 C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191 c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"></path> </g> </g></svg>Naples, ITA</span>
+                                        <div class = "a">
+                                            Awareness
+                                        </div>
+                                    </div>
+                                    <ul class = "infos-card">
+                                        <li class = "light-text fs-12"><span class = "info-agency number-employee light-text fs-18">Perform agency</span></li>
+                                        <li class = "light-text fs-12"><span class = "info-agency number-employee light-text fs-18">100 eomployees</span></li>
+                                        <li class = "light-text fs-12"><span class = "info-agency managed-billing light-text fs-18">5M€ Billing</span></li>
+                                    </ul>
+                                </div>
+                                <div class = "bb">
+                                    <button class = "fs-18 light-text buttons-style-listing" onclick = "window.location.href = 'alkemy.html';">Read more</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src = "script/listing.js"></script>
+        <script type="module">
+
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+            import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+        
+            const firebaseConfig = {
+                apiKey: "AIzaSyDxTTVf3tQ2nAp3eTe7q5FAW9NRC01nDJQ",
+                authDomain: "login---listing.firebaseapp.com",
+                projectId: "login---listing",
+                storageBucket: "login---listing.firebasestorage.app",
+                messagingSenderId: "168231985672",
+                appId: "1:168231985672:web:e33e32eb9fa24d9378e7bd",
+                measurementId: "G-Q32EVYNFR7"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+
+            function getCookieValue(cookieName) {
+                const cookies = document.cookie.split("; ");
+                for (let cookie of cookies) {
+                    const [name, value] = cookie.split("=");
+                    if (name === cookieName) {
+                        return value;
+                    }
+                }
+                return null; 
+            }
+
+            const email = getCookieValue("email");
+            let accountName = document.getElementById('account-name');
+            let nuova = email[0] + email[1];
+            accountName.innerHTML = nuova.toUpperCase();
+
+            var do_signout=function(){return new Promise(function(resolve){
+                signOut(auth).then(() => {
+                resolve(true)
+                deleteAllCookies()
+                window.location.href = "login.html";
+                }).catch((error) => {
+                resolve(false)
+                deleteAllCookies()
+                window.location.href = "login.html";
+                });
+            });}
+
+            function deleteAllCookies() {
+                const cookies = document.cookie.split("; ");
+                for (let cookie of cookies) {
+                    const name = cookie.split("=")[0];
+                    document.cookie = name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                }
+                console.log("Tutti i cookie sono stati cancellati!");
+            }
+
+            let logout = document.getElementById('logout');;
+            logout.addEventListener('click', do_signout);
+
+        </script>
+        
+    </body>
+</html>
