@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit - MYNDO</title>
+        <link rel = "stylesheet" href = "css/main-style.css">
+        <link rel = "stylesheet" href = "css/edit.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class = "header-deebrain">
+            <ul class = "deebrain-menu">
+                <li><img src = "img/logo-db.png"></li>
+                <ul class = "deebrain-under-menu">
+                    <li onclick = "window.location.href = 'home.html'">Home</li>
+                    <li onclick = "window.location.href = 'index.html'">Listing</li>
+                    <li><details class = "account"><summary class = "summary"><div class = "account-header" id = "account-name">AC</div></summary><div class = "voci"><span class = "voce" onclick = "window.location.href = 'alkemy.html'">My page</span><span class = "voce" onclick = "window.location.href = 'edit.html'">Edit my page</span><span class = "voce" id="logoutter">Log out</span></div></details></li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class = "container-edit-page">
+            <div class = "edit-column-left">
+                <div class = "section-edit">
+                    <div class = "logoCC">
+                        <img src = "img/logo-db.png" class = "thisLogo">
+                    </div>
+                    <br><br>
+                    <span class = "fs-20 medium-bold-text">Setup page</span><br><br>
+                    <ul class = "edit-parts">
+                        <li class = "fs-16 light-text active" id = "profileInfo"><svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>profile_round [#42424224242]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -2159.000000)" fill="#424242"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M100.562548,2016.99998 L87.4381713,2016.99998 C86.7317804,2016.99998 86.2101535,2016.30298 86.4765813,2015.66198 C87.7127655,2012.69798 90.6169306,2010.99998 93.9998492,2010.99998 C97.3837885,2010.99998 100.287954,2012.69798 101.524138,2015.66198 C101.790566,2016.30298 101.268939,2016.99998 100.562548,2016.99998 M89.9166645,2004.99998 C89.9166645,2002.79398 91.7489936,2000.99998 93.9998492,2000.99998 C96.2517256,2000.99998 98.0830339,2002.79398 98.0830339,2004.99998 C98.0830339,2007.20598 96.2517256,2008.99998 93.9998492,2008.99998 C91.7489936,2008.99998 89.9166645,2007.20598 89.9166645,2004.99998 M103.955674,2016.63598 C103.213556,2013.27698 100.892265,2010.79798 97.837022,2009.67298 C99.4560048,2008.39598 100.400241,2006.33098 100.053171,2004.06998 C99.6509769,2001.44698 97.4235996,1999.34798 94.7348224,1999.04198 C91.0232075,1998.61898 87.8750721,2001.44898 87.8750721,2004.99998 C87.8750721,2006.88998 88.7692896,2008.57398 90.1636971,2009.67298 C87.1074334,2010.79798 84.7871636,2013.27698 84.044024,2016.63598 C83.7745338,2017.85698 84.7789973,2018.99998 86.0539717,2018.99998 L101.945727,2018.99998 C103.221722,2018.99998 104.226185,2017.85698 103.955674,2016.63598" id="profile_round-[#42424224242]"> </path> </g> </g> </g> </g></svg>Profile infos</li>
+                        <li class = "fs-16 light-text" id = "contactInfos"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="m 8 1 c -1.65625 0 -3 1.34375 -3 3 s 1.34375 3 3 3 s 3 -1.34375 3 -3 s -1.34375 -3 -3 -3 z m -1.5 7 c -2.492188 0 -4.5 2.007812 -4.5 4.5 v 0.5 c 0 1.109375 0.890625 2 2 2 h 6 v -1 h -3 v -4 h 3 v -1.972656 c -0.164062 -0.019532 -0.332031 -0.027344 -0.5 -0.027344 z m 4.5 0 v 3 h -3 v 2 h 3 v 3 h 2 v -3 h 3 v -2 h -3 v -3 z m 0 0" fill="#424242"></path> </g></svg>Contacts infos</li>
+                        <li class = "fs-16 light-text" id = "servicesInfo"><svg class = "servu" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#424242" d="M864 409.6a192 192 0 0 1-37.888 349.44A256.064 256.064 0 0 1 576 960h-96a32 32 0 1 1 0-64h96a192.064 192.064 0 0 0 181.12-128H736a32 32 0 0 1-32-32V416a32 32 0 0 1 32-32h32c10.368 0 20.544.832 30.528 2.432a288 288 0 0 0-573.056 0A193.235 193.235 0 0 1 256 384h32a32 32 0 0 1 32 32v320a32 32 0 0 1-32 32h-32a192 192 0 0 1-96-358.4 352 352 0 0 1 704 0zM256 448a128 128 0 1 0 0 256V448zm640 128a128 128 0 0 0-128-128v256a128 128 0 0 0 128-128z"></path></g></svg>Services infos</li>
+                        <li class = "fs-16 light-text" id = "managedInfo"><svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .feather_een{fill:#424242;} </style> <path class="feather_een" d="M7,8.05V5.5C7,5.224,6.776,5,6.5,5S6,5.224,6,5.5v2.55C4.306,8.295,3,9.738,3,11.5s1.306,3.205,3,3.45 V26.5C6,26.776,6.224,27,6.5,27S7,26.776,7,26.5V14.95c1.694-0.245,3-1.688,3-3.45S8.694,8.295,7,8.05z M6.5,14 C5.122,14,4,12.878,4,11.5C4,10.121,5.122,9,6.5,9S9,10.121,9,11.5C9,12.878,7.878,14,6.5,14z M16,17.05V5.5 C16,5.224,15.776,5,15.5,5S15,5.224,15,5.5v11.55c-1.694,0.245-3,1.688-3,3.45s1.306,3.205,3,3.45v2.55c0,0.276,0.224,0.5,0.5,0.5 s0.5-0.224,0.5-0.5v-2.55c1.694-0.245,3-1.688,3-3.45S17.694,17.295,16,17.05z M15.5,23c-1.378,0-2.5-1.122-2.5-2.5 c0-1.379,1.122-2.5,2.5-2.5s2.5,1.121,2.5,2.5C18,21.878,16.878,23,15.5,23z M28,14.5c0-1.762-1.306-3.205-3-3.45V5.5 C25,5.224,24.776,5,24.5,5S24,5.224,24,5.5v5.55c-1.694,0.245-3,1.688-3,3.45s1.306,3.205,3,3.45v8.55c0,0.276,0.224,0.5,0.5,0.5 s0.5-0.224,0.5-0.5v-8.55C26.694,17.705,28,16.262,28,14.5z M24.5,17c-1.378,0-2.5-1.122-2.5-2.5c0-1.379,1.122-2.5,2.5-2.5 s2.5,1.121,2.5,2.5C27,15.878,25.878,17,24.5,17z"></path> </g></svg>Managed media/platform</li>
+                        <li class = "fs-16 light-text" id = "clientsInfo"><svg fill="#424242" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="924 578 200 200" enable-background="new 924 578 200 200" xml:space="preserve" stroke="#424242"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M984.585,638.942c0,13.999-9.609,25.348-21.462,25.348c-11.852,0-21.459-11.349-21.459-25.348 c0-13.998,9.607-25.346,21.459-25.346C974.976,613.596,984.585,624.944,984.585,638.942z"></path> <path d="M987.585,683.641c1.55-0.945,3.265-1.561,5.041-1.855c-3.606-5.088-6.161-10.546-7.637-17.078 c-0.404-2.387-3.672-2.667-6.102-0.687c-4.546,3.706-9.849,6.186-15.765,6.186c-6.03,0-11.577-2.399-16.024-6.414 c-1.419-1.282-3.51-1.476-5.143-0.479c-8.443,5.158-14.834,13.344-17.622,23.067c-0.749,2.605-0.223,5.42,1.411,7.588 c1.636,2.166,4.192,3.443,6.906,3.443h38.668C975.947,692.072,981.41,687.41,987.585,683.641z"></path> </g> <g> <path d="M1063.416,638.942c0,13.999,9.608,25.348,21.461,25.348c11.854,0,21.46-11.349,21.46-25.348 c0-13.998-9.606-25.346-21.46-25.346C1073.024,613.596,1063.416,624.944,1063.416,638.942z"></path> <path d="M1060.415,683.641c-1.55-0.945-3.266-1.561-5.041-1.855c3.606-5.088,6.161-10.546,7.637-17.078 c0.405-2.387,3.673-2.667,6.103-0.687c4.546,3.706,9.848,6.186,15.764,6.186c6.029,0,11.577-2.399,16.025-6.414 c1.419-1.282,3.509-1.476,5.142-0.479c8.444,5.158,14.836,13.344,17.622,23.067c0.748,2.605,0.223,5.42-1.41,7.588 c-1.637,2.166-4.192,3.443-6.905,3.443h-38.67C1072.053,692.072,1066.591,687.41,1060.415,683.641z"></path> </g> <g> <path d="M1082.475,725.451c-4.198-14.654-13.72-27.045-26.326-34.992c-2.487-1.566-5.715-1.313-7.921,0.631 c-6.766,5.959-15.138,9.506-24.228,9.506c-9.269,0-17.791-3.686-24.626-9.855c-2.182-1.971-5.393-2.268-7.902-0.734 c-12.977,7.924-22.799,20.504-27.082,35.445c-1.151,4.008-0.344,8.328,2.166,11.662c2.516,3.33,6.443,5.291,10.615,5.291h92.523 c4.173,0,8.103-1.955,10.618-5.291C1082.823,733.779,1083.626,729.463,1082.475,725.451z"></path> <path d="M1056.981,652.547c0,21.513-14.766,38.955-32.981,38.955c-18.214,0-32.979-17.442-32.979-38.955 c0-21.515,14.765-38.951,32.979-38.951C1042.216,613.596,1056.981,631.033,1056.981,652.547z"></path> </g> </g> </g></svg>Clients</li>
+                        <li class = "fs-16 light-text" id = "bandcInfo"><svg fill="#424242" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128" xml:space="preserve" stroke="#424242"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3.6,14c12.6-0.3,35.8,13.2,35.8,13.2V121C11,107.6,3.6,107.7,3.6,107.7V14z"></path> <path d="M82.8,14C70.3,13.7,47,27.2,47,27.2V121c28.4-13.4,35.8-13.2,35.8-13.2V14z"></path> <path d="M90.9,14c11.8-0.3,33.5,13.2,33.5,13.2V121c-26.6-13.4-33.5-13.2-33.5-13.2V14z"></path> </g></svg>Brochures & case study</li>
+                        <li class = "fs-16 light-text" id = "home" onclick = "window.location.href = 'index.html'"><svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z" fill="#424242"></path> </g></svg>Home</li>
+                        <li class = "fs-16 light-text setting" id = "logout"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M19 23H11C10.4477 23 10 22.5523 10 22C10 21.4477 10.4477 21 11 21H19C19.5523 21 20 20.5523 20 20V4C20 3.44772 19.5523 3 19 3L11 3C10.4477 3 10 2.55229 10 2C10 1.44772 10.4477 1 11 1L19 1C20.6569 1 22 2.34315 22 4V20C22 21.6569 20.6569 23 19 23Z" fill="#424242"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M2.48861 13.3099C1.83712 12.5581 1.83712 11.4419 2.48862 10.6902L6.66532 5.87088C7.87786 4.47179 10.1767 5.32933 10.1767 7.18074L10.1767 9.00001H16.1767C17.2813 9.00001 18.1767 9.89544 18.1767 11V13C18.1767 14.1046 17.2813 15 16.1767 15L10.1767 15V16.8193C10.1767 18.6707 7.87786 19.5282 6.66532 18.1291L2.48861 13.3099ZM4.5676 11.3451C4.24185 11.7209 4.24185 12.2791 4.5676 12.6549L8.1767 16.8193V14.5C8.1767 13.6716 8.84827 13 9.6767 13L16.1767 13V11L9.6767 11C8.84827 11 8.1767 10.3284 8.1767 9.50001L8.1767 7.18074L4.5676 11.3451Z" fill="#424242"></path> </g></svg>Log out</li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "edit-column-right">
+                <div class = "pagina" id = "prima-edit">
+                    <div class = "fs-20 medium-bold-text section-name">
+                        <div class = "photo-left">
+                            <svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>profile_round [#42424224242]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-140.000000, -2159.000000)" fill="#424242"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M100.562548,2016.99998 L87.4381713,2016.99998 C86.7317804,2016.99998 86.2101535,2016.30298 86.4765813,2015.66198 C87.7127655,2012.69798 90.6169306,2010.99998 93.9998492,2010.99998 C97.3837885,2010.99998 100.287954,2012.69798 101.524138,2015.66198 C101.790566,2016.30298 101.268939,2016.99998 100.562548,2016.99998 M89.9166645,2004.99998 C89.9166645,2002.79398 91.7489936,2000.99998 93.9998492,2000.99998 C96.2517256,2000.99998 98.0830339,2002.79398 98.0830339,2004.99998 C98.0830339,2007.20598 96.2517256,2008.99998 93.9998492,2008.99998 C91.7489936,2008.99998 89.9166645,2007.20598 89.9166645,2004.99998 M103.955674,2016.63598 C103.213556,2013.27698 100.892265,2010.79798 97.837022,2009.67298 C99.4560048,2008.39598 100.400241,2006.33098 100.053171,2004.06998 C99.6509769,2001.44698 97.4235996,1999.34798 94.7348224,1999.04198 C91.0232075,1998.61898 87.8750721,2001.44898 87.8750721,2004.99998 C87.8750721,2006.88998 88.7692896,2008.57398 90.1636971,2009.67298 C87.1074334,2010.79798 84.7871636,2013.27698 84.044024,2016.63598 C83.7745338,2017.85698 84.7789973,2018.99998 86.0539717,2018.99998 L101.945727,2018.99998 C103.221722,2018.99998 104.226185,2017.85698 103.955674,2016.63598" id="profile_round-[#42424224242]"> </path> </g> </g> </g> </g></svg>
+                        </div>
+                        <div class = "header-words">
+                            <span>Profile infos</span>
+                            <span class = "fs-12 light-text section-sub">Please compile the form below and save to edit your profile infos. Feel free to add as much detail as needed</span>
+                        </div>
+                    </div>
+                    <div class = "form-for-profile-infos">
+                        <form method = "get">
+                            <div class = "personal-info" id = "personalInfo">
+                                <div class = "new-logo-section">
+                                    <span class = "title-no medium-bold-text">Your logo</span>
+                                    <div class = "choose-file-logo">
+                                        <label for = "newLogo" class = "logoNew" id = "logoNew"><span class = "fs-14 light-text">Upload new logo</span></label>
+                                        <input type = "file" accept = ".png, .jpg, .jpeg" name = "newLogo" id = "newLogo" hidden>
+                                    </div>
+                                </div>
+                            </div><br><br><br>
+
+                            <div class = "other-personal" id = "otherPersonal">
+                                <div class = "profile-infos">
+                                    <label for = "nameAgency" class = "fs-16 500-bold aaa">Personal info</label>
+                                    <div class = "infos-about-personal">
+                                        <div class = "info-one-personal">
+                                            <label for = "nameAgency" class = "fs-12 500-bold">Agency name</label>
+                                            <input type = "text" placeholder="New agency name" id = "nameAgency" class = "fs-10">
+                                        </div>
+
+                                        <div class = "info-one-personal agency-type-s">
+                                            <label for = "agencyType" class = "fs-12 500-bold">Agency type</label>
+                                            <select id = "agencyType" name = "agency-type" class = "fs-10"><option value = "digital-agency">Digital agency</option><option value = "media-center">Media center</option><option value = "creative-agency">Creative agency</option><option value = "perform-agency">Perform agency</option><option value="advertising-agency">Advertising agency</option><option value="marketing-agency">Marketing agency</option><option value="branding-agency">Branding agency</option><option value="design-agency">Design agency</option><option value="web-agency">Web agency</option><option value="seo-agency">SEO agency</option><option value="social-media-agency">Social media agency</option><option value="public-relations-agency">Public relations agency</option><option value="event-agency">Event agency</option><option value="consulting-agency">Consulting agency</option><option value="production-agency">Production agency</option><option value="influencer-agency">Influencer agency</option><option value="digital-marketing-agency">Digital marketing agency</option><option value="content-agency">Content agency</option><option value="advertising-production-agency">Advertising production agency</option><option value="motion-graphics-agency">Motion graphics agency</option><option value="creative-consulting-agency">Creative consulting agency</option><option value="interactive-agency">Interactive agency</option><option value="media-buying-agency">Media buying agency</option></select>
+                                        </div>
+
+                                        <div class = "info-one-personal">
+                                            <label for = "managedBilling" class = "fs-12 500-bold">Managed billing</label>
+                                            <input type = "number" step = 1 min = 1 placeholder="Managed billing" id = "managedBilling" class = "fs-10">
+                                        </div>
+
+                                        <div class = "info-one-personal">
+                                            <label for = "nEmployee" class = "fs-12 500-bold">Number of employees</label>
+                                            <input type = "number" step = 1 min = 1 placeholder="Number of employees" id = "nEmployee" class = "fs-10">
+                                        </div>
+
+                                        <div class = "info-one-personal location-stat">
+                                            <div class = "one-info"><span class = "fs-12 500-bold">Add new location </span><select id = "location" name = "location" class = "fs-10"><option value="" disabled selected>Select a city (you can choose more than one)</option><option value = "milan">Milan</option><option value = "naples">Naples</option><option value = "rome">Rome</option><option value="florence">Florence</option><option value="venice">Venice</option><option value="bologna">Bologna</option><option value="turin">Turin</option><option value="palermo">Palermo</option><option value="verona">Verona</option><option value="genoa">Genoa</option><option value="siena">Siena</option><option value="matera">Matera</option><option value="perugia">Perugia</option><option value="bari">Bari</option><option value="pisa">Pisa</option><option value="lecce">Lecce</option><option value="catania">Catania</option><option value="trieste">Trieste</option><option value="bergamo">Bergamo</option><option value="parma">Parma</option><option value="ferrara">Ferrara</option><option value="lucca">Lucca</option><option value="ravenna">Ravenna</option><option value="cagliari">Cagliari</option><option value="reggio-calabria">Reggio Calabria</option><option value="ancona">Ancona</option><option value="alessandria">Alessandria</option><option value="vicenza">Vicenza</option><option value="trento">Trento</option><option value="bolzano">Bolzano</option><option value="taranto">Taranto</option><option value="novara">Novara</option><option value="ascoli-piceno">Ascoli Piceno</option><option value="avellino">Avellino</option><option value="macerata">Macerata</option><option value="oristano">Oristano</option><option value="lucca">Lucca</option><option value="brindisi">Brindisi</option><option value="vibo-valentia">Vibo Valentia</option><option value="pescara">Pescara</option><option value="benevento">Benevento</option><option value="lodi">Lodi</option><option value="savigliano">Savigliano</option><option value = "more">Other</option></select></div>
+                                            <div class = "one-info"><span class = "fs-12 500-bold">Choosen location </span><div id = "citys" class = "choose-citys" class = "fs-10"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class = "toggle-all">
+                                    <label for = "nameAgency" class = "fs-16 500-bold aa">User Preferences</label>
+                                    <div class = "info-one-personal toggle-men">
+                                        <div class = "svg-infos">
+                                            <input type = "checkbox" id = "awareness">
+                                            <label for = "awareness" class = "slider"><div class = "toggle"></div></label>
+                                        </div>
+                                        <div class = "svg-middle">
+                                            <label for = "" class = "fs-12 normal-text">Awareness</label>
+                                            <span class = "fs-10 light-text">Is knowing yourself and your surroundings.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class = "info-one-personal toggle-men">
+                                        <div class = "svg-infos">
+                                            <input type = "checkbox" id = "conversion">
+                                            <label for = "conversion" class = "slider"><div class = "toggle"></div></label>
+                                        </div>
+                                        <div class = "svg-middle">
+                                            <label for = "" class = "fs-12 normal-text">Conversion</label>
+                                            <span class = "fs-10 light-text">Is the change from one state to another.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class = "info-one-personal toggle-men">
+                                        <div class = "svg-infos">
+                                            <input type = "checkbox" id = "consideration">
+                                            <label for = "consideration" class = "slider"><div class = "toggle"></div></label>
+                                        </div>
+                                        <div class = "svg-middle">
+                                            <label for = "" class = "fs-12 normal-text">Consideration</label>
+                                            <span class = "fs-10 light-text">Is thinking about something carefully.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class = "buttons-form">
+                            <input class = "fs-18 light-text" type = "submit" value = "Save">
+                        </div>
+                            
+                        </form>
+                    </div>
+                    <div class = "space-bottom"></div>
+                </div>
+                <div class = "pagina" id = "seconda-edit">
+                    <div class = "fs-20 medium-bold-text section-name">
+                        <div class = "photo-left">
+                            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="m 8 1 c -1.65625 0 -3 1.34375 -3 3 s 1.34375 3 3 3 s 3 -1.34375 3 -3 s -1.34375 -3 -3 -3 z m -1.5 7 c -2.492188 0 -4.5 2.007812 -4.5 4.5 v 0.5 c 0 1.109375 0.890625 2 2 2 h 6 v -1 h -3 v -4 h 3 v -1.972656 c -0.164062 -0.019532 -0.332031 -0.027344 -0.5 -0.027344 z m 4.5 0 v 3 h -3 v 2 h 3 v 3 h 2 v -3 h 3 v -2 h -3 v -3 z m 0 0" fill="#424242"></path> </g></svg>
+                        </div>
+                        <div class = "header-words">
+                            <span>Contact infos</span>
+                            <span class = "fs-12 light-text section-sub">Please compile the form below and save to edit your profile infos. Feel free to add as much detail as needed</span>
+                        </div>
+                    </div>
+                    <form method = "get">
+                        <div class = "form-for-profile-infos">
+                            <div class = "infos-about-personal">
+                                <div class = "info-one-personal">
+                                    <label for = "website" class = "fs-12 normal-text">Website</label>
+                                    <input type = "url" value = "https://" name = "website" id = "website" class = "fs-10">
+                                </div>
+
+                                <div class = "info-one-personal">
+                                    <label for = "linkedin" class = "fs-12 normal-text">Linkedin</label>
+                                    <input type = "url" value = "https://" name = "linkedin" id = "linkedin" class = "fs-10">
+                                </div>
+
+                                <div class = "info-one-personal">
+                                    <label for = "facebook" class = "fs-12 normal-text">Facebook</label>
+                                    <input type = "url" value = "https://" name = "facebook" id = "facebook" class = "fs-10">
+                                </div>
+
+                                <div class = "info-one-personal">
+                                    <label for = "email" class = "fs-12 normal-text">Email</label>
+                                    <input type = "email" placeholder = "johndoe@john.com" name = "email" id = "email" class = "fs-10">
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "buttons-form">
+                            <input class = "fs-18 light-text" type = "submit" value = "Save">
+                        </div>
+                        <div class = "space-bottom"></div>
+                    </form>
+                </div>
+                <div class = "pagina" id = "terza-edit">
+                    <div class = "fs-20 medium-bold-text section-name">
+                        <div class = "photo-left">
+                            <svg class = "servu" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#424242" d="M864 409.6a192 192 0 0 1-37.888 349.44A256.064 256.064 0 0 1 576 960h-96a32 32 0 1 1 0-64h96a192.064 192.064 0 0 0 181.12-128H736a32 32 0 0 1-32-32V416a32 32 0 0 1 32-32h32c10.368 0 20.544.832 30.528 2.432a288 288 0 0 0-573.056 0A193.235 193.235 0 0 1 256 384h32a32 32 0 0 1 32 32v320a32 32 0 0 1-32 32h-32a192 192 0 0 1-96-358.4 352 352 0 0 1 704 0zM256 448a128 128 0 1 0 0 256V448zm640 128a128 128 0 0 0-128-128v256a128 128 0 0 0 128-128z"></path></g></svg>
+                        </div>
+                        <div class = "header-words">
+                            <span>Services infos</span>
+                            <span class = "fs-12 light-text section-sub">Please compile the form below and save to edit your profile infos. Feel free to add as much detail as needed</span>
+                        </div>
+                    </div>
+                    <form method = "get">
+                        <div class = "form-for-profile-infos">
+                            <div class = "infos-about-personal">
+                                <div class = "info-one-personal location-stat">
+                                    <div class = "one-info"><span class = "fs-12 normal-text">Add new main services </span><select id = "mainServices" name = "mainServices" class = "fs-10"><option value="" disabled selected>Select a service (you can choose more than one)</option><option value = "seo">SEO</option><option value = "sea">SEA</option><option value = "develop">Develop</option><option value = "media">Media</option><option value = "creativity">Creativity</option><option value = "video-production">Video production</option><option value="content-creation">Content Creation</option><option value="copywriting">Copywriting</option><option value="social-media-management">Social Media Management</option><option value="email-marketing">Email Marketing</option><option value="affiliate-marketing">Affiliate Marketing</option><option value="influencer-marketing">Influencer Marketing</option><option value="brand-strategy">Brand Strategy</option><option value="web-design">Web Design</option><option value="app-development">App Development</option><option value="e-commerce-solutions">E-commerce Solutions</option><option value="graphic-design">Graphic Design</option><option value="ux-ui-design">UX/UI Design</option><option value="data-analytics">Data Analytics</option><option value="digital-strategy">Digital Strategy</option><option value="paid-advertising">Paid Advertising</option><option value="public-relations">Public Relations (PR)</option><option value="photography">Photography</option><option value="3d-modeling">3D Modeling</option><option value="voiceover-production">Voiceover Production</option></select></div>
+                                    <div class = "one-info"><span class = "fs-12 normal-text">Choosen services </span><div id = "services" class = "choose-citys fs-10"></div></div>
+                                </div>
+
+
+                                <div class = "info-one-personal location-stat">
+                                    <div class = "one-info"><span class = "fs-12 normal-text">Add new distinctive services </span><select id = "distinctiveServices" name = "distinctiveServices" class = "fs-10"><option value="" disabled selected>Select a service (you can choose more than one)</option><option value = "blockchain">Blockcahin</option><option value = "ai">AI</option><option value = "retail-media">Retail media</option><option value = "dropship">Dropship</option><option value="metaverse-solutions">Metaverse Solutions</option><option value="cloud-computing">Cloud Computing</option><option value="cybersecurity">Cybersecurity</option><option value="machine-learning">Machine Learning</option><option value="ar-vr-development">AR/VR Development</option><option value="iot-integration">IoT Integration</option><option value="big-data-analytics">Big Data Analytics</option><option value="data-mining">Data Mining</option><option value="devops">DevOps</option><option value="crm-solutions">CRM Solutions</option><option value="supply-chain-management">Supply Chain Management</option><option value="rpa">RPA (Robotic Process Automation)</option><option value="nlp">Natural Language Processing (NLP)</option><option value="e-learning-platforms">E-learning Platforms</option><option value="it-consulting">IT Consulting</option><option value="custom-software-development">Custom Software Development</option><option value="quantum-computing">Quantum Computing</option><option value="digital-transformation">Digital Transformation</option><option value="it-support-maintenance">IT Support & Maintenance</option><option value = "more">Other</option></select></div>
+                                    <div class = "one-info"><span class = "fs-12 normal-text">Choosen distinctive services </span><div id = "Dservices" class = "choose-citys fs-10"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "buttons-form">
+                            <input class = "fs-18 light-text" type = "submit" value = "Save">
+                        </div>
+                    </form>
+                    <div class = "space-bottom"></div>
+                </div>
+                <div class = "pagina" id = "quarta-edit">
+                    <div class = "fs-20 medium-bold-text section-name">
+                        <div class = "photo-left">
+                            <svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .feather_een{fill:#424242;} </style> <path class="feather_een" d="M7,8.05V5.5C7,5.224,6.776,5,6.5,5S6,5.224,6,5.5v2.55C4.306,8.295,3,9.738,3,11.5s1.306,3.205,3,3.45 V26.5C6,26.776,6.224,27,6.5,27S7,26.776,7,26.5V14.95c1.694-0.245,3-1.688,3-3.45S8.694,8.295,7,8.05z M6.5,14 C5.122,14,4,12.878,4,11.5C4,10.121,5.122,9,6.5,9S9,10.121,9,11.5C9,12.878,7.878,14,6.5,14z M16,17.05V5.5 C16,5.224,15.776,5,15.5,5S15,5.224,15,5.5v11.55c-1.694,0.245-3,1.688-3,3.45s1.306,3.205,3,3.45v2.55c0,0.276,0.224,0.5,0.5,0.5 s0.5-0.224,0.5-0.5v-2.55c1.694-0.245,3-1.688,3-3.45S17.694,17.295,16,17.05z M15.5,23c-1.378,0-2.5-1.122-2.5-2.5 c0-1.379,1.122-2.5,2.5-2.5s2.5,1.121,2.5,2.5C18,21.878,16.878,23,15.5,23z M28,14.5c0-1.762-1.306-3.205-3-3.45V5.5 C25,5.224,24.776,5,24.5,5S24,5.224,24,5.5v5.55c-1.694,0.245-3,1.688-3,3.45s1.306,3.205,3,3.45v8.55c0,0.276,0.224,0.5,0.5,0.5 s0.5-0.224,0.5-0.5v-8.55C26.694,17.705,28,16.262,28,14.5z M24.5,17c-1.378,0-2.5-1.122-2.5-2.5c0-1.379,1.122-2.5,2.5-2.5 s2.5,1.121,2.5,2.5C27,15.878,25.878,17,24.5,17z"></path> </g></svg>
+                        </div>
+                        <div class = "header-words">
+                            <span>Managed media/platform infos</span>
+                            <span class = "fs-12 light-text section-sub">Please compile the form below and save to edit your profile infos. Feel free to add as much detail as needed</span>
+                        </div>
+                    </div>
+                    <form method = "get">
+                        <div class = "form-for-profile-infos">
+                            <div class = "infos-about-personal">
+                                <div class = "info-one-personal location-stat">
+                                    <div class = "one-info"><span class = "fs-12 normal-text">Add new managed media </span><select id = "managedMedia" name = "managedMedia" class = "fs-10"><option value="" disabled selected>Select a media (you can choose more than one)</option><option value = "tv">TV</option><option value = "digital">Digital</option><option value = "press">Press</option><option value = "radio">Radio</option><option value = "connected">Connected</option><option value="outdoor">Outdoor</option><option value="cinema">Cinema</option><option value="podcast">Podcast</option><option value="influencer">Influencer</option><option value="mobile">Mobile</option><option value="email">Email</option><option value="display">Display</option><option value="search">Search</option><option value="programmatic">Programmatic</option><option value="social">Social</option><option value="content">Content</option><option value="affiliate">Affiliate</option><option value="sms">SMS</option><option value="print">Print</option><option value="event">Event</option><option value="native">Native</option></select></div>
+                                    <div class = "one-info"><span class = "fs-12 normal-text">Choosen managed media </span><div id = "ManMedia" class = "choose-citys fs-10"></div></div>
+                                </div>
+                                <div class = "info-one-personal location-stat">
+                                    <div class = "one-info"><span class = "fs-12 normal-text">Add new managed platform </span><select id = "managedPlatform" name = "managedPlatform" class = "fs-10"><option value="" disabled selected>Select a platform (you can choose more than one)</option><option value="google">Google</option><option value="microsoft">Microsoft</option><option value="amazon">Amazon</option><option value="apple">Apple</option><option value="oracle">Oracle</option><option value="ibm">IBM</option><option value="adobe">Adobe</option><option value="sap">SAP</option><option value="salesforce">Salesforce</option><option value="vmware">VMware</option><option value="red-hat">Red Hat</option><option value="hubspot">HubSpot</option><option value="compTIA">CompTIA</option><option value="cisco">Cisco</option><option value="autodesk">Autodesk</option><option value="atlassian">Atlassian</option><option value="moodle">Moodle</option><option value="linkedin">LinkedIn</option><option value="aws">AWS</option><option value="azure">Azure</option><option value="google-ads">Google Ads</option><option value="google-analytics">Google Analytics</option><option value="google-cloud">Google Cloud</option><option value="google-marketing-platform">Google Marketing Platform</option><option value="microsoft-office">Microsoft Office Specialist</option><option value="microsoft-azure">Microsoft Azure</option><option value="microsoft-certified-solutions-expert">Microsoft Certified Solutions Expert</option><option value="microsoft-dynamics">Microsoft Dynamics</option><option value="aws-solutions-architect">AWS Solutions Architect</option><option value="aws-developer-associate">AWS Developer Associate</option><option value="aws-sysops-administrator">AWS SysOps Administrator</option><option value="aws-cloud-practitioner">AWS Cloud Practitioner</option><option value="apple-certification">Apple Certified Support Professional</option><option value="oracle-database">Oracle Database Administrator</option><option value="oracle-java">Oracle Java</option><option value="oracle-cloud-infrastructure">Oracle Cloud Infrastructure</option><option value="ibm-cloud">IBM Cloud</option><option value="ibm-data-science">IBM Data Science</option><option value="ibm-cognitive-computing">IBM Cognitive Computing</option><option value="adobe-photoshop">Adobe Photoshop</option><option value="adobe-illustrator">Adobe Illustrator</option><option value="adobe-acrobat">Adobe Acrobat</option><option value="sap-certified-development-associate">SAP Certified Development Associate</option><option value="sap-certified-application-associate">SAP Certified Application Associate</option><option value="salesforce-admin">Salesforce Administrator</option><option value="salesforce-developer">Salesforce Developer</option><option value="salesforce-marketing-cloud">Salesforce Marketing Cloud</option><option value="vmware-vcp">VMware Certified Professional</option><option value="vmware-vcdx">VMware Certified Design Expert</option><option value="red-hat-rhce">Red Hat Certified Engineer (RHCE)</option><option value="red-hat-rhca">Red Hat Certified Architect (RHCA)</option><option value="hubspot-cms">HubSpot CMS Developer</option><option value="hubspot-marketing">HubSpot Inbound Marketing</option><option value="comptia-a-plus">CompTIA A+</option><option value="comptia-network-plus">CompTIA Network+</option><option value="comptia-security-plus">CompTIA Security+</option><option value="cisco-ccna">Cisco CCNA</option><option value="cisco-ccnp">Cisco CCNP</option><option value="cisco-ccie">Cisco CCIE</option><option value="autodesk-autocad">Autodesk AutoCAD</option><option value="autodesk-revit">Autodesk Revit</option><option value="atlassian-jira">Atlassian Jira Software Administrator</option><option value="atlassian-confluence">Atlassian Confluence Administrator</option><option value="moodle-certification">Moodle Certified Educator</option><option value="linkedin-learning">LinkedIn Learning Certifications</option><option value="aws-solutions-architect-associate">AWS Solutions Architect – Associate</option><option value="aws-certified-cloud-practitioner">AWS Certified Cloud Practitioner</option><option value="azure-solutions-architect">Azure Solutions Architect</option><option value="azure-developer-associate">Azure Developer Associate</option><option value="azure-fundamentals">Azure Fundamentals</option></select></div>
+                                    <div class = "one-info"><span class = "fs-12 normal-text">Choosen managed platform </span><div id = "ManPlatform" class = "choose-citys fs-10"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "buttons-form">
+                            <input class = "fs-18 light-text" type = "submit" value = "Save">
+                        </div>
+                    </form>
+                </div>
+                <div class = "pagina" id = "quinta-edit">
+                    <div class = "fs-20 medium-bold-text section-name">
+                        <div class = "photo-left">
+                            <svg fill="#424242" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="924 578 200 200" enable-background="new 924 578 200 200" xml:space="preserve" stroke="#424242"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M984.585,638.942c0,13.999-9.609,25.348-21.462,25.348c-11.852,0-21.459-11.349-21.459-25.348 c0-13.998,9.607-25.346,21.459-25.346C974.976,613.596,984.585,624.944,984.585,638.942z"></path> <path d="M987.585,683.641c1.55-0.945,3.265-1.561,5.041-1.855c-3.606-5.088-6.161-10.546-7.637-17.078 c-0.404-2.387-3.672-2.667-6.102-0.687c-4.546,3.706-9.849,6.186-15.765,6.186c-6.03,0-11.577-2.399-16.024-6.414 c-1.419-1.282-3.51-1.476-5.143-0.479c-8.443,5.158-14.834,13.344-17.622,23.067c-0.749,2.605-0.223,5.42,1.411,7.588 c1.636,2.166,4.192,3.443,6.906,3.443h38.668C975.947,692.072,981.41,687.41,987.585,683.641z"></path> </g> <g> <path d="M1063.416,638.942c0,13.999,9.608,25.348,21.461,25.348c11.854,0,21.46-11.349,21.46-25.348 c0-13.998-9.606-25.346-21.46-25.346C1073.024,613.596,1063.416,624.944,1063.416,638.942z"></path> <path d="M1060.415,683.641c-1.55-0.945-3.266-1.561-5.041-1.855c3.606-5.088,6.161-10.546,7.637-17.078 c0.405-2.387,3.673-2.667,6.103-0.687c4.546,3.706,9.848,6.186,15.764,6.186c6.029,0,11.577-2.399,16.025-6.414 c1.419-1.282,3.509-1.476,5.142-0.479c8.444,5.158,14.836,13.344,17.622,23.067c0.748,2.605,0.223,5.42-1.41,7.588 c-1.637,2.166-4.192,3.443-6.905,3.443h-38.67C1072.053,692.072,1066.591,687.41,1060.415,683.641z"></path> </g> <g> <path d="M1082.475,725.451c-4.198-14.654-13.72-27.045-26.326-34.992c-2.487-1.566-5.715-1.313-7.921,0.631 c-6.766,5.959-15.138,9.506-24.228,9.506c-9.269,0-17.791-3.686-24.626-9.855c-2.182-1.971-5.393-2.268-7.902-0.734 c-12.977,7.924-22.799,20.504-27.082,35.445c-1.151,4.008-0.344,8.328,2.166,11.662c2.516,3.33,6.443,5.291,10.615,5.291h92.523 c4.173,0,8.103-1.955,10.618-5.291C1082.823,733.779,1083.626,729.463,1082.475,725.451z"></path> <path d="M1056.981,652.547c0,21.513-14.766,38.955-32.981,38.955c-18.214,0-32.979-17.442-32.979-38.955 c0-21.515,14.765-38.951,32.979-38.951C1042.216,613.596,1056.981,631.033,1056.981,652.547z"></path> </g> </g> </g></svg>
+                        </div>
+                        <div class = "header-words">
+                            <span>Clients infos</span>
+                            <span class = "fs-12 light-text section-sub">Please compile the form below and save to edit your profile infos. Feel free to add as much detail as needed</span>
+                        </div>
+                    </div>
+                    <form method = "get">
+                        <div class = "form-for-profile-infos">
+                        <span class = "fs-16 500-bold" style = "margin-left: 20px;">Add or remove main client (min 3)</span><br><br>
+                        <div class = "edit-main-service-section-real">
+                            <div class = "main-clients">
+                                <div class = "main-card">
+                                    <div class = "main-client" id = "main-client-first">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "first-client" id = "mainClient-1" onchange="photoLoad('main-client-first', 'mainClient-1')" required>
+                                        <label for = "mainClient-1">Add photo</label>
+                                    </div>
+                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-first')" value = "Remove photo"></div>
+                                </div>
+                                <div class = "main-card">
+                                    <div class = "main-client" id = "main-client-second">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "second-client" id = "mainClient-2" onchange="photoLoad('main-client-second', 'mainClient-2')" required>
+                                        <label for = "mainClient-2">Add photo</label>
+                                    </div>
+                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-second')" value = "Remove photo"></div>
+                                </div>
+                                <div class = "main-card">
+                                    <div class = "main-client" id = "main-client-third">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "third-client" id = "mainClient-3" onchange="photoLoad('main-client-third', 'mainClient-3')" required>
+                                        <label for = "mainClient-3">Add photo</label>
+                                    </div>
+                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-third')" value = "Remove photo"></div>
+                                </div>
+                                    <div class = "main-card">
+                                    <div class = "main-client" id = "main-client-fourth">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "fourth-client" id = "mainClient-4" onchange="photoLoad('main-client-fourth', 'mainClient-4')">
+                                        <label for = "mainClient-4">Add photo</label>
+                                    </div>
+                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-fourth')" value = "Remove photo"></div>
+                                </div>
+                                    <div class = "main-card">
+                                    <div class = "main-client" id = "main-client-five">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "five-client" id = "mainClient-5" onchange="photoLoad('main-client-five', 'mainClient-5')">
+                                        <label for = "mainClient-5">Add photo</label>
+                                    </div>
+                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-five')" value = "Remove photo"></div>
+                                </div>
+                                    <div class = "main-card">
+                                    <div class = "main-client" id = "main-client-six">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "six-client" id = "mainClient-6" onchange="photoLoad('main-client-six', 'mainClient-6')">
+                                        <label for = "mainClient-6">Add photo</label>
+                                    </div>
+                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-six')" value = "Remove photo"></div>
+                                </div>
+                            </div>
+                        </div><br><br><br>
+                        <div class = "edit-main-service-section-real">
+                            <div class = "ref-client">
+                                <table class = "referral-clients" id = "table-ref">
+                                    <th class = "fs-16 500-bold">Add or remove referral clients</th>
+                                    <tr class = "fs-16 500-bold">
+                                        <td>Name and surname</td>
+                                        <td>Profession</td>
+                                        <td>Photo</td>
+                                        <td>Main client</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class = "fs-12 normal-text">
+                                        <td><input type = "text" placeholder="Name and surname" name = "nameAndSurname" id = "nameAndSurname"></td>
+                                        <td><input type = "text" placeholder="Profession" name = "profession" id = "profession"></td>
+                                        <td><input type = "file" placeholder="Photo" name = "photo" id = "photo"></td>
+                                        <td><input type = "text" placeholder="Main client" name = "mainClient" id = "mainClient"></td>
+                                        <td><input type = "button" class = "add-ref" value = "+" onclick = "addReferral()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                        <div class = "buttons-form">
+                            <input class = "fs-18 light-text" type = "submit" value = "Save">
+                        </div>
+                    </form>
+                    <div class = "space-bottom"></div>
+                </div>
+                <div class = "pagina" id = "sesta-edit">
+                    <div class = "fs-20 medium-bold-text section-name">
+                        <div class = "photo-left">
+                            <svg fill="#424242" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128" xml:space="preserve" stroke="#424242"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3.6,14c12.6-0.3,35.8,13.2,35.8,13.2V121C11,107.6,3.6,107.7,3.6,107.7V14z"></path> <path d="M82.8,14C70.3,13.7,47,27.2,47,27.2V121c28.4-13.4,35.8-13.2,35.8-13.2V14z"></path> <path d="M90.9,14c11.8-0.3,33.5,13.2,33.5,13.2V121c-26.6-13.4-33.5-13.2-33.5-13.2V14z"></path> </g></svg>
+                        </div>
+                        <div class = "header-words">
+                            <span>Brochures & case history</span>
+                            <span class = "fs-12 light-text section-sub">Please compile the form below and save to edit your profile infos. Feel free to add as much detail as needed</span>
+                        </div>
+                    </div>
+                    <div class = "newBrochureAndCaseStudy">
+                        <form method = "get">
+                            <div class = "form-for-profile-infos">
+                                <div class = "infos-about-personal">
+                                    <div class = "info-one-personal">
+                                        <span class = "fs-12 normal-text">
+                                            Upload new brochure
+                                        </span>
+                                        <input type = "file" class = "fs-10" name = "newBrochure">
+                                    </div>
+
+                                    <div class = "info-one-personal">
+                                        <span class = "fs-12 normal-text">
+                                            Upload new case study
+                                        </span>
+                                        <input type = "file" class = "fs-10" name = "newCasestudy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "buttons-form">
+                                <input class = "fs-18 light-text" type = "submit" value = "Save">
+                            </div>
+                        </form>
+                        <div class = "space-bottom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src = "script/edit.js"></script>
+        <script type="module">
+
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+            import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+        
+            const firebaseConfig = {
+                apiKey: "AIzaSyDxTTVf3tQ2nAp3eTe7q5FAW9NRC01nDJQ",
+                authDomain: "login---listing.firebaseapp.com",
+                projectId: "login---listing",
+                storageBucket: "login---listing.firebasestorage.app",
+                messagingSenderId: "168231985672",
+                appId: "1:168231985672:web:e33e32eb9fa24d9378e7bd",
+                measurementId: "G-Q32EVYNFR7"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+
+            function getCookieValue(cookieName) {
+                const cookies = document.cookie.split("; ");
+                for (let cookie of cookies) {
+                    const [name, value] = cookie.split("=");
+                    if (name === cookieName) {
+                        return value;
+                    }
+                }
+                return null; 
+            }
+
+            const email = getCookieValue("email");
+            let accountName = document.getElementById('account-name');
+            let nuova = email[0] + email[1];
+            accountName.innerHTML = nuova.toUpperCase();
+
+            var do_signout=function(){return new Promise(function(resolve){
+                signOut(auth).then(() => {
+                resolve(true)
+                deleteAllCookies()
+                window.location.href = "login.html";
+                }).catch((error) => {
+                resolve(false)
+                deleteAllCookies()
+                window.location.href = "login.html";
+                });
+            });}
+
+            function deleteAllCookies() {
+                const cookies = document.cookie.split("; ");
+                for (let cookie of cookies) {
+                    const name = cookie.split("=")[0];
+                    document.cookie = name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                }
+                console.log("Tutti i cookie sono stati cancellati!");
+            }
+
+            let logout = document.getElementById('logout');;
+            logout.addEventListener('click', do_signout);
+
+            let logoutter = document.getElementById('logoutter');;
+            logoutter.addEventListener('click', do_signout);
+
+        </script>
+        
+    </body>
+</html>

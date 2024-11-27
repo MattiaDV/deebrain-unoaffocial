@@ -1,0 +1,106 @@
+body {
+    background: #eef5fe;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+}
+
+.background {
+    z-index: -1;
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    width: 30vw;
+    height: 60vh;
+    background: url('../img/uomo.jpg');
+    background-color: #0097b2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: end;
+    border-bottom-right-radius: 140px;
+    border-top-left-radius: 140px;
+}
+
+.container-left-home {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    width: 70%;
+    margin-left: 40px;
+}
+
+.container-left-home div {
+    color: #424242;
+    max-width: 60%;
+}
+
+.search-bar-home {
+    background: #fff;
+    width: 100%;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgb(116, 116, 116);
+    margin-top: 32px;
+}
+
+.search-bar-home form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+}
+
+.search-bar-home form * {
+    width: calc(100% / 3.1);
+    min-height: 50px;
+    padding: 10px;
+    margin: -5px;
+    background: none;
+}
+
+.search-bar-home form div select {
+    border: 1px solid #eef5fe;
+    color: #bebebe;
+    appearance: none;
+    border-radius: 4px;
+}
+
+.search-bar-home form * * {
+    padding: 10px;
+    min-width: 100%;
+    border: 1px solid #424242;
+    border-radius: 4px;
+    font-size: 16px !important;
+    font-weight: 200 !important;
+    outline: none;
+    max-height: 50px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.search-bar-home form * input {
+    border-color: #0097b2;
+    background: #0097b2;
+    color: white;
+}
+
+.search-bar-home form * input:hover {
+    border-color: #0097b2;
+    background: #fff;
+    color: #0097b2;
+}
+
+.search-bar-home form * *:focus {
+    border-color: #0097b2;
+    background: #0097b2;
+    color: white;
+}

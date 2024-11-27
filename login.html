@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - MYNDO</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg"></div>
+
+    <form class="all-infos" method="post">
+        <div class="container-form form-1" id="form-1">
+            <div class="contain-form form-1" id="form-1-an">
+                <img src="img/logo-db.png" width="80%" height="auto" class="logo-db">
+                <h1 class="fs-40 medium-bold-text">Log in</h1>
+                <a href = "register-1.html" class = "fs-12 light-text">You are not a member? click here</a>
+                <div class="form">
+                    <div class="start-form" id="form-step-1">
+                        <div class="double-info primo">
+                            <div class="one-info">
+                                <span class="fs-16 medium-bold-text">Email</span>
+                                <input type="email" placeholder="your.email@your.site" id="email" name="agencyEmail" required>
+                            </div>
+                            <div class="one-info">
+                                <span class="fs-16 medium-bold-text">Password</span>
+                                <input type="password" placeholder="Password" id="password" name="password" required>
+                            </div>
+                        </div>
+                        <input type="button" id="submit-button" value="Log in">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+      
+        const firebaseConfig = {
+            apiKey: "AIzaSyDxTTVf3tQ2nAp3eTe7q5FAW9NRC01nDJQ",
+            authDomain: "login---listing.firebaseapp.com",
+            projectId: "login---listing",
+            storageBucket: "login---listing.firebasestorage.app",
+            messagingSenderId: "168231985672",
+            appId: "1:168231985672:web:e33e32eb9fa24d9378e7bd",
+            measurementId: "G-Q32EVYNFR7"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+
+        var signin_email_psw = function() {
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            
+            if (email.includes('@') && email !== "") {
+                if (password !== "") {
+                    signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        document.cookie = "email=" + email;
+                        window.location.href = 'index.html'; 
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+
+                        alert("No users exists");
+                    });
+                } else {
+                    alert("Insert the password");
+                }
+            } else {
+                alert("Insert a valid email");
+                return;
+            }
+
+        };
+
+        let submitButton = document.getElementById('submit-button');
+        submitButton.addEventListener('click', signin_email_psw);
+
+    </script>
+
+</body>
+</html>

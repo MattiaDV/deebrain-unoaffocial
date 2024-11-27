@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Alkemy - MYNDO</title>
+        <link rel = "stylesheet" href = "css/main-style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class = "header-deebrain">
+            <ul class = "deebrain-menu">
+                <li><img src = "img/logo-db.png"></li>
+                <ul class = "deebrain-under-menu">
+                    <li onclick = "window.location.href = 'home.html'">Home</li>
+                    <li onclick = "window.location.href = 'index.html'">Listing</li>
+                    <li><details class = "account"><summary class = "summary"><div class = "account-header" id = "account-name">AC</div></summary><div class = "voci"><span class = "voce" onclick = "window.location.href = 'alkemy.html'">My page</span><span class = "voce" onclick = "window.location.href = 'edit.html'">Edit my page</span><span class = "voce" id="logout">Log out</span></div></details></li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class = "listing-container">
+            <div class = "listing-column-left column-listing">
+                <span class = "map subtitle-listing light-text fs-16">
+                    <span class = "normal-link">Home > <span onclick = "window.location.href = 'index.html';">Digital agency > </span></span><span class = "special-link">Alkemy</span>
+                </span>
+                <span class = "button-digital-company">
+                    <button class = "button-style-listing light-text fs-16" onclick = "window.location.href = 'index.html'">Digital company</button>
+                </span>
+                <span class = "name-listing fs-70 bold-text">
+                    Alkemy
+                </span>
+                <span class = "paraf-listing fs-18 normal-text">
+                    Our comprehensive guide to stragies for entrepreneurs and leaders offers valuable insights, practical advice.
+                </span>
+                <span class = "awarness-conversion-container">
+                    <span class = "awarenessAndConversion light-text fs-16">Awareness</span>
+                    <span class = "awarenessAndConversion light-text fs-16">Conversion</span>
+                </span>
+                <span class = "datas-listing">
+                    <span class = "data-listing fs-16 normal-text">
+                        <svg fill="#808080" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 610.398 610.398" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M159.567,0h-15.329c-1.956,0-3.811,0.411-5.608,0.995c-8.979,2.912-15.616,12.498-15.616,23.997v10.552v27.009v14.052 c0,2.611,0.435,5.078,1.066,7.44c2.702,10.146,10.653,17.552,20.158,17.552h15.329c11.724,0,21.224-11.188,21.224-24.992V62.553 V35.544V24.992C180.791,11.188,171.291,0,159.567,0z"></path> <path d="M461.288,0h-15.329c-11.724,0-21.224,11.188-21.224,24.992v10.552v27.009v14.052c0,13.804,9.5,24.992,21.224,24.992 h15.329c11.724,0,21.224-11.188,21.224-24.992V62.553V35.544V24.992C482.507,11.188,473.007,0,461.288,0z"></path> <path d="M539.586,62.553h-37.954v14.052c0,24.327-18.102,44.117-40.349,44.117h-15.329c-22.247,0-40.349-19.79-40.349-44.117 V62.553H199.916v14.052c0,24.327-18.102,44.117-40.349,44.117h-15.329c-22.248,0-40.349-19.79-40.349-44.117V62.553H70.818 c-21.066,0-38.15,16.017-38.15,35.764v476.318c0,19.784,17.083,35.764,38.15,35.764h468.763c21.085,0,38.149-15.984,38.149-35.764 V98.322C577.735,78.575,560.671,62.553,539.586,62.553z M527.757,557.9l-446.502-0.172V173.717h446.502V557.9z"></path> <path d="M353.017,266.258h117.428c10.193,0,18.437-10.179,18.437-22.759s-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.179-18.437,22.759C334.58,256.074,342.823,266.258,353.017,266.258z"></path> <path d="M353.017,348.467h117.428c10.193,0,18.437-10.179,18.437-22.759c0-12.579-8.248-22.758-18.437-22.758H353.017 c-10.193,0-18.437,10.179-18.437,22.758C334.58,338.288,342.823,348.467,353.017,348.467z"></path> <path d="M353.017,430.676h117.428c10.193,0,18.437-10.18,18.437-22.759s-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.18-18.437,22.759S342.823,430.676,353.017,430.676z"></path> <path d="M353.017,512.89h117.428c10.193,0,18.437-10.18,18.437-22.759c0-12.58-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.179-18.437,22.759C334.58,502.71,342.823,512.89,353.017,512.89z"></path> <path d="M145.032,266.258H262.46c10.193,0,18.436-10.179,18.436-22.759s-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.179-18.437,22.759C126.596,256.074,134.838,266.258,145.032,266.258z"></path> <path d="M145.032,348.467H262.46c10.193,0,18.436-10.179,18.436-22.759c0-12.579-8.248-22.758-18.436-22.758H145.032 c-10.194,0-18.437,10.179-18.437,22.758C126.596,338.288,134.838,348.467,145.032,348.467z"></path> <path d="M145.032,430.676H262.46c10.193,0,18.436-10.18,18.436-22.759s-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.18-18.437,22.759S134.838,430.676,145.032,430.676z"></path> <path d="M145.032,512.89H262.46c10.193,0,18.436-10.18,18.436-22.759c0-12.58-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.179-18.437,22.759C126.596,502.71,134.838,512.89,145.032,512.89z"></path> </g> </g> </g></svg>
+                        year of foundation
+                    </span>
+                    <span class = "data-listing fs-16 normal-text">
+                        <svg fill="#808080" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 610.398 610.398" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M159.567,0h-15.329c-1.956,0-3.811,0.411-5.608,0.995c-8.979,2.912-15.616,12.498-15.616,23.997v10.552v27.009v14.052 c0,2.611,0.435,5.078,1.066,7.44c2.702,10.146,10.653,17.552,20.158,17.552h15.329c11.724,0,21.224-11.188,21.224-24.992V62.553 V35.544V24.992C180.791,11.188,171.291,0,159.567,0z"></path> <path d="M461.288,0h-15.329c-11.724,0-21.224,11.188-21.224,24.992v10.552v27.009v14.052c0,13.804,9.5,24.992,21.224,24.992 h15.329c11.724,0,21.224-11.188,21.224-24.992V62.553V35.544V24.992C482.507,11.188,473.007,0,461.288,0z"></path> <path d="M539.586,62.553h-37.954v14.052c0,24.327-18.102,44.117-40.349,44.117h-15.329c-22.247,0-40.349-19.79-40.349-44.117 V62.553H199.916v14.052c0,24.327-18.102,44.117-40.349,44.117h-15.329c-22.248,0-40.349-19.79-40.349-44.117V62.553H70.818 c-21.066,0-38.15,16.017-38.15,35.764v476.318c0,19.784,17.083,35.764,38.15,35.764h468.763c21.085,0,38.149-15.984,38.149-35.764 V98.322C577.735,78.575,560.671,62.553,539.586,62.553z M527.757,557.9l-446.502-0.172V173.717h446.502V557.9z"></path> <path d="M353.017,266.258h117.428c10.193,0,18.437-10.179,18.437-22.759s-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.179-18.437,22.759C334.58,256.074,342.823,266.258,353.017,266.258z"></path> <path d="M353.017,348.467h117.428c10.193,0,18.437-10.179,18.437-22.759c0-12.579-8.248-22.758-18.437-22.758H353.017 c-10.193,0-18.437,10.179-18.437,22.758C334.58,338.288,342.823,348.467,353.017,348.467z"></path> <path d="M353.017,430.676h117.428c10.193,0,18.437-10.18,18.437-22.759s-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.18-18.437,22.759S342.823,430.676,353.017,430.676z"></path> <path d="M353.017,512.89h117.428c10.193,0,18.437-10.18,18.437-22.759c0-12.58-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.179-18.437,22.759C334.58,502.71,342.823,512.89,353.017,512.89z"></path> <path d="M145.032,266.258H262.46c10.193,0,18.436-10.179,18.436-22.759s-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.179-18.437,22.759C126.596,256.074,134.838,266.258,145.032,266.258z"></path> <path d="M145.032,348.467H262.46c10.193,0,18.436-10.179,18.436-22.759c0-12.579-8.248-22.758-18.436-22.758H145.032 c-10.194,0-18.437,10.179-18.437,22.758C126.596,338.288,134.838,348.467,145.032,348.467z"></path> <path d="M145.032,430.676H262.46c10.193,0,18.436-10.18,18.436-22.759s-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.18-18.437,22.759S134.838,430.676,145.032,430.676z"></path> <path d="M145.032,512.89H262.46c10.193,0,18.436-10.18,18.436-22.759c0-12.58-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.179-18.437,22.759C126.596,502.71,134.838,512.89,145.032,512.89z"></path> </g> </g> </g></svg>
+                        number of customers
+                    </span>
+                    <span class = "data-listing fs-16 normal-text">
+                        <svg fill="#808080" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 610.398 610.398" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M159.567,0h-15.329c-1.956,0-3.811,0.411-5.608,0.995c-8.979,2.912-15.616,12.498-15.616,23.997v10.552v27.009v14.052 c0,2.611,0.435,5.078,1.066,7.44c2.702,10.146,10.653,17.552,20.158,17.552h15.329c11.724,0,21.224-11.188,21.224-24.992V62.553 V35.544V24.992C180.791,11.188,171.291,0,159.567,0z"></path> <path d="M461.288,0h-15.329c-11.724,0-21.224,11.188-21.224,24.992v10.552v27.009v14.052c0,13.804,9.5,24.992,21.224,24.992 h15.329c11.724,0,21.224-11.188,21.224-24.992V62.553V35.544V24.992C482.507,11.188,473.007,0,461.288,0z"></path> <path d="M539.586,62.553h-37.954v14.052c0,24.327-18.102,44.117-40.349,44.117h-15.329c-22.247,0-40.349-19.79-40.349-44.117 V62.553H199.916v14.052c0,24.327-18.102,44.117-40.349,44.117h-15.329c-22.248,0-40.349-19.79-40.349-44.117V62.553H70.818 c-21.066,0-38.15,16.017-38.15,35.764v476.318c0,19.784,17.083,35.764,38.15,35.764h468.763c21.085,0,38.149-15.984,38.149-35.764 V98.322C577.735,78.575,560.671,62.553,539.586,62.553z M527.757,557.9l-446.502-0.172V173.717h446.502V557.9z"></path> <path d="M353.017,266.258h117.428c10.193,0,18.437-10.179,18.437-22.759s-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.179-18.437,22.759C334.58,256.074,342.823,266.258,353.017,266.258z"></path> <path d="M353.017,348.467h117.428c10.193,0,18.437-10.179,18.437-22.759c0-12.579-8.248-22.758-18.437-22.758H353.017 c-10.193,0-18.437,10.179-18.437,22.758C334.58,338.288,342.823,348.467,353.017,348.467z"></path> <path d="M353.017,430.676h117.428c10.193,0,18.437-10.18,18.437-22.759s-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.18-18.437,22.759S342.823,430.676,353.017,430.676z"></path> <path d="M353.017,512.89h117.428c10.193,0,18.437-10.18,18.437-22.759c0-12.58-8.248-22.759-18.437-22.759H353.017 c-10.193,0-18.437,10.179-18.437,22.759C334.58,502.71,342.823,512.89,353.017,512.89z"></path> <path d="M145.032,266.258H262.46c10.193,0,18.436-10.179,18.436-22.759s-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.179-18.437,22.759C126.596,256.074,134.838,266.258,145.032,266.258z"></path> <path d="M145.032,348.467H262.46c10.193,0,18.436-10.179,18.436-22.759c0-12.579-8.248-22.758-18.436-22.758H145.032 c-10.194,0-18.437,10.179-18.437,22.758C126.596,338.288,134.838,348.467,145.032,348.467z"></path> <path d="M145.032,430.676H262.46c10.193,0,18.436-10.18,18.436-22.759s-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.18-18.437,22.759S134.838,430.676,145.032,430.676z"></path> <path d="M145.032,512.89H262.46c10.193,0,18.436-10.18,18.436-22.759c0-12.58-8.248-22.759-18.436-22.759H145.032 c-10.194,0-18.437,10.179-18.437,22.759C126.596,502.71,134.838,512.89,145.032,512.89z"></path> </g> </g> </g></svg>
+                        Founder
+                    </span>
+                </span>
+                <span class = "other-datas-listing">
+                    <span class = "other-data-listing fs-18 normal-text">
+                        5Mil €
+                        <span class = "under-other-data-listing fs-16 light-text">Managed billing</span>
+                    </span>
+                    <span class = "other-data-listing fs-18 normal-text">
+                        Rome, Milan
+                        <span class = "under-other-data-listing fs-16 light-text">Location</span>
+                    </span>
+                    <span class = "other-data-listing fs-18 normal-text">
+                        100
+                        <span class = "under-other-data-listing fs-16 light-text">Number of employees</span>
+                    </span>
+                </span>
+            </div>
+            <div class = "listing-column-right column-listing">
+                <span class = "logo-listing">
+                    <img src = "img/logo.png">
+                </span>
+                <span class = "contact-info fs-16 normal-text">
+                    <span class = "contact-info-text">
+                        Contact information
+                    </span>
+                    <span class = "contact-link">
+                        <span class = "website-link fs-16 light-text">
+                            <svg fill="#186ecf" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 577.545 577.545" xml:space="preserve" stroke="#186ecf"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M245.531,245.532c4.893-4.896,11.42-7.589,18.375-7.589s13.482,2.696,18.375,7.589l49.734,49.734 c1.723,1.72,4.058,2.689,6.49,2.689s4.771-0.967,6.49-2.689l49.733-49.734c1.724-1.72,2.69-4.058,2.69-6.49 c0-2.433-0.967-4.771-2.69-6.49l-49.733-49.734c-21.668-21.662-50.469-33.589-81.093-33.589s-59.425,11.928-81.093,33.586 L33.602,332.022C11.934,353.69,0,382.494,0,413.128c0,30.637,11.934,59.432,33.605,81.084l49.731,49.73 c21.65,21.668,50.447,33.603,81.081,33.603s59.438-11.935,81.108-33.603l84.083-84.082c2.705-2.705,3.448-6.803,1.869-10.285 c-1.496-3.295-4.776-5.386-8.356-5.386c-0.205,0-0.407,0.007-0.615,0.021c-2.959,0.199-5.958,0.297-8.917,0.297 c-23.354,0-46.322-6.208-66.417-17.956c-1.444-0.844-3.042-1.254-4.629-1.254c-2.375,0-4.725,0.921-6.494,2.689l-53.238,53.238 c-4.902,4.901-11.426,7.604-18.372,7.604c-6.949,0-13.479-2.699-18.381-7.604l-49.734-49.734 c-4.908-4.896-7.61-11.411-7.616-18.348c-0.003-6.953,2.699-13.489,7.616-18.406L245.531,245.532z"></path> <path d="M543.942,83.324L494.208,33.59C472.556,11.931,443.762,0,413.128,0s-59.438,11.928-81.105,33.587l-84.086,84.119 c-2.705,2.705-3.448,6.806-1.867,10.288c1.497,3.292,4.777,5.382,8.354,5.382c0.205,0,0.413-0.006,0.621-0.021 c2.987-0.202,6.013-0.303,9-0.303c23.4,0,46.316,6.206,66.274,17.947c1.45,0.854,3.057,1.267,4.65,1.267 c2.375,0,4.725-0.921,6.494-2.689l53.274-53.274c4.893-4.896,11.42-7.589,18.375-7.589s13.482,2.696,18.375,7.589l49.734,49.734 c10.123,10.135,10.123,26.634-0.003,36.775L332.017,332.014c-4.894,4.905-11.408,7.604-18.348,7.604 c-6.956,0-13.495-2.702-18.415-7.61l-49.723-49.725c-1.723-1.72-4.057-2.69-6.49-2.69c-2.433,0-4.771,0.967-6.49,2.69 l-49.734,49.734c-3.586,3.586-3.586,9.397,0,12.983l49.734,49.734c21.668,21.668,50.469,33.602,81.093,33.602 c30.625,0,59.426-11.934,81.094-33.602l149.205-149.206c21.668-21.658,33.603-50.462,33.603-81.102S565.61,104.983,543.942,83.324 z"></path> </g> </g> </g></svg>
+                            Website
+                        </span>
+                        <span class = "linkedin-link">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z" fill="#186ecf"></path> <path d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z" fill="#186ecf"></path> <path d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11 16 13V18.0004C16 18.5527 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V12C19 10 17.5 9 15.5 9C13.5 9 13 10.5 13 10.5V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z" fill="#186ecf"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z" fill="#186ecf"></path> </g></svg>
+                        </span>
+                        <span class = "facebook-link">
+                            <svg fill="#186ecf" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-143 145 512 512" xml:space="preserve" stroke="#186ecf"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M329,145h-432c-22.1,0-40,17.9-40,40v432c0,22.1,17.9,40,40,40h432c22.1,0,40-17.9,40-40V185C369,162.9,351.1,145,329,145z M169.5,357.6l-2.9,38.3h-39.3v133H77.7v-133H51.2v-38.3h26.5v-25.7c0-11.3,0.3-28.8,8.5-39.7c8.7-11.5,20.6-19.3,41.1-19.3 c33.4,0,47.4,4.8,47.4,4.8l-6.6,39.2c0,0-11-3.2-21.3-3.2c-10.3,0-19.5,3.7-19.5,14v29.9H169.5z"></path> </g></svg>
+                        </span>
+                        <span class = "email-link">
+                            <svg height="200px" width="200px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#186ecf"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:#186ecf;} </style> <g> <path class="st0" d="M510.746,110.361c-2.128-10.754-6.926-20.918-13.926-29.463c-1.422-1.794-2.909-3.39-4.535-5.009 c-12.454-12.52-29.778-19.701-47.531-19.701H67.244c-17.951,0-34.834,7-47.539,19.708c-1.608,1.604-3.099,3.216-4.575,5.067 c-6.97,8.509-11.747,18.659-13.824,29.428C0.438,114.62,0,119.002,0,123.435v265.137c0,9.224,1.874,18.206,5.589,26.745 c3.215,7.583,8.093,14.772,14.112,20.788c1.516,1.509,3.022,2.901,4.63,4.258c12.034,9.966,27.272,15.45,42.913,15.45h377.51 c15.742,0,30.965-5.505,42.967-15.56c1.604-1.298,3.091-2.661,4.578-4.148c5.818-5.812,10.442-12.49,13.766-19.854l0.438-1.05 c3.646-8.377,5.497-17.33,5.497-26.628V123.435C512,119.06,511.578,114.649,510.746,110.361z M34.823,99.104 c0.951-1.392,2.165-2.821,3.714-4.382c7.689-7.685,17.886-11.914,28.706-11.914h377.51c10.915,0,21.115,4.236,28.719,11.929 c1.313,1.327,2.567,2.8,3.661,4.272l2.887,3.88l-201.5,175.616c-6.212,5.446-14.21,8.443-22.523,8.443 c-8.231,0-16.222-2.99-22.508-8.436L32.19,102.939L34.823,99.104z M26.755,390.913c-0.109-0.722-0.134-1.524-0.134-2.341V128.925 l156.37,136.411L28.199,400.297L26.755,390.913z M464.899,423.84c-6.052,3.492-13.022,5.344-20.145,5.344H67.244 c-7.127,0-14.094-1.852-20.142-5.344l-6.328-3.668l159.936-139.379l17.528,15.246c10.514,9.128,23.922,14.16,37.761,14.16 c13.89,0,27.32-5.032,37.827-14.16l17.521-15.253L471.228,420.18L464.899,423.84z M485.372,388.572 c0,0.803-0.015,1.597-0.116,2.304l-1.386,9.472L329.012,265.409l156.36-136.418V388.572z"></path> </g> </g></svg>
+                        </span>
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class = "listing-main-services-container">
+            <span class = "title-main-services fs-40 medium-bold-text">
+                Main services
+            </span>
+            <span class = "subtitle-main-services fs-18 light-text">
+                The main services are the services that we offer as a company. They may contain sub-categories. Below you can find our main services listed.
+            </span>
+            <div class = "card-main-services">
+                <div class = "card-starter fs-18 normal-text">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 10C4 6.22876 4 4.34315 5.17157 3.17157C6.34315 2 8.22876 2 12 2C15.7712 2 17.6569 2 18.8284 3.17157C20 4.34315 20 6.22876 20 10V14C20 17.7712 20 19.6569 18.8284 20.8284C17.6569 22 15.7712 22 12 22C8.22876 22 6.34315 22 5.17157 20.8284C4 19.6569 4 17.7712 4 14V10Z" stroke="#000000" stroke-width="1.5"></path> <path d="M15 19H9" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> <path d="M16.7484 2.37793L16.6643 2.5041C15.9082 3.63818 15.5302 4.20525 14.978 4.54836C14.8682 4.61658 14.7541 4.67764 14.6365 4.73115C14.0447 5.00025 13.3632 5.00025 12.0002 5.00025C10.6371 5.00025 9.95564 5.00025 9.36387 4.73115C9.2462 4.67764 9.13211 4.61658 9.02232 4.54836C8.47016 4.20524 8.09213 3.6382 7.33606 2.5041L7.25195 2.37793" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+                    <span class = "title-main-services-card">
+                        SEA
+                    </span>
+                </div>
+                <div class = "card-starter fs-18 normal-text">
+                    <svg fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M2.293,18.707a1,1,0,0,1,0-1.414l3-3a1,1,0,0,1,1.262-.125l2.318,1.545,2.42-2.42a1,1,0,0,1,1.414,1.414l-3,3a1,1,0,0,1-1.262.125L6.127,16.287l-2.42,2.42a1,1,0,0,1-1.414,0ZM22,3V21a1,1,0,0,1-1,1H3a1,1,0,0,1,0-2H20V8H4v4a1,1,0,0,1-2,0V3A1,1,0,0,1,3,2H21A1,1,0,0,1,22,3ZM4,6H20V4H4Zm10.707,6.707,1-1a1,1,0,0,0-1.414-1.414l-1,1a1,1,0,1,0,1.414,1.414Z"></path></g></svg>
+                    <span class = "title-main-services-card">
+                        SEO
+                    </span>
+                </div>
+                <div class = "card-starter fs-18 normal-text">
+                    <svg fill="#000000" version="1.1" id="XMLID_66_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="workshop"> <g> <polygon points="24,17 20,17 20,15 22,15 22,3 4,3 4,5 2,5 2,1 24,1 "></polygon> </g> <g> <rect x="10" width="6" height="4"></rect> </g> <g> <path d="M13,24H0v-5c0-2.3,1.3-4.4,3.3-5.4C2.5,12.8,2,11.7,2,10.5C2,8,4,6,6.5,6S11,8,11,10.5c0,0.7-0.1,1.3-0.4,1.8 c1.4-0.6,3.4-1.8,5.7-4.1l2-2l1.4,1.4L18.4,9l1.8,1.8l-0.3,0.6c-0.1,0.2-2.4,5.5-6.6,7.2C13.1,18.7,13,18.8,13,19V24z M2,22h9v-3 c0-1,0.6-1.9,1.5-2.3c2.7-1.1,4.6-4.2,5.3-5.5L17,10.4C12.1,15,8.4,15,8,15H6c-2.2,0-4,1.8-4,4V22z M6.5,13C7.9,13,9,11.9,9,10.5 S7.9,8,6.5,8S4,9.1,4,10.5S5.1,13,6.5,13z"></path> </g> </g> </g></svg>
+                    <span class = "title-main-services-card">
+                        Creativity
+                    </span>
+                </div>
+                <div class = "card-starter fs-18 normal-text">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 9C16.5 9.5 17 10.5 17 12C17 13.5 16.5 14.5 16 15M19 6C20.5 7.5 21 10 21 12C21 14 20.5 16.5 19 18M13 3L7 8H5C3.89543 8 3 8.89543 3 10V14C3 15.1046 3.89543 16 5 16H7L13 21V3Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    <span class = "title-main-services-card">
+                        Media
+                    </span>
+                </div>
+                <div class = "card-starter fs-18 normal-text">
+                    <svg fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>develop</title> <path d="M30 16l-8.485 8.485-2.828-2.828 5.656-5.657-5.657-5.657 2.828-2.828 8.486 8.485zM2 16l8.485-8.485 2.828 2.828-5.656 5.657 5.657 5.657-2.828 2.828-8.486-8.485z"></path> </g></svg>
+                    <span class = "title-main-services-card">
+                        Develop
+                    </span>
+                </div>
+                <div class = "card-starter fs-18 normal-text">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 10L18.5768 8.45392C19.3699 7.97803 19.7665 7.74009 20.0928 7.77051C20.3773 7.79703 20.6369 7.944 20.806 8.17433C21 8.43848 21 8.90095 21 9.8259V14.1741C21 15.099 21 15.5615 20.806 15.8257C20.6369 16.056 20.3773 16.203 20.0928 16.2295C19.7665 16.2599 19.3699 16.022 18.5768 15.5461L16 14M6.2 18H12.8C13.9201 18 14.4802 18 14.908 17.782C15.2843 17.5903 15.5903 17.2843 15.782 16.908C16 16.4802 16 15.9201 16 14.8V9.2C16 8.0799 16 7.51984 15.782 7.09202C15.5903 6.71569 15.2843 6.40973 14.908 6.21799C14.4802 6 13.9201 6 12.8 6H6.2C5.0799 6 4.51984 6 4.09202 6.21799C3.71569 6.40973 3.40973 6.71569 3.21799 7.09202C3 7.51984 3 8.07989 3 9.2V14.8C3 15.9201 3 16.4802 3.21799 16.908C3.40973 17.2843 3.71569 17.5903 4.09202 17.782C4.51984 18 5.07989 18 6.2 18Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    <span class = "title-main-services-card">
+                        Video production
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class = "distinctive-service-listing">
+            <span class = "title-distinctive-services fs-32 medium-bold-text">
+                Distinctive services
+            </span>
+            <span class = "subtitle-distinctive-services fs-18 light-text">
+                Distinctive services are the subcategories of the main services. Listed below are our distinctive services.
+            </span>
+
+            <div class = "arrows-box-card">
+                <div class = "fs-70 nornmal-text arrow"><</div>
+
+
+                <div class = "cards-distinctive-listing">
+                    <div class = "card-distinctive-listing">
+                        <svg fill="#000000" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m19.828 6.612-5.52-5.535a3.135 3.135 0 0 0-4.5 0L4.273 6.612l7.755 3.87zm2.118 2.235 1.095 1.095a3.12 3.12 0 0 1 0 4.5L14.22 23.35a2.685 2.685 0 0 1-.72.525V13.077zm-19.893 0L.958 9.942a3.12 3.12 0 0 0 0 4.5L9.78 23.35c.21.214.453.392.72.525V13.077z"></path></g></svg>
+                        <span class = "fs-18 normal-text distinctive-title">
+                            Blockchain
+                        </span>
+                        <span class = "fs-16 light-text">
+                            Secure and decentralized technology for recording transactions.
+                        </span>
+                    </div>
+                    <div class = "card-distinctive-listing">
+                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>ai</title> <g id="Layer_2" data-name="Layer 2"> <g id="invisible_box" data-name="invisible box"> <rect width="48" height="48" fill="none"></rect> </g> <g id="Q3_icons" data-name="Q3 icons"> <g> <path d="M45.6,18.7,41,14.9V7.5a1,1,0,0,0-.6-.9L30.5,2.1h-.4l-.6.2L24,5.9,18.5,2.2,17.9,2h-.4L7.6,6.6a1,1,0,0,0-.6.9v7.4L2.4,18.7a.8.8,0,0,0-.4.8v9H2a.8.8,0,0,0,.4.8L7,33.1v7.4a1,1,0,0,0,.6.9l9.9,4.5h.4l.6-.2L24,42.1l5.5,3.7.6.2h.4l9.9-4.5a1,1,0,0,0,.6-.9V33.1l4.6-3.8a.8.8,0,0,0,.4-.7V19.4h0A.8.8,0,0,0,45.6,18.7Zm-5.1,6.8H42v1.6l-3.5,2.8-.4.3-.4-.2a1.4,1.4,0,0,0-2,.7,1.5,1.5,0,0,0,.6,2l.7.3h0v5.4l-6.6,3.1-4.2-2.8-.7-.5V25.5H27a1.5,1.5,0,0,0,0-3H25.5V9.7l.7-.5,4.2-2.8L37,9.5v5.4h0l-.7.3a1.5,1.5,0,0,0-.6,2,1.4,1.4,0,0,0,1.3.9l.7-.2.4-.2.4.3L42,20.9v1.6H40.5a1.5,1.5,0,0,0,0,3ZM21,25.5h1.5V38.3l-.7.5-4.2,2.8L11,38.5V33.1h0l.7-.3a1.5,1.5,0,0,0,.6-2,1.4,1.4,0,0,0-2-.7l-.4.2-.4-.3L6,27.1V25.5H7.5a1.5,1.5,0,0,0,0-3H6V20.9l3.5-2.8.4-.3.4.2.7.2a1.4,1.4,0,0,0,1.3-.9,1.5,1.5,0,0,0-.6-2L11,15h0V9.5l6.6-3.1,4.2,2.8.7.5V22.5H21a1.5,1.5,0,0,0,0,3Z"></path> <path d="M13.9,9.9a1.8,1.8,0,0,0,0,2.2l2.6,2.5v2.8l-4,4v5.2l4,4v2.8l-2.6,2.5a1.8,1.8,0,0,0,0,2.2,1.5,1.5,0,0,0,1.1.4,1.5,1.5,0,0,0,1.1-.4l3.4-3.5V29.4l-4-4V22.6l4-4V13.4L16.1,9.9A1.8,1.8,0,0,0,13.9,9.9Z"></path> <path d="M31.5,14.6l2.6-2.5a1.8,1.8,0,0,0,0-2.2,1.8,1.8,0,0,0-2.2,0l-3.4,3.5v5.2l4,4v2.8l-4,4v5.2l3.4,3.5a1.7,1.7,0,0,0,2.2,0,1.8,1.8,0,0,0,0-2.2l-2.6-2.5V30.6l4-4V21.4l-4-4Z"></path> </g> </g> </g> </g></svg>
+                        <span class = "fs-18 normal-tex distinctive-titlet">
+                            Artificial intelligence
+                        </span>
+                        <span class = "fs-16 light-text">
+                            AI simulates human intelligence to solve complex problems.
+                        </span>
+                    </div>
+                    <div class = "card-distinctive-listing">
+                        <svg fill="#000000" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M1587.162 31.278c11.52-23.491 37.27-35.689 63.473-29.816 25.525 6.099 43.483 28.8 43.483 55.002V570.46C1822.87 596.662 1920 710.733 1920 847.053c0 136.32-97.13 250.503-225.882 276.705v513.883c0 26.202-17.958 49.016-43.483 55.002a57.279 57.279 0 0 1-12.988 1.468c-21.12 0-40.772-11.745-50.485-31.171C1379.238 1247.203 964.18 1242.347 960 1242.347H564.706v564.706h87.755c-11.859-90.127-17.506-247.003 63.473-350.683 52.405-67.087 129.657-101.082 229.948-101.082v112.941c-64.49 0-110.57 18.861-140.837 57.487-68.781 87.868-45.064 263.83-30.269 324.254 4.18 16.828.34 34.673-10.277 48.34-10.73 13.665-27.219 21.684-44.499 21.684H508.235c-31.171 0-56.47-25.186-56.47-56.47v-621.177h-56.47c-155.747 0-282.354-126.607-282.354-282.353v-56.47h-56.47C25.299 903.523 0 878.336 0 847.052c0-31.172 25.299-56.471 56.47-56.471h56.471v-56.47c0-155.634 126.607-282.354 282.353-282.354h564.593c16.941-.112 420.48-7.002 627.275-420.48Zm-5.986 218.429c-194.71 242.371-452.216 298.164-564.705 311.04v572.724c112.489 12.876 369.995 68.556 564.705 311.04ZM903.53 564.7H395.294c-93.402 0-169.412 76.01-169.412 169.411v225.883c0 93.402 76.01 169.412 169.412 169.412H903.53V564.7Zm790.589 123.444v317.93c65.618-23.379 112.94-85.497 112.94-159.021 0-73.525-47.322-135.53-112.94-158.909Z" fill-rule="evenodd"></path> </g></svg>
+                        <span class = "fs-18 normal-text distinctive-title">
+                            Retail media
+                        </span>
+                        <span class = "fs-16 light-text">
+                            Advertising in stores and online to promote specific products.
+                        </span>
+                    </div>
+                    <div class = "card-distinctive-listing">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style>.cls-1{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style> </defs> <g id="ic-ecommerce-delivery"> <g id="Vrstva_535" data-name="Vrstva 535"> <path class="cls-1" d="M4.79,18H4a2,2,0,0,1-2-2V6.49a2,2,0,0,1,2-2h9.78a2,2,0,0,1,2,2V13.4"></path> <path class="cls-1" d="M15.75,8.19h2.78a1.18,1.18,0,0,1,.93.45l2.26,3a1.81,1.81,0,0,1,.36,1.07v5a.2.2,0,0,1-.2.2H18.83"></path> <circle class="cls-1" cx="16.51" cy="17.82" r="2.24"></circle> <circle class="cls-1" cx="7.02" cy="17.82" r="2.24"></circle> <line class="cls-1" x1="14.28" y1="17.95" x2="9.15" y2="17.95"></line> </g> </g> </g></svg>
+                        <span class = "fs-18 normal-text distinctive-title">
+                            Dropship
+                        </span>
+                        <span class = "fs-16 light-text">
+                            Sales model without warehouse; direct shipping from suppliers.
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class = "fs-70 nornmal-text arrow">></div>
+            </div>
+            
+        </div>
+
+        <div class = "media-gestiti-listing">
+            <span class = "fs-32 medium-bold-text">
+                Managed media
+            </span>
+            <span class = "fs-18 light-text subtitle-distinctive-services">
+                Managed media include our advertising platforms, social channels, and content networks.
+            </span>
+            <div class = "arrows-box-card">
+                <div class = "fs-70 nornmal-text arrow"><</div>
+
+
+                <div class = "container-card-media-gestiti">
+                    <div class = "card-container-gestiti">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7 21L12 17L17 21M7.8 17H16.2C17.8802 17 18.7202 17 19.362 16.673C19.9265 16.3854 20.3854 15.9265 20.673 15.362C21 14.7202 21 13.8802 21 12.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V12.2C3 13.8802 3 14.7202 3.32698 15.362C3.6146 15.9265 4.07354 16.3854 4.63803 16.673C5.27976 17 6.11984 17 7.8 17Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        <span class = "fs-18 normal-text">
+                            TV
+                        </span>
+                    </div>
+                    <div class = "card-container-gestiti">
+                        <svg viewBox="0 0 48 48" id="a" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.b{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}</style></defs><rect class="b" x="4.5" y="12" width="39" height="24"></rect><line class="b" x1="4.5" y1="12" x2="43.5" y2="36"></line><line class="b" x1="43.5" y1="12" x2="24" y2="24"></line></g></svg>
+                        <span class = "fs-18 normal-text">
+                            Digital
+                        </span>
+                    </div>
+                    <div class = "card-container-gestiti">
+                        <svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" enable-background="new 0 0 76.00 76.00" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#000000" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 43.5,20.5C 44.1183,19.8817 45.3817,19.8817 46,20.5C 46.6183,21.1183 46.6183,22.1317 46,22.75L 41.75,27L 54,27C 56.6234,27 59,29.3766 59,32L 59,52C 59,54.6234 56.6234,57 54,57L 22,57C 19.3766,57 17,54.6234 17,52L 17,32C 17,29.3766 19.3766,27 22,27L 31.25,27L 27,22.75C 26.3817,22.1317 26.3817,21.1183 27,20.5C 27.6183,19.8817 28.8817,19.8817 29.5,20.5L 36,27L 37.25,27L 43.5,20.5 Z M 22,32L 22,52L 28.4533,52L 28.8444,50.0444C 28.8444,50.0444 30.5333,44.1333 33.9111,44.1334L 40.6666,44.1334C 44.0444,44.1333 45.7333,50.0444 45.7333,50.0444L 46.1244,52L 47,52L 47,32L 22,32 Z M 52.9999,31.6667C 51.251,31.6667 49.8333,33.0845 49.8333,34.8334C 49.8333,36.5823 51.251,38.0001 52.9999,38.0001C 54.7488,38.0001 56.1666,36.5823 56.1666,34.8334C 56.1666,33.0845 54.7488,31.6667 52.9999,31.6667 Z M 52.9999,41.1667C 51.251,41.1667 49.8333,42.5845 49.8333,44.3334C 49.8333,46.0823 51.251,47.5 52.9999,47.5C 54.7488,47.5 56.1666,46.0823 56.1666,44.3334C 56.1666,42.5845 54.7488,41.1667 52.9999,41.1667 Z M 24,34L 31,34L 31,41L 24,41L 24,34 Z M 37.2889,34C 39.6208,34 41.5111,35.8904 41.5111,38.2222C 41.5111,40.5541 39.6208,42.4444 37.2889,42.4444C 34.957,42.4444 33.0667,40.5541 33.0667,38.2222C 33.0667,35.8904 34.957,34 37.2889,34 Z M 33.0667,48.3556C 32.5037,48.637 31.3778,50.8888 31.3778,50.8888C 31.3778,50.8888 31.1984,51.158 30.9915,52L 32.9055,52L 33.0667,48.3556 Z M 41.5111,48.3556L 41.6732,52L 43.5863,52C 43.3794,51.158 43.2,50.8889 43.2,50.8889C 43.2,50.8889 42.0741,48.637 41.5111,48.3556 Z "></path> </g></svg>
+                        <span class = "fs-18 normal-text">
+                            Press
+                        </span>
+                    </div>
+                    <div class = "card-container-gestiti">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M19 4H9C8.07003 4 7.60504 4 7.22354 4.10222C6.18827 4.37962 5.37962 5.18827 5.10222 6.22354C5 6.60504 5 7.08922 5 8.01919M5 8.01919C5.31428 8 5.70173 8 6.2 8H17.8C18.9201 8 19.4802 8 19.908 8.21799C20.2843 8.40973 20.5903 8.71569 20.782 9.09202C21 9.51984 21 10.0799 21 11.2V16.8C21 17.9201 21 18.4802 20.782 18.908C20.5903 19.2843 20.2843 19.5903 19.908 19.782C19.4802 20 18.9201 20 17.8 20H6.2C5.07989 20 4.51984 20 4.09202 19.782C3.71569 19.5903 3.40973 19.2843 3.21799 18.908C3 18.4802 3 17.9201 3 16.8V11.2C3 10.0799 3 9.51984 3.21799 9.09202C3.40973 8.71569 3.71569 8.40973 4.09202 8.21799C4.32953 8.09697 4.60779 8.04314 5 8.01919ZM14 12H18M14 16H18M10 14C10 15.1046 9.10457 16 8 16C6.89543 16 6 15.1046 6 14C6 12.8954 6.89543 12 8 12C9.10457 12 10 12.8954 10 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        <span class = "fs-18 normal-text">
+                            Radio
+                        </span>
+                    </div>
+                    <div class = "card-container-gestiti">
+                        <svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>connector-filled</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="add" fill="#000000" transform="translate(64.000000, 64.000000)"> <path d="M181.333333,1.42108547e-14 C234.352669,1.42108547e-14 277.333333,42.980664 277.333333,96 C277.333333,147.504498 236.773621,189.535767 185.852495,191.89551 L181.333333,192 L117.333333,192 C87.8781467,192 64,215.878147 64,245.333333 C64,273.610313 86.0061,296.747492 113.826652,298.553223 L117.333333,298.666667 L194.68864,298.665629 C204.04963,262.29754 236.783165,235.312679 275.922191,234.678099 L277.333333,234.666667 L341.333333,234.666667 L341.333,266.666667 L405.333333,266.666667 L405.333333,298.666667 L341.333,298.666667 L341.333,341.332667 L405.333333,341.333333 L405.333333,373.333333 L341.333,373.332667 L341.333333,405.333333 L277.333333,405.333333 C237.571799,405.333333 204.161914,378.138692 194.68864,341.334371 L117.333333,341.333333 C64.3139973,341.333333 21.3333333,298.352669 21.3333333,245.333333 C21.3333333,193.828836 61.8930457,151.797566 112.814172,149.437824 L117.333333,149.333333 L181.333333,149.333333 C210.78852,149.333333 234.666667,125.455187 234.666667,96 C234.666667,67.7230208 212.660567,44.5858417 184.840015,42.7801105 L181.333333,42.6666667 L1.42108547e-14,42.6666667 L1.42108547e-14,1.42108547e-14 L181.333333,1.42108547e-14 Z" id="Combined-Shape"> </path> </g> </g> </g></svg>
+                        <span class = "fs-18 normal-text">
+                            Connected
+                        </span>
+                    </div>
+                </div>
+            
+                <div class = "fs-70 nornmal-text arrow">></div>
+            </div>
+        </div>
+
+        <div class = "platform-managed-container">
+            <div class = "platform-managed-upper">
+                <ul class = "fs-18 light-text">
+                    <li>
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM12 9V7L4 7V9H12Z" fill="#000000"></path> </g></svg>
+                    </li>
+                    <li>
+                        Platform
+                    </li>
+                    <li>
+                        People
+                    </li>
+                    <li>
+                        Certification
+                    </li>
+                </ul>
+            </div>
+            <div class = "platform-managed-bottom">
+                <span class = "title-platform-managed fs-40 medium-bold-text">
+                    Managed platform
+                </span>
+                <span class = "subtitle-platform-managed fs-18 light-text">
+                    Type of platforms managed and certifications obtained
+                </span>
+                <div class = "card-platform-managed">
+                    <div class = "card-platform-m">
+                        <div class = "container-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                <path fill="#fbc02d" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#e53935" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4caf50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1565c0" d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                            </svg>
+                        </div>
+                        <div class = "box-card-platform-managed">
+                            <span class = "name-card fs-16 normal-text">
+                                Google
+                            </span>
+                            <div class = "box-words-platform-managed">
+                                <span class = "certification fs-16 light-text">
+                                    CERTIFICATED
+                                </span>
+                                <span class = "infos fs-16 light-text">
+                                    Google ADS text box
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "card-platform-m">
+                        <div class = "container-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                <path fill="#ff5722" d="M6 6H22V22H6z" transform="rotate(-180 14 14)"></path><path fill="#4caf50" d="M26 6H42V22H26z" transform="rotate(-180 34 14)"></path><path fill="#ffc107" d="M26 26H42V42H26z" transform="rotate(-180 34 34)"></path><path fill="#03a9f4" d="M6 26H22V42H6z" transform="rotate(-180 14 34)"></path>
+                            </svg>
+                        </div>
+                        <div class = "box-card-platform-managed">
+                            <span class = "name-card fs-16 normal-text">
+                                Microsoft
+                            </span>
+                            <div class = "box-words-platform-managed">
+                                <span class = "certification fs-16 light-text">
+                                    CERTIFICATED
+                                </span>
+                                <span class = "infos fs-16 light-text">
+                                    Bing ADS
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "card-platform-m">
+                        <div class = "container-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                <path fill="#FFB300" d="M39.6,39c-4.2,3.1-10.5,5-15.6,5c-7.3,0-13.8-2.9-18.8-7.4c-0.4-0.4,0-0.8,0.4-0.6c5.4,3.1,11.5,4.9,18.3,4.9c4.6,0,10.4-1,15.1-3C39.7,37.7,40.3,38.5,39.6,39z M41.1,36.9c-0.5-0.7-3.5-0.3-4.8-0.2c-0.4,0-0.5-0.3-0.1-0.6c2.3-1.7,6.2-1.2,6.6-0.6c0.4,0.6-0.1,4.5-2.3,6.3c-0.3,0.3-0.7,0.1-0.5-0.2C40.5,40.4,41.6,37.6,41.1,36.9z"></path><path fill="#37474F" d="M36.9,29.8c-1-1.3-2-2.4-2-4.9v-8.3c0-3.5,0-6.6-2.5-9c-2-1.9-5.3-2.6-7.9-2.6C19,5,14.2,7.2,13,13.4c-0.1,0.7,0.4,1,0.8,1.1l5.1,0.6c0.5,0,0.8-0.5,0.9-1c0.4-2.1,2.1-3.1,4.1-3.1c1.1,0,3.2,0.6,3.2,3v3c-3.2,0-6.6,0-9.4,1.2c-3.3,1.4-5.6,4.3-5.6,8.6c0,5.5,3.4,8.2,7.8,8.2c3.7,0,5.9-0.9,8.8-3.8c0.9,1.4,1.3,2.2,3,3.7c0.4,0.2,0.9,0.2,1.2-0.1l0,0c1-0.9,2.9-2.6,4-3.5C37.4,30.9,37.3,30.3,36.9,29.8z M27,22.1L27,22.1c0,2-0.1,6.9-5,6.9c-3,0-3-3-3-3c0-4.5,4.2-5,8-5V22.1z"></path>
+                            </svg>
+                        </div>
+                        <div class = "box-card-platform-managed">
+                            <span class = "name-card fs-16 normal-text">
+                                Amazon
+                            </span>
+                            <div class = "box-words-platform-managed">
+                                <span class = "infos fs-16 light-text">
+                                    No
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "main-client-container">
+            <span class = "fs-40 medium-bold-text">
+                Main Client
+            </span>
+            <span class = "fs-18 light-text">
+                These are our main customers.
+            </span>
+            <div class = "arrows-box-card">
+                <div class = "fs-70 nornmal-text arrow"><</div>
+                <div class = "container-card-main-client">
+                    <div class = "main-card-client">
+                        <svg viewBox="0 -1 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <path d="M180.82764,252.605272 C184.843951,254.170159 189.42406,254.069552 193.478224,252.11917 L245.979142,226.856851 C251.495593,224.202221 255.003889,218.618034 255.003889,212.49296 L255.003889,41.1971845 C255.003889,35.0719113 251.495593,29.4886211 245.979142,26.8339907 L193.478224,1.57068551 C188.158006,-0.989256713 181.931329,-0.362230036 177.262566,3.0323459 C176.595173,3.51727166 175.959655,4.05869672 175.363982,4.65536598 L74.8565893,96.3498444 L31.0778002,63.1181557 C27.0024197,60.0246398 21.3020866,60.2780499 17.5170718,63.7211005 L3.47578059,76.4937075 C-1.15402423,80.7052561 -1.15933349,87.9889043 3.46431538,92.2072265 L41.430759,126.844525 L3.46431538,161.482221 C-1.15933349,165.700742 -1.15402423,172.984291 3.47578059,177.19584 L17.5170718,189.967949 C21.3020866,193.411497 27.0024197,193.664509 31.0778002,190.571591 L74.8565893,157.339404 L175.363982,249.034221 C176.953772,250.625007 178.82048,251.823326 180.82764,252.605272 Z M191.291764,68.9559518 L115.029663,126.844525 L191.291764,184.733396 L191.291764,68.9559518 Z" id="path-1"> </path> <linearGradient x1="50.0000484%" y1="-3.91645412e-07%" x2="50.0000484%" y2="99.999921%" id="linearGradient-3"> <stop stop-color="#FFFFFF" offset="0%"> </stop> <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"> </stop> </linearGradient> </defs> <g> <mask id="mask-2" fill="white"> <use xlink:href="#path-1"> </use> </mask> <g> </g> <path d="M246.134784,26.873337 L193.593025,1.57523773 C187.51178,-1.35300582 180.243173,-0.117807811 175.469819,4.65514684 L3.46641717,161.482221 C-1.16004072,165.700742 -1.1547215,172.984291 3.47789235,177.19584 L17.5276804,189.967949 C21.3150858,193.411497 27.0189053,193.664509 31.0966765,190.571591 L238.228667,33.4363005 C245.177523,28.1646927 255.158535,33.1209324 255.158535,41.8432608 L255.158535,41.2332436 C255.158535,35.11066 251.651235,29.5293619 246.134784,26.873337 Z" fill="#0065A9" fill-rule="nonzero" mask="url(#mask-2)"> </path> <path d="M246.134784,226.816011 L193.593025,252.11419 C187.51178,255.041754 180.243173,253.806579 175.469819,249.034221 L3.46641717,92.2070273 C-1.16004072,87.9888047 -1.1547215,80.7049573 3.47789235,76.4935082 L17.5276804,63.7209012 C21.3150858,60.2778506 27.0189053,60.0243409 31.0966765,63.1179565 L238.228667,220.252649 C245.177523,225.524058 255.158535,220.568416 255.158535,211.84549 L255.158535,212.456104 C255.158535,218.57819 251.651235,224.159388 246.134784,226.816011 Z" fill="#007ACC" fill-rule="nonzero" mask="url(#mask-2)"> </path> <path d="M193.428324,252.134497 C187.345086,255.060069 180.076479,253.823898 175.303125,249.050544 C181.184153,254.931571 191.240868,250.765843 191.240868,242.448334 L191.240868,11.2729623 C191.240868,2.95542269 181.184153,-1.21005093 175.303125,4.67135981 C180.076479,-0.102038107 187.345086,-1.3389793 193.428324,1.58667934 L245.961117,26.8500144 C251.481553,29.5046448 254.991841,35.0879351 254.991841,41.2132082 L254.991841,212.509283 C254.991841,218.634357 251.481553,224.217548 245.961117,226.872178 L193.428324,252.134497 Z" fill="#1F9CF0" fill-rule="nonzero" mask="url(#mask-2)"> </path> <path d="M180.827889,252.605272 C184.8442,254.169163 189.424309,254.069552 193.477476,252.11917 L245.978395,226.855855 C251.495842,224.201225 255.004138,218.618034 255.004138,212.49296 L255.004138,41.1969853 C255.004138,35.0717121 251.495842,29.4884219 245.979391,26.8337915 L193.477476,1.57052613 C188.158255,-0.989423064 181.931578,-0.362396387 177.261819,3.03217656 C176.595422,3.51710232 175.959904,4.05852738 175.363235,4.65519664 L74.8565395,96.3496452 L31.0777504,63.1179565 C27.0024695,60.0244405 21.3020368,60.2779503 17.517022,63.7209012 L3.4757806,76.4935082 C-1.15402423,80.7050569 -1.15933349,87.9888047 3.46431539,92.2071269 L41.4308088,126.844525 L3.46431539,161.482221 C-1.15933349,165.700742 -1.15402423,172.984291 3.4757806,177.19584 L17.517022,189.967949 C21.3020368,193.411497 27.0024695,193.664509 31.0777504,190.571591 L74.8565395,157.339404 L175.363235,249.034221 C176.953025,250.625007 178.820729,251.823326 180.827889,252.605272 Z M191.292013,68.9557526 L115.029912,126.844525 L191.292013,184.733396 L191.292013,68.9557526 Z" fill-opacity="0.25" fill="url(#linearGradient-3)" mask="url(#mask-2)"> </path> </g> </g></svg>
+                    </div>
+                    <div class = "main-card-client">
+                        <svg viewBox="0 -1.5 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Dropbox-color</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Color-" transform="translate(-800.000000, -363.000000)" fill="#0F82E2"> <path d="M824,389.033255 L814.1195,397.34573 L800,388.053538 L809.7635,380.17347 L823.999971,389.033238 L838.2362,380.172109 L847.9997,388.05369 L833.8802,397.345881 L823.9997,389.033406 Z M814.1198,363 L800.0003,372.292191 L809.7638,380.17226 L824.0003,371.312475 L814.1198,363 Z M824.02895,390.821692 L814.11995,399.109976 L809.87945,396.318993 L809.87945,399.447132 L824.02895,408 L838.17845,399.447132 L838.17845,396.318993 L833.93795,399.109976 L824.02895,390.821692 Z M848,372.292343 L833.8805,363.000151 L824,371.312626 L838.2365,380.172411 L848,372.292343 Z" id="Dropbox"> </path> </g> </g> </g></svg>
+                    </div>
+                    <div class = "main-card-client">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>chrome-color</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Color-" transform="translate(-400.000000, -1043.000000)"> <g id="chrome" transform="translate(400.000000, 1043.000000)"> <path d="M5.7954035,8.36130434 C16.9522782,-4.62351526 37.639151,-2.06037988 45.3727574,13.1072081 C39.9288251,13.1091897 31.4040328,13.1055761 26.786937,13.1072081 C23.4382318,13.1083738 21.2761308,13.0322537 18.9347285,14.2648621 C16.1820632,15.7138239 14.1051274,18.3997073 13.3801164,21.5544341 L5.7954035,8.36130434 L5.7954035,8.36130434 Z" id="chrome-icon-path" fill="#EA4335"> </path> <path d="M16.015461,23.9991346 C16.015461,28.3998753 19.5936811,31.9800817 23.9919804,31.9800817 C28.3901632,31.9800817 31.9683834,28.3998753 31.9683834,23.9991346 C31.9683834,19.5985104 28.3901632,16.0181875 23.9919804,16.0181875 C19.5936811,16.0181875 16.015461,19.5985104 16.015461,23.9991346 L16.015461,23.9991346 Z" id="chrome-icon-path" fill="#4285F4"> </path> <path d="M27.0876366,34.4456482 C22.6105798,35.7761751 17.371347,34.3006354 14.5014777,29.3468879 C12.3108329,25.5655987 6.52286114,15.4823164 3.89206021,10.8973955 C-5.32185953,25.0194695 2.61924235,44.2642006 19.3464574,47.5489026 L27.0876366,34.4456482 L27.0876366,34.4456482 Z" id="chrome-icon-path" fill="#34A853"> </path> <path d="M31.4014697,16.0181875 C35.1303309,19.4863704 35.9427207,25.102234 33.4168909,29.4566966 C31.5138971,32.7374352 25.4402549,42.9884614 22.4966379,47.9523505 C39.730883,49.0147671 52.2944399,32.1238121 46.6195946,16.0181875 L31.4014697,16.0181875 L31.4014697,16.0181875 Z" id="chrome-icon-path" fill="#FBBC05"> </path> </g> </g> </g> </g></svg>
+                    </div>
+                    <div class = "main-card-client">
+                        <svg viewBox="-4 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Evernote-color</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Color-" transform="translate(-805.000000, -1043.000000)" fill="#20C05C"> <path d="M834.792989,1065.70423 C834.147558,1065.68173 833.526032,1065.72223 832.946339,1065.81523 C833.109191,1064.49374 833.653026,1062.87076 835.578862,1062.93826 C837.710876,1063.01326 838.009687,1065.03524 838.017157,1066.40622 C837.117737,1066.00273 836.004667,1065.74773 834.792989,1065.70423 M843.909706,1051.35086 C843.552627,1049.43538 842.41864,1048.49189 841.392225,1048.12139 C840.286625,1047.7194 838.042556,1047.3039 835.223277,1046.9694 C832.955303,1046.70241 830.289911,1046.72341 828.679321,1046.7729 C828.486588,1045.44392 827.55878,1044.23043 826.518919,1043.81043 C823.751931,1042.69144 819.474455,1042.96144 818.377819,1043.27044 C817.505292,1043.51493 816.538639,1044.01743 816.00078,1044.78992 C815.640713,1045.30592 815.40764,1045.96891 815.406146,1046.8929 C815.406146,1047.4164 815.421087,1048.64789 815.433039,1049.74288 C815.446486,1050.84087 815.461426,1051.82336 815.461426,1051.83086 C815.461426,1052.80735 814.671072,1053.60384 813.692467,1053.60534 L809.205823,1053.60534 C808.248134,1053.60534 807.516048,1053.76734 806.958766,1054.02084 C806.398496,1054.27734 806.002571,1054.62083 805.700773,1055.02733 C805.101657,1055.83582 804.997073,1056.83181 805.000061,1057.8488 C805.000061,1057.8488 805.009026,1058.6813 805.209229,1060.28928 C805.375069,1061.53427 806.719717,1070.23269 807.997133,1072.87717 C808.491665,1073.90616 808.821851,1074.33515 809.79448,1074.78815 C811.962352,1075.72114 816.915141,1076.75763 819.235406,1077.05463 C821.552684,1077.35162 823.006398,1077.97712 823.87295,1076.15314 C823.875938,1076.14864 824.04626,1075.69864 824.280826,1075.04015 C825.033829,1072.75117 825.138413,1070.72019 825.138413,1069.2517 C825.138413,1069.1017 825.356545,1069.0957 825.356545,1069.2517 C825.356545,1070.28819 825.15933,1073.96016 827.921836,1074.94565 C829.012495,1075.33414 831.274492,1075.67914 833.572347,1075.95064 C835.650576,1076.19064 837.159571,1077.01113 837.159571,1082.36458 C837.159571,1085.62105 836.478282,1086.06805 832.916458,1086.06805 C830.028451,1086.06805 828.927334,1086.14304 828.927334,1083.84057 C828.927334,1081.97908 830.762032,1082.17408 832.120127,1082.17408 C832.728207,1082.17408 832.287461,1081.72108 832.287461,1080.5721 C832.287461,1079.42911 832.998631,1078.76911 832.326306,1078.75261 C827.626013,1078.62211 824.860519,1078.74661 824.860519,1084.64756 C824.860519,1090.00551 826.902891,1091 833.572347,1091 C838.80303,1091 840.646692,1090.8275 842.8056,1084.10156 C843.232899,1082.77258 844.266785,1078.72111 844.891299,1071.91567 C845.287224,1067.61371 844.51928,1054.62833 843.909706,1051.35086 M808.995161,1052.29735 L808.998149,1052.29735 L813.484793,1052.29735 C813.74177,1052.29735 813.949444,1052.08586 813.949444,1051.83086 C813.949444,1051.82936 813.895658,1047.96839 813.895658,1046.8944 L813.895658,1046.8809 C813.895658,1045.99891 814.079427,1045.23092 814.400648,1044.58592 L814.554536,1044.29793 C814.536607,1044.29943 814.520172,1044.30843 814.502244,1044.32493 L805.78444,1053.00535 C805.768005,1053.01885 805.756053,1053.03835 805.75157,1053.05635 C805.932351,1052.96635 806.17887,1052.84485 806.213233,1052.82985 C806.972212,1052.48485 807.89255,1052.29735 808.995161,1052.29735" id="Evernote"> </path> </g> </g> </g></svg>
+                    </div>
+                    <div class = "fs-70 nornmal-text arrow">></div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "client-refferal-container">
+            <div class = "card-client-refferal-part">
+                <span class = "title-client-refferal fs-32 medium-bold-text">
+                    Client referral
+                </span>
+                <span class = "client-refferal-subtitle fs-18 light-text">
+                    View the availability of all your friend for online and chat engagemants
+                </span>
+                <div class = "arrows-box-card">
+                    <div class = "fs-70 nornmal-text arrow"><</div>
+                    <div class = "container-card-client-refferal">
+                        <div class = "card-client-ref">
+                            <div class = "client-ref-img">
+                                <img src = "img/uomo.jpg">
+                            </div>
+                            <span class = "name-client-refferal fs-18 normal-text">
+                                Robert Fox
+                            </span>
+                            <span class = "job-client-refferal fs-18 light-text">
+                                <span class = "fs-16 light-text">UI/UX Designer</span>
+                                <span class = "clientMain fs-16 light-text">Visual studio</span>
+                            </span>
+                        </div>
+                        <div class = "card-client-ref">
+
+                            <div class = "client-ref-img">
+                                <img src = "img/uomo.jpg">
+                            </div>                        
+                            <span class = "name-client-refferal fs-18 normal-text">
+                                Robert Fox
+                            </span>
+                            <span class = "job-client-refferal fs-18 light-text">
+                                <span class = "fs-16 light-text">UI/UX Designer</span>
+                                <span class = "clientMain fs-16 light-text">Chrome</span>
+                            </span>
+                        </div>
+                        <div class = "card-client-ref">
+
+                            <div class = "client-ref-img">
+                                <img src = "img/uomo.jpg">
+                            </div>                        
+                            <span class = "name-client-refferal fs-18 normal-text">
+                                Robert Fox
+                            </span>
+                            <span class = "job-client-refferal fs-18 light-text">
+                                <span class = "fs-16 light-text">UI/UX Designer</span>
+                                <span class = "clientMain fs-16 light-text">Visual studio</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class = "fs-70 nornmal-text arrow">></div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "innovation-tools">
+            <span class = "title fs-32 medium-bold-text">Innovation tools</span>
+            <div class = "innovation-tools-upper">
+                <div class = "title-section fs-18 light-text">
+                    <span>Management & control</span>
+                </div>
+                <div class = "innovation-tools-upper-card">
+                    <div class = "innovation-tools-card">
+                        <div class = "upper-card">
+                            <img src = "img/logo.png">
+                            <span class = "title-card-innovation fs-18">
+                                Planning
+                            </span>
+                            <span class = "inactive-innovation fs-12 light-text">
+                                NO
+                            </span>
+                        </div>
+                        <div class = "bottom-card">
+                            <button class = "innovation-agency fs-16 light-text">Myndo</button>
+                        </div>
+                    </div>
+
+                    <div class = "innovation-tools-card">
+                        <div class = "upper-card">
+                            <img src = "img/logo.png">
+                            <span class = "title-card-innovation fs-18">
+                                Project
+                            </span>
+                            <span class = "inactive-innovation fs-12 light-text">
+                                NO
+                            </span>
+                        </div>
+                        <div class = "bottom-card">
+                            <button class = "innovation-agency fs-16 light-text">Jira</button>
+                        </div>
+                    </div>
+
+                    <div class = "innovation-tools-card">
+                        <div class = "upper-card">
+                            <img src = "img/logo.png">
+                            <span class = "title-card-innovation fs-18">
+                                Task
+                            </span>
+                            <span class = "active-innovation fs-12 light-text">
+                                Featured
+                            </span>
+                        </div>
+                        <div class = "bottom-card">
+                            <button class = "innovation-agency fs-16 light-text">Clickapp</button>
+                        </div>
+                    </div>
+
+                    <div class = "innovation-tools-card">
+                        <div class = "upper-card">
+                            <img src = "img/logo.png">
+                            <span class = "title-card-innovation fs-18">
+                                Platform
+                            </span>
+                            <span class = "active-innovation fs-12 light-text">
+                                Featured
+                            </span>
+                        </div>
+                        <div class = "bottom-card">
+                            <button class = "innovation-agency fs-16 light-text">Semrush, Similarweb</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "innovation-tools-bottom">
+                <div class = "title-section fs-18 light-text">
+                    <span>Data analysis</span>
+                </div>
+                <div class = "innovation-tools-bottom-card">
+                    <div class = "innovation-tools-card">
+                        <div class = "upper-card">
+                            <img src = "img/logo.png">
+                            <span class = "title-card-innovation fs-18">
+                                Reporting
+                            </span>
+                            <span class = "inactive-innovation fs-12 light-text">
+                                NO
+                            </span>
+                        </div>
+                        <div class = "bottom-card">
+                            <button class = "innovation-agency fs-16 light-text">Myndo</button>
+                        </div>
+                    </div>
+
+                    <div class = "innovation-tools-card">
+                        <div class = "upper-card">
+                            <img src = "img/logo.png">
+                            <span class = "title-card-innovation fs-18">
+                                Data analysis
+                            </span>
+                            <span class = "inactive-innovation fs-12 light-text">
+                                NO
+                            </span>
+                        </div>
+                        <div class = "bottom-card">
+                            <button class = "innovation-agency fs-16 light-text">PowerBi, Data Studio</button>
+                        </div>
+                    </div>
+
+                    <div class = "innovation-tools-card">
+                        <div class = "upper-card">
+                            <img src = "img/logo.png">
+                            <span class = "title-card-innovation fs-18">
+                                Ad server
+                            </span>
+                            <span class = "active-innovation fs-12 light-text">
+                                Featured
+                            </span>
+                        </div>
+                        <div class = "bottom-card">
+                            <button class = "innovation-agency fs-16 light-text">Adform, DV360</button>
+                        </div>
+                    </div>
+
+                    <div class = "innovation-tools-card">
+                        <div class = "upper-card">
+                            <img src = "img/logo.png">
+                            <span class = "title-card-innovation fs-18">
+                                Adverification
+                            </span>
+                            <span class = "active-innovation fs-12 light-text">
+                                Featured
+                            </span>
+                        </div>
+                        <div class = "bottom-card">
+                            <button class = "innovation-agency fs-16 light-text">IAS</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "subscribe-container">
+            <div class = "subscribe-column-left">
+                <span class = "fs-18 light-text">
+                    Newsletter
+                </span>
+                <span class = "title-subscribe fs-32 medium-bold-text">
+                    Subscribe to get updated
+                </span>
+                <span class = "subtitle-subscribe fs-18 light-text">
+                    Sign up to receive updates on the latest news, exclusive offers and special content. Stay connected and don't miss the most relevant information: just enter your email and you will always be informed!
+                </span>
+            </div>
+            <div class = "subscribe-column-right">
+                <div class = "buttons-subscribe">
+                    <button class = "fs-18 normal-text">Download brochure ></button>
+                    <button class = "fs-18 normal-text">Case study ></button>
+                </div>
+            </div>
+        </div>
+
+        <div class = "footer-page-container">
+            <div class = "footer-page">
+                <span class = "fs-40 normal-text">
+                    Contact us
+                </span>
+                <span class = "infos-footer fs-16 light-text">
+                    Discover more on this agency
+                </span>
+                <div class = "button-link-footer fs-16 normal-text">
+                    <span class = "linkedin-link-footer">
+                        <svg viewBox="0 0 24 24" fill="#478bd9" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z" fill="#186ecf"></path> <path d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z" fill="#186ecf"></path> <path d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11 16 13V18.0004C16 18.5527 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V12C19 10 17.5 9 15.5 9C13.5 9 13 10.5 13 10.5V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z" fill="#186ecf"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z" fill="#186ecf"></path> </g></svg>
+                        Linkedin
+                    </span>
+                    <span class = "website-link-footer fs-16 light-text">
+                        <svg fill="#478bd9" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 577.545 577.545" xml:space="preserve" stroke="#186ecf"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M245.531,245.532c4.893-4.896,11.42-7.589,18.375-7.589s13.482,2.696,18.375,7.589l49.734,49.734 c1.723,1.72,4.058,2.689,6.49,2.689s4.771-0.967,6.49-2.689l49.733-49.734c1.724-1.72,2.69-4.058,2.69-6.49 c0-2.433-0.967-4.771-2.69-6.49l-49.733-49.734c-21.668-21.662-50.469-33.589-81.093-33.589s-59.425,11.928-81.093,33.586 L33.602,332.022C11.934,353.69,0,382.494,0,413.128c0,30.637,11.934,59.432,33.605,81.084l49.731,49.73 c21.65,21.668,50.447,33.603,81.081,33.603s59.438-11.935,81.108-33.603l84.083-84.082c2.705-2.705,3.448-6.803,1.869-10.285 c-1.496-3.295-4.776-5.386-8.356-5.386c-0.205,0-0.407,0.007-0.615,0.021c-2.959,0.199-5.958,0.297-8.917,0.297 c-23.354,0-46.322-6.208-66.417-17.956c-1.444-0.844-3.042-1.254-4.629-1.254c-2.375,0-4.725,0.921-6.494,2.689l-53.238,53.238 c-4.902,4.901-11.426,7.604-18.372,7.604c-6.949,0-13.479-2.699-18.381-7.604l-49.734-49.734 c-4.908-4.896-7.61-11.411-7.616-18.348c-0.003-6.953,2.699-13.489,7.616-18.406L245.531,245.532z"></path> <path d="M543.942,83.324L494.208,33.59C472.556,11.931,443.762,0,413.128,0s-59.438,11.928-81.105,33.587l-84.086,84.119 c-2.705,2.705-3.448,6.806-1.867,10.288c1.497,3.292,4.777,5.382,8.354,5.382c0.205,0,0.413-0.006,0.621-0.021 c2.987-0.202,6.013-0.303,9-0.303c23.4,0,46.316,6.206,66.274,17.947c1.45,0.854,3.057,1.267,4.65,1.267 c2.375,0,4.725-0.921,6.494-2.689l53.274-53.274c4.893-4.896,11.42-7.589,18.375-7.589s13.482,2.696,18.375,7.589l49.734,49.734 c10.123,10.135,10.123,26.634-0.003,36.775L332.017,332.014c-4.894,4.905-11.408,7.604-18.348,7.604 c-6.956,0-13.495-2.702-18.415-7.61l-49.723-49.725c-1.723-1.72-4.057-2.69-6.49-2.69c-2.433,0-4.771,0.967-6.49,2.69 l-49.734,49.734c-3.586,3.586-3.586,9.397,0,12.983l49.734,49.734c21.668,21.668,50.469,33.602,81.093,33.602 c30.625,0,59.426-11.934,81.094-33.602l149.205-149.206c21.668-21.658,33.603-50.462,33.603-81.102S565.61,104.983,543.942,83.324 z"></path> </g> </g> </g></svg>
+                        Website
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <script src = "script/script.js"></script>
+        <script type="module">
+
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+            import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+        
+            const firebaseConfig = {
+                apiKey: "AIzaSyDxTTVf3tQ2nAp3eTe7q5FAW9NRC01nDJQ",
+                authDomain: "login---listing.firebaseapp.com",
+                projectId: "login---listing",
+                storageBucket: "login---listing.firebasestorage.app",
+                messagingSenderId: "168231985672",
+                appId: "1:168231985672:web:e33e32eb9fa24d9378e7bd",
+                measurementId: "G-Q32EVYNFR7"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+
+            function getCookieValue(cookieName) {
+                const cookies = document.cookie.split("; ");
+                for (let cookie of cookies) {
+                    const [name, value] = cookie.split("=");
+                    if (name === cookieName) {
+                        return value;
+                    }
+                }
+                return null; 
+            }
+
+            const email = getCookieValue("email");
+            let accountName = document.getElementById('account-name');
+            let nuova = email[0] + email[1];
+            accountName.innerHTML = nuova.toUpperCase();
+
+            var do_signout=function(){return new Promise(function(resolve){
+                signOut(auth).then(() => {
+                resolve(true)
+                deleteAllCookies()
+                window.location.href = "login.html";
+                }).catch((error) => {
+                resolve(false)
+                deleteAllCookies()
+                window.location.href = "login.html";
+                });
+            });}
+
+            function deleteAllCookies() {
+                const cookies = document.cookie.split("; ");
+                for (let cookie of cookies) {
+                    const name = cookie.split("=")[0];
+                    document.cookie = name + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                }
+                console.log("Tutti i cookie sono stati cancellati!");
+            }
+
+            let logout = document.getElementById('logout');;
+            logout.addEventListener('click', do_signout);
+
+        </script>
+        
+    </body>
+</html>

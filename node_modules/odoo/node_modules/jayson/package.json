@@ -1,0 +1,72 @@
+{
+  "name": "jayson",
+  "version": "1.2.2",
+  "description": "JSON-RPC 1.0/2.0 compliant server and client",
+  "license": "MIT",
+  "keywords": [
+    "jsonrpc",
+    "json-rpc",
+    "rpc",
+    "json",
+    "jsonrpc-2.0",
+    "jsonrpc-1.0",
+    "middleware",
+    "connect",
+    "express",
+    "fork",
+    "distributed",
+    "relay",
+    "http",
+    "tcp",
+    "https",
+    "tls",
+    "api"
+  ],
+  "author": "Tedde Lundgren <mail@tedeh.net> (http://tedeh.net)",
+  "maintainers": "Tedde Lundgren <mail@tedeh.net> (http://tedeh.net)",
+  "bin": "./bin/jayson.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tedeh/jayson.git"
+  },
+  "homepage": "http://jayson.tedeh.net",
+  "bugs": "https://github.com/tedeh/jayson/issues",
+  "main": "index",
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "contributors": [
+    "Tedde Lundgren <mail@tedeh.net> (http://tedeh.net)",
+    "Daniel Vicory <dvicory@gmail.com> (http://bzfx.net)",
+    "Jonathan Liu <net147@gmail.com>"
+  ],
+  "scripts": {
+    "test": "make test"
+  },
+  "config": {
+    "blanket": {
+      "pattern": "lib",
+      "data-cover-never": [
+        "node_modules",
+        "public"
+      ],
+      "data-cover-reporter-options": {
+        "shortnames": false
+      }
+    }
+  },
+  "dependencies": {
+    "JSONStream": "1.0.3",
+    "commander": "1.3.2",
+    "eyes": "0.1.8",
+    "lodash": "3.6.0"
+  },
+  "devDependencies": {
+    "blanket": "1.1.6",
+    "connect": "2.15.0",
+    "mocha": "2.1.0",
+    "pass-stream": "0.1.3",
+    "should": "5.2.0",
+    "uglify-js": "2.4.13"
+  }
+}
