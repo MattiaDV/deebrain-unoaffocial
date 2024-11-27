@@ -181,6 +181,6 @@ const server = createServer(async (req, res) => {
     res.end('Pagina non trovata');
 });
 
-server.listen(3000, "192.168.1.14", () => {
+server.listen(3000, "127.0.0.1", () => {
     console.log("Listening");
 });
