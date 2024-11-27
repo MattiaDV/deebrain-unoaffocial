@@ -67,11 +67,6 @@
                 return null; 
             }
 
-            const email = getCookieValue("email");
-            let accountName = document.getElementById('account-name');
-            let nuova = email[0] + email[1];
-            accountName.innerHTML = nuova.toUpperCase();
-
             var do_signout=function(){return new Promise(function(resolve){
                 signOut(auth).then(() => {
                 resolve(true)
@@ -88,8 +83,12 @@
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
                         const uid = user.uid;
+                        const email = getCookieValue("email");
+                        let accountName = document.getElementById('account-name');
+                        let nuova = email[0] + email[1];
+                        accountName.innerHTML = nuova.toUpperCase();
                     } else {
-                        window.lcoation.href = 'login.html';
+                        window.location.href = 'login.html';
                     }
                 })
             })
