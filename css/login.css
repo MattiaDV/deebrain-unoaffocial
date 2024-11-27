@@ -18,6 +18,24 @@ html, body { z-index: -2; background: url('https://myndo.it/wp-content/uploads/2
     opacity: 100%;
 }
 
+.return-home-no-log input[type="button"] {
+    padding: 10px;
+    min-width: 250px;
+    margin-top: 32px;
+    border: 1px solid white;
+    border-radius: 4px;
+    background: white;
+    color: #0097b2 !important;
+    cursor: pointer;
+    font-size: 20px !important;
+    transition: 0.4s;
+}
+
+.return-home-no-log input[type="button"]:hover {
+    background: #0097b2;
+    color: white !important;
+}
+
 .container-form {
     width: 100vw;
     height: 100vh;
