@@ -1,4 +1,9 @@
-import Odoo from 'node-odoo'
+import Odoo from 'node-odoo';
+import { createServer } from 'node:http';
+import { readFile } from 'node:fs/promises';
+import { createReadStream } from 'node:fs';
+import { extname, join } from 'node:path';
+import { json } from 'stream/consumers';
 
 const connectionDb = new Odoo({
     host: 'localhost',
@@ -8,94 +13,174 @@ const connectionDb = new Odoo({
     password: 'admin',
 });
 
+
+
+
+function getLocationsFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('location_listing', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+function getMainFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('main_services', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei main services: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+function getDisFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('location_listing', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei distinctive service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+function getMediaFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_media', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei managed media service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+function getPlatformFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_platform', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle managed platform service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+
+
+
+
+
+
 connectionDb.connect(function(err) {
     if (err) {
         console.error("Connessione non riuscita: ", err);
     } else {
         console.log("Connessione al database riuscita");
     }
-
-
-    // Funzione per prelevare tutti i nomi delle location presenti nel database
-    let id_array_location = Array.from({ length: 440 }, (_, i) => i);
-
-    var params_location = id_array_location;
-      
-    connectionDb.get('location_listing', params_location, function (err, partners) {
-        if (err) { 
-            console.error("Errore nella ricerca delle location presenti nel database: " + JSON.stringify(err)); 
-        }
-        for (let x = 0; x < partners.length; x++) {
-            if (partners[x].name !== false) {
-                console.log(partners[x].name);
-            }
-        }
-    });
-
-    // Funzione per restituire tutti i main service presenti nel database
-    let id_array_main_service = Array.from({ length: 440 }, (_, i) => i);
-
-    var params_main_service = id_array_main_service;
-
-    connectionDb.get('main_services', params_main_service, function(err, main_serv) {
-        if (err) {
-            console.error("Errore nella ricerca dei main service presenti sul database: " + JSON.stringify(err));
-        }
-        for (let x = 0; x < main_serv.length; x++) {
-            if (main_serv[x].name !== false) {
-                console.log(main_serv[x].name);
-            }
-        }
-    })
-
-    // Funzione per restituire tutti i distinctive service presenti nel database
-    let id_array_distinctive_service = Array.from({ length: 440 }, (_, i) => i);
-
-    var params_distinctive_service = id_array_distinctive_service;
-
-    connectionDb.get('distinctive_services', params_distinctive_service, function(err, distinctive_service) {
-        if (err) {
-            console.error("Errore nella ricerca dei distinctive service presenti sul database: " + JSON.stringify(err));
-        }
-        for (let x = 0; x < distinctive_service.length; x++) {
-            if (distinctive_service[x].name !== false) {
-                console.log(distinctive_service[x].name);
-            }
-        }
-    })
-
-    // Funzione per restituire tutti i managed media presenti nel database
-    let id_array_managed_media = Array.from({ length: 440 }, (_, i) => i);
-
-    var params_managed_media = id_array_managed_media;
-
-    connectionDb.get('managed_media', params_managed_media, function(err, managed_media) {
-        if (err) {
-            console.error("Errore nella ricerca dei managed media presenti sul database: " + JSON.stringify(err));
-        }
-        for (let x = 0; x < managed_media.length; x++) {
-            if (managed_media[x].name !== false) {
-                console.log(managed_media[x].name);
-            }
-        }
-    })
-
-    // Funzione per restituire tutti i managed platform presenti nel database
-    let id_array_managed_platform = Array.from({ length: 440 }, (_, i) => i);
-
-    var params_managed_platform = id_array_managed_platform;
-
-    connectionDb.get('managed_platform', params_managed_platform, function(err, managed_platform) {
-        if (err) {
-            console.error("Errore nella ricerca dei managed platform presenti sul database: " + JSON.stringify(err));
-        }
-        for (let x = 0; x < managed_platform.length; x++) {
-            if (managed_platform[x].name !== false) {
-                console.log(managed_platform[x].name);
-            }
-        }
-    })
-    
 });
 
-export default connectionDb;
+// Funzione per determinare il tipo MIME dei file
+const mimeTypes = {
+    '.html': 'text/html',
+    '.css': 'text/css',
+    '.js': 'application/javascript',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.svg': 'image/svg+xml',
+    '.ico': 'image/x-icon',
+};
+
+const server = createServer(async (req, res) => {
+    const { method, url } = req;
+
+    // Gestione della homepage
+    if (method === 'GET' && url === '/') {
+        try {
+            const htmlContent = await readFile('index.html', 'utf8');
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(htmlContent);
+        } catch (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Errore del server interno');
+        }
+        return;
+    } 
+    
+    if (method === 'GET' && url === '/register.html') {
+        try {
+            const htmlContent = await readFile('register.html', 'utf8');
+            const id_array_location = Array.from({ length: 440 }, (_, i) => i);
+            const locationAll = await getLocationsFromDb(id_array_location);
+            const mainServ = await getMainFromDb(id_array_location);
+            const disServ = await getDisFromDb(id_array_location);
+            const media = await getMediaFromDb(id_array_location);
+            const platform = await getPlatformFromDb(id_array_location);
+            const updatedHtmlContent = htmlContent.replace("{locations}", locationAll.join(''));
+            const up = updatedHtmlContent.replace('{mainService}', mainServ);
+            const upp = up.replace('{distinctiveService}', disServ);
+            const uppp = upp.replace('{media}', media);
+            const upppp = uppp.replace('{platform}', platform);
+
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(upppp);
+        } catch (err) {
+            console.error(err);
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Errore del server interno');
+        }
+        return;
+    }
+
+    // Gestione dei file statici
+    const staticPath = './'; // Cartella contenente i file statici
+    const filePath = join(staticPath, url);
+    const fileExt = extname(filePath);
+
+    if (mimeTypes[fileExt]) {
+        try {
+            const fileStream = createReadStream(filePath);
+            res.writeHead(200, { 'Content-Type': mimeTypes[fileExt] });
+            fileStream.pipe(res);
+        } catch (err) {
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end('File non trovato');
+        }
+        return;
+    }
+
+    // Risposta di default
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Pagina non trovata');
+});
+
+server.listen(3000, "192.168.1.14", () => {
+    console.log("Listening");
+});
