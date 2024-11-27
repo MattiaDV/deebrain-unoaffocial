@@ -55,7 +55,7 @@ connectionDb.connect(function(err) {
 
     connectionDb.get('distinctive_services', params_distinctive_service, function(err, distinctive_service) {
         if (err) {
-            console.error("Errore nella ricerda dei main service presenti sul database: " + JSON.stringify(err));
+            console.error("Errore nella ricerda dei distinctive service presenti sul database: " + JSON.stringify(err));
         }
         for (let x = 0; x < distinctive_service.length; x++) {
             if (distinctive_service[x].name !== false) {
@@ -63,6 +63,39 @@ connectionDb.connect(function(err) {
             }
         }
     })
+
+    // Funzione per restituire tutti i managed media presenti nel database
+    let id_array_managed_media = Array.from({ length: 440 }, (_, i) => i);
+
+    var params_managed_media = id_array_managed_media;
+
+    connectionDb.get('managed_media', params_managed_media, function(err, managed_media) {
+        if (err) {
+            console.error("Errore nella ricerda dei managed media presenti sul database: " + JSON.stringify(err));
+        }
+        for (let x = 0; x < managed_media.length; x++) {
+            if (managed_media[x].name !== false) {
+                console.log(managed_media[x].name);
+            }
+        }
+    })
+
+    // Funzione per restituire tutti i managed platform presenti nel database
+    let id_array_managed_platform = Array.from({ length: 440 }, (_, i) => i);
+
+    var params_managed_platform = id_array_managed_platform;
+
+    connectionDb.get('managed_platform', params_managed_platform, function(err, managed_platform) {
+        if (err) {
+            console.error("Errore nella ricerda dei managed platform presenti sul database: " + JSON.stringify(err));
+        }
+        for (let x = 0; x < managed_platform.length; x++) {
+            if (managed_platform[x].name !== false) {
+                console.log(managed_platform[x].name);
+            }
+        }
+    })
+    
 });
 
 export default connectionDb;
