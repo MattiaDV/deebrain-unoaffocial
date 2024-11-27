@@ -1,0 +1,41 @@
+.search-bar-home {
+    border: none !important;
+    box-shadow: none !important;
+    width: auto !important;
+}
+
+.search-bar-home button {
+    padding: 10px;
+    font-size: 20px;
+    min-width: 200px;
+    margin: 5px;
+    border-radius: 4px;
+    border: 1px solid #0097b2;
+    background: none;
+    color: #0097b2;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.search-bar-home button:hover {
+    background: #0097b2;
+    color: white;
+}
+
+.search-bar-home button:nth-child(1) {
+    padding: 10px;
+    font-size: 20px;
+    min-width: 200px;
+    margin: 5px;
+    border-radius: 4px;
+    border: 1px solid #0097b2;
+    background: #0097b2;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.search-bar-home button:nth-child(1):hover {
+    background: white;
+    color: #0097b2;
+}
