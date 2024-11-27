@@ -1,23 +1,3 @@
-import connectionDb from '../server.mjs';
-
-let selectionLocation = document.getElementById('location');
-
-let id_array = Array.from({ length: 205 }, ('_, i'));
-
-let params = {
-    ids: id_array
-}
-
-connectionDb.get('', '', params, function(err, part) {
-
-})
-
-
-
-
-
-
-
 window.addEventListener("load", function() {
     document.getElementById('form-1-an').style.marginRight = 0 + "%";
     document.getElementById('form-1-an').style.height = "auto";
