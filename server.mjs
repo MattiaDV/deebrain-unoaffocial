@@ -37,7 +37,7 @@ function getAgencyTypeFromDB(params) {
             } else {
                 const locationOptions = part 
                     .filter(partner => partner.name)
-                    .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.agencyType}" checked> ${partner.agencyType}</li>`);
+                    .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.agencyType.replace(" ", '-')}" checked> ${partner.agencyType}</li>`);
                 resolve(locationOptions);
             }
         })
@@ -347,9 +347,10 @@ const server = createServer(async (req, res) => {
             const mediaM = await getMediaFromDb(id_cardsAgency);
             const platformM = await getPlatformFromDb(id_cardsAgency);
             const agencyTypes = await getAgencyTypeFromDB(id_cardsAgency);
+            const normalLocation = await getNormalLocationsFromDb(id_cardsAgency);
             const updatedHtmlContent = htmlContent.replace("{cards}", cardsAgency.join(''));
             const filterAgencyType = updatedHtmlContent.replace("{filter-agencyType}", agencyTypes.join(''));
-            const filterLocation = filterAgencyType.replace("{filter-location}", location.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
+            const filterLocation = filterAgencyType.replace("{filter-location}", normalLocation.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase()}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
             const filterMains = filterLocation.replace("{filter-mainService}", mainS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
             const filterDis = filterMains.replace("{filter-distinctiveService}", disS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
             const filterMedia = filterDis.replace("{filter-managedMedia}", mediaM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));

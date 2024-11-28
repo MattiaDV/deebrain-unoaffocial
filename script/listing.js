@@ -15,35 +15,17 @@ billing.addEventListener('mousemove', function() {
     }
 });
 
-let advancedFilter = [
-    "search-digital-agency",
-    "search-media-center",
-    "search-creative-agency",
-    "search-perform-agency",
-    "search-rome",
-    "search-milan",
-    "search-naples",
-    "search-seo",
-    "search-sea",
-    "search-develop",
-    "search-creativity",
-    "search-video-production",
-    "search-media",
-    "search-blockchain",
-    "search-ai",
-    "search-retail-media",
-    "search-dropship",
-    "search-tv",
-    "search-digital",
-    "search-press",
-    "search-radio",
-    "search-connected",
-    "search-google",
-    "search-microsoft",
-    "search-amazon",
-    "search-conversion",
-    "search-awareness"
-];
+let advancedFilter = [];
+
+function fil() {
+    let allFil = document.querySelectorAll("input[type='checkbox']");
+    console.log("Sono dentro");
+    for (let fil of allFil) {
+        advancedFilter.push(fil.id);
+    }
+};
+
+console.log(advancedFilter);
 
 let checked = [];
 let paroleChiave = [];
@@ -59,12 +41,31 @@ function filter() {
     typeAgency = [];
 
     var parola;
+    var typeA;
+    var loc;
+
+    let agencyTypes = document.getElementById("agencyType").querySelectorAll('li > input');
+    let locationFil = document.getElementById("locationFil").querySelectorAll('li > input');
+
+    for (let a of agencyTypes) {
+        // console.log("Agency type: " + a.id);
+        typeA = a.id.replace("search-", "");
+        typeAgency.push(typeA);
+    }
+
+    for (let a of locationFil) {
+        // console.log("Agency type: " + a.id);
+        loc = a.id.replace("search-", "");
+        city.push(loc);
+    }
+
+    console.log(typeAgency)
 
     for (let advF = 0; advF < advancedFilter.length; advF++) {
         if (document.getElementById(advancedFilter[advF]).checked) {
             if (!checked.includes(advancedFilter[advF])) {
                 checked.push(advancedFilter[advF]);
-                if (advancedFilter[advF] != 'search-rome' && advancedFilter[advF] != 'search-milan' && advancedFilter[advF] != 'search-naples' && advancedFilter[advF] != 'search-digital-agency' && advancedFilter[advF] != 'search-media-center' && advancedFilter[advF] != 'search-creative-agency'  && advancedFilter[advF] != 'search-perform-agency') {
+                if (advancedFilter[advF] != 'search-' + typeAgency[advF]) {
                     parola = advancedFilter[advF].replace("search-", "");
                     paroleChiave.push(parola);
                 }
@@ -75,67 +76,41 @@ function filter() {
         }
     }
 
-    if (checked.includes('search-rome')) {
-        if (!city.includes("rome")) {
-            city.push("rome");
+    for (let a of typeAgency) {
+        console.log('search-' + a);
+        if (checked.includes('search-' + a)) {
+            if (!typeAgency.includes(a)) {
+                typeAgency.push(a);
+            }
+        } else {
+            let index = typeAgency.indexOf(a);
+            if (index !== -1) {
+                typeAgency.splice(index, 1);
+            }
         }
-    } else {
-        city.indexOf("rome", 1);
-    }
+    }    
 
-    if (checked.includes('search-milan')) {
-        if (!city.includes("milan")) {
-            city.push("milan");
+    for (let a of city) {
+        console.log('search-' + a);
+        if (checked.includes('search-' + a)) {
+            if (!city.includes(a)) {
+                city.push(a);
+            }
+        } else {
+            let index = city.indexOf(a);
+            if (index !== -1) {
+                city.splice(index, 1);
+            }
         }
-    } else {
-        city.indexOf("milan", 1);
-    }
-
-    if (checked.includes('search-naples')) {
-        if (!city.includes("naples")) {
-            city.push("naples");
-        }
-    } else {
-        city.indexOf("naples", 1);
-    }
-
-    if (checked.includes('search-digital-agency')) {
-        if (!typeAgency.includes("digital-agency")) {
-            typeAgency.push("digital-agency");
-        }
-    } else {
-        typeAgency.indexOf("digital-agency", 1);
-    }
-
-    if (checked.includes('search-media-center')) {
-        if (!typeAgency.includes("media-center")) {
-            typeAgency.push("media-center");
-        }
-    } else {
-        typeAgency.indexOf("media-center", 1);
-    }
-
-    if (checked.includes('search-creative-agency')) {
-        if (!typeAgency.includes("creative-agency")) {
-            typeAgency.push("creative-agency");
-        }
-    } else {
-        typeAgency.indexOf("creative-agency", 1);
-    }
-
-    if (checked.includes('search-perform-agency')) {
-        if (!typeAgency.includes("perform-agency")) {
-            typeAgency.push("perform-agency");
-        }
-    } else {
-        typeAgency.indexOf("naples", 1);
-    }
+    }  
 
     for (let cardAcc of cards) {
         if (
-            paroleChiave.some(allInfo => cardAcc.classList.contains(allInfo)) &&
-            city.some(citys => cardAcc.classList.contains(citys)) &&
-            typeAgency.some(typeA => cardAcc.classList.contains(typeA))
+            typeAgency.some(agencyType => cardAcc.classList.contains(agencyType)) 
+            &&
+            city.some(city => cardAcc.classList.contains(city)) 
+            // &&
+            // advancedFilter.some(allInfo => cardAcc.classList.contains(allInfo))
         ) {
             cardAcc.style.display = "flex";
         } else {
@@ -148,7 +123,7 @@ function filter() {
 function resetFilter() {
     for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
         document.getElementById(advancedFilter[resetA]).checked = true;
-        cards[resetA].style.display = "flex";
+        // cards[resetA].style.display = "flex";
     }
 
     filter();

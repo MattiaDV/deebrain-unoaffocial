@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     </head>
-    <body>
+    <body onload="fil()">
 
         <div class = "header-deebrain">
             <ul class = "deebrain-menu">
@@ -30,7 +30,7 @@
                         <ul class="cat">
                             <details>
                             <summary><li class="fs-16 medium-bold-text"><span class = "title-fil"><span>Type of agency </span><span>↓</span></span></summary>
-                                <ul class="subcategory">
+                                <ul class="subcategory" id = "agencyType">
                                     <!-- <li class="fs-16 light-text"><input type="checkbox" id="search-digital-agency" checked> Digital agency</li>
                                     <li class="fs-16 light-text"><input type="checkbox" id="search-media-center" checked> Media center</li>
                                     <li class="fs-16 light-text"><input type="checkbox" id="search-creative-agency" checked> Creative agency</li>
@@ -41,7 +41,7 @@
                             </details>
                             <details>
                             <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Location </span><span>↓</span></span></summary>
-                                <ul class="subcategory">
+                                <ul class="subcategory" id = "locationFil">
                                     <!-- <li class="fs-16 light-text"><input type="checkbox" id="search-rome" checked> Rome</li>
                                     <li class="fs-16 light-text"><input type="checkbox" id="search-milan" checked> Milan</li>
                                     <li class="fs-16 light-text"><input type="checkbox" id="search-naples" checked> Naples</li> -->
