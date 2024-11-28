@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { createReadStream } from 'node:fs';
 import { extname, join } from 'node:path';
 import { json } from 'stream/consumers';
+import cookie from 'cookie';
 
 const connectionDb = new Odoo({
     host: 'localhost',
@@ -14,6 +15,19 @@ const connectionDb = new Odoo({
 });
 
 
+
+function getAllDataFromDB(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('users_model', params, (err, part) => {
+            if (err) {
+                reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
+            } else {
+                const locationOptions = part 
+                resolve(locationOptions);
+            }
+        })
+    })
+}
 
 function getAgencyTypeFromDB(params) {
     return new Promise((resolve, reject) => {
@@ -314,6 +328,34 @@ const server = createServer(async (req, res) => {
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(filterPlatform);
+        } catch (err) {
+            console.error(err);
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Errore del server interno');
+        }
+        return;
+    }
+
+    if (method === 'GET' && url === '/mypage.html') {
+        try {
+            const htmlContent = await readFile('mypage.html', 'utf8');
+            const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+            const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
+            const emailFromCookie = cookies.email || 'Nessun cookie trovato';
+            const nameOfAgency = await getAllDataFromDB(id_cardsAgency);
+            const updatedHtmlContent = htmlContent;
+            const realName = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.name);
+            console.log(realName);
+            const realNames = updatedHtmlContent.replace('{agencyName}', realName.join(''));
+            const realNamesURL = realNames.replace('{agencyNameURL}', realName.join(''));
+            // console.log(nameOfAgency);
+            // console.log(emailFromCookie)
+
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(realNamesURL);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
