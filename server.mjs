@@ -426,7 +426,15 @@ const server = createServer(async (req, res) => {
             const urlFacebook = urlLinkedin.replace('{urlFacebool}', realName.map(partner => partner.facebookLink));
             const emailContact = urlFacebook.replace('{emailContact}', realName.map(partner => partner.email));
             const titlePage = emailContact.replace('{titleName}', realName.map(partner => partner.name));
-            const logoURL = titlePage.replace('{logoUrl}', realName.map(partner => (partner.logo) ? escape(partner.logo) : ''));
+            const baseUrl = "http://127.0.0.1:8069/";
+            const logoURL = titlePage.replace(
+                '{logoUrl}',
+                realName.map(partner =>
+                    partner.logo 
+                        ? `${baseUrl}/web/image/users_model/${partner.id}/logo`
+                        : ''
+                )
+            );
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
