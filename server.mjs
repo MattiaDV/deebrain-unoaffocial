@@ -3,8 +3,8 @@ import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { createReadStream } from 'node:fs';
 import { extname, join } from 'node:path';
-import { json } from 'stream/consumers';
 import cookie from 'cookie';
+import { escape } from 'node:querystring';
 
 const connectionDb = new Odoo({
     host: 'localhost',
@@ -425,11 +425,13 @@ const server = createServer(async (req, res) => {
             const urlLinkedin = urlSito.replace('{urlLinkedin}', realName.map(partner => partner.linkedinLink));
             const urlFacebook = urlLinkedin.replace('{urlFacebool}', realName.map(partner => partner.facebookLink));
             const emailContact = urlFacebook.replace('{emailContact}', realName.map(partner => partner.email));
+            const titlePage = emailContact.replace('{titleName}', realName.map(partner => partner.name));
+            const logoURL = titlePage.replace('{logoUrl}', realName.map(partner => (partner.logo) ? escape(partner.logo) : ''));
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(emailContact);
+            res.end(logoURL);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
