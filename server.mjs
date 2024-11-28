@@ -44,6 +44,19 @@ function getAgencyTypeFromDB(params) {
     })
 }
 
+function getFounderNamesFromDB(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('founder_name', params, (err, part) => {
+            if (err) {
+                reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
+            } else {
+                const locationOptions = part 
+                resolve(locationOptions);
+            }
+        })
+    })
+}
+
 function getLocationsFromDb(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('location_listing', params, (err, partners) => {
@@ -53,6 +66,21 @@ function getLocationsFromDb(params) {
                 const locationOptions = partners
                     .filter(partner => partner.name !== false)
                     .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+function getNormalLocationsFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('location_listing', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
                 resolve(locationOptions);
             }
         });
@@ -343,19 +371,65 @@ const server = createServer(async (req, res) => {
             const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
             const emailFromCookie = cookies.email || 'Nessun cookie trovato';
             const nameOfAgency = await getAllDataFromDB(id_cardsAgency);
+            const founderNames = await getFounderNamesFromDB(id_cardsAgency);
+            const locationName = await getNormalLocationsFromDb(id_cardsAgency);
             const updatedHtmlContent = htmlContent;
+
+            const idFounder = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.founderName)
+
+            const idLocation= nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.locations)
+
+            // console.log(idLocation);
+            // console.log(idFounder);
+
+            const idFounderFlat = idFounder.flat();
+            const idLocationFlat = idLocation.flat();
+
+            // console.log(idLocationFlat);
+
             const realName = nameOfAgency
                 .filter(partner => partner.name !== false)
                 .filter(partner => partner.email == emailFromCookie)
-                .map(partner => partner.name);
-            console.log(realName);
-            const realNames = updatedHtmlContent.replace('{agencyName}', realName.join(''));
-            const realNamesURL = realNames.replace('{agencyNameURL}', realName.join(''));
+
+            const realFounder = founderNames
+                .filter(partner => idFounderFlat.includes(partner.id))
+                .map(partner => partner.name)
+
+            const realLocation = locationName
+                .filter(partner => idLocationFlat.includes(partner.id))
+                .map(partner => partner.name)
+
+            // console.log(realLocation);
+
+            // console.log(realFounder);
+
+            const realNames = updatedHtmlContent.replace('{agencyName}', realName.map(partner => partner.name));
+            const realNamesURL = realNames.replace('{agencyNameURL}', realName.map(partner => partner.name));
+            const yearsF = realNamesURL.replace('{yearOfFoundation}', realName.map(partner => partner.foundationYear));
+            const customers = yearsF.replace('{customers}', realName.map(partner => partner.founderName.length));
+            const foun = customers.replace('{founder}', realFounder.join(', '));
+            const agencyTTT = foun.replace('{agencyTypePersonal}', realName.map(partner => partner.agencyType.replace('-', ' ').toUpperCase()));
+            const bill = agencyTTT.replace('{billingPersonal}', realName.map(partner => (partner.managedBilling > 999999) ? (partner.managedBilling / 1000000) + "M" : (partner.managedBilling > 9999) ? (partner.managedBilling / 1000) + "k" : partner.managedBilling));
+            const location = bill.replace('{locationPersonal}', realLocation.join(', '));
+            const emploPers = location.replace('{employeesPersonalQuad}', realName.map(partner => partner.numberOfEmployees));
+            const awareness = emploPers.replace('{awareness}', realName.map(partner => (partner.awareness == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Awareness</span>" : ''));
+            const conversion = awareness.replace('{conversion}', realName.map(partner => (partner.conversion == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Conversion</span>" : ''));
+            const consideration = conversion.replace('{consideration}', realName.map(partner => (partner.consideration == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Consideration</span>" : ''));
+            const urlSito = consideration.replace('{urlSito}', realName.map(partner => partner.website));
+            const urlLinkedin = urlSito.replace('{urlLinkedin}', realName.map(partner => partner.linkedinLink));
+            const urlFacebook = urlLinkedin.replace('{urlFacebool}', realName.map(partner => partner.facebookLink));
+            const emailContact = urlFacebook.replace('{emailContact}', realName.map(partner => partner.email));
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(realNamesURL);
+            res.end(emailContact);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
