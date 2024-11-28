@@ -159,6 +159,10 @@ function getNewAgencyFromDB(params) {
                     // Genera le opzioni HTML
                     const locationOptions = enrichedPartners
                     .filter(partner => partner.name !== false)
+                    .map(partner => ({
+                        ...partner,
+                        managedBilling: partner.managedBilling > 999999 ? (partner.managedBilling / 1000000) + "M" : partner.managedBilling > 999 ? (partner.managedBilling / 1000) + "k" : partner.managedBilling,
+                    }))
                     .map(partner => `
                         <div class="card-account ${partner.agencyType.replace(' ', '-')} ${partner.locations.join(' ').toLowerCase()} ${partner.mainSS.join(' ').toLowerCase()} ${partner.disSS.join(' ').toLowerCase()} ${partner.mediaSS.join(' ').toLowerCase()} ${partner.platformSS.join(' ').toLowerCase()}">
                             <div class="left-part-card">

@@ -145,7 +145,7 @@ details ul li {
     align-items: flex-start;
     flex-direction: column;
     border-radius: 4px;
-    width: 100%;
+    max-width: 100%;
     height: calc(100% - 20px);
     overflow-y: scroll;
 }
@@ -205,6 +205,8 @@ ul li {
     background-color: #0097b2;
     border: 1px solid white;
     color: white;
+    width: 100%;
+    min-width: 200px !important;
     border-radius: 4px;
     margin-top: 5px;
 }
@@ -224,8 +226,17 @@ details[open] .subcategory {
     margin-top: 32px;
 }
 
+.cat details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    flex-direction: column;
+}
+
 .subcategory li {
     padding: 3px;
+    min-width: 100%;
 }
 
 .container-list {
