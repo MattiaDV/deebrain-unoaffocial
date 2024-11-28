@@ -15,6 +15,20 @@ const connectionDb = new Odoo({
 
 
 
+function getAgencyTypeFromDB(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('users_model', params, (err, part) => {
+            if (err) {
+                reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
+            } else {
+                const locationOptions = part 
+                    .filter(partner => partner.name)
+                    .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.agencyType}" checked> ${partner.agencyType}</li>`);
+                resolve(locationOptions);
+            }
+        })
+    })
+}
 
 function getLocationsFromDb(params) {
     return new Promise((resolve, reject) => {
@@ -48,7 +62,7 @@ function getMainFromDb(params) {
 
 function getDisFromDb(params) {
     return new Promise((resolve, reject) => {
-        connectionDb.get('location_listing', params, (err, partners) => {
+        connectionDb.get('distinctive_services', params, (err, partners) => {
             if (err) {
                 reject("Errore nella ricerca dei distinctive service: " + JSON.stringify(err));
             } else {
@@ -284,10 +298,22 @@ const server = createServer(async (req, res) => {
             const htmlContent = await readFile('listing.html', 'utf8');
             const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
             const cardsAgency = await getNewAgencyFromDB(id_cardsAgency);
+            const location = await getLocationsFromDb(id_cardsAgency);
+            const mainS = await getMainFromDb(id_cardsAgency);
+            const disS = await getDisFromDb(id_cardsAgency);
+            const mediaM = await getMediaFromDb(id_cardsAgency);
+            const platformM = await getPlatformFromDb(id_cardsAgency);
+            const agencyTypes = await getAgencyTypeFromDB(id_cardsAgency);
             const updatedHtmlContent = htmlContent.replace("{cards}", cardsAgency.join(''));
+            const filterAgencyType = updatedHtmlContent.replace("{filter-agencyType}", agencyTypes.join(''));
+            const filterLocation = filterAgencyType.replace("{filter-location}", location.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
+            const filterMains = filterLocation.replace("{filter-mainService}", mainS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
+            const filterDis = filterMains.replace("{filter-distinctiveService}", disS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
+            const filterMedia = filterDis.replace("{filter-managedMedia}", mediaM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
+            const filterPlatform = filterMedia.replace("{filter-managedPlatform}", platformM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(updatedHtmlContent);
+            res.end(filterPlatform);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
