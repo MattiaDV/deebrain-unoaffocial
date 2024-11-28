@@ -396,6 +396,7 @@ function verify() {
         alert("You have to choose min 3 main client");
         return false;
     } else {
+        window.location.href = 'mypage.html';
         return true;
     }
 }

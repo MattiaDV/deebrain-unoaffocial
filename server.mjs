@@ -212,7 +212,6 @@ function getNewAgencyFromDB(params) {
                         })
                     );
 
-                    // Genera le opzioni HTML
                     const locationOptions = enrichedPartners
                     .filter(partner => partner.name !== false)
                     .map(partner => ({
@@ -222,7 +221,7 @@ function getNewAgencyFromDB(params) {
                     .map(partner => `
                         <div class="card-account ${partner.agencyType.replace(' ', '-')} ${partner.locations.join(' ').toLowerCase()} ${partner.mainSS.join(' ').toLowerCase()} ${partner.disSS.join(' ').toLowerCase()} ${partner.mediaSS.join(' ').toLowerCase()} ${partner.platformSS.join(' ').toLowerCase()}">
                             <div class="left-part-card">
-                                <img src="img/logo.png">
+                                <img src="${(partner.logo) ? 'http://127.0.0.1:8069/web/image/users_model/' + partner.id + '/logo' : ''}" alt = "Logo agency">
                             </div>
                             <div class="right-part-card">
                                 <div class="upper-part-card">
@@ -238,7 +237,9 @@ function getNewAgencyFromDB(params) {
                                         <span class="loco">
                                             <svg fill="#0097b2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 395.71 395.71" xml:space="preserve" stroke="#0097b2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738 c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388 C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191 c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"></path> </g> </g></svg>${partner.locations.join(', ')} <!-- Elenco nomi delle location -->
                                         </span>
-                                        <div class="a">Awareness</div>
+                                        <div class="a">${(partner.awareness == true) ? ' - Awareness - ' : ''}</div>
+                                        <div class="a">${(partner.conversion == true) ? ' - Conversion - ' : ''}</div>
+                                        <div class="a">${(partner.consideration == true) ? ' - Consideration - ' : ''}</div>
                                     </div>
                                     <ul class="infos-card">
                                         <li class="light-text fs-12">
