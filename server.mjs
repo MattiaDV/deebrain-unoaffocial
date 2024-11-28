@@ -102,6 +102,21 @@ function getMainFromDb(params) {
     });
 }
 
+function getNormalMainFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('main_services', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei main services: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
 function getDisFromDb(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('distinctive_services', params, (err, partners) => {
@@ -111,6 +126,21 @@ function getDisFromDb(params) {
                 const locationOptions = partners
                     .filter(partner => partner.name !== false)
                     .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+function getNormalDisFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('distinctive_services', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei distinctive service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
                 resolve(locationOptions);
             }
         });
@@ -132,6 +162,21 @@ function getMediaFromDb(params) {
     });
 }
 
+function getNormalMediaFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_media', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei managed media service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
 function getPlatformFromDb(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('managed_platform', params, (err, partners) => {
@@ -141,6 +186,21 @@ function getPlatformFromDb(params) {
                 const locationOptions = partners
                     .filter(partner => partner.name !== false)
                     .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+function getNormalPlatformFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_platform', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle managed platform service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
                 resolve(locationOptions);
             }
         });
@@ -342,19 +402,19 @@ const server = createServer(async (req, res) => {
             const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
             const cardsAgency = await getNewAgencyFromDB(id_cardsAgency);
             const location = await getLocationsFromDb(id_cardsAgency);
-            const mainS = await getMainFromDb(id_cardsAgency);
-            const disS = await getDisFromDb(id_cardsAgency);
-            const mediaM = await getMediaFromDb(id_cardsAgency);
-            const platformM = await getPlatformFromDb(id_cardsAgency);
+            const mainS = await getNormalMainFromDb(id_cardsAgency);
+            const disS = await getNormalDisFromDb(id_cardsAgency);
+            const mediaM = await getNormalMediaFromDb(id_cardsAgency);
+            const platformM = await getNormalPlatformFromDb(id_cardsAgency);
             const agencyTypes = await getAgencyTypeFromDB(id_cardsAgency);
             const normalLocation = await getNormalLocationsFromDb(id_cardsAgency);
             const updatedHtmlContent = htmlContent.replace("{cards}", cardsAgency.join(''));
             const filterAgencyType = updatedHtmlContent.replace("{filter-agencyType}", agencyTypes.join(''));
-            const filterLocation = filterAgencyType.replace("{filter-location}", normalLocation.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase()}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
-            const filterMains = filterLocation.replace("{filter-mainService}", mainS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
-            const filterDis = filterMains.replace("{filter-distinctiveService}", disS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
-            const filterMedia = filterDis.replace("{filter-managedMedia}", mediaM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
-            const filterPlatform = filterMedia.replace("{filter-managedPlatform}", platformM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner}" checked> ${partner}</li>`).join(''));
+            const filterLocation = filterAgencyType.replace("{filter-location}", normalLocation.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+            const filterMains = filterLocation.replace("{filter-mainService}", mainS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+            const filterDis = filterMains.replace("{filter-distinctiveService}", disS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked> <option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+            const filterMedia = filterDis.replace("{filter-managedMedia}", mediaM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked> <option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+            const filterPlatform = filterMedia.replace("{filter-managedPlatform}", platformM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(filterPlatform);

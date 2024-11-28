@@ -109,8 +109,8 @@ function filter() {
             typeAgency.some(agencyType => cardAcc.classList.contains(agencyType)) 
             &&
             city.some(city => cardAcc.classList.contains(city)) 
-            // &&
-            // advancedFilter.some(allInfo => cardAcc.classList.contains(allInfo))
+            &&
+            paroleChiave.some(paroleChiave => cardAcc.classList.contains(paroleChiave))
         ) {
             cardAcc.style.display = "flex";
         } else {
