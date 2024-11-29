@@ -5,6 +5,7 @@ import { createReadStream } from 'node:fs';
 import { extname, join } from 'node:path';
 import cookie from 'cookie';
 import { escape } from 'node:querystring';
+import formidable from 'formidable';
 
 const connectionDb = new Odoo({
     host: 'localhost',
@@ -14,6 +15,18 @@ const connectionDb = new Odoo({
     password: 'admin',
 });
 
+
+function createUser(user) {
+    return new Promise((resolve, reject) => {
+        connectionDb.create('users_model', user, function(err, result) {
+            if (err) {
+                reject(err); // Rifiuta la Promise in caso di errore
+            } else {
+                resolve(result); // Risolvi la Promise con il risultato
+            }
+        });
+    });
+}
 
 
 function getAllDataFromDB(params) {
@@ -425,6 +438,176 @@ const server = createServer(async (req, res) => {
         }
         return;
     }
+
+    if (method === 'POST' && url === '/register.html') {
+        try {
+            const htmlContent = await readFile('mypage.html', 'utf8');
+            const form = formidable({ multiples: true }); 
+    
+            form.parse(req, async (err, fields, files) => {
+                try {
+                    if (err) {
+                        console.error("Errore durante il parsing del form:", err);
+                        res.writeHead(500, { 'Content-Type': 'text/plain' });
+                        res.end('Errore durante il parsing del form');
+                        return;
+                    }
+
+                    const founderNameArray = fields.founderName || []; 
+                    const founderNameCommands = founderNameArray.map(name => {
+                        return [0, 0, { name }]; 
+                    });
+
+                    let citys = [];
+                    const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+
+                    function searchIdOfLocationFromDb() {
+                        return new Promise((resolve, reject) => {
+                            connectionDb.get('location_listing', id_cardsAgency, (err, partners) => {
+                                if (err) {
+                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+                                } else {
+                                    const cit = partners
+                                        .filter(partner => fields.selectedCitysFinal.includes(partner.name))
+                                        .map(partner => partner.id);
+                                    resolve(cit); 
+                                }
+                            });
+                        });
+                    }     
+                    
+                    function searchIdOfMediaFromDb() {
+                        return new Promise((resolve, reject) => {
+                            connectionDb.get('managed_media', id_cardsAgency, (err, partners) => {
+                                if (err) {
+                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+                                } else {
+                                    const cit = partners
+                                        .filter(partner => fields.managedMedia.includes(partner.name))
+                                        .map(partner => partner.id);
+                                    resolve(cit); 
+                                }
+                            });
+                        });
+                    }  
+
+                    function searchIdOfPlatformFromDb() {
+                        return new Promise((resolve, reject) => {
+                            connectionDb.get('managed_platform', id_cardsAgency, (err, partners) => {
+                                if (err) {
+                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+                                } else {
+                                    const cit = partners
+                                        .filter(partner => fields.managedPlatform.includes(partner.name))
+                                        .map(partner => partner.id);
+                                    resolve(cit); 
+                                }
+                            });
+                        });
+                    }  
+
+                    function searchIdOfMainSFromDb() {
+                        return new Promise((resolve, reject) => {
+                            connectionDb.get('main_services', id_cardsAgency, (err, partners) => {
+                                if (err) {
+                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+                                } else {
+                                    const cit = partners
+                                        .filter(partner => fields.mainServices.includes(partner.name))
+                                        .map(partner => partner.id);
+                                    resolve(cit); 
+                                }
+                            });
+                        });
+                    }  
+
+                    function searchIdOfDisFromDb() {
+                        return new Promise((resolve, reject) => {
+                            connectionDb.get('distinctive_services', id_cardsAgency, (err, partners) => {
+                                if (err) {
+                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+                                } else {
+                                    const cit = partners
+                                        .filter(partner => fields.distinctiveServices.includes(partner.name))
+                                        .map(partner => partner.id);
+                                    resolve(cit); 
+                                }
+                            });
+                        });
+                    } 
+
+                    function searchIdOfReferralFromDb() {
+                        return new Promise((resolve, reject) => {
+                            connectionDb.get('users_referral_client', id_cardsAgency, (err, partners) => {
+                                if (err) {
+                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+                                } else {
+                                    const cit = partners
+                                        .filter(partner => fields.nameAndSurnameRef.includes(partner.name))
+                                        .map(partner => partner.id);
+                                    resolve(cit); 
+                                }
+                            });
+                        });
+                    } 
+
+                    console.log("REFEFEFEFEFEFEFEFEFEFE: " + fields.referralClient);
+                    console.log("FIELDS: " + JSON.stringify(fields.nameAndSurnameRef));
+
+    
+                    const user = {
+                        name: fields.agencyName?.[0] || null,
+                        founderName: founderNameCommands.name,
+                        numberOfEmployees: fields.numberOfEmployees?.[0] || null,
+                        foundationYear: fields.foundationYear?.[0] || null,
+                        agencyType: fields.agencyType?.[0] || null,
+                        logo: files.agencyLogo?.[0] || null,
+                        managedBilling: fields.managedBilling?.[0] || null,
+                        awareness: fields.awareness?.[0] === 'on',
+                        conversion: fields.conversion?.[0] === 'on',
+                        website: fields.agencyWebsite?.[0] || null,
+                        linkedinLink: fields.agencyLinkedin?.[0] || null,
+                        facebookLink: fields.agencyFacebook?.[0] || null,
+                        email: fields.agencyEmail?.[0] || null,
+                        locations: await searchIdOfLocationFromDb(id_cardsAgency), 
+                        mainServices: await searchIdOfMainSFromDb(id_cardsAgency),
+                        distinctiveServices: await searchIdOfDisFromDb(id_cardsAgency),
+                        managedMedia: await searchIdOfMediaFromDb(id_cardsAgency),
+                        managedPlatform: await searchIdOfPlatformFromDb(id_cardsAgency),
+                        referralClient: await searchIdOfReferralFromDb(id_cardsAgency),
+                        brochure: fields.brochure?.[0] || null,
+                        caseStudy: fields.caseStudy?.[0] || null,
+                        clientLogos: files.mainClient || [], 
+                    };
+    
+                    console.log("Utente da creare:", JSON.stringify(user, null, 2));
+    
+                    // Creazione dell'utente
+                    const result = await createUser(user);
+                    console.log("Utente creato:", result);
+    
+                    // Risposta al client
+                    res.writeHead(302, { 'Location': '/mypage.html' });
+                    res.end(htmlContent);
+                } catch (createUserError) {
+                    console.error("Errore durante la creazione dell'utente:", createUserError);
+                    if (!res.headersSent) {
+                        res.writeHead(500, { 'Content-Type': 'text/plain' });
+                        res.end('Errore durante la creazione dell\'utente');
+                    }
+                }
+            });
+        } catch (err) {
+            console.error('Errore nel server:', err);
+            if (!res.headersSent) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Errore del server interno');
+            }
+        }
+    }
+    
+    
+        
 
     if (method === 'GET' && url === '/listing.html') {
         try {
