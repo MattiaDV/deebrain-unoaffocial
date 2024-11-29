@@ -438,6 +438,7 @@ const server = createServer(async (req, res) => {
             const updatedHtmlContent = htmlContent;
             const mainServiceLoad = await getNormalMainFromDb(id_cardsAgency);
             const distinctiveServiceLoad = await getNormalDisFromDb(id_cardsAgency);
+            const managedMediaLoad = await getNormalMediaFromDb(id_cardsAgency);
 
             const idFounder = nameOfAgency
                 .filter(partner => partner.name !== false)
@@ -459,6 +460,11 @@ const server = createServer(async (req, res) => {
                 .filter(partner => partner.email == emailFromCookie)
                 .map(partner => partner.distinctiveServices)
 
+            const idMedia = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.managedMedia)
+
             // console.log(idLocation);
             // console.log(idFounder);
 
@@ -466,6 +472,7 @@ const server = createServer(async (req, res) => {
             const idLocationFlat = idLocation.flat();
             const idMainServFlat = idMainServ.flat();
             const idDisServFlat = idDisServ.flat();
+            const idMediaFlat = idMedia.flat();
 
             // console.log(idLocationFlat);
 
@@ -488,6 +495,10 @@ const server = createServer(async (req, res) => {
             const realDisServ = distinctiveServiceLoad
                 .filter(partner => idDisServFlat.includes(partner.id))
                 .map(partner => partner)
+
+            const realMedia = managedMediaLoad
+                .filter(partner => idMediaFlat.includes(partner.id))
+                .map(partner => partner.name)
 
             // console.log(realLocation);
 
@@ -542,11 +553,21 @@ const server = createServer(async (req, res) => {
                     </div>`
                 ).join('')
             )
+            const mediaManaged = distinctiveServiceAdd.replace('{managedMedia}', realMedia
+                .map(partner => 
+                    `<div class = "card-container-gestiti">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7 21L12 17L17 21M7.8 17H16.2C17.8802 17 18.7202 17 19.362 16.673C19.9265 16.3854 20.3854 15.9265 20.673 15.362C21 14.7202 21 13.8802 21 12.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V12.2C3 13.8802 3 14.7202 3.32698 15.362C3.6146 15.9265 4.07354 16.3854 4.63803 16.673C5.27976 17 6.11984 17 7.8 17Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        <span class = "fs-18 normal-text">
+                            ${partner}
+                        </span>
+                    </div>`
+                ).join('')
+            )
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(distinctiveServiceAdd);
+            res.end(mediaManaged);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
