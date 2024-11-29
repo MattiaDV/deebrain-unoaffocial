@@ -437,6 +437,7 @@ const server = createServer(async (req, res) => {
             const locationName = await getNormalLocationsFromDb(id_cardsAgency);
             const updatedHtmlContent = htmlContent;
             const mainServiceLoad = await getNormalMainFromDb(id_cardsAgency);
+            const distinctiveServiceLoad = await getNormalDisFromDb(id_cardsAgency);
 
             const idFounder = nameOfAgency
                 .filter(partner => partner.name !== false)
@@ -453,12 +454,18 @@ const server = createServer(async (req, res) => {
                 .filter(partner => partner.email == emailFromCookie)
                 .map(partner => partner.mainServices)
 
+            const idDisServ = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.distinctiveServices)
+
             // console.log(idLocation);
             // console.log(idFounder);
 
             const idFounderFlat = idFounder.flat();
             const idLocationFlat = idLocation.flat();
             const idMainServFlat = idMainServ.flat();
+            const idDisServFlat = idDisServ.flat();
 
             // console.log(idLocationFlat);
 
@@ -477,6 +484,10 @@ const server = createServer(async (req, res) => {
             const realMainServ = mainServiceLoad
                 .filter(partner => idMainServFlat.includes(partner.id))
                 .map(partner => partner.name)
+
+            const realDisServ = distinctiveServiceLoad
+                .filter(partner => idDisServFlat.includes(partner.id))
+                .map(partner => partner)
 
             // console.log(realLocation);
 
@@ -518,11 +529,24 @@ const server = createServer(async (req, res) => {
                 </div>`
                 ).join('')
             )
+            const distinctiveServiceAdd = mainServiceAdd.replace('{distinctiveServices}', realDisServ
+                .map(partner => 
+                    `<div class = "card-distinctive-listing">
+                        <svg fill="#000000" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m19.828 6.612-5.52-5.535a3.135 3.135 0 0 0-4.5 0L4.273 6.612l7.755 3.87zm2.118 2.235 1.095 1.095a3.12 3.12 0 0 1 0 4.5L14.22 23.35a2.685 2.685 0 0 1-.72.525V13.077zm-19.893 0L.958 9.942a3.12 3.12 0 0 0 0 4.5L9.78 23.35c.21.214.453.392.72.525V13.077z"></path></g></svg>
+                        <span class = "fs-18 normal-text distinctive-title">
+                            ${partner.name}
+                        </span>
+                        <span class = "fs-16 light-text">
+                            ${partner.description}
+                        </span>
+                    </div>`
+                ).join('')
+            )
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(mainServiceAdd);
+            res.end(distinctiveServiceAdd);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
