@@ -207,6 +207,21 @@ function getNormalPlatformFromDb(params) {
     });
 }
 
+function getNormalMainClientFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('main_client_logos', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle main client: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
 function getNewAgencyFromDB(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('users_model', params, async (err, partners) => {
@@ -440,6 +455,7 @@ const server = createServer(async (req, res) => {
             const distinctiveServiceLoad = await getNormalDisFromDb(id_cardsAgency);
             const managedMediaLoad = await getNormalMediaFromDb(id_cardsAgency);
             const managedPlatformLoad = await getNormalPlatformFromDb(id_cardsAgency);
+            const mainClientLoad = await getNormalMainClientFromDb(id_cardsAgency);
 
             const idFounder = nameOfAgency
                 .filter(partner => partner.name !== false)
@@ -471,6 +487,11 @@ const server = createServer(async (req, res) => {
                 .filter(partner => partner.email == emailFromCookie)
                 .map(partner => partner.managedPlatform)
 
+            const idMainClient = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.clientLogos)
+
             // console.log(idLocation);
             // console.log(idFounder);
 
@@ -480,6 +501,7 @@ const server = createServer(async (req, res) => {
             const idDisServFlat = idDisServ.flat();
             const idMediaFlat = idMedia.flat();
             const idPlatformFlat = idPlatform.flat();
+            const idMainClientFlat = idMainClient.flat();
 
             // console.log(idLocationFlat);
 
@@ -510,8 +532,10 @@ const server = createServer(async (req, res) => {
             const realPlatform = managedPlatformLoad
                 .filter(partner => idPlatformFlat.includes(partner.id))
                 .map(partner => partner.name)
-
-            console.log(realPlatform);
+            
+            const realMainClient = mainClientLoad
+                .filter(partner => idMainClientFlat.includes(partner.id))
+                .map(partner => partner)
 
             // console.log(realLocation);
 
@@ -600,11 +624,21 @@ const server = createServer(async (req, res) => {
                     </div>`
                 ).join('')
             )
+            const mainClient = managedPlatform.replace('{mainClients}', realMainClient
+                .map(partner => 
+                    `<div class = "main-card-client">
+                        <h1>${partner.name}</h1>
+                        <img src='${partner.logo 
+                            ? `${baseUrl}/web/image/main_client_logos/${partner.id}/logo`
+                            : ''}' alt = "mainClient logo">
+                    </div>`
+                ).join('')
+            )
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(managedPlatform);
+            res.end(mainClient);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });

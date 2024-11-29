@@ -696,6 +696,27 @@
     box-shadow: 1px 2px 1px 2px var(--title-color);
 }
 
+.main-card-client {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-card-client h1 {
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    text-align: center;
+}
+
+.main-card-client img {
+    width: 200px;
+    max-height: 200px;
+    height: 200px;
+    overflow: hidden;
+    max-width: 200px;
+}
+
 
 
 
