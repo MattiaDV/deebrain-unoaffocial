@@ -15,14 +15,107 @@ const connectionDb = new Odoo({
     password: 'admin',
 });
 
+function searchIdOfLocationFromDb(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('location_listing', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cities = acc.flatMap(city => city.split(' '));
+                console.log("Città separate: ", cities);
+
+                const cit = partners
+                    .filter(partner => cities.includes(partner.name))
+                    .map(partner => partner.id);
+                resolve(cit); 
+            }
+        });
+    });
+}
+ 
+
+function searchIdOfMediaFromDb(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_media', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cit = partners
+                    .filter(partner => acc.includes(partner.name))
+                    .map(partner => partner.id);
+                resolve(cit); 
+            }
+        });
+    });
+}  
+
+function searchIdOfPlatformFromDb(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_platform', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cit = partners
+                    .filter(partner => acc.includes(partner.name))
+                    .map(partner => partner.id);
+                resolve(cit); 
+            }
+        });
+    });
+}  
+
+function searchIdOfMainSFromDb(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('main_services', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cit = partners
+                    .filter(partner => acc.includes(partner.name))
+                    .map(partner => partner.id);
+                resolve(cit); 
+            }
+        });
+    });
+}  
+
+function searchIdOfDisFromDb(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('distinctive_services', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cit = partners
+                    .filter(partner => acc.includes(partner.name))
+                    .map(partner => partner.id);
+                resolve(cit); 
+            }
+        });
+    });
+} 
+
+function searchIdOfReferralFromDb(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('users_referral_client', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cit = partners
+                    .filter(partner => acc.includes(partner.name))
+                    .map(partner => partner.id);
+                resolve(cit); 
+            }
+        });
+    });
+} 
 
 function createUser(user) {
     return new Promise((resolve, reject) => {
         connectionDb.create('users_model', user, function(err, result) {
             if (err) {
-                reject(err); // Rifiuta la Promise in caso di errore
+                reject(err);
             } else {
-                resolve(result); // Risolvi la Promise con il risultato
+                resolve(result); 
             }
         });
     });
@@ -443,117 +536,27 @@ const server = createServer(async (req, res) => {
         try {
             const htmlContent = await readFile('mypage.html', 'utf8');
             const form = formidable({ multiples: true }); 
+            const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
     
             form.parse(req, async (err, fields, files) => {
                 try {
                     if (err) {
                         console.error("Errore durante il parsing del form:", err);
-                        res.writeHead(500, { 'Content-Type': 'text/plain' });
-                        res.end('Errore durante il parsing del form');
+                        if (!res.headersSent) {
+                            res.writeHead(500, { 'Content-Type': 'text/plain' });
+                            res.end('Errore durante il parsing del form');
+                        }
                         return;
                     }
-
+    
                     const founderNameArray = fields.founderName || []; 
                     const founderNameCommands = founderNameArray.map(name => {
                         return [0, 0, { name }]; 
                     });
-
+    
                     let citys = [];
-                    const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
-
-                    function searchIdOfLocationFromDb() {
-                        return new Promise((resolve, reject) => {
-                            connectionDb.get('location_listing', id_cardsAgency, (err, partners) => {
-                                if (err) {
-                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
-                                } else {
-                                    const cit = partners
-                                        .filter(partner => fields.selectedCitysFinal.includes(partner.name))
-                                        .map(partner => partner.id);
-                                    resolve(cit); 
-                                }
-                            });
-                        });
-                    }     
-                    
-                    function searchIdOfMediaFromDb() {
-                        return new Promise((resolve, reject) => {
-                            connectionDb.get('managed_media', id_cardsAgency, (err, partners) => {
-                                if (err) {
-                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
-                                } else {
-                                    const cit = partners
-                                        .filter(partner => fields.managedMedia.includes(partner.name))
-                                        .map(partner => partner.id);
-                                    resolve(cit); 
-                                }
-                            });
-                        });
-                    }  
-
-                    function searchIdOfPlatformFromDb() {
-                        return new Promise((resolve, reject) => {
-                            connectionDb.get('managed_platform', id_cardsAgency, (err, partners) => {
-                                if (err) {
-                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
-                                } else {
-                                    const cit = partners
-                                        .filter(partner => fields.managedPlatform.includes(partner.name))
-                                        .map(partner => partner.id);
-                                    resolve(cit); 
-                                }
-                            });
-                        });
-                    }  
-
-                    function searchIdOfMainSFromDb() {
-                        return new Promise((resolve, reject) => {
-                            connectionDb.get('main_services', id_cardsAgency, (err, partners) => {
-                                if (err) {
-                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
-                                } else {
-                                    const cit = partners
-                                        .filter(partner => fields.mainServices.includes(partner.name))
-                                        .map(partner => partner.id);
-                                    resolve(cit); 
-                                }
-                            });
-                        });
-                    }  
-
-                    function searchIdOfDisFromDb() {
-                        return new Promise((resolve, reject) => {
-                            connectionDb.get('distinctive_services', id_cardsAgency, (err, partners) => {
-                                if (err) {
-                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
-                                } else {
-                                    const cit = partners
-                                        .filter(partner => fields.distinctiveServices.includes(partner.name))
-                                        .map(partner => partner.id);
-                                    resolve(cit); 
-                                }
-                            });
-                        });
-                    } 
-
-                    function searchIdOfReferralFromDb() {
-                        return new Promise((resolve, reject) => {
-                            connectionDb.get('users_referral_client', id_cardsAgency, (err, partners) => {
-                                if (err) {
-                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
-                                } else {
-                                    const cit = partners
-                                        .filter(partner => fields.nameAndSurnameRef.includes(partner.name))
-                                        .map(partner => partner.id);
-                                    resolve(cit); 
-                                }
-                            });
-                        });
-                    } 
-
-                    console.log("REFEFEFEFEFEFEFEFEFEFE: " + fields.referralClient);
-                    console.log("FIELDS: " + JSON.stringify(fields.nameAndSurnameRef));
-
+    
+                    console.log(JSON.stringify(fields));
     
                     const user = {
                         name: fields.agencyName?.[0] || null,
@@ -569,12 +572,12 @@ const server = createServer(async (req, res) => {
                         linkedinLink: fields.agencyLinkedin?.[0] || null,
                         facebookLink: fields.agencyFacebook?.[0] || null,
                         email: fields.agencyEmail?.[0] || null,
-                        locations: await searchIdOfLocationFromDb(id_cardsAgency), 
-                        mainServices: await searchIdOfMainSFromDb(id_cardsAgency),
-                        distinctiveServices: await searchIdOfDisFromDb(id_cardsAgency),
-                        managedMedia: await searchIdOfMediaFromDb(id_cardsAgency),
-                        managedPlatform: await searchIdOfPlatformFromDb(id_cardsAgency),
-                        referralClient: await searchIdOfReferralFromDb(id_cardsAgency),
+                        locations: await searchIdOfLocationFromDb(id_cardsAgency, fields.selectedCitysFinal), 
+                        mainServices: await searchIdOfMainSFromDb(id_cardsAgency, fields.mainServicesFinal),
+                        distinctiveServices: await searchIdOfDisFromDb(id_cardsAgency, fields.distinctiveServiceFinal),
+                        managedMedia: await searchIdOfMediaFromDb(id_cardsAgency, fields.managedMediaFinal),
+                        managedPlatform: await searchIdOfPlatformFromDb(id_cardsAgency, fields.managedPlatformFinal),
+                        referralClient: await searchIdOfReferralFromDb(id_cardsAgency, fields.nameAndSurnameRef),
                         brochure: fields.brochure?.[0] || null,
                         caseStudy: fields.caseStudy?.[0] || null,
                         clientLogos: files.mainClient || [], 
@@ -582,13 +585,14 @@ const server = createServer(async (req, res) => {
     
                     console.log("Utente da creare:", JSON.stringify(user, null, 2));
     
-                    // Creazione dell'utente
                     const result = await createUser(user);
                     console.log("Utente creato:", result);
     
-                    // Risposta al client
-                    res.writeHead(302, { 'Location': '/mypage.html' });
-                    res.end(htmlContent);
+                    if (!res.headersSent) {
+                        res.writeHead(302, { 'Location': '/mypage.html' });
+                        res.end(htmlContent);
+                    }
+    
                 } catch (createUserError) {
                     console.error("Errore durante la creazione dell'utente:", createUserError);
                     if (!res.headersSent) {
@@ -604,7 +608,7 @@ const server = createServer(async (req, res) => {
                 res.end('Errore del server interno');
             }
         }
-    }
+    }    
     
     
         
