@@ -211,7 +211,22 @@ function getNormalMainClientFromDb(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('main_client_logos', params, (err, partners) => {
             if (err) {
-                reject("Errore nella ricerca delle main client: " + JSON.stringify(err));
+                reject("Errore nella ricerca dei main client: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+function getNormalReferralClientFromDb(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('users_referral_client', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei referral client: " + JSON.stringify(err));
             } else {
                 const locationOptions = partners
                     .filter(partner => partner.name !== false)
@@ -456,6 +471,7 @@ const server = createServer(async (req, res) => {
             const managedMediaLoad = await getNormalMediaFromDb(id_cardsAgency);
             const managedPlatformLoad = await getNormalPlatformFromDb(id_cardsAgency);
             const mainClientLoad = await getNormalMainClientFromDb(id_cardsAgency);
+            const referralClientLoad = await getNormalReferralClientFromDb(id_cardsAgency);
 
             const idFounder = nameOfAgency
                 .filter(partner => partner.name !== false)
@@ -492,6 +508,11 @@ const server = createServer(async (req, res) => {
                 .filter(partner => partner.email == emailFromCookie)
                 .map(partner => partner.clientLogos)
 
+            const idReferralClient = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.referralClient)
+
             // console.log(idLocation);
             // console.log(idFounder);
 
@@ -502,6 +523,7 @@ const server = createServer(async (req, res) => {
             const idMediaFlat = idMedia.flat();
             const idPlatformFlat = idPlatform.flat();
             const idMainClientFlat = idMainClient.flat();
+            const idRefCliFlat = idReferralClient.flat();
 
             // console.log(idLocationFlat);
 
@@ -535,6 +557,10 @@ const server = createServer(async (req, res) => {
             
             const realMainClient = mainClientLoad
                 .filter(partner => idMainClientFlat.includes(partner.id))
+                .map(partner => partner)
+
+            const realReferralClient = referralClientLoad
+                .filter(partner => idRefCliFlat.includes(partner.id))
                 .map(partner => partner)
 
             // console.log(realLocation);
@@ -634,11 +660,33 @@ const server = createServer(async (req, res) => {
                     </div>`
                 ).join('')
             )
+            const referralClient = mainClient.replace('{clientReferral}', realReferralClient
+                .map(partner => 
+                    `<div class = "card-client-ref">
+                            <div class = "client-ref-img">
+                                <img src = "${partner.photo 
+                                    ? `${baseUrl}/web/image/users_referral_client/${partner.id}/photo`
+                                    : ''}">
+                            </div>
+                            <span class = "name-client-refferal fs-18 normal-text">
+                                ${partner.name} ${partner.surname}
+                            </span>
+                            <span class = "job-client-refferal fs-18 light-text">
+                                <span class = "fs-16 light-text">${partner.workAs}</span>
+                                <span class = "clientMain fs-16 light-text">${partner.workWhere}</span>
+                            </span>
+                        </div>`
+                ).join('')
+            )
+            const brochure = referralClient.replace('{brochureURL}', realName.map(partner => partner.brochure).join(''));
+            const caseStudy = brochure.replace('{caseStudyURL}', realName.map(partner => partner.caseStudy).join(''));
+            const linkedinFooter = caseStudy.replace('{linkedinFooter}', realName.map(partner => partner.linkedinLink).join(''));
+            const websiteFooter = linkedinFooter.replace('{websiteFooter}', realName.map(partner => partner.website).join(''));
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(mainClient);
+            res.end(websiteFooter);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
