@@ -436,6 +436,7 @@ const server = createServer(async (req, res) => {
             const founderNames = await getFounderNamesFromDB(id_cardsAgency);
             const locationName = await getNormalLocationsFromDb(id_cardsAgency);
             const updatedHtmlContent = htmlContent;
+            const mainServiceLoad = await getNormalMainFromDb(id_cardsAgency);
 
             const idFounder = nameOfAgency
                 .filter(partner => partner.name !== false)
@@ -447,11 +448,17 @@ const server = createServer(async (req, res) => {
                 .filter(partner => partner.email == emailFromCookie)
                 .map(partner => partner.locations)
 
+            const idMainServ = nameOfAgency 
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.mainServices)
+
             // console.log(idLocation);
             // console.log(idFounder);
 
             const idFounderFlat = idFounder.flat();
             const idLocationFlat = idLocation.flat();
+            const idMainServFlat = idMainServ.flat();
 
             // console.log(idLocationFlat);
 
@@ -465,6 +472,10 @@ const server = createServer(async (req, res) => {
 
             const realLocation = locationName
                 .filter(partner => idLocationFlat.includes(partner.id))
+                .map(partner => partner.name)
+
+            const realMainServ = mainServiceLoad
+                .filter(partner => idMainServFlat.includes(partner.id))
                 .map(partner => partner.name)
 
             // console.log(realLocation);
@@ -497,11 +508,21 @@ const server = createServer(async (req, res) => {
                         : ''
                 )
             );
+            const mainServiceAdd = logoURL.replace('{mainServices}', realMainServ
+                .map(partner => 
+                    `<div class = "card-starter fs-18 normal-text">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 10C4 6.22876 4 4.34315 5.17157 3.17157C6.34315 2 8.22876 2 12 2C15.7712 2 17.6569 2 18.8284 3.17157C20 4.34315 20 6.22876 20 10V14C20 17.7712 20 19.6569 18.8284 20.8284C17.6569 22 15.7712 22 12 22C8.22876 22 6.34315 22 5.17157 20.8284C4 19.6569 4 17.7712 4 14V10Z" stroke="#000000" stroke-width="1.5"></path> <path d="M15 19H9" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> <path d="M16.7484 2.37793L16.6643 2.5041C15.9082 3.63818 15.5302 4.20525 14.978 4.54836C14.8682 4.61658 14.7541 4.67764 14.6365 4.73115C14.0447 5.00025 13.3632 5.00025 12.0002 5.00025C10.6371 5.00025 9.95564 5.00025 9.36387 4.73115C9.2462 4.67764 9.13211 4.61658 9.02232 4.54836C8.47016 4.20524 8.09213 3.6382 7.33606 2.5041L7.25195 2.37793" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+                    <span class = "title-main-services-card">
+                        ${partner}
+                    </span>
+                </div>`
+                ).join('')
+            )
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(logoURL);
+            res.end(mainServiceAdd);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
