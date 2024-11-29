@@ -40,8 +40,11 @@ function searchIdOfMediaFromDb(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
+                const cities = acc.flatMap(city => city.split(' '));
+                console.log("Città separate: ", cities);
+
                 const cit = partners
-                    .filter(partner => acc.includes(partner.name))
+                    .filter(partner => cities.includes(partner.name))
                     .map(partner => partner.id);
                 resolve(cit); 
             }
@@ -55,8 +58,11 @@ function searchIdOfPlatformFromDb(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
+                const cities = acc.flatMap(city => city.split(' '));
+                console.log("Città separate: ", cities);
+
                 const cit = partners
-                    .filter(partner => acc.includes(partner.name))
+                    .filter(partner => cities.includes(partner.name))
                     .map(partner => partner.id);
                 resolve(cit); 
             }
@@ -70,8 +76,11 @@ function searchIdOfMainSFromDb(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
+                const cities = acc.flatMap(city => city.split(' '));
+                console.log("Città separate: ", cities);
+
                 const cit = partners
-                    .filter(partner => acc.includes(partner.name))
+                    .filter(partner => cities.includes(partner.name))
                     .map(partner => partner.id);
                 resolve(cit); 
             }
@@ -85,8 +94,11 @@ function searchIdOfDisFromDb(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
+                const cities = acc.flatMap(city => city.split(' '));
+                console.log("Città separate: ", cities);
+
                 const cit = partners
-                    .filter(partner => acc.includes(partner.name))
+                    .filter(partner => cities.includes(partner.name))
                     .map(partner => partner.id);
                 resolve(cit); 
             }
@@ -535,6 +547,7 @@ const server = createServer(async (req, res) => {
     if (method === 'POST' && url === '/register.html') {
         try {
             const htmlContent = await readFile('mypage.html', 'utf8');
+            console.log(htmlContent);
             const form = formidable({ multiples: true }); 
             const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
     
