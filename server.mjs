@@ -17,19 +17,23 @@ const connectionDb = new Odoo({
 });
 
 function createFounderForDb(founderNames) {
-    return new Promise((resolve, reject) => {
-        founderNames.forEach(element => {
-            connectionDb.create('founder_name', element.name, (err, partner) => {
-                if (err) {
-                    console.error(`Errore nella creazione del founder ${partner}: ${JSON.stringify(err)}`);
-                    reject(err);
-                } else {
-                    resolve(partner);
-                }
-            }); 
-        });
-    });
+    return Promise.all(
+        founderNames.map(element => {
+            return new Promise((resolve, reject) => {
+                console.log("ELEMENT: " + element);
+                connectionDb.create('founder_name', {name: element}, (err, partner) => {
+                    if (err) {
+                        console.error(`Errore nella creazione del founder ${element}: ${JSON.stringify(err)}`);
+                        reject(err);
+                    } else {
+                        resolve(partner);
+                    }
+                });
+            });
+        })
+    );
 }
+
 
 
 function searchIdOfLocationFromDb(param, acc) {
@@ -584,7 +588,7 @@ const server = createServer(async (req, res) => {
                     // console.log("Valore di founderName:", founderNames);
 
                     const createF = await createFounderForDb(founderNames);
-                    console.log("CREATE: " + createF);
+                    console.log("Separed founder: " + createF);
 
                     function getIdFounders(param, acc) {
                         return new Promise((resolve, reject) => {
@@ -592,11 +596,10 @@ const server = createServer(async (req, res) => {
                                 if (err) {
                                     reject("Errore nella ricerca degli id: " + JSON.stringify(err));
                                 } else {
-                                    const cities = acc.flatMap(city => city.split(' '));
-                                    console.log("Città separate: ", cities);
+                                    console.log("Founders separeati: ", acc);
                     
                                     const cit = partners
-                                        .filter(partner => cities.includes(partner.name))
+                                        .filter(partner => acc.includes(partner.name))
                                         .map(partner => partner.id);
                                     resolve(cit); 
                                 }
@@ -604,15 +607,14 @@ const server = createServer(async (req, res) => {
                         });
                     }  
     
-                    let citys = [];
+                    let citys = await getIdFounders(id_cardsAgency, founderNames);
+                    console.log("CITYS: " + citys);
     
                     // console.log(JSON.stringify(files));
-
-                    console.log("ID FOUNDER: " + await getIdFounders(id_cardsAgency, founderNames));
     
                     const user = {
                         name: fields.agencyName?.[0] || null,
-                        founderName: await getIdFounders(id_cardsAgency, founderNames),
+                        founderName: citys,
                         numberOfEmployees: fields.numberOfEmployees?.[0] || null,
                         foundationYear: fields.foundationYear?.[0] || null,
                         agencyType: fields.agencyType?.[0] || null,
