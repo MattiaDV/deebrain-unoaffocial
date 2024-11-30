@@ -561,10 +561,8 @@ const server = createServer(async (req, res) => {
         return;
     }
 
-    if (method === 'POST' && url === '/mypage.html') {
+    if (method === 'POST' && url === '/home.html') {
         try {
-            const htmlContent = await readFile('mypage.html', 'utf8');
-            console.log(htmlContent);
             const form = formidable({ multiples: true }); 
             const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
     
@@ -578,11 +576,6 @@ const server = createServer(async (req, res) => {
                         }
                         return;
                     }
-    
-                    const founderNameArray = fields.founderName || []; 
-                    const founderNameCommands = founderNameArray.map(name => {
-                        return [{ name }]; 
-                    });
 
                     // console.log(founderNameCommands)
                     let founderNames = fields.founderName
@@ -590,8 +583,7 @@ const server = createServer(async (req, res) => {
                     // console.log("Tipo di founderName:", typeof founderNames);
                     // console.log("Valore di founderName:", founderNames);
 
-                    const idFounder = await createFounderForDb(founderNames);
-                    // console.log("IDFOUNDER: " + idFounder)
+                    await createFounderForDb(founderNames);
 
                     function getIdFounders(param, acc) {
                         return new Promise((resolve, reject) => {
@@ -614,6 +606,8 @@ const server = createServer(async (req, res) => {
                     let citys = [];
     
                     // console.log(JSON.stringify(files));
+
+                    console.log("ID FOUNDER: " + await getIdFounders(id_cardsAgency, founderNames));
     
                     const user = {
                         name: fields.agencyName?.[0] || null,
@@ -645,10 +639,8 @@ const server = createServer(async (req, res) => {
     
                     const result = await createUser(user);
                     console.log("Utente creato:", result);
-    
-                    
-                    res.writeHead(302, { 'Location': '/mypage.html' });
-                    res.end(htmlContent);
+
+                    res.writeHead(302, { 'Location': '/listing.html' });
     
                 } catch (createUserError) {
                     console.error("Errore durante la creazione dell'utente:", createUserError);
