@@ -479,7 +479,7 @@ function getNewAgencyFromDB(params) {
                                     </ul>
                                 </div>
                                 <div class="bb">
-                                    <button class="fs-18 light-text buttons-style-listing" onclick="window.location.href = 'alkemy.html';">Read more</button>
+                                    <button class="fs-18 light-text buttons-style-listing" onclick="window.location.href = 'paginaD.html'; document.cookie = 'website=${partner.website}';">Read more</button>
                                 </div>
                             </div>
                         </div>
@@ -767,6 +767,245 @@ const server = createServer(async (req, res) => {
             const realName = nameOfAgency
                 .filter(partner => partner.name !== false)
                 .filter(partner => partner.email == emailFromCookie)
+
+            const realFounder = founderNames
+                .filter(partner => idFounderFlat.includes(partner.id))
+                .map(partner => partner.name)
+
+            const realLocation = locationName
+                .filter(partner => idLocationFlat.includes(partner.id))
+                .map(partner => partner.name)
+
+            const realMainServ = mainServiceLoad
+                .filter(partner => idMainServFlat.includes(partner.id))
+                .map(partner => partner.name)
+
+            const realDisServ = distinctiveServiceLoad
+                .filter(partner => idDisServFlat.includes(partner.id))
+                .map(partner => partner)
+
+            const realMedia = managedMediaLoad
+                .filter(partner => idMediaFlat.includes(partner.id))
+                .map(partner => partner.name)
+
+            const realPlatform = managedPlatformLoad
+                .filter(partner => idPlatformFlat.includes(partner.id))
+                .map(partner => partner.name)
+            
+            const realMainClient = mainClientLoad
+                .filter(partner => idMainClientFlat.includes(partner.id))
+                .map(partner => partner)
+
+            const realReferralClient = referralClientLoad
+                .filter(partner => idRefCliFlat.includes(partner.id))
+                .map(partner => partner)
+
+            // console.log(realLocation);
+
+            // console.log(realFounder);
+
+            const realNames = updatedHtmlContent.replace('{agencyName}', realName.map(partner => partner.name));
+            const realNamesURL = realNames.replace('{agencyNameURL}', realName.map(partner => partner.name));
+            const yearsF = realNamesURL.replace('{yearOfFoundation}', realName.map(partner => partner.foundationYear));
+            const customers = yearsF.replace('{customers}', realName.map(partner => partner.founderName.length));
+            const foun = customers.replace('{founder}', realFounder.join(', '));
+            const agencyTTT = foun.replace('{agencyTypePersonal}', realName.map(partner => partner.agencyType.replace('-', ' ').toUpperCase()));
+            const bill = agencyTTT.replace('{billingPersonal}', realName.map(partner => (partner.managedBilling > 999999) ? (partner.managedBilling / 1000000) + "M" : (partner.managedBilling > 9999) ? (partner.managedBilling / 1000) + "k" : partner.managedBilling));
+            const location = bill.replace('{locationPersonal}', realLocation.join(', '));
+            const emploPers = location.replace('{employeesPersonalQuad}', realName.map(partner => partner.numberOfEmployees));
+            const awareness = emploPers.replace('{awareness}', realName.map(partner => (partner.awareness == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Awareness</span>" : ''));
+            const conversion = awareness.replace('{conversion}', realName.map(partner => (partner.conversion == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Conversion</span>" : ''));
+            const consideration = conversion.replace('{consideration}', realName.map(partner => (partner.consideration == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Consideration</span>" : ''));
+            const urlSito = consideration.replace('{urlSito}', realName.map(partner => partner.website));
+            const urlLinkedin = urlSito.replace('{urlLinkedin}', realName.map(partner => partner.linkedinLink));
+            const urlFacebook = urlLinkedin.replace('{urlFacebool}', realName.map(partner => partner.facebookLink));
+            const emailContact = urlFacebook.replace('{emailContact}', realName.map(partner => partner.email));
+            const titlePage = emailContact.replace('{titleName}', realName.map(partner => partner.name));
+            const baseUrl = "http://127.0.0.1:8069/";
+            const logoURL = titlePage.replace(
+                '{logoUrl}',
+                realName.map(partner =>
+                    partner.logo 
+                        ? `${baseUrl}/web/image/users_model/${partner.id}/logo`
+                        : ''
+                )
+            );
+            const mainServiceAdd = logoURL.replace('{mainServices}', realMainServ
+                .map(partner => 
+                    `<div class = "card-starter fs-18 normal-text">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 10C4 6.22876 4 4.34315 5.17157 3.17157C6.34315 2 8.22876 2 12 2C15.7712 2 17.6569 2 18.8284 3.17157C20 4.34315 20 6.22876 20 10V14C20 17.7712 20 19.6569 18.8284 20.8284C17.6569 22 15.7712 22 12 22C8.22876 22 6.34315 22 5.17157 20.8284C4 19.6569 4 17.7712 4 14V10Z" stroke="#000000" stroke-width="1.5"></path> <path d="M15 19H9" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> <path d="M16.7484 2.37793L16.6643 2.5041C15.9082 3.63818 15.5302 4.20525 14.978 4.54836C14.8682 4.61658 14.7541 4.67764 14.6365 4.73115C14.0447 5.00025 13.3632 5.00025 12.0002 5.00025C10.6371 5.00025 9.95564 5.00025 9.36387 4.73115C9.2462 4.67764 9.13211 4.61658 9.02232 4.54836C8.47016 4.20524 8.09213 3.6382 7.33606 2.5041L7.25195 2.37793" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+                    <span class = "title-main-services-card">
+                        ${partner}
+                    </span>
+                </div>`
+                ).join('')
+            )
+            const distinctiveServiceAdd = mainServiceAdd.replace('{distinctiveServices}', realDisServ
+                .map(partner => 
+                    `<div class = "card-distinctive-listing">
+                        <svg fill="#000000" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m19.828 6.612-5.52-5.535a3.135 3.135 0 0 0-4.5 0L4.273 6.612l7.755 3.87zm2.118 2.235 1.095 1.095a3.12 3.12 0 0 1 0 4.5L14.22 23.35a2.685 2.685 0 0 1-.72.525V13.077zm-19.893 0L.958 9.942a3.12 3.12 0 0 0 0 4.5L9.78 23.35c.21.214.453.392.72.525V13.077z"></path></g></svg>
+                        <span class = "fs-18 normal-text distinctive-title">
+                            ${partner.name}
+                        </span>
+                        <span class = "fs-16 light-text">
+                            ${partner.description}
+                        </span>
+                    </div>`
+                ).join('')
+            )
+            const mediaManaged = distinctiveServiceAdd.replace('{managedMedia}', realMedia
+                .map(partner => 
+                    `<div class = "card-container-gestiti">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7 21L12 17L17 21M7.8 17H16.2C17.8802 17 18.7202 17 19.362 16.673C19.9265 16.3854 20.3854 15.9265 20.673 15.362C21 14.7202 21 13.8802 21 12.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V12.2C3 13.8802 3 14.7202 3.32698 15.362C3.6146 15.9265 4.07354 16.3854 4.63803 16.673C5.27976 17 6.11984 17 7.8 17Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                        <span class = "fs-18 normal-text">
+                            ${partner}
+                        </span>
+                    </div>`
+                ).join('')
+            )
+            const managedPlatform = mediaManaged.replace('{platformManaged}', realPlatform
+                .map(partner =>
+                    `<div class = "card-platform-m">
+                        <div class = "container-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                                <path fill="#fbc02d" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#e53935" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4caf50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1565c0" d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
+                            </svg>
+                        </div>
+                        <div class = "box-card-platform-managed">
+                            <span class = "name-card fs-16 normal-text">
+                                ${partner}
+                            </span>
+                            <div class = "box-words-platform-managed">
+                                <span class = "certification fs-16 light-text">
+                                    CERTIFICATED
+                                </span>
+                                <span class = "infos fs-16 light-text">
+                                    ${partner}
+                                </span>
+                            </div>
+                        </div>
+                    </div>`
+                ).join('')
+            )
+            const mainClient = managedPlatform.replace('{mainClients}', realMainClient
+                .map(partner => 
+                    `<div class = "main-card-client">
+                        <h1>${partner.name}</h1>
+                        <img src='${partner.logo 
+                            ? `${baseUrl}/web/image/main_client_logos/${partner.id}/logo`
+                            : ''}' alt = "mainClient logo">
+                    </div>`
+                ).join('')
+            )
+            const referralClient = mainClient.replace('{clientReferral}', realReferralClient
+                .map(partner => 
+                    `<div class = "card-client-ref">
+                            <div class = "client-ref-img">
+                                <img src = "${partner.photo 
+                                    ? `${baseUrl}/web/image/users_referral_client/${partner.id}/photo`
+                                    : ''}">
+                            </div>
+                            <span class = "name-client-refferal fs-18 normal-text">
+                                ${partner.name} ${partner.surname}
+                            </span>
+                            <span class = "job-client-refferal fs-18 light-text">
+                                <span class = "fs-16 light-text">${partner.workAs}</span>
+                                <span class = "clientMain fs-16 light-text">${partner.workWhere}</span>
+                            </span>
+                        </div>`
+                ).join('')
+            )
+            const brochure = referralClient.replace('{brochureURL}', realName.map(partner => partner.brochure).join(''));
+            const caseStudy = brochure.replace('{caseStudyURL}', realName.map(partner => partner.caseStudy).join(''));
+            const linkedinFooter = caseStudy.replace('{linkedinFooter}', realName.map(partner => partner.linkedinLink).join(''));
+            const websiteFooter = linkedinFooter.replace('{websiteFooter}', realName.map(partner => partner.website).join(''));
+            // console.log(nameOfAgency);
+            // console.log(emailFromCookie)
+
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(websiteFooter);
+        } catch (err) {
+            console.error(err);
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Errore del server interno');
+        }
+        return;
+    }
+
+    if (method === 'GET' && url === '/paginaD.html') {
+        try {
+            const htmlContent = await readFile('paginaD.html', 'utf8');
+            const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+            const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
+            const emailFromCookie = cookies.website || 'Nessun cookie trovato';
+            const nameOfAgency = await getAllDataFromDB(id_cardsAgency);
+            const founderNames = await getFounderNamesFromDB(id_cardsAgency);
+            const locationName = await getNormalLocationsFromDb(id_cardsAgency);
+            const updatedHtmlContent = htmlContent;
+            const mainServiceLoad = await getNormalMainFromDb(id_cardsAgency);
+            const distinctiveServiceLoad = await getNormalDisFromDb(id_cardsAgency);
+            const managedMediaLoad = await getNormalMediaFromDb(id_cardsAgency);
+            const managedPlatformLoad = await getNormalPlatformFromDb(id_cardsAgency);
+            const mainClientLoad = await getNormalMainClientFromDb(id_cardsAgency);
+            const referralClientLoad = await getNormalReferralClientFromDb(id_cardsAgency);
+
+            const idFounder = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.founderName)
+
+            const idLocation= nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.locations)
+
+            const idMainServ = nameOfAgency 
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.mainServices)
+
+            const idDisServ = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.distinctiveServices)
+
+            const idMedia = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.managedMedia)
+
+            const idPlatform = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.managedPlatform)
+
+            const idMainClient = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.clientLogos)
+
+            const idReferralClient = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.referralClient)
+
+            // console.log(idLocation);
+            // console.log(idFounder);
+
+            const idFounderFlat = idFounder.flat();
+            const idLocationFlat = idLocation.flat();
+            const idMainServFlat = idMainServ.flat();
+            const idDisServFlat = idDisServ.flat();
+            const idMediaFlat = idMedia.flat();
+            const idPlatformFlat = idPlatform.flat();
+            const idMainClientFlat = idMainClient.flat();
+            const idRefCliFlat = idReferralClient.flat();
+
+            // console.log(idLocationFlat);
+
+            const realName = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
 
             const realFounder = founderNames
                 .filter(partner => idFounderFlat.includes(partner.id))
