@@ -14,7 +14,7 @@
 
         <div class = "bg"></div>
 
-        <form id = "register-form" class = "all-infos" method = "post" onsubmit="return verify()">
+        <form id = "register-form" class = "all-infos" action = "mypage.html" method = "post" onsubmit="return verify()">
             <div class = "container-form form-1" id = "form-1">
                 <div class = "contain-form form-1" id = "form-1-an">
                     <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
@@ -40,7 +40,7 @@
                                 <div class = "one-info"><span class = "fs-12 medium-bold-text">Foundation year </span><input class = "fs-10 light-text" type = "date" placeholder = "2020" name = "foundationYear" required></div>
                             </div>
                             <div class = "double-info terzo">
-                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Agency type </span><select class = "fs-10 light-text" id = "agencyType" name = "agencyType"><option value = "digital-agency">Digital agency</option><option value = "media center">Media center</option><option value = "creative agency">Creative agency</option><option value = "perform agency">Perform agency</option><option value="advertising agency">Advertising agency</option><option value="marketing agency">Marketing agency</option><option value="branding agency">Branding agency</option><option value="design agency">Design agency</option><option value="web agency">Web agency</option><option value="seo agency">SEO agency</option><option value="social media agency">Social media agency</option><option value="public relations agency">Public relations agency</option><option value="event agency">Event agency</option><option value="consulting agency">Consulting agency</option><option value="production agency">Production agency</option><option value="influencer agency">Influencer agency</option><option value="digital marketing agency">Digital marketing agency</option><option value="content agency">Content agency</option><option value="advertising production agency">Advertising production agency</option><option value="motion graphics agency">Motion graphics agency</option><option value="creative consulting agency">Creative consulting agency</option><option value="interactive agency">Interactive agency</option><option value="media buying agency">Media buying agency</option></select></div>
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Agency type </span><select class = "fs-10 light-text" id = "agencyType" name = "agencyType"><option value = "digital agency">Digital agency</option><option value = "media center">Media center</option><option value = "creative agency">Creative agency</option><option value = "perform agency">Perform agency</option><option value="advertising agency">Advertising agency</option><option value="marketing agency">Marketing agency</option><option value="branding agency">Branding agency</option><option value="design agency">Design agency</option><option value="web agency">Web agency</option><option value="seo agency">SEO agency</option><option value="social media agency">Social media agency</option><option value="public relations agency">Public relations agency</option><option value="event agency">Event agency</option><option value="consulting agency">Consulting agency</option><option value="production agency">Production agency</option><option value="influencer agency">Influencer agency</option><option value="digital marketing agency">Digital marketing agency</option><option value="content agency">Content agency</option><option value="advertising production agency">Advertising production agency</option><option value="motion graphics agency">Motion graphics agency</option><option value="creative consulting agency">Creative consulting agency</option><option value="interactive agency">Interactive agency</option><option value="media buying agency">Media buying agency</option></select></div>
                                 <div class = "one-info"><span class = "fs-12 medium-bold-text">Your logo </span><input class = "fs-10 light-text" type = "file" accept=".png, .jpg, .jpeg" name = "agencyLogo" required></div>
                             </div>
                             <div class = "double-info terzo">
@@ -291,7 +291,9 @@
             const auth = getAuth(app);
 
 
-            var signin_email_psw = function() {
+            var signin_email_psw = function(event) {
+                event.preventDefault(); 
+
                 let email = document.getElementById('email').value;
                 let password = document.getElementById('password').value;
                 let name = document.getElementsByName('agencyName')[0].value;
@@ -302,6 +304,8 @@
                         .then((userCredential) => {
                             const user = userCredential.user;
                             document.cookie = "email=" + email;
+
+                            event.target.submit();
                         })
                         .catch((error) => {
                             const errorCode = error.code;

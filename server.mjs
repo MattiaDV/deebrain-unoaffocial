@@ -6,6 +6,7 @@ import { extname, join } from 'node:path';
 import cookie from 'cookie';
 import { escape } from 'node:querystring';
 import formidable from 'formidable';
+import { connect } from 'node:http2';
 
 const connectionDb = new Odoo({
     host: 'localhost',
@@ -14,6 +15,22 @@ const connectionDb = new Odoo({
     username: 'admin',
     password: 'admin',
 });
+
+function createFounderForDb(founderNames) {
+    return new Promise((resolve, reject) => {
+        founderNames.forEach(element => {
+            connectionDb.create('founder_name', element.name, (err, partner) => {
+                if (err) {
+                    console.error(`Errore nella creazione del founder ${partner}: ${JSON.stringify(err)}`);
+                    reject(err);
+                } else {
+                    resolve(partner);
+                }
+            }); 
+        });
+    });
+}
+
 
 function searchIdOfLocationFromDb(param, acc) {
     return new Promise((resolve, reject) => {
@@ -544,7 +561,7 @@ const server = createServer(async (req, res) => {
         return;
     }
 
-    if (method === 'POST' && url === '/register.html') {
+    if (method === 'POST' && url === '/mypage.html') {
         try {
             const htmlContent = await readFile('mypage.html', 'utf8');
             console.log(htmlContent);
@@ -564,20 +581,47 @@ const server = createServer(async (req, res) => {
     
                     const founderNameArray = fields.founderName || []; 
                     const founderNameCommands = founderNameArray.map(name => {
-                        return [0, 0, { name }]; 
+                        return [{ name }]; 
                     });
+
+                    // console.log(founderNameCommands)
+                    let founderNames = fields.founderName
+                        .flatMap(name => name.split(',').map(part => part.trim()));
+                    // console.log("Tipo di founderName:", typeof founderNames);
+                    // console.log("Valore di founderName:", founderNames);
+
+                    const idFounder = await createFounderForDb(founderNames);
+                    // console.log("IDFOUNDER: " + idFounder)
+
+                    function getIdFounders(param, acc) {
+                        return new Promise((resolve, reject) => {
+                            connectionDb.get('founder_name', param, (err, partners) => {
+                                if (err) {
+                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+                                } else {
+                                    const cities = acc.flatMap(city => city.split(' '));
+                                    console.log("Città separate: ", cities);
+                    
+                                    const cit = partners
+                                        .filter(partner => cities.includes(partner.name))
+                                        .map(partner => partner.id);
+                                    resolve(cit); 
+                                }
+                            });
+                        });
+                    }  
     
                     let citys = [];
     
-                    console.log(JSON.stringify(fields));
+                    // console.log(JSON.stringify(files));
     
                     const user = {
                         name: fields.agencyName?.[0] || null,
-                        founderName: founderNameCommands.name,
+                        founderName: await getIdFounders(id_cardsAgency, founderNames),
                         numberOfEmployees: fields.numberOfEmployees?.[0] || null,
                         foundationYear: fields.foundationYear?.[0] || null,
                         agencyType: fields.agencyType?.[0] || null,
-                        logo: files.agencyLogo?.[0] || null,
+                        // logo: files.agencyLogo?.[0] || null,
                         managedBilling: fields.managedBilling?.[0] || null,
                         awareness: fields.awareness?.[0] === 'on',
                         conversion: fields.conversion?.[0] === 'on',
@@ -590,21 +634,21 @@ const server = createServer(async (req, res) => {
                         distinctiveServices: await searchIdOfDisFromDb(id_cardsAgency, fields.distinctiveServiceFinal),
                         managedMedia: await searchIdOfMediaFromDb(id_cardsAgency, fields.managedMediaFinal),
                         managedPlatform: await searchIdOfPlatformFromDb(id_cardsAgency, fields.managedPlatformFinal),
-                        referralClient: await searchIdOfReferralFromDb(id_cardsAgency, fields.nameAndSurnameRef),
+                        // Per ora concentriamoci sui precedenti
+                        // referralClient: await searchIdOfReferralFromDb(id_cardsAgency, fields.nameAndSurnameRef),
                         brochure: fields.brochure?.[0] || null,
                         caseStudy: fields.caseStudy?.[0] || null,
-                        clientLogos: files.mainClient || [], 
+                        // clientLogos: files.mainClient || [], 
                     };
     
-                    console.log("Utente da creare:", JSON.stringify(user, null, 2));
+                    // console.log("Utente da creare:", JSON.stringify(user, null, 2));
     
                     const result = await createUser(user);
                     console.log("Utente creato:", result);
     
-                    if (!res.headersSent) {
-                        res.writeHead(302, { 'Location': '/mypage.html' });
-                        res.end(htmlContent);
-                    }
+                    
+                    res.writeHead(302, { 'Location': '/mypage.html' });
+                    res.end(htmlContent);
     
                 } catch (createUserError) {
                     console.error("Errore durante la creazione dell'utente:", createUserError);
