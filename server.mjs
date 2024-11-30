@@ -583,7 +583,8 @@ const server = createServer(async (req, res) => {
                     // console.log("Tipo di founderName:", typeof founderNames);
                     // console.log("Valore di founderName:", founderNames);
 
-                    await createFounderForDb(founderNames);
+                    const createF = await createFounderForDb(founderNames);
+                    console.log("CREATE: " + createF);
 
                     function getIdFounders(param, acc) {
                         return new Promise((resolve, reject) => {
