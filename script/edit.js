@@ -65,6 +65,13 @@ newLogo.addEventListener('change', function() {
 let citys = document.getElementById('location');
 let cityChoose = [];
 
+function cityPush() {
+    let citysCho = document.querySelectorAll('.city');
+    for (let elem of citysCho) {
+        cityChoose.push(elem.id.toLowerCase());
+    }
+}
+
 citys.addEventListener('change', function() {
     // console.log(citys.value);
     console.log(citys.value);

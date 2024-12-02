@@ -678,6 +678,7 @@ const server = createServer(async (req, res) => {
         const getReferralClient = await dbLayer.getAllReferralClientFromDb(id_cardsAgency);
         const getMainClient = await dbLayer.getNormalMainClientFromDb(id_cardsAgency);
         const getAllTypes = await dbLayer.getNormalAgencyTypeFromDB(id_cardsAgency);
+        const getLocation = await dbLayer.getNormalLocationsFromDb(id_cardsAgency);
 
         try {
 
@@ -737,8 +738,13 @@ const server = createServer(async (req, res) => {
                 .filter(partner => partner.email == emailFromCookie)
                 .map(partner => partner.clientLogos)
 
+            const locationReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.locations)
+
             const refClientFlat = refClientReal.flat()
             const mainCliFlat = mainCliReal.flat()
+            const locationFlat = locationReal.flat()
 
             const agencyName = htmlContent.replace('{agencyName}', nameAgencyReal);
             const agencyType = agencyName.replace('{agencyType}', getAllTypes
@@ -788,9 +794,15 @@ const server = createServer(async (req, res) => {
                                     <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-${index}')" value = "Remove photo"></div>
                                 </div>`).join(' ')
             )
+            const location = mainClientLogo.replace("{location}", getLocation
+                .filter(partner => locationFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="city" id="${partner.name}" onclick = "deleteItem('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
 
             res.writeHead(200, {'ContentType': 'text/html'});
-            res.end(mainClientLogo);
+            res.end(location);
 
         } catch(err) {
             if (err) {
