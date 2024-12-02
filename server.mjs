@@ -203,16 +203,6 @@ function getAgencyTypeFromDB(params) {
         let art = agencys
             .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.replace(" ", '-').toLowerCase()}" checked> ${partner.toLowerCase()}</li>`);
         resolve(art);
-        // connectionDb.get('users_model', params, (err, part) => {
-        //     if (err) {
-        //         reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
-        //     } else {
-        //         const locationOptions = part 
-        //             .filter(partner => partner.name)
-                //     .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.agencyType.replace(" ", '-')}" checked> ${partner.agencyType}</li>`);
-                // resolve(locationOptions);
-        //     }
-        // })
     })
 }
 
