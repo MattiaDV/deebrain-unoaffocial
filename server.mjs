@@ -168,18 +168,51 @@ function getAllDataFromDB(params) {
     })
 }
 
+let agencyType = [
+    ('digital agency', 'Digital agency'),
+    ('media center', 'Media center'),
+    ('creative agency', 'Creative agency'),
+    ('perform agency', 'Perform agency'),
+    ('advertising agency', 'Advertising agency'),
+    ('marketing agency', 'Marketing agency'),
+    ('branding agency', 'Branding agency'),
+    ('design agency', 'Design agency'),
+    ('web agency', 'Web agency'),
+    ('seo agency', 'SEO agency'),
+    ('social media agency', 'Social media agency'),
+    ('public relations-agency', 'Public relations agency'),
+    ('event agency', 'Event agency'),
+    ('consulting agency', 'Consulting agency'),
+    ('production agency', 'Production agency'),
+    ('influencer agency', 'Influencer agency'),
+    ('digital marketing agency', 'Digital marketing agency'),
+    ('content agency', 'Content agency'),
+    ('advertising production agency', 'Advertising production agency'),
+    ('motion-graphics agency', 'Motion graphics agency'),
+    ('creative consulting agency', 'Creative consulting agency'),
+    ('interactive agency', 'Interactive agency'),
+    ('media buying agency', 'Media buying agency')
+];
+
 function getAgencyTypeFromDB(params) {
     return new Promise((resolve, reject) => {
-        connectionDb.get('users_model', params, (err, part) => {
-            if (err) {
-                reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
-            } else {
-                const locationOptions = part 
-                    .filter(partner => partner.name)
-                    .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.agencyType.replace(" ", '-')}" checked> ${partner.agencyType}</li>`);
-                resolve(locationOptions);
-            }
-        })
+        let agencys = [];
+        for (let agencyT of agencyType) {
+            agencys.push(agencyT);
+        }
+        let art = agencys
+            .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.replace(" ", '-').toLowerCase()}" checked> ${partner.toLowerCase()}</li>`);
+        resolve(art);
+        // connectionDb.get('users_model', params, (err, part) => {
+        //     if (err) {
+        //         reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
+        //     } else {
+        //         const locationOptions = part 
+        //             .filter(partner => partner.name)
+                //     .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.agencyType.replace(" ", '-')}" checked> ${partner.agencyType}</li>`);
+                // resolve(locationOptions);
+        //     }
+        // })
     })
 }
 
