@@ -201,7 +201,7 @@ function getAgencyTypeFromDB(params) {
             agencys.push(agencyT);
         }
         let art = agencys
-            .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.replace(" ", '-').toLowerCase()}" checked> ${partner.toLowerCase()}</li>`);
+            .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.replace(/ /g, '-').toLowerCase()}" checked> ${partner.toLowerCase()}</li>`);
         resolve(art);
     })
 }

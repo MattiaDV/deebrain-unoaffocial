@@ -77,7 +77,6 @@ function filter() {
     }
 
     for (let a of typeAgency) {
-        console.log('search-' + a);
         if (checked.includes('search-' + a)) {
             if (!typeAgency.includes(a)) {
                 typeAgency.push(a);
@@ -91,7 +90,6 @@ function filter() {
     }    
 
     for (let a of city) {
-        console.log('search-' + a);
         if (checked.includes('search-' + a)) {
             if (!city.includes(a)) {
                 city.push(a);
@@ -123,7 +121,6 @@ function filter() {
 function resetFilter() {
     for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
         document.getElementById(advancedFilter[resetA]).checked = true;
-        // cards[resetA].style.display = "flex";
     }
 
     filter();
