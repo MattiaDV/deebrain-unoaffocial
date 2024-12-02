@@ -739,8 +739,6 @@ const server = createServer(async (req, res) => {
             const refClientFlat = refClientReal.flat()
             const mainCliFlat = mainCliReal.flat()
 
-            console.log(mainCliFlat);
-
             const agencyName = htmlContent.replace('{agencyName}', nameAgencyReal);
             const agencyType = agencyName.replace('{agencyType}', agencyTypeReal);
             const managedBilling = agencyType.replace('{managedBilling}', managedBillingReal);
@@ -773,17 +771,15 @@ const server = createServer(async (req, res) => {
             const mainClientLogo = realReferralClient.replace('{mainClient}', 
                 getMainClient
                     .filter(partner => mainCliFlat.includes(partner.id))
-                    .map(partner => `<div class = "main-card">
-                                    <div class = "main-client" id = "main-client-second">
+                    .map((partner, index) => `<div class = "main-card">
+                                    <div class = "main-client" id = "main-client-${index}">
                                         <img src = "${baseUrl}/web/image/main_client_logos/${partner.id}/logo">
-                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "second-client" id = "mainClient-2" onchange="photoLoad('main-client-second', 'mainClient-2')" required>
-                                        <label for = "mainClient-2">Add photo</label>
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "second-client" id = "mainClient-${index}" onchange="photoLoad('main-client-${index}', 'mainClient-${index}')" required>
+                                        <label for = "mainClient-${index}"  style="display: none;">Add photo</label>
                                     </div>
-                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-second')" value = "Remove photo"></div>
+                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-${index}')" value = "Remove photo"></div>
                                 </div>`).join(' ')
             )
-
-            // console.log(realReferralClient);
 
             res.writeHead(200, {'ContentType': 'text/html'});
             res.end(mainClientLogo);
