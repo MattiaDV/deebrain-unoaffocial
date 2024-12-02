@@ -210,6 +210,18 @@ exports.getAgencyTypeFromDB = function(params) {
     })
 }
 
+exports.getNormalAgencyTypeFromDB = function(params) {
+    return new Promise((resolve, reject) => {
+        let agencys = [];
+        for (let agencyT of agencyType) {
+            agencys.push(agencyT);
+        }
+        let art = agencys
+            .map(partner => partner);
+        resolve(art);
+    })
+}
+
 exports.getFounderNamesFromDB = function(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('founder_name', params, (err, part) => {

@@ -677,6 +677,7 @@ const server = createServer(async (req, res) => {
         const getAgencyName = await dbLayer.getAllDataFromDB(id_cardsAgency);
         const getReferralClient = await dbLayer.getAllReferralClientFromDb(id_cardsAgency);
         const getMainClient = await dbLayer.getNormalMainClientFromDb(id_cardsAgency);
+        const getAllTypes = await dbLayer.getNormalAgencyTypeFromDB(id_cardsAgency);
 
         try {
 
@@ -740,7 +741,14 @@ const server = createServer(async (req, res) => {
             const mainCliFlat = mainCliReal.flat()
 
             const agencyName = htmlContent.replace('{agencyName}', nameAgencyReal);
-            const agencyType = agencyName.replace('{agencyType}', agencyTypeReal);
+            const agencyType = agencyName.replace('{agencyType}', getAllTypes
+                .map(partner =>
+                    (partner.toLowerCase() == agencyTypeReal.toString().toLowerCase()) ? 
+                    `<option value = "${partner.toLowerCase()}" selected>${partner}</option>`
+                    :
+                    `<option value = "${partner.toLowerCase()}">${partner}</option>`
+                ).join(" ")
+            );
             const managedBilling = agencyType.replace('{managedBilling}', managedBillingReal);
             const numberOfEmployees = managedBilling.replace('{nEmployee}', numberOfEmployeesReal);
             const aware = numberOfEmployees.replace('{awareness}', awareness.map(partner => (partner == true) ? `<input type = "checkbox" id = "awareness" name = "awareness" checked>` : `<input type = "checkbox" id = "awareness" name = "awareness">`));
