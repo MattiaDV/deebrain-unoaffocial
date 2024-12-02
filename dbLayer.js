@@ -45,7 +45,6 @@ exports.searchIdOfLocationFromDb = function(param, acc) {
         });
     });
 }
- 
 
 exports.searchIdOfMediaFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
@@ -150,6 +149,19 @@ exports.createUser = function(user) {
 exports.getAllDataFromDB = function(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('users_model', params, (err, part) => {
+            if (err) {
+                reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
+            } else {
+                const locationOptions = part 
+                resolve(locationOptions);
+            }
+        })
+    })
+}
+
+exports.getAllReferralClientFromDb = function(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('users_referral_client', params, (err, part) => {
             if (err) {
                 reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
             } else {

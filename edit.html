@@ -254,7 +254,8 @@
                         <span class = "fs-16 500-bold" style = "margin-left: 20px;">Add or remove main client (min 3)</span><br><br>
                         <div class = "edit-main-service-section-real">
                             <div class = "main-clients">
-                                <div class = "main-card">
+                                {mainClient}
+                                <!-- <div class = "main-card">
                                     <div class = "main-client" id = "main-client-first">
                                         <input type = "file" accept=".jpg, .png, .jpeg" name = "first-client" id = "mainClient-1" onchange="photoLoad('main-client-first', 'mainClient-1')" required>
                                         <label for = "mainClient-1">Add photo</label>
@@ -274,7 +275,7 @@
                                         <label for = "mainClient-3">Add photo</label>
                                     </div>
                                     <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-third')" value = "Remove photo"></div>
-                                </div>
+                                </div> -->
                                     <div class = "main-card">
                                     <div class = "main-client" id = "main-client-fourth">
                                         <input type = "file" accept=".jpg, .png, .jpeg" name = "fourth-client" id = "mainClient-4" onchange="photoLoad('main-client-fourth', 'mainClient-4')">
@@ -316,6 +317,7 @@
                                         <td><input type = "text" placeholder="Main client" name = "mainClient" id = "mainClient"></td>
                                         <td><input type = "button" class = "add-ref" value = "+" onclick = "addReferral()"></td>
                                     </tr>
+                                    {refClient}
                                 </table>
                             </div>
                         </div>

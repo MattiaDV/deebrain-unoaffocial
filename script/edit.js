@@ -379,8 +379,8 @@ function addReferral() {
 
 
 function removeClient(value) {
-    let index = referralClient.findIndex(client => client.id === parseFloat(value));
-    referralClient.splice(index, 1);
+    // let index = referralClient.findIndex(client => client.id === parseFloat(value));
+    // referralClient.splice(index, 1);
     document.getElementById(value).remove();
 }
 
