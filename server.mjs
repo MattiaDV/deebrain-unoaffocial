@@ -596,19 +596,23 @@ const server = createServer(async (req, res) => {
                                 if (err) {
                                     reject("Errore nella ricerca degli id: " + JSON.stringify(err));
                                 } else {
-                                    console.log("Founders separeati: ", acc);
+                                    console.log("Fondatori richiesti: ", acc);
+                                    const sortedPartners = partners.sort((a, b) => b.id - a.id);
                     
-                                    const cit = partners
-                                        .filter(partner => acc.includes(partner.name))
+                                    const cit = sortedPartners
+                                        .slice(0, acc.length) 
                                         .map(partner => partner.id);
-                                    resolve(cit); 
+                    
+                                    console.log("ID trovati: ", cit);
+                                    resolve(cit);
                                 }
                             });
                         });
-                    }  
+                    }
+                    
     
                     let citys = await getIdFounders(id_cardsAgency, founderNames);
-                    console.log("CITYS: " + citys);
+                    console.log("ID FOUNDER/S: " + citys);
     
                     // console.log(JSON.stringify(files));
     
