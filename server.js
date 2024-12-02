@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
-import { createReadStream } from 'node:fs';
+import { createReadStream, read } from 'node:fs';
 import { extname, join } from 'node:path';
 import cookie from 'cookie';
 import formidable from 'formidable';
@@ -667,6 +667,101 @@ const server = createServer(async (req, res) => {
             res.end('Errore del server interno');
         }
         return;
+    }
+
+    if (method === 'GET' && url === '/edit.html') {
+        const htmlContent = await readFile('edit.html', 'utf-8');
+        const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+        const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
+        const emailFromCookie = cookies.email || 'Nessun cookie trovato';
+        const getAgencyName = await dbLayer.getAllDataFromDB(id_cardsAgency);
+
+        try {
+
+            const nameAgencyReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.name)
+
+            const agencyTypeReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.agencyType)
+
+            const managedBillingReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.managedBilling)
+
+            const numberOfEmployeesReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.numberOfEmployees)
+
+            const awareness = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.awareness)
+
+            const conversion = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.conversion)
+
+            const consideration = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.consideration)
+
+            const websiteReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.website)
+
+            const facebookReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.facebookLink)
+
+            const linkedinReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.linkedinLink)
+
+            const brochureReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.brochure)
+
+            const caseStudyReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.caseStudy)
+
+
+
+            const agencyName = htmlContent.replace('{agencyName}', nameAgencyReal);
+            const agencyType = agencyName.replace('{agencyType}', agencyTypeReal);
+            const managedBilling = agencyType.replace('{managedBilling}', managedBillingReal);
+            const numberOfEmployees = managedBilling.replace('{nEmployee}', numberOfEmployeesReal);
+            const aware = numberOfEmployees.replace('{awareness}', awareness.map(partner => (partner == true) ? `<input type = "checkbox" id = "awareness" name = "awareness" checked>` : `<input type = "checkbox" id = "awareness" name = "awareness">`));
+            const conv = aware.replace('{conversion}', conversion.map(partner => (partner == true) ? `<input type = "checkbox" id = "conversion" name = "conversion" checked>` : `<input type = "checkbox" id = "conversion" name = "conversion">`));
+            const cons = conv.replace('{consideration}', consideration.map(partner => (partner == true) ? `<input type = "checkbox" id = "consideration" name = "consideration" checked>` : `<input type = "checkbox" id = "consideration" name = "consideration">`));
+            const website = cons.replace('{website}', websiteReal);
+            const linkedin = website.replace('{linkedin}', linkedinReal.map(partner => (partner == false) ? 'https://' : partner));
+            const facebook = linkedin.replace('{facebook}', facebookReal.map(partner => (partner == false) ? 'https://' : partner));
+            const email = facebook.replace('{email}', emailFromCookie);
+            const brochure = email.replace('{brochure}', brochureReal);
+            const caseStudy = brochure.replace('{caseStudy}', caseStudyReal);
+            const baseUrl = "http://127.0.0.1:8069/";
+            const logoURL = caseStudy.replace(
+                '{logo}',
+                getAgencyName
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner =>
+                        partner.logo 
+                            ? `${baseUrl}/web/image/users_model/${partner.id}/logo`
+                            : ''
+                    )
+            );
+
+            res.writeHead(200, {'ContentType': 'text/html'});
+            res.end(logoURL);
+
+        } catch(err) {
+            if (err) {
+                console.log("Errore nel caricamento della pagina: " + err);
+            }
+        }
+        return
     }
 
     const staticPath = './';

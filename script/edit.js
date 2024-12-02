@@ -52,10 +52,7 @@ newLogo.addEventListener('change', function() {
         reader.onload = function(e) {
             let logoNew = document.getElementById('logoNew');
             logoNew.innerHTML = '<span class = "fs-14 light-text">Upload new logo</span>';
-            let img = document.createElement('img');
-            img.src = e.target.result;
-            img.alt = 'New Logo';
-            logoNew.appendChild(img);
+            logoNew.src = e.target.result;
         };
 
         reader.readAsDataURL(file);

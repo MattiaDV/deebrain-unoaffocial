@@ -60,7 +60,7 @@
                                 <div class = "new-logo-section">
                                     <span class = "title-no medium-bold-text">Your logo</span>
                                     <div class = "choose-file-logo">
-                                        <label for = "newLogo" class = "logoNew" id = "logoNew"><span class = "fs-14 light-text">Upload new logo</span></label>
+                                        <img class = "logoNew" id = "logoNew" src="{logo}"><label for = "newLogo" class = "fs-14 light-text">Upload new logo</label>
                                         <input type = "file" accept = ".png, .jpg, .jpeg" name = "newLogo" id = "newLogo" hidden>
                                     </div>
                                 </div>
@@ -77,17 +77,17 @@
 
                                         <div class = "info-one-personal agency-type-s">
                                             <label for = "agencyType" class = "fs-12 500-bold">Agency type</label>
-                                            <select id = "agencyType" name = "agencyType" class = "fs-10"><option value = "digital-agency">Digital agency</option><option value = "media-center">Media center</option><option value = "creative-agency">Creative agency</option><option value = "perform-agency">Perform agency</option><option value="advertising-agency">Advertising agency</option><option value="marketing-agency">Marketing agency</option><option value="branding-agency">Branding agency</option><option value="design-agency">Design agency</option><option value="web-agency">Web agency</option><option value="seo-agency">SEO agency</option><option value="social-media-agency">Social media agency</option><option value="public-relations-agency">Public relations agency</option><option value="event-agency">Event agency</option><option value="consulting-agency">Consulting agency</option><option value="production-agency">Production agency</option><option value="influencer-agency">Influencer agency</option><option value="digital-marketing-agency">Digital marketing agency</option><option value="content-agency">Content agency</option><option value="advertising-production-agency">Advertising production agency</option><option value="motion-graphics-agency">Motion graphics agency</option><option value="creative-consulting-agency">Creative consulting agency</option><option value="interactive-agency">Interactive agency</option><option value="media-buying-agency">Media buying agency</option></select>
+                                            <select id = "agencyType" name = "agencyType" class = "fs-10" value="{agencyType}"><option value = "digital agency">Digital agency</option><option value = "media center">Media center</option><option value = "creative agency">Creative agency</option><option value = "perform-agency">Perform agency</option><option value="advertising-agency">Advertising agency</option><option value="marketing-agency">Marketing agency</option><option value="branding-agency">Branding agency</option><option value="design-agency">Design agency</option><option value="web-agency">Web agency</option><option value="seo-agency">SEO agency</option><option value="social-media-agency">Social media agency</option><option value="public-relations-agency">Public relations agency</option><option value="event-agency">Event agency</option><option value="consulting-agency">Consulting agency</option><option value="production-agency">Production agency</option><option value="influencer-agency">Influencer agency</option><option value="digital-marketing-agency">Digital marketing agency</option><option value="content-agency">Content agency</option><option value="advertising-production-agency">Advertising production agency</option><option value="motion-graphics-agency">Motion graphics agency</option><option value="creative-consulting-agency">Creative consulting agency</option><option value="interactive-agency">Interactive agency</option><option value="media-buying-agency">Media buying agency</option></select>
                                         </div>
 
                                         <div class = "info-one-personal">
                                             <label for = "managedBilling" class = "fs-12 500-bold">Managed billing</label>
-                                            <input type = "number" step = 1 min = 1 placeholder="Managed billing" name = "managedBilling" id = "managedBilling" class = "fs-10">
+                                            <input type = "number" step = 1 min = 1 placeholder="Managed billing" value = "{managedBilling}" name = "managedBilling" id = "managedBilling" class = "fs-10">
                                         </div>
 
                                         <div class = "info-one-personal">
                                             <label for = "nEmployee" class = "fs-12 500-bold">Number of employees</label>
-                                            <input type = "number" step = 1 min = 1 placeholder="Number of employees" name = "employeesNumber" id = "nEmployee" class = "fs-10">
+                                            <input type = "number" step = 1 min = 1 placeholder="Number of employees" value = "{nEmployee}" name = "employeesNumber" id = "nEmployee" class = "fs-10">
                                         </div>
 
                                         <div class = "info-one-personal location-stat">
@@ -100,7 +100,7 @@
                                     <label for = "nameAgency" class = "fs-16 500-bold aa">User Preferences</label>
                                     <div class = "info-one-personal toggle-men">
                                         <div class = "svg-infos">
-                                            <input type = "checkbox" id = "awareness" name = "awareness">
+                                            {awareness}
                                             <label for = "awareness" class = "slider"><div class = "toggle"></div></label>
                                         </div>
                                         <div class = "svg-middle">
@@ -111,7 +111,7 @@
 
                                     <div class = "info-one-personal toggle-men">
                                         <div class = "svg-infos">
-                                            <input type = "checkbox" id = "conversion" name = "conversion">
+                                            {conversion}
                                             <label for = "conversion" class = "slider"><div class = "toggle"></div></label>
                                         </div>
                                         <div class = "svg-middle">
@@ -122,7 +122,7 @@
 
                                     <div class = "info-one-personal toggle-men">
                                         <div class = "svg-infos">
-                                            <input type = "checkbox" id = "consideration" name = "consideration">
+                                            {consideration}
                                             <label for = "consideration" class = "slider"><div class = "toggle"></div></label>
                                         </div>
                                         <div class = "svg-middle">
@@ -155,22 +155,22 @@
                             <div class = "infos-about-personal">
                                 <div class = "info-one-personal">
                                     <label for = "website" class = "fs-12 normal-text">Website</label>
-                                    <input type = "url" value = "https://" name = "website" id = "website" class = "fs-10">
+                                    <input type = "url" value = "{website}" name = "website" id = "website" class = "fs-10">
                                 </div>
 
                                 <div class = "info-one-personal">
                                     <label for = "linkedin" class = "fs-12 normal-text">Linkedin</label>
-                                    <input type = "url" value = "https://" name = "linkedin" id = "linkedin" class = "fs-10">
+                                    <input type = "url" value = "{linkedin}" name = "linkedin" id = "linkedin" class = "fs-10">
                                 </div>
 
                                 <div class = "info-one-personal">
                                     <label for = "facebook" class = "fs-12 normal-text">Facebook</label>
-                                    <input type = "url" value = "https://" name = "facebook" id = "facebook" class = "fs-10">
+                                    <input type = "url" value = "{facebook}" name = "facebook" id = "facebook" class = "fs-10">
                                 </div>
 
                                 <div class = "info-one-personal">
                                     <label for = "email" class = "fs-12 normal-text">Email</label>
-                                    <input type = "email" placeholder = "johndoe@john.com" name = "email" id = "email" class = "fs-10">
+                                    <input type = "email" value = "{email}" placeholder = "johndoe@john.com" name = "email" id = "email" class = "fs-10">
                                 </div>
                             </div>
                         </div>
@@ -344,14 +344,14 @@
                                         <span class = "fs-12 normal-text">
                                             Upload new brochure
                                         </span>
-                                        <input type = "file" class = "fs-10" name = "newBrochure">
+                                        <input type = "url" value = "{brochure}" class = "fs-10" name = "newBrochure">
                                     </div>
 
                                     <div class = "info-one-personal">
                                         <span class = "fs-12 normal-text">
                                             Upload new case study
                                         </span>
-                                        <input type = "file" class = "fs-10" name = "newCasestudy">
+                                        <input type = "url" value = "{caseStudy}" class = "fs-10" name = "newCasestudy">
                                     </div>
                                 </div>
                             </div>
