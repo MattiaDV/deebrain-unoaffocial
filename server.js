@@ -683,6 +683,10 @@ const server = createServer(async (req, res) => {
         const getDisService = await dbLayer.getNormalDisFromDb(id_cardsAgency);
         const getManMedia = await dbLayer.getNormalMediaFromDb(id_cardsAgency);
         const getManPlatform = await dbLayer.getNormalPlatformFromDb(id_cardsAgency);
+        const mainsC = await dbLayer.getMainFromDb(id_cardsAgency);
+        const distsC = await dbLayer.getDisFromDb(id_cardsAgency);
+        const mediaC = await dbLayer.getMediaFromDb(id_cardsAgency);
+        const platC = await dbLayer.getPlatformFromDb(id_cardsAgency);
 
         try {
 
@@ -812,7 +816,7 @@ const server = createServer(async (req, res) => {
                     .map((partner, index) => `<div class = "main-card">
                                     <div class = "main-client" id = "main-client-${index}">
                                         <img src = "${baseUrl}/web/image/main_client_logos/${partner.id}/logo">
-                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "second-client" id = "mainClient-${index}" onchange="photoLoad('main-client-${index}', 'mainClient-${index}')" required>
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "second-client" id = "mainClient-${index}" onchange="photoLoad('main-client-${index}', 'mainClient-${index}')">
                                         <label for = "mainClient-${index}"  style="display: none;">Add photo</label>
                                     </div>
                                     <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-${index}')" value = "Remove photo"></div>
@@ -848,9 +852,212 @@ const server = createServer(async (req, res) => {
                     `<div class="Mplatformm" id="${partner.name}" onclick = "deleteItemManMedia('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
                 ).join(" ")
             )
+            const mainSch = managedPlatform.replace('{mainSch}', mainsC.join(" "));
+            const disSch = mainSch.replace('{disSch}', distsC.join(" "));
+            const mediaSch = disSch.replace('{mediaSch}', mediaC.join(" "));
+            const platformSch = mediaSch.replace('{platformSch}', platC.join(" "));
 
             res.writeHead(200, {'ContentType': 'text/html'});
-            res.end(managedPlatform);
+            res.end(platformSch);
+
+        } catch(err) {
+            if (err) {
+                console.log("Errore nel caricamento della pagina: " + err);
+            }
+        }
+        return
+    }
+
+    if (method === 'POST' && url === '/edit.html') {
+        const htmlContent = await readFile('edit.html', 'utf-8');
+        const id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+        const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
+        const emailFromCookie = cookies.email || 'Nessun cookie trovato';
+        const getAgencyName = await dbLayer.getAllDataFromDB(id_cardsAgency);
+        const getReferralClient = await dbLayer.getAllReferralClientFromDb(id_cardsAgency);
+        const getMainClient = await dbLayer.getNormalMainClientFromDb(id_cardsAgency);
+        const getAllTypes = await dbLayer.getNormalAgencyTypeFromDB(id_cardsAgency);
+        const getLocation = await dbLayer.getNormalLocationsFromDb(id_cardsAgency);
+        const getMainService = await dbLayer.getNormalMainFromDb(id_cardsAgency);
+        const getDisService = await dbLayer.getNormalDisFromDb(id_cardsAgency);
+        const getManMedia = await dbLayer.getNormalMediaFromDb(id_cardsAgency);
+        const getManPlatform = await dbLayer.getNormalPlatformFromDb(id_cardsAgency);
+        const mainsC = await dbLayer.getMainFromDb(id_cardsAgency);
+        const distsC = await dbLayer.getDisFromDb(id_cardsAgency);
+        const mediaC = await dbLayer.getMediaFromDb(id_cardsAgency);
+        const platC = await dbLayer.getPlatformFromDb(id_cardsAgency);
+
+        try {
+
+            const nameAgencyReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.name)
+
+            const agencyTypeReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.agencyType)
+
+            const managedBillingReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.managedBilling)
+
+            const numberOfEmployeesReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.numberOfEmployees)
+
+            const awareness = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.awareness)
+
+            const conversion = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.conversion)
+
+            const consideration = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.consideration)
+
+            const websiteReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.website)
+
+            const facebookReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.facebookLink)
+
+            const linkedinReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.linkedinLink)
+
+            const brochureReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.brochure)
+
+            const caseStudyReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.caseStudy)
+
+            const refClientReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.referralClient)
+
+            const mainCliReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.clientLogos)
+
+            const locationReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.locations)
+
+            const mainServReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.mainServices)
+
+            const distServReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.distinctiveServices)
+
+            const manaMediaReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.managedMedia)
+
+            const manaPlatformReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.managedPlatform)
+
+            const refClientFlat = refClientReal.flat()
+            const mainCliFlat = mainCliReal.flat()
+            const locationFlat = locationReal.flat()
+            const mainServFlat = mainServReal.flat()
+            const disServFlat = distServReal.flat()
+            const manaMediaFlat = manaMediaReal.flat()
+            const manaPlatformFlat = manaPlatformReal.flat()
+
+            const agencyName = htmlContent.replace('{agencyName}', nameAgencyReal);
+            const agencyType = agencyName.replace('{agencyType}', getAllTypes
+                .map(partner =>
+                    (partner.toLowerCase() == agencyTypeReal.toString().toLowerCase()) ? 
+                    `<option value = "${partner.toLowerCase()}" selected>${partner}</option>`
+                    :
+                    `<option value = "${partner.toLowerCase()}">${partner}</option>`
+                ).join(" ")
+            );
+            const managedBilling = agencyType.replace('{managedBilling}', managedBillingReal);
+            const numberOfEmployees = managedBilling.replace('{nEmployee}', numberOfEmployeesReal);
+            const aware = numberOfEmployees.replace('{awareness}', awareness.map(partner => (partner == true) ? `<input type = "checkbox" id = "awareness" name = "awareness" checked>` : `<input type = "checkbox" id = "awareness" name = "awareness">`));
+            const conv = aware.replace('{conversion}', conversion.map(partner => (partner == true) ? `<input type = "checkbox" id = "conversion" name = "conversion" checked>` : `<input type = "checkbox" id = "conversion" name = "conversion">`));
+            const cons = conv.replace('{consideration}', consideration.map(partner => (partner == true) ? `<input type = "checkbox" id = "consideration" name = "consideration" checked>` : `<input type = "checkbox" id = "consideration" name = "consideration">`));
+            const website = cons.replace('{website}', websiteReal);
+            const linkedin = website.replace('{linkedin}', linkedinReal.map(partner => (partner == false) ? 'https://' : partner));
+            const facebook = linkedin.replace('{facebook}', facebookReal.map(partner => (partner == false) ? 'https://' : partner));
+            const email = facebook.replace('{email}', emailFromCookie);
+            const brochure = email.replace('{brochure}', brochureReal);
+            const caseStudy = brochure.replace('{caseStudy}', caseStudyReal);
+            const baseUrl = "http://127.0.0.1:8069/";
+            const logoURL = caseStudy.replace(
+                '{logo}',
+                getAgencyName
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner =>
+                        partner.logo 
+                            ? `${baseUrl}/web/image/users_model/${partner.id}/logo`
+                            : ''
+                    )
+            );
+            const realReferralClient = logoURL.replace('{refClient}', 
+                getReferralClient
+                    .filter(partner => refClientFlat.includes(partner.id))
+                    .map(partner => `<tr class = 'refC' id = "${partner.id}"><td class = "nSurn">${partner.name} ${partner.surname}</td><td class = "workas">${partner.workAs}</td><td><img class = "imga" src="${baseUrl}/web/image/users_referral_client/${partner.id}/photo"></td><td class = "workWhere">${partner.workWhere}</td><td><input type = "button" class = "remove-ref" value = "-" onclick = "removeClient(${partner.id})"></td></tr>`).join(' ')
+            )
+            const mainClientLogo = realReferralClient.replace('{mainClient}', 
+                getMainClient
+                    .filter(partner => mainCliFlat.includes(partner.id))
+                    .map((partner, index) => `<div class = "main-card">
+                                    <div class = "main-client" id = "main-client-${index}">
+                                        <img src = "${baseUrl}/web/image/main_client_logos/${partner.id}/logo">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "second-client" id = "mainClient-${index}" onchange="photoLoad('main-client-${index}', 'mainClient-${index}')">
+                                        <label for = "mainClient-${index}"  style="display: none;">Add photo</label>
+                                    </div>
+                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-${index}')" value = "Remove photo"></div>
+                                </div>`).join(' ')
+            )
+            const location = mainClientLogo.replace("{location}", getLocation
+                .filter(partner => locationFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="city" id="${partner.name}" onclick = "deleteItem('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
+            const mainService = location.replace("{mainServices}", getMainService
+                .filter(partner => mainServFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="service" id="${partner.name}" onclick = "deleteItemMainServices('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
+            const distService = mainService.replace("{distinctiveServices}", getDisService
+                .filter(partner => disServFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="serviceD" id="${partner.name}" onclick = "deleteItemMainServices('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
+            const managedMedia = distService.replace("{managedMedia}", getManMedia
+                .filter(partner => manaMediaFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="Mmedia" id="${partner.name}" onclick = "deleteItemManMedia('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
+            const managedPlatform = managedMedia.replace("{managedPlatforms}", getManPlatform
+                .filter(partner => manaPlatformFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="Mplatformm" id="${partner.name}" onclick = "deleteItemManMedia('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
+            const mainSch = managedPlatform.replace('{mainSch}', mainsC.join(" "));
+            const disSch = mainSch.replace('{disSch}', distsC.join(" "));
+            const mediaSch = disSch.replace('{mediaSch}', mediaC.join(" "));
+            const platformSch = mediaSch.replace('{platformSch}', platC.join(" "));
+
+            res.writeHead(200, {'ContentType': 'text/html'});
+            res.end(platformSch);
 
         } catch(err) {
             if (err) {

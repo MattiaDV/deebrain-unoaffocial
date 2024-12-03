@@ -385,6 +385,7 @@ function removeClient(value) {
 
 
 
+let mainClientLogod = [];
 
 function photoLoad(disp, photo) {
     let dis = document.getElementById(disp);
@@ -401,6 +402,7 @@ function photoLoad(disp, photo) {
             dis.appendChild(img);
         }
 
+        mainClientLogod.push('1');
         reader.readAsDataURL(pho);
     }
 
@@ -416,6 +418,8 @@ function unlaodPhoto(disp) {
     img.remove();
     inputs.value = "";
     label.style.display = "block";
+
+    mainClientLogod.pop();
 }
 
 
@@ -425,33 +429,31 @@ function cityPush() {
     // citys
     let citysCho = document.querySelectorAll('.city');
     for (let elem of citysCho) {
-        cityChoose.push(elem.id.toLowerCase());
+        cityChoose.push(elem.id.replace(" ", "-").toLowerCase());
     }
 
     // serviceChoose
     let servicesCho = document.querySelectorAll('.service');
     for (let elem of servicesCho) {
-        servicesChoose.push(elem.id.toLowerCase());
+        servicesChoose.push(elem.id.replace(" ", "-").toLowerCase());
     }
 
     // serviceDissCho
     let serviceDissCho = document.querySelectorAll('.serviceD');
     for (let elem of serviceDissCho) {
-        DservicesChoose.push(elem.id.toLowerCase());
+        DservicesChoose.push(elem.id.replace(" ", "-").toLowerCase());
     }
 
     // MMediaChoose
     let managedMediaServ = document.querySelectorAll('.Mmedia');
     for (let elem of managedMediaServ) {
-        MMediaChoose.push(elem.id.toLowerCase());
+        MMediaChoose.push(elem.id.replace(" ", "-").toLowerCase());
     }
 
     // MPlatformChoose
     let managedPlatformA = document.querySelectorAll('.Mplatformm');
     for (let elem of managedPlatformA) {
-        MPlatformChoose.push(
-            MPlatformChoose.push(elem.id.toLowerCase())
-        );
+        MPlatformChoose.push(elem.id.replace(" ", "-").toLowerCase());
     }
 
     // referralClient
@@ -469,5 +471,20 @@ function cityPush() {
             mainClientRef: mainClientRef[elem]?.textContent || "" 
         }
         referralClient.push(user);
+    }
+
+    // mainClientLogod
+    let mainClient = document.querySelectorAll('.main-client > img');
+    for (let mainC of mainClient) {
+        mainClientLogod.push("1");
+    }
+}
+
+function ref() {
+    if (mainClientLogod.length < 3) {
+        alert("Set minimum 3 images");
+        return false;
+    } else {
+        return true;
     }
 }
