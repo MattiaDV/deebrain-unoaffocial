@@ -1,4 +1,5 @@
 const Odoo = require('./node_modules/node-odoo');
+const sinon = require('sinon');
 
 const connectionDb = new Odoo({
     host: 'localhost',
@@ -7,6 +8,20 @@ const connectionDb = new Odoo({
     username: 'admin',
     password: 'admin',
 });
+
+exports.updateUser = function(param, id) {
+    var callback = sinon.spy();
+    connectionDb.update('users_model', id, {
+        logo: param.logo,
+        name: param.name,
+        agencyType: param.agencyType,
+        managedBilling: param.managedBilling,
+        numberOfEmployees: param.numberOfEmployees,
+        awareness: param.awareness,
+        conversion: param.conversion,
+        consideration: param.consideration,
+    }, callback);
+}
 
 exports.createFounderForDb = function(founderNames) {
     return Promise.all(
