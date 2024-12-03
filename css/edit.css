@@ -521,6 +521,36 @@ div.service > span {
     color: white;
 }
 
+.serviceD {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #424242;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    cursor: pointer;
+    margin-right: 10px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    transition: 0.4s;
+}
+
+div.serviceD > span {
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 4px;
+    color: white;
+}
+
+.serviceD:hover {
+    background: red;
+    color: white;
+}
+
 .Mmedia:hover {
     background: red;
     color: white;
@@ -878,19 +908,73 @@ div.location-stat div div.choose-citys .service:hover {
     background: red;
 }
 
+div.location-stat div div.choose-citys .serviceD {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #0097b2;
+    display: flex;
+    font-size: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    min-width: 200px;
+    width: auto;
+}
+
+div.location-stat div div.choose-citys .serviceD:hover {
+    background: red;
+}
+
 div.location-stat div div.choose-citys .Mmedia {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
     background: #0097b2;
     display: flex;
+    font-size: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    min-width: 150px;
+    min-width: 200px;
+    width: auto;
 }
 
 div.location-stat div div.choose-citys .Mmedia:hover {
+    background: red;
+}
+
+div.location-stat div div.choose-citys .Mplatformm {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #0097b2;
+    color: white;
+    font-size: 12px;
+    font-weight: 200;
+    margin-right: 10px;
+    border-radius: 4px;
+    display: flex;
+    font-size: 10px;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    min-width: 200px;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.4s;
+}
+
+div.location-stat div div.choose-citys .Mplatformm:hover {
     background: red;
 }
 

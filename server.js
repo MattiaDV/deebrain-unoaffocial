@@ -679,6 +679,10 @@ const server = createServer(async (req, res) => {
         const getMainClient = await dbLayer.getNormalMainClientFromDb(id_cardsAgency);
         const getAllTypes = await dbLayer.getNormalAgencyTypeFromDB(id_cardsAgency);
         const getLocation = await dbLayer.getNormalLocationsFromDb(id_cardsAgency);
+        const getMainService = await dbLayer.getNormalMainFromDb(id_cardsAgency);
+        const getDisService = await dbLayer.getNormalDisFromDb(id_cardsAgency);
+        const getManMedia = await dbLayer.getNormalMediaFromDb(id_cardsAgency);
+        const getManPlatform = await dbLayer.getNormalPlatformFromDb(id_cardsAgency);
 
         try {
 
@@ -742,9 +746,29 @@ const server = createServer(async (req, res) => {
                 .filter(partner => partner.email == emailFromCookie)
                 .map(partner => partner.locations)
 
+            const mainServReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.mainServices)
+
+            const distServReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.distinctiveServices)
+
+            const manaMediaReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.managedMedia)
+
+            const manaPlatformReal = getAgencyName
+                .filter(partner => partner.email == emailFromCookie)
+                .map(partner => partner.managedPlatform)
+
             const refClientFlat = refClientReal.flat()
             const mainCliFlat = mainCliReal.flat()
             const locationFlat = locationReal.flat()
+            const mainServFlat = mainServReal.flat()
+            const disServFlat = distServReal.flat()
+            const manaMediaFlat = manaMediaReal.flat()
+            const manaPlatformFlat = manaPlatformReal.flat()
 
             const agencyName = htmlContent.replace('{agencyName}', nameAgencyReal);
             const agencyType = agencyName.replace('{agencyType}', getAllTypes
@@ -780,7 +804,7 @@ const server = createServer(async (req, res) => {
             const realReferralClient = logoURL.replace('{refClient}', 
                 getReferralClient
                     .filter(partner => refClientFlat.includes(partner.id))
-                    .map(partner => `<tr id = "${partner.id}"><td>${partner.name} ${partner.surname}</td><td>${partner.workAs}</td><td><img src="${baseUrl}/web/image/users_referral_client/${partner.id}/photo"></td><td>${partner.workWhere}</td><td><input type = "button" class = "remove-ref" value = "-" onclick = "removeClient(${partner.id})"></td></tr>`).join(' ')
+                    .map(partner => `<tr class = 'refC' id = "${partner.id}"><td class = "nSurn">${partner.name} ${partner.surname}</td><td class = "workas">${partner.workAs}</td><td><img class = "imga" src="${baseUrl}/web/image/users_referral_client/${partner.id}/photo"></td><td class = "workWhere">${partner.workWhere}</td><td><input type = "button" class = "remove-ref" value = "-" onclick = "removeClient(${partner.id})"></td></tr>`).join(' ')
             )
             const mainClientLogo = realReferralClient.replace('{mainClient}', 
                 getMainClient
@@ -800,9 +824,33 @@ const server = createServer(async (req, res) => {
                     `<div class="city" id="${partner.name}" onclick = "deleteItem('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
                 ).join(" ")
             )
+            const mainService = location.replace("{mainServices}", getMainService
+                .filter(partner => mainServFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="service" id="${partner.name}" onclick = "deleteItemMainServices('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
+            const distService = mainService.replace("{distinctiveServices}", getDisService
+                .filter(partner => disServFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="serviceD" id="${partner.name}" onclick = "deleteItemMainServices('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
+            const managedMedia = distService.replace("{managedMedia}", getManMedia
+                .filter(partner => manaMediaFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="Mmedia" id="${partner.name}" onclick = "deleteItemManMedia('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
+            const managedPlatform = managedMedia.replace("{managedPlatforms}", getManPlatform
+                .filter(partner => manaPlatformFlat.includes(partner.id))
+                .map(partner =>
+                    `<div class="Mplatformm" id="${partner.name}" onclick = "deleteItemManMedia('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                ).join(" ")
+            )
 
             res.writeHead(200, {'ContentType': 'text/html'});
-            res.end(location);
+            res.end(managedPlatform);
 
         } catch(err) {
             if (err) {

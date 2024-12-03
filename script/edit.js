@@ -65,13 +65,6 @@ newLogo.addEventListener('change', function() {
 let citys = document.getElementById('location');
 let cityChoose = [];
 
-function cityPush() {
-    let citysCho = document.querySelectorAll('.city');
-    for (let elem of citysCho) {
-        cityChoose.push(elem.id.toLowerCase());
-    }
-}
-
 citys.addEventListener('change', function() {
     // console.log(citys.value);
     console.log(citys.value);
@@ -175,7 +168,7 @@ Dservices.addEventListener('change', function() {
             DservicesChoose.push(Dservices.value);
             // console.log(cityChoose);
             let choose = document.createElement('div');
-            choose.classList.add('service');
+            choose.classList.add('serviceD');
             choose.innerHTML = Dservices.value + "<span style = 'color: white;'>X</span>";
             choose.id = Dservices.value;
             choose.onclick = function() {
@@ -267,7 +260,7 @@ managedPlatfrom.addEventListener('change', function() {
             MPlatformChoose.push(managedPlatfrom.value);
             // console.log(cityChoose);
             let choose = document.createElement('div');
-            choose.classList.add('Mmedia');
+            choose.classList.add('Mplatformm');
             choose.innerHTML = managedPlatfrom.value + "<span style = 'color: white;'>X</span>";
             choose.id = managedPlatfrom.value;
             choose.onclick = function() {
@@ -324,7 +317,6 @@ function addReferral() {
 
     if (nameAndSurname !== "" && profession !== "" && photo !== undefined && mainClientRef !== "") {
         referralClient.push({
-            id : iddd,
             nameAndSurname: nameAndSurname,
             profession: profession,
             photo: photo,
@@ -424,4 +416,58 @@ function unlaodPhoto(disp) {
     img.remove();
     inputs.value = "";
     label.style.display = "block";
+}
+
+
+
+
+function cityPush() {
+    // citys
+    let citysCho = document.querySelectorAll('.city');
+    for (let elem of citysCho) {
+        cityChoose.push(elem.id.toLowerCase());
+    }
+
+    // serviceChoose
+    let servicesCho = document.querySelectorAll('.service');
+    for (let elem of servicesCho) {
+        servicesChoose.push(elem.id.toLowerCase());
+    }
+
+    // serviceDissCho
+    let serviceDissCho = document.querySelectorAll('.serviceD');
+    for (let elem of serviceDissCho) {
+        DservicesChoose.push(elem.id.toLowerCase());
+    }
+
+    // MMediaChoose
+    let managedMediaServ = document.querySelectorAll('.Mmedia');
+    for (let elem of managedMediaServ) {
+        MMediaChoose.push(elem.id.toLowerCase());
+    }
+
+    // MPlatformChoose
+    let managedPlatformA = document.querySelectorAll('.Mplatformm');
+    for (let elem of managedPlatformA) {
+        MPlatformChoose.push(
+            MPlatformChoose.push(elem.id.toLowerCase())
+        );
+    }
+
+    // referralClient
+    let refClientA = document.querySelectorAll('.refC');
+    let nameAndSurname = document.querySelectorAll('.nSurn');
+    let profession = document.querySelectorAll('.workas');
+    let photo = document.querySelectorAll('.imga');
+    let mainClientRef = document.querySelectorAll('.workWhere');
+    let user;
+    for (let elem = 0; elem < refClientA.length; elem++) {
+        user = {
+            nameAndSurname: nameAndSurname[elem]?.textContent || "",
+            profession: profession[elem]?.textContent || "",
+            photo: photo[elem]?.src || "", 
+            mainClientRef: mainClientRef[elem]?.textContent || "" 
+        }
+        referralClient.push(user);
+    }
 }
