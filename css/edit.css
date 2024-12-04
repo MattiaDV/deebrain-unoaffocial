@@ -305,6 +305,30 @@ div.infos-referral input {
     margin-top: 32px;
 }
 
+.special {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start !important;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.special input[type = "submit"] {
+    background: #0097b2;
+    color: white !important;
+    border: 1px solid #0097b2 !important;
+    padding: 10px;
+    border-radius: 4px;
+    width: 150px;
+    position: relative !important;
+    margin-bottom: 32px;
+    margin-left: 80px !important;
+    margin-top: -60px !important;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
 .buttons-form input[type = "submit"] {
     background: #0097b2;
     color: white !important;

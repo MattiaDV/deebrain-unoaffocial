@@ -1003,9 +1003,14 @@ const server = createServer(async (req, res) => {
                         console.log(resultPlatS);
                     }
 
-                    const filePath = files.newLogo[0].filepath;
-                    const fileBuffer = fs.readFileSync(filePath);
-                    const fileBase64 = fileBuffer.toString('base64');
+                    let fileBase64;
+
+                    if (files.newLogo && files.newLogo[0]) {
+                        const filePath = files.newLogo[0].filepath;
+                        const fileBuffer = fs.readFileSync(filePath);
+                        fileBase64 = fileBuffer.toString('base64');
+                        fs.unlinkSync(filePath);
+                    }
 
                     const user = {
                         logo: files.newLogo ? fileBase64 : undefined,
@@ -1021,15 +1026,13 @@ const server = createServer(async (req, res) => {
                         linkedin: fields.linkedin ? fields.linkedin.toString() : undefined,
                         facebook: fields.facebook ? fields.facebook.toString() : undefined,
                         // email: fields.email ? fields.email.toString() : undefined,
-                        mainService: (resultMainS.lentgh !== 0) ? resultMainS : undefined,
-                        distinctiveService: (resultDisS.lentgh !== 0) ? resultDisS : undefined,
-                        mMedia: (resultMediS.lentgh !== 0) ? resultMediS : undefined,
-                        mPlatform: (resultPlatS.lentgh !== 0) ? resultPlatS : undefined,
+                        mainService: (resultMainS.length !== 0) ? resultMainS : undefined,
+                        distinctiveService: (resultDisS.length !== 0) ? resultDisS : undefined,
+                        mMedia: (resultMediS.length !== 0) ? resultMediS : undefined,
+                        mPlatform: (resultPlatS.length !== 0) ? resultPlatS : undefined,
                         brochure: fields.newBrochure ? fields.newBrochure.toString() : undefined,
                         caseStudy: fields.newCasestudy ? fields.newCasestudy.toString() : undefined,
                     }
-
-                    fs.unlinkSync(filePath);
 
                     const result = dbLayer.updateUser(user, updateData[0]);
                     console.log(result);
