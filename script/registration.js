@@ -60,8 +60,8 @@ function addCertification() {
 
     if (platform !== "" && certification !== "") {
         certificationPlatform.push({
-            platform: platform,
-            certification: certification
+            platform: platform.replace("-", " "),
+            certification: certification.replace("-", " ")
         });
 
         let nome = certificationPlatform[certificationPlatform.length - 1].certification;
@@ -94,12 +94,12 @@ citys.addEventListener('change', function() {
     console.log(citys.value);
     if (citys.value !== "more") {
         if (!cityChoose.includes(citys.value)) {
-            cityChoose.push(citys.value);
+            cityChoose.push(citys.value.replace("-", " "));
             // console.log(cityChoose);
             let choose = document.createElement('div');
             choose.classList.add('city');
-            choose.innerHTML = citys.value + "<span style = 'color: white;'>X</span>";
-            choose.id = citys.value;
+            choose.innerHTML = citys.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+            choose.id = citys.value.replace("-", " ");
             choose.onclick = function() {
                 deleteItem(choose.id);
             }
@@ -109,12 +109,12 @@ citys.addEventListener('change', function() {
         let newCity = prompt("Insert here other (If you click for error just click enter): ");
         if (newCity !== "") {
             if (!cityChoose.includes(newCity)) {
-                cityChoose.push(newCity);
+                cityChoose.push(newCity.replace("-", " "));
                 // console.log(cityChoose);
                 let choose = document.createElement('div');
                 choose.classList.add('city');
-                choose.innerHTML = newCity + "<span style = 'color: white;'>X</span>";
-                choose.id = newCity;
+                choose.innerHTML = newCity.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+                choose.id = newCity.replace("-", " ");
                 choose.onclick = function() {
                     deleteItem(choose.id);
                 }
@@ -148,12 +148,12 @@ let servicesChoose = [];
 services.addEventListener('change', function() {
     // console.log(citys.value);
     if (!servicesChoose.includes(services.value)) {
-        servicesChoose.push(services.value);
+        servicesChoose.push(services.value.replace("-", " "));
         // console.log(cityChoose);
         let choose = document.createElement('div');
         choose.classList.add('service');
-        choose.innerHTML = services.value + "<span style = 'color: white;'>X</span>";
-        choose.id = services.value;
+        choose.innerHTML = services.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+        choose.id = services.value.replace("-", " ");
         choose.onclick = function() {
             deleteItemMainServices(choose.id);
         }
@@ -186,12 +186,12 @@ Dservices.addEventListener('change', function() {
     // console.log(citys.value);
     if (Dservices.value !== "more") {
         if (!DservicesChoose.includes(Dservices.value)) {
-            DservicesChoose.push(Dservices.value);
+            DservicesChoose.push(Dservices.value.replace("-", " "));
             // console.log(cityChoose);
             let choose = document.createElement('div');
             choose.classList.add('service');
-            choose.innerHTML = Dservices.value + "<span style = 'color: white;'>X</span>";
-            choose.id = Dservices.value;
+            choose.innerHTML = Dservices.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+            choose.id = Dservices.value.replace("-", " ");
             choose.onclick = function() {
                 deleteItemDServices(choose.id);
             }
@@ -201,12 +201,12 @@ Dservices.addEventListener('change', function() {
         let newCity = prompt("Insert here other (If you click for error just click enter): ");
         if (newCity !== "") {
             if (!DservicesChoose.includes(newCity)) {
-                DservicesChoose.push(newCity);
+                DservicesChoose.push(newCity.replace("-", " "));
                 // console.log(cityChoose);
                 let choose = document.createElement('div');
                 choose.classList.add('service');
-                choose.innerHTML = newCity + "<span style = 'color: white;'>X</span>";
-                choose.id = newCity;
+                choose.innerHTML = newCity.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+                choose.id = newCity.replace("-", " ");
                 choose.onclick = function() {
                     deleteItemDServices(choose.id);
                 }
@@ -240,12 +240,12 @@ let MMediaChoose = [];
 managedMedia.addEventListener('change', function() {
     // console.log(citys.value);
     if (!MMediaChoose.includes(managedMedia.value)) {
-        MMediaChoose.push(managedMedia.value);
+        MMediaChoose.push(managedMedia.value.replace("-", " "));
         // console.log(cityChoose);
         let choose = document.createElement('div');
         choose.classList.add('Mmedia');
-        choose.innerHTML = managedMedia.value + "<span style = 'color: white;'>X</span>";
-        choose.id = managedMedia.value;
+        choose.innerHTML = managedMedia.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+        choose.id = managedMedia.value.replace("-", " ");
         choose.onclick = function() {
             deleteItemManMedia(choose.id);
         }
@@ -278,12 +278,12 @@ managedPlatfrom.addEventListener('change', function() {
     // console.log(citys.value);
     if (managedPlatfrom.value !== "more") {
         if (!MPlatformChoose.includes(managedPlatfrom.value)) {
-            MPlatformChoose.push(managedPlatfrom.value);
+            MPlatformChoose.push(managedPlatfrom.value.replace("-", " "));
             // console.log(cityChoose);
             let choose = document.createElement('div');
             choose.classList.add('Mmedia');
-            choose.innerHTML = managedPlatfrom.value + "<span style = 'color: white;'>X</span>";
-            choose.id = managedPlatfrom.value;
+            choose.innerHTML = managedPlatfrom.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+            choose.id = managedPlatfrom.value.replace("-", " ");
             choose.onclick = function() {
                 deleteItemManPlatform(choose.id);
             }
@@ -293,12 +293,12 @@ managedPlatfrom.addEventListener('change', function() {
         let newCity = prompt("Insert here other (If you click for error just click enter): ");
         if (newCity !== "") {
             if (!MPlatformChoose.includes(newCity)) {
-                MPlatformChoose.push(newCity);
+                MPlatformChoose.push(newCity.replace("-", " "));
                 // console.log(cityChoose);
                 let choose = document.createElement('div');
                 choose.classList.add('Mmedia');
-                choose.innerHTML = newCity + "<span style = 'color: white;'>X</span>";
-                choose.id = newCity;
+                choose.innerHTML = newCity.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+                choose.id = newCity.replace("-", " ");
                 choose.onclick = function() {
                     deleteItemManPlatform(choose.id);
                 }
@@ -376,12 +376,12 @@ function sixStep() {
             document.getElementById('form-5-an').style.marginRight = -600 + "%";
             document.getElementById('form-5').style.height = 0 + "%";
             setTimeout(function() {document.getElementById('form-6-an').style.marginRight = 0 + "%"; document.getElementById('form-6').style.height = "auto";}, 150);
-            document.getElementById("selectedCitysFinal").value = cityChoose.join(" ");
-            document.getElementById("mainServicesFinal").value = servicesChoose.join(" ");
-            document.getElementById("distinctiveServiceFinal").value = DservicesChoose.join(" ");
-            document.getElementById("managedMediaFinal").value = MMediaChoose.join(" ");
-            document.getElementById("managedPlatformFinal").value = MPlatformChoose.join(" ");
-            document.getElementById("referralClientFinal").value = referralClient.join(" ");
+            document.getElementById("selectedCitysFinal").value = cityChoose.join(",");
+            document.getElementById("mainServicesFinal").value = servicesChoose.join(",");
+            document.getElementById("distinctiveServiceFinal").value = DservicesChoose.join(",");
+            document.getElementById("managedMediaFinal").value = MMediaChoose.join(",");
+            document.getElementById("managedPlatformFinal").value = MPlatformChoose.join(",");
+            document.getElementById("referralClientFinal").value = referralClient.join(",");
         } else {
             alert("Enter at least one referral client");
         }

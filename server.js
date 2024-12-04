@@ -84,6 +84,72 @@ const server = createServer(async (req, res) => {
     
                     let citys = await dbLayer.getIdFounders(id_cardsAgency, founderNames);
                     console.log("ID FOUNDER/S: " + citys);
+
+                    let resultLoc = [];
+                    let resultMainS = [];
+                    let resultDisS = [];
+                    let resultMediS = [];
+                    let resultPlatS = [];
+
+                    if (fields.selectedCitysFinal) {
+                        const finalLocation = fields.selectedCitysFinal;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+                    
+                        const locationReal = locationsArray.map(part =>
+                            part
+                                .trim()
+                                .split(/[\s\-]/)
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+                                .join(' ')
+                        );
+                    
+                        console.log("Città separate: ", locationReal);
+                    
+                        resultLoc = await dbLayer.searchIdOfLocationFromDb(id_cardsAgency, locationReal);
+                        console.log(resultLoc);
+                    }                    
+
+                    if (fields.mainServicesFinal) {
+                        const finalLocation = fields.mainServicesFinal;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+
+                        resultMainS = await dbLayer.searchIdOfMainSFromDb(id_cardsAgency, locationsArray);
+                        console.log(resultMainS);
+                    }
+
+                    if (fields.distinctiveServiceFinal) {
+                        const finalLocation = fields.distinctiveServiceFinal;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+
+                        resultDisS = await dbLayer.searchIdOfDisFromDb(id_cardsAgency, locationsArray);
+                        console.log(resultDisS);
+                    }
+
+                    if (fields.managedMediaFinal) {
+                        const finalLocation = fields.managedMediaFinal;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+
+                        resultMediS = await dbLayer.searchIdOfMediaFromDb(id_cardsAgency, locationsArray);
+                        console.log(resultMediS);
+                    }
+
+                    if (fields.managedPlatformFinal) {
+                        const finalLocation = fields.managedPlatformFinal;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+
+                        resultPlatS = await dbLayer.searchIdOfPlatformFromDb(id_cardsAgency, locationsArray);
+                        console.log(resultPlatS);
+                    }
     
                     // console.log(JSON.stringify(files));
     
@@ -101,11 +167,11 @@ const server = createServer(async (req, res) => {
                         linkedinLink: fields.agencyLinkedin?.[0] || null,
                         facebookLink: fields.agencyFacebook?.[0] || null,
                         email: fields.agencyEmail?.[0] || null,
-                        locations: await dbLayer.searchIdOfLocationFromDb(id_cardsAgency, fields.selectedCitysFinal), 
-                        mainServices: await dbLayer.searchIdOfMainSFromDb(id_cardsAgency, fields.mainServicesFinal),
-                        distinctiveServices: await dbLayer.searchIdOfDisFromDb(id_cardsAgency, fields.distinctiveServiceFinal),
-                        managedMedia: await dbLayer.searchIdOfMediaFromDb(id_cardsAgency, fields.managedMediaFinal),
-                        managedPlatform: await dbLayer.searchIdOfPlatformFromDb(id_cardsAgency, fields.managedPlatformFinal),
+                        locations: resultLoc,
+                        mainServices: resultMainS,
+                        distinctiveServices: resultDisS,
+                        managedMedia: resultMediS,
+                        managedPlatform: resultPlatS,
                         // Per ora concentriamoci sui precedenti
                         // referralClient: await searchIdOfReferralFromDb(id_cardsAgency, fields.nameAndSurnameRef),
                         brochure: fields.brochure?.[0] || null,
