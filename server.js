@@ -81,29 +81,8 @@ const server = createServer(async (req, res) => {
 
                     const createF = await dbLayer.createFounderForDb(founderNames);
                     console.log("Separed founder: " + createF);
-
-                    function getIdFounders(param, acc) {
-                        return new Promise((resolve, reject) => {
-                            connectionDb.get('founder_name', param, (err, partners) => {
-                                if (err) {
-                                    reject("Errore nella ricerca degli id: " + JSON.stringify(err));
-                                } else {
-                                    console.log("Fondatori richiesti: ", acc);
-                                    const sortedPartners = partners.sort((a, b) => b.id - a.id);
-                    
-                                    const cit = sortedPartners
-                                        .slice(0, acc.length) 
-                                        .map(partner => partner.id);
-                    
-                                    console.log("ID trovati: ", cit);
-                                    resolve(cit);
-                                }
-                            });
-                        });
-                    }
-                    
     
-                    let citys = await getIdFounders(id_cardsAgency, founderNames);
+                    let citys = await dbLayer.getIdFounders(id_cardsAgency, founderNames);
                     console.log("ID FOUNDER/S: " + citys);
     
                     // console.log(JSON.stringify(files));
@@ -789,8 +768,8 @@ const server = createServer(async (req, res) => {
             const conv = aware.replace('{conversion}', conversion.map(partner => (partner == true) ? `<input type = "checkbox" id = "conversion" name = "conversion" checked>` : `<input type = "checkbox" id = "conversion" name = "conversion">`));
             const cons = conv.replace('{consideration}', consideration.map(partner => (partner == true) ? `<input type = "checkbox" id = "consideration" name = "consideration" checked>` : `<input type = "checkbox" id = "consideration" name = "consideration">`));
             const website = cons.replace('{website}', websiteReal);
-            const linkedin = website.replace('{linkedin}', linkedinReal.map(partner => (partner == false) ? 'https://' : partner));
-            const facebook = linkedin.replace('{facebook}', facebookReal.map(partner => (partner == false) ? 'https://' : partner));
+            const linkedin = website.replace('{linkedin}', linkedinReal.map(partner => (partner == false) ? '' : partner));
+            const facebook = linkedin.replace('{facebook}', facebookReal.map(partner => (partner == false) ? '' : partner));
             const email = facebook.replace('{email}', emailFromCookie);
             const brochure = email.replace('{brochure}', brochureReal);
             const caseStudy = brochure.replace('{caseStudy}', caseStudyReal);
@@ -825,7 +804,7 @@ const server = createServer(async (req, res) => {
             const location = mainClientLogo.replace("{location}", getLocation
                 .filter(partner => locationFlat.includes(partner.id))
                 .map(partner =>
-                    `<div class="city" id="${partner.name}" onclick = "deleteItem('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                    `<div class="city" id="${partner.name.toLowerCase().replace("-", " ")}" onclick = "deleteItem('${partner.name.toLowerCase().replace("-", " ")}')">${partner.name}<span style="color: white;">X</span></div>`
                 ).join(" ")
             )
             const mainService = location.replace("{mainServices}", getMainService
@@ -837,7 +816,7 @@ const server = createServer(async (req, res) => {
             const distService = mainService.replace("{distinctiveServices}", getDisService
                 .filter(partner => disServFlat.includes(partner.id))
                 .map(partner =>
-                    `<div class="serviceD" id="${partner.name}" onclick = "deleteItemMainServices('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                    `<div class="serviceD" id="${partner.name}" onclick = "deleteItemDServices('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
                 ).join(" ")
             )
             const managedMedia = distService.replace("{managedMedia}", getManMedia
@@ -849,7 +828,7 @@ const server = createServer(async (req, res) => {
             const managedPlatform = managedMedia.replace("{managedPlatforms}", getManPlatform
                 .filter(partner => manaPlatformFlat.includes(partner.id))
                 .map(partner =>
-                    `<div class="Mplatformm" id="${partner.name}" onclick = "deleteItemManMedia('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
+                    `<div class="Mplatformm" id="${partner.name}" onclick = "deleteItemManPlatform('${partner.name}')">${partner.name}<span style="color: white;">X</span></div>`
                 ).join(" ")
             )
             const mainSch = managedPlatform.replace('{mainSch}', mainsC.join(" "));
@@ -883,16 +862,93 @@ const server = createServer(async (req, res) => {
                     const updateData = getAgencyName
                         .filter(part => part.email == emailFromCookie)
                         .map(part => part.id)
+
+                    let resultLoc = [];
+                    let resultMainS = [];
+                    let resultDisS = [];
+                    let resultMediS = [];
+                    let resultPlatS = [];
+
+                    if (fields.finalLocation) {
+                        const finalLocation = fields.finalLocation;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
                     
+                        const locationReal = locationsArray.map(part =>
+                            part
+                                .trim()
+                                .split(/[\s\-]/)
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+                                .join(' ')
+                        );
+                    
+                        console.log("Città separate: ", locationReal);
+                    
+                        resultLoc = await dbLayer.searchIdOfLocationFromDb(id_cardsAgency, locationReal);
+                        console.log(resultLoc);
+                    }                    
+
+                    if (fields.mainServiceFinal) {
+                        const finalLocation = fields.mainServiceFinal;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+
+                        resultMainS = await dbLayer.searchIdOfMainSFromDb(id_cardsAgency, locationsArray);
+                        console.log(resultMainS);
+                    }
+
+                    if (fields.distinctiveServiceFinal) {
+                        const finalLocation = fields.distinctiveServiceFinal;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+
+                        resultDisS = await dbLayer.searchIdOfDisFromDb(id_cardsAgency, locationsArray);
+                        console.log(resultDisS);
+                    }
+
+                    if (fields.mMediaIn) {
+                        const finalLocation = fields.mMediaIn;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+
+                        resultMediS = await dbLayer.searchIdOfMediaFromDb(id_cardsAgency, locationsArray);
+                        console.log(resultMediS);
+                    }
+
+                    if (fields.mPlatformIn) {
+                        const finalLocation = fields.mPlatformIn;
+                        const locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+
+                        resultPlatS = await dbLayer.searchIdOfPlatformFromDb(id_cardsAgency, locationsArray);
+                        console.log(resultPlatS);
+                    }
+
                     const user = {
-                        logo: fields.logo,
-                        name: fields.agencyName.toString(),
-                        agencyType: fields.agencyType.toString(),
-                        managedBilling: fields.managedBilling.toString(),
-                        numberOfEmployees: fields.employeesNumber.toString(),
-                        awareness: fields.awareness? true : false,
-                        conversion: fields.conversion? true : false,
-                        consideration: fields.consideration? true : false,
+                        logo: fields.logo ? fields.logo : undefined,
+                        name: fields.agencyName ? fields.agencyName.toString() : undefined,
+                        agencyType: fields.agencyType ? fields.agencyType.toString() : undefined,
+                        managedBilling: fields.managedBilling ? fields.managedBilling.toString() : undefined,
+                        numberOfEmployees: fields.employeesNumber ? fields.employeesNumber.toString() : undefined,
+                        awareness: fields.awareness ? true : (fields.awareness) ? false : undefined,
+                        conversion: fields.conversion ? true : (fields.conversion) ? false : undefined,
+                        consideration: fields.consideration ? true : (fields.consideration) ? false : undefined,
+                        location: (resultLoc.length !== 0) ? resultLoc : undefined,
+                        website: fields.website ? fields.website.toString() : undefined,
+                        linkedin: fields.linkedin ? fields.linkedin.toString() : undefined,
+                        facebook: fields.facebook ? fields.facebook.toString() : undefined,
+                        // email: fields.email ? fields.email.toString() : undefined,
+                        mainService: (resultMainS.lentgh !== 0) ? resultMainS : undefined,
+                        distinctiveService: (resultDisS.lentgh !== 0) ? resultDisS : undefined,
+                        mMedia: (resultMediS.lentgh !== 0) ? resultMediS : undefined,
+                        mPlatform: (resultPlatS.lentgh !== 0) ? resultPlatS : undefined,
+                        brochure: fields.newBrochure ? fields.newBrochure.toString() : undefined,
+                        caseStudy: fields.newCasestudy ? fields.newCasestudy.toString() : undefined,
                     }
 
                     const result = dbLayer.updateUser(user, updateData[0]);

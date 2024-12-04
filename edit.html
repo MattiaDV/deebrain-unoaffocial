@@ -96,6 +96,7 @@
                                             <div class = "one-info"><span class = "fs-12 500-bold">Add new location </span><select id = "location" name = "location" class = "fs-10"><option value="" disabled selected>Select a city (you can choose more than one)</option><option value = "milan">Milan</option><option value = "naples">Naples</option><option value = "rome">Rome</option><option value="florence">Florence</option><option value="venice">Venice</option><option value="bologna">Bologna</option><option value="turin">Turin</option><option value="palermo">Palermo</option><option value="verona">Verona</option><option value="genoa">Genoa</option><option value="siena">Siena</option><option value="matera">Matera</option><option value="perugia">Perugia</option><option value="bari">Bari</option><option value="pisa">Pisa</option><option value="lecce">Lecce</option><option value="catania">Catania</option><option value="trieste">Trieste</option><option value="bergamo">Bergamo</option><option value="parma">Parma</option><option value="ferrara">Ferrara</option><option value="lucca">Lucca</option><option value="ravenna">Ravenna</option><option value="cagliari">Cagliari</option><option value="reggio-calabria">Reggio Calabria</option><option value="ancona">Ancona</option><option value="alessandria">Alessandria</option><option value="vicenza">Vicenza</option><option value="trento">Trento</option><option value="bolzano">Bolzano</option><option value="taranto">Taranto</option><option value="novara">Novara</option><option value="ascoli-piceno">Ascoli Piceno</option><option value="avellino">Avellino</option><option value="macerata">Macerata</option><option value="oristano">Oristano</option><option value="lucca">Lucca</option><option value="brindisi">Brindisi</option><option value="vibo-valentia">Vibo Valentia</option><option value="pescara">Pescara</option><option value="benevento">Benevento</option><option value="lodi">Lodi</option><option value="savigliano">Savigliano</option><option value = "more">Other</option></select></div>
                                             <div class = "one-info"><span class = "fs-12 500-bold">Choosen location </span><div id = "citys" class = "choose-citys" class = "fs-10">{location}</div></div>
                                         </div>
+                                        <input type = "hidden" name = "finalLocation" id = "locationChanges">
                                     </div>
                                 </div>
                                 <div class = "toggle-all">
@@ -210,6 +211,8 @@
                                     </select></div>
                                     <div class = "one-info"><span class = "fs-12 normal-text">Choosen distinctive services </span><div id = "Dservices" class = "choose-citys fs-10">{distinctiveServices}</div></div>
                                 </div>
+                                <input type = "hidden" name = "mainServiceFinal" id = "mainServiceFinal">
+                                <input type = "hidden" name = "distinctiveServiceFinal" id = "distinctiveServiceFinal">
                             </div>
                         </div>
                         <div class = "buttons-form">
@@ -243,6 +246,8 @@
                                     </select></div>
                                     <div class = "one-info"><span class = "fs-12 normal-text">Choosen managed platform </span><div id = "ManPlatform" class = "choose-citys fs-10">{managedPlatforms}</div></div>
                                 </div>
+                                <input type = "hidden" name = "mMediaIn" id = "mMediaIn">
+                                <input type = "hidden" name = "mPlatformIn" id = "mPlatformIn">
                             </div>
                         </div>
                         <div class = "buttons-form">

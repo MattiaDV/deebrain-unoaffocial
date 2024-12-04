@@ -20,7 +20,37 @@ exports.updateUser = function(param, id) {
         awareness: param.awareness,
         conversion: param.conversion,
         consideration: param.consideration,
+        locations: param.location,
+        website: param.website,
+        linkedinLink: param.linkedin,
+        facebookLink: param.facebook,
+        mainServices: param.mainService,
+        distinctiveServices: param.distinctiveService,
+        managedMedia: param.mMedia,
+        managedPlatform: param.mPlatform,
+        brochure: param.brochure,
+        caseStudy: param.caseStudy,
     }, callback);
+}
+
+exports.getIdFounders = function(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('founder_name', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                console.log("Fondatori richiesti: ", acc);
+                const sortedPartners = partners.sort((a, b) => b.id - a.id);
+
+                const cit = sortedPartners
+                    .slice(0, acc.length) 
+                    .map(partner => partner.id);
+
+                console.log("ID trovati: ", cit);
+                resolve(cit);
+            }
+        });
+    });
 }
 
 exports.createFounderForDb = function(founderNames) {
@@ -41,7 +71,22 @@ exports.createFounderForDb = function(founderNames) {
     );
 }
 
-
+exports.searchIdLoc = function(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('location_listing', param, (err, partners) => {
+            if (err) {
+                console.log("Errore nella ricerca degli id delle location: " + JSON.stringify(err));
+                reject(err);
+            } else {
+                const loc = partners 
+                    .filter(partner => acc.includes(partner.name))
+                    .map(partner => partner.id)
+                
+                resolve(loc);
+            }
+        })
+    })
+}
 
 exports.searchIdOfLocationFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
@@ -49,7 +94,7 @@ exports.searchIdOfLocationFromDb = function(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
-                const cities = acc.flatMap(city => city.split(' '));
+                const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
                 const cit = partners
@@ -67,7 +112,7 @@ exports.searchIdOfMediaFromDb = function(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
-                const cities = acc.flatMap(city => city.split(' '));
+                const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
                 const cit = partners
@@ -85,7 +130,7 @@ exports.searchIdOfPlatformFromDb = function(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
-                const cities = acc.flatMap(city => city.split(' '));
+                const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
                 const cit = partners
@@ -103,7 +148,7 @@ exports.searchIdOfMainSFromDb = function(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
-                const cities = acc.flatMap(city => city.split(' '));
+                const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
                 const cit = partners
@@ -121,7 +166,7 @@ exports.searchIdOfDisFromDb = function(param, acc) {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
-                const cities = acc.flatMap(city => city.split(' '));
+                const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
                 const cit = partners

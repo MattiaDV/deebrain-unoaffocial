@@ -64,37 +64,40 @@ newLogo.addEventListener('change', function() {
 
 let citys = document.getElementById('location');
 let cityChoose = [];
+let inputCity = document.getElementById('locationChanges');
 
 citys.addEventListener('change', function() {
     // console.log(citys.value);
     console.log(citys.value);
     if (citys.value !== "more") {
         if (!cityChoose.includes(citys.value)) {
-            cityChoose.push(citys.value);
+            cityChoose.push(citys.value.replace("-", " "));
             // console.log(cityChoose);
             let choose = document.createElement('div');
             choose.classList.add('city');
-            choose.innerHTML = citys.value + "<span style = 'color: white;'>X</span>";
-            choose.id = citys.value;
+            choose.innerHTML = citys.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+            choose.id = citys.value.replace("-", " ");
             choose.onclick = function() {
                 deleteItem(choose.id);
             }
             document.getElementById('citys').appendChild(choose);
+            inputCity.value = cityChoose;
         }
     } else {
         let newCity = prompt("Insert here other (If you click for error just click enter): ");
         if (newCity !== "") {
             if (!cityChoose.includes(newCity)) {
-                cityChoose.push(newCity);
+                cityChoose.push(newCity.replace("-", " "));
                 // console.log(cityChoose);
                 let choose = document.createElement('div');
                 choose.classList.add('city');
-                choose.innerHTML = newCity + "<span style = 'color: white;'>X</span>";
-                choose.id = newCity;
+                choose.innerHTML = newCity.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+                choose.id = newCity.replace("-", " ");
                 choose.onclick = function() {
                     deleteItem(choose.id);
                 }
                 document.getElementById('citys').appendChild(choose);
+                inputCity.value = cityChoose;
             }
         }
     }
@@ -104,7 +107,7 @@ function deleteItem(value) {
     let city = document.getElementById(value);
     // console.log(value);
 
-    const index = cityChoose.indexOf(value);
+    const index = cityChoose.indexOf(value.toLowerCase());
     if (index > -1) {
         cityChoose.splice(index, 1);
     }
@@ -116,25 +119,28 @@ function deleteItem(value) {
     if (cityChoose.length == 0) {
         document.getElementById("location").value = "";
     }
+    inputCity.value = cityChoose;
 }
 
 
 let services = document.getElementById('mainServices');
 let servicesChoose = [];
+let mainServiceInput = document.getElementById('mainServiceFinal');
 
 services.addEventListener('change', function() {
     // console.log(citys.value);
     if (!servicesChoose.includes(services.value)) {
-        servicesChoose.push(services.value);
+        servicesChoose.push(services.value.replace("-", " "));
         // console.log(cityChoose);
         let choose = document.createElement('div');
         choose.classList.add('service');
-        choose.innerHTML = services.value + "<span style = 'color: white;'>X</span>";
-        choose.id = services.value;
+        choose.innerHTML = services.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+        choose.id = services.value.replace("-", " ");
         choose.onclick = function() {
             deleteItemMainServices(choose.id);
         }
         document.getElementById('services').appendChild(choose);
+        mainServiceInput.value = servicesChoose;
     }
 })
 
@@ -154,42 +160,46 @@ function deleteItemMainServices(value) {
     if (servicesChoose.length == 0) {
         document.getElementById("mainServices").value = "";
     }
+    mainServiceInput.value = servicesChoose;
 }
 
 
 
 let Dservices = document.getElementById('distinctiveServices');
 let DservicesChoose = [];
+let distinctiveServiceInput = document.getElementById('distinctiveServiceFinal');
 
 Dservices.addEventListener('change', function() {
     // console.log(citys.value);
     if (Dservices.value !== "more") {
         if (!DservicesChoose.includes(Dservices.value)) {
-            DservicesChoose.push(Dservices.value);
+            DservicesChoose.push(Dservices.value.replace("-", " "));
             // console.log(cityChoose);
             let choose = document.createElement('div');
             choose.classList.add('serviceD');
-            choose.innerHTML = Dservices.value + "<span style = 'color: white;'>X</span>";
-            choose.id = Dservices.value;
+            choose.innerHTML = Dservices.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+            choose.id = Dservices.value.replace("-", " ");
             choose.onclick = function() {
                 deleteItemDServices(choose.id);
             }
             document.getElementById('Dservices').appendChild(choose);
+            distinctiveServiceInput.value = DservicesChoose;
         }
     } else {
         let newCity = prompt("Insert here other (If you click for error just click enter): ");
         if (newCity !== "") {
             if (!DservicesChoose.includes(newCity)) {
-                DservicesChoose.push(newCity);
+                DservicesChoose.push(newCity.replace("-", " "));
                 // console.log(cityChoose);
                 let choose = document.createElement('div');
                 choose.classList.add('service');
-                choose.innerHTML = newCity + "<span style = 'color: white;'>X</span>";
-                choose.id = newCity;
+                choose.innerHTML = newCity.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+                choose.id = newCity.replace("-", " ");
                 choose.onclick = function() {
                     deleteItemDServices(choose.id);
                 }
                 document.getElementById('Dservices').appendChild(choose);
+                distinctiveServiceInput.value = DservicesChoose;
             }
         }
     }
@@ -211,24 +221,27 @@ function deleteItemDServices(value) {
     if (DservicesChoose.length == 0) {
         document.getElementById("distinctiveServices").value = "";
     }
+    distinctiveServiceInput.value = DservicesChoose;
 }
 
 let managedMedia = document.getElementById('managedMedia');
 let MMediaChoose = [];
+let mMediaInput = document.getElementById('mMediaIn');
 
 managedMedia.addEventListener('change', function() {
     // console.log(citys.value);
     if (!MMediaChoose.includes(managedMedia.value)) {
-        MMediaChoose.push(managedMedia.value);
+        MMediaChoose.push(managedMedia.value.replace("-", " "));
         // console.log(cityChoose);
         let choose = document.createElement('div');
         choose.classList.add('Mmedia');
-        choose.innerHTML = managedMedia.value + "<span style = 'color: white;'>X</span>";
-        choose.id = managedMedia.value;
+        choose.innerHTML = managedMedia.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+        choose.id = managedMedia.value.replace("-", " ");
         choose.onclick = function() {
             deleteItemManMedia(choose.id);
         }
         document.getElementById('ManMedia').appendChild(choose);
+        mMediaInput.value = MMediaChoose;
     }
 })
 
@@ -248,40 +261,44 @@ function deleteItemManMedia(value) {
     if (MMediaChoose.length == 0) {
         document.getElementById("managedMedia").value = "";
     }
+    mMediaInput.value = MMediaChoose;
 }
 
 let managedPlatfrom = document.getElementById('managedPlatform');
 let MPlatformChoose = [];
+let mPlatIn = document.getElementById('mPlatformIn');
 
 managedPlatfrom.addEventListener('change', function() {
     // console.log(citys.value);
     if (managedPlatfrom.value !== "more") {
         if (!MPlatformChoose.includes(managedPlatfrom.value)) {
-            MPlatformChoose.push(managedPlatfrom.value);
+            MPlatformChoose.push(managedPlatfrom.value.replace("-", " "));
             // console.log(cityChoose);
             let choose = document.createElement('div');
             choose.classList.add('Mplatformm');
-            choose.innerHTML = managedPlatfrom.value + "<span style = 'color: white;'>X</span>";
-            choose.id = managedPlatfrom.value;
+            choose.innerHTML = managedPlatfrom.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+            choose.id = managedPlatfrom.value.replace("-", " ");
             choose.onclick = function() {
                 deleteItemManPlatform(choose.id);
             }
             document.getElementById('ManPlatform').appendChild(choose);
+            mPlatIn.value = MPlatformChoose;
         }
     } else {
         let newCity = prompt("Insert here other (If you click for error just click enter): ");
         if (newCity !== "") {
             if (!MPlatformChoose.includes(newCity)) {
-                MPlatformChoose.push(newCity);
+                MPlatformChoose.push(newCity.replace("-", " "));
                 // console.log(cityChoose);
                 let choose = document.createElement('div');
                 choose.classList.add('Mmedia');
-                choose.innerHTML = newCity + "<span style = 'color: white;'>X</span>";
-                choose.id = newCity;
+                choose.innerHTML = newCity.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+                choose.id = newCity.replace("-", " ");
                 choose.onclick = function() {
                     deleteItemManPlatform(choose.id);
                 }
                 document.getElementById('ManPlatform').appendChild(choose);
+                mPlatIn.value = MPlatformChoose;
             }
         }
     }
@@ -303,6 +320,7 @@ function deleteItemManPlatform(value) {
     if (MPlatformChoose.length == 0) {
         document.getElementById("managedPlatform").value = "";
     }
+    mPlatIn.value = MPlatformChoose;
 }
 
 let referralClient = [];
@@ -429,31 +447,36 @@ function cityPush() {
     // citys
     let citysCho = document.querySelectorAll('.city');
     for (let elem of citysCho) {
-        cityChoose.push(elem.id.replace(" ", "-").toLowerCase());
+        cityChoose.push(elem.id.replace("-", " "));
+        inputCity.value = cityChoose;
     }
 
     // serviceChoose
     let servicesCho = document.querySelectorAll('.service');
     for (let elem of servicesCho) {
-        servicesChoose.push(elem.id.replace(" ", "-").toLowerCase());
+        servicesChoose.push(elem.id.replace("-", " "));
+        mainServiceInput.value = servicesChoose;
     }
 
     // serviceDissCho
     let serviceDissCho = document.querySelectorAll('.serviceD');
     for (let elem of serviceDissCho) {
-        DservicesChoose.push(elem.id.replace(" ", "-").toLowerCase());
+        DservicesChoose.push(elem.id.replace("-", " "));
+        distinctiveServiceInput.value = DservicesChoose;
     }
 
     // MMediaChoose
     let managedMediaServ = document.querySelectorAll('.Mmedia');
     for (let elem of managedMediaServ) {
-        MMediaChoose.push(elem.id.replace(" ", "-").toLowerCase());
+        MMediaChoose.push(elem.id.replace("-", " "));
+        mMediaInput.value = MMediaChoose;
     }
 
     // MPlatformChoose
     let managedPlatformA = document.querySelectorAll('.Mplatformm');
     for (let elem of managedPlatformA) {
-        MPlatformChoose.push(elem.id.replace(" ", "-").toLowerCase());
+        MPlatformChoose.push(elem.id.replace("-", " "));
+        mPlatIn.value = MPlatformChoose;
     }
 
     // referralClient
