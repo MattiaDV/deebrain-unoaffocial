@@ -5,6 +5,7 @@ import { extname, join } from 'node:path';
 import cookie from 'cookie';
 import formidable from 'formidable';
 import dbLayer from './dbLayer.js';
+import fs from 'fs';
 
 const mimeTypes = {
     '.html': 'text/html',
@@ -918,7 +919,10 @@ const server = createServer(async (req, res) => {
         const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
         const emailFromCookie = cookies.email || 'Nessun cookie trovato';
         const getAgencyName = await dbLayer.getAllDataFromDB(id_cardsAgency);
-        const form = formidable({ multiples: false }); 
+        const form = formidable({ multiples: false,
+            uploadDir: './uploads/',
+            keepExtensions: true,
+        }); 
 
         form.parse(req, async (err, fields, files) => {
             try {
@@ -928,6 +932,8 @@ const server = createServer(async (req, res) => {
                     const updateData = getAgencyName
                         .filter(part => part.email == emailFromCookie)
                         .map(part => part.id)
+
+                    console.log("Fields:" + JSON.stringify(fields));
 
                     let resultLoc = [];
                     let resultMainS = [];
@@ -995,8 +1001,12 @@ const server = createServer(async (req, res) => {
                         console.log(resultPlatS);
                     }
 
+                    const filePath = files.newLogo[0].filepath;
+                    const fileBuffer = fs.readFileSync(filePath);
+                    const fileBase64 = fileBuffer.toString('base64');
+
                     const user = {
-                        logo: fields.logo ? fields.logo : undefined,
+                        logo: files.newLogo ? fileBase64 : undefined,
                         name: fields.agencyName ? fields.agencyName.toString() : undefined,
                         agencyType: fields.agencyType ? fields.agencyType.toString() : undefined,
                         managedBilling: fields.managedBilling ? fields.managedBilling.toString() : undefined,
