@@ -1027,6 +1027,8 @@ const server = createServer(async (req, res) => {
                         caseStudy: fields.newCasestudy ? fields.newCasestudy.toString() : undefined,
                     }
 
+                    fs.unlinkSync(filePath);
+
                     const result = dbLayer.updateUser(user, updateData[0]);
                     console.log(result);
                     console.log(fields);
