@@ -151,6 +151,10 @@ const server = createServer(async (req, res) => {
                         resultPlatS = await dbLayer.searchIdOfPlatformFromDb(id_cardsAgency, locationsArray);
                         console.log(resultPlatS);
                     }
+
+                    const filePath = files.agencyLogo[0].filepath;
+                    const fileBuffer = fs.readFileSync(filePath);
+                    const fileBase64 = fileBuffer.toString('base64');
     
                     // console.log(JSON.stringify(files));
     
@@ -160,7 +164,7 @@ const server = createServer(async (req, res) => {
                         numberOfEmployees: fields.numberOfEmployees?.[0] || null,
                         foundationYear: fields.foundationYear?.[0] || null,
                         agencyType: fields.agencyType?.[0] || null,
-                        // logo: files.agencyLogo?.[0] || null,
+                        logo: fileBase64,
                         managedBilling: fields.managedBilling?.[0] || null,
                         awareness: fields.awareness?.[0] === 'on',
                         conversion: fields.conversion?.[0] === 'on',
@@ -932,8 +936,6 @@ const server = createServer(async (req, res) => {
                     const updateData = getAgencyName
                         .filter(part => part.email == emailFromCookie)
                         .map(part => part.id)
-
-                    console.log("Fields:" + JSON.stringify(fields));
 
                     let resultLoc = [];
                     let resultMainS = [];
