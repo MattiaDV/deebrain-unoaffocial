@@ -30,7 +30,39 @@ exports.updateUser = function(param, id) {
         managedPlatform: param.mPlatform,
         brochure: param.brochure,
         caseStudy: param.caseStudy,
+        clientLogos: param.mainClient,
     }, callback);
+}
+
+exports.createPageMainClientCards = function(param, name) {
+    return new Promise((resolve, reject) => {
+        connectionDb.create('main_client_logos', {name: name, logo: param}, (err, partners) => {
+            if (err) {
+                console.error("Errore nella creazione dei Main client: " + JSON.stringify(err));
+                reject(err);
+            } else {
+                resolve(partners);
+            }
+        })
+    })
+}
+
+exports.getIdMainClientPageEdit = function(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('main_client_logos', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                console.log("Fondatori richiesti: ", acc);
+                const sortedPartners = partners.sort((a, b) => b.id - a.id);
+                const firstMatch = sortedPartners.find(partner => partner.name === acc);
+                const cit = firstMatch ? firstMatch.id : null;
+
+                console.log("ID trovato: ", cit);
+                resolve(cit);
+            }
+        });
+    });
 }
 
 exports.getIdFounders = function(param, acc) {
@@ -547,7 +579,7 @@ exports.getNewAgencyFromDB = function(params) {
                         managedBilling: partner.managedBilling > 999999 ? (partner.managedBilling / 1000000) + "M" : partner.managedBilling > 999 ? (partner.managedBilling / 1000) + "k" : partner.managedBilling,
                     }))
                     .map(partner => `
-                        <div class="card-account ${partner.agencyType.replace(' ', '-')} ${partner.locations.join(' ').toLowerCase()} ${partner.mainSS.join(' ').toLowerCase()} ${partner.disSS.join(' ').toLowerCase()} ${partner.mediaSS.join(' ').toLowerCase()} ${partner.platformSS.join(' ').toLowerCase()}">
+                        <div class="card-account ${partner.agencyType.replace(/ /g, "-")} ${partner.locations.join(' ').toLowerCase()} ${partner.mainSS.join(' ').toLowerCase()} ${partner.disSS.join(' ').toLowerCase()} ${partner.mediaSS.join(' ').toLowerCase()} ${partner.platformSS.join(' ').toLowerCase()}">
                             <div class="left-part-card">
                                 <img src="${(partner.logo) ? 'http://127.0.0.1:8069/web/image/users_model/' + partner.id + '/logo' : ''}" alt = "Logo agency">
                             </div>

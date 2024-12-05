@@ -270,7 +270,7 @@
                             <span class = "fs-12 light-text section-sub">Please compile the form below and save to edit your profile infos. Feel free to add as much detail as needed</span>
                         </div>
                     </div>
-                    <form method = "post" action = "edit.html" onsubmit = "return ref()">
+                    <form method = "post" enctype="multipart/form-data" action = "edit.html" onsubmit = "return ref()">
                         <div class = "form-for-profile-infos">
                         <span class = "fs-16 500-bold" style = "margin-left: 20px;">Add or remove main client (min 3)</span><br><br>
                         <div class = "edit-main-service-section-real">
@@ -278,26 +278,40 @@
                                 {mainClient}
                                 <div class = "main-card">
                                     <div class = "main-client" id = "main-client-fourth">
-                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "fourth-client" id = "mainClient-4" onchange="photoLoad('main-client-fourth', 'mainClient-4')">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-4" onchange="photoLoad('main-client-fourth', 'mainClient-4')">
                                         <label for = "mainClient-4">Add photo</label>
+                                        <div class = "nameOfMainClient">
+                                            <input type = "text" placeholder="Insert name of main client" name = "mainClientName">
+                                        </div>
                                     </div>
                                     <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-fourth')" value = "Remove photo"></div>
                                 </div>
                                     <div class = "main-card">
                                     <div class = "main-client" id = "main-client-five">
-                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "five-client" id = "mainClient-5" onchange="photoLoad('main-client-five', 'mainClient-5')">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-5" onchange="photoLoad('main-client-five', 'mainClient-5')">
                                         <label for = "mainClient-5">Add photo</label>
+                                        <div class = "nameOfMainClient">
+                                            <input type = "text" placeholder="Insert name of main client" name = "mainClientName">
+                                        </div>
                                     </div>
                                     <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-five')" value = "Remove photo"></div>
                                 </div>
                                     <div class = "main-card">
                                     <div class = "main-client" id = "main-client-six">
-                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "six-client" id = "mainClient-6" onchange="photoLoad('main-client-six', 'mainClient-6')">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-6" onchange="photoLoad('main-client-six', 'mainClient-6')">
                                         <label for = "mainClient-6">Add photo</label>
+                                        <div class = "nameOfMainClient">
+                                            <input type = "text" placeholder="Insert name of main client" name = "mainClientName">
+                                        </div>
                                     </div>
                                     <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-six')" value = "Remove photo"></div>
                                 </div>
+                                <div class = "buttons-form special-b">
+                                    <input class = "fs-18 light-text" type = "submit" value = "Save Main Client">
+                                </div>
                             </div>
+                        </form>
+                        <form method = "post">
                         </div><br><br><br>
                         <div class = "edit-main-service-section-real">
                             <div class = "ref-client">

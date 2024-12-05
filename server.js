@@ -828,9 +828,9 @@ const server = createServer(async (req, res) => {
             const agencyType = agencyName.replace('{agencyType}', getAllTypes
                 .map(partner =>
                     (partner.toLowerCase() == agencyTypeReal.toString().toLowerCase()) ? 
-                    `<option value = "${partner.toLowerCase()}" selected>${partner}</option>`
+                    `<option value = "${partner.toLowerCase().replace(/ /g, "-")}" selected>${partner}</option>`
                     :
-                    `<option value = "${partner.toLowerCase()}">${partner}</option>`
+                    `<option value = "${partner.toLowerCase().replace(/ /g, "-")}">${partner}</option>`
                 ).join(" ")
             );
             const managedBilling = agencyType.replace('{managedBilling}', managedBillingReal);
@@ -866,8 +866,12 @@ const server = createServer(async (req, res) => {
                     .map((partner, index) => `<div class = "main-card">
                                     <div class = "main-client" id = "main-client-${index}">
                                         <img src = "${baseUrl}/web/image/main_client_logos/${partner.id}/logo">
-                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "second-client" id = "mainClient-${index}" onchange="photoLoad('main-client-${index}', 'mainClient-${index}')">
+                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-${index}" onchange="photoLoad('main-client-${index}', 'mainClient-${index}')">
                                         <label for = "mainClient-${index}"  style="display: none;">Add photo</label>
+                                        <div class = "nameOfMainClient">
+                                        <span class = "fs-12 light-text">${partner.name}</span>
+                                            <input type = "text" placeholder="Insert name of main client" name = "mainClientName">
+                                        </div>
                                     </div>
                                     <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-${index}')" value = "Remove photo"></div>
                                 </div>`).join(' ')
@@ -942,6 +946,8 @@ const server = createServer(async (req, res) => {
                     let resultDisS = [];
                     let resultMediS = [];
                     let resultPlatS = [];
+                    let resultRefCli = [];
+                    var user = {};
 
                     if (fields.finalLocation) {
                         const finalLocation = fields.finalLocation;
@@ -1009,29 +1015,76 @@ const server = createServer(async (req, res) => {
                         const filePath = files.newLogo[0].filepath;
                         const fileBuffer = fs.readFileSync(filePath);
                         fileBase64 = fileBuffer.toString('base64');
+                        user = {
+                            logo: fileBase64,
+                        }
                         fs.unlinkSync(filePath);
                     }
 
-                    const user = {
-                        logo: files.newLogo ? fileBase64 : undefined,
-                        name: fields.agencyName ? fields.agencyName.toString() : undefined,
-                        agencyType: fields.agencyType ? fields.agencyType.toString() : undefined,
-                        managedBilling: fields.managedBilling ? fields.managedBilling.toString() : undefined,
-                        numberOfEmployees: fields.employeesNumber ? fields.employeesNumber.toString() : undefined,
-                        awareness: fields.awareness ? true : (fields.agencyName) ? false : undefined,
-                        conversion: fields.conversion ? true : (fields.agencyName) ? false : undefined,
-                        consideration: fields.consideration ? true : (fields.agencyName) ? false : undefined,
-                        location: (resultLoc.length !== 0) ? resultLoc : undefined,
-                        website: fields.website ? fields.website.toString() : undefined,
-                        linkedin: fields.linkedin ? fields.linkedin.toString() : undefined,
-                        facebook: fields.facebook ? fields.facebook.toString() : undefined,
-                        // email: fields.email ? fields.email.toString() : undefined,
-                        mainService: (resultMainS.length !== 0) ? resultMainS : undefined,
-                        distinctiveService: (resultDisS.length !== 0) ? resultDisS : undefined,
-                        mMedia: (resultMediS.length !== 0) ? resultMediS : undefined,
-                        mPlatform: (resultPlatS.length !== 0) ? resultPlatS : undefined,
-                        brochure: fields.newBrochure ? fields.newBrochure.toString() : undefined,
-                        caseStudy: fields.newCasestudy ? fields.newCasestudy.toString() : undefined,
+                    let fileBase64Ref;
+                    let nameMainCl;
+                    let mainClientReal = [];
+
+                    if (files.clientImage && files.clientImage[0] && fields.mainClientName) {
+                        for (let a = 0; a < files.clientImage.length; a++) {
+                            const filePath = files.clientImage[a].filepath;
+                            const fileBuffer = fs.readFileSync(filePath);
+                            fileBase64Ref = fileBuffer.toString('base64');
+                            nameMainCl = fields.mainClientName[a];
+                            await dbLayer.createPageMainClientCards(fileBase64Ref, nameMainCl);
+                            fs.unlinkSync(filePath);
+                            mainClientReal.push(await dbLayer.getIdMainClientPageEdit(id_cardsAgency, fields.mainClientName[a]));
+                        }
+
+                        user = {
+                            mainClient: mainClientReal,
+                        }
+                    }
+
+                    console.log(mainClientReal);
+
+                    if (fields.agencyName) {
+                        user = {
+                            name: fields.agencyName ? fields.agencyName.toString() : undefined,
+                            agencyType: fields.agencyType.toString().replace(/-/g, " "),
+                            managedBilling: fields.managedBilling ? fields.managedBilling.toString() : undefined,
+                            numberOfEmployees: fields.employeesNumber ? fields.employeesNumber.toString() : undefined,
+                            awareness: fields.awareness ? true : false,
+                            conversion: fields.conversion ? true : false,
+                            consideration: fields.consideration ? true : false,
+                            location: (resultLoc.length !== 0) ? resultLoc : undefined,
+                        }
+                    }
+
+                    if (fields.website) {
+                        user = {
+                            website: fields.website ? fields.website.toString() : undefined,
+                            linkedin: fields.linkedin ? fields.linkedin.toString() : undefined,
+                            facebook: fields.facebook ? fields.facebook.toString() : undefined,
+                            // email: fields.email ? fields.email.toString() : undefined,
+                        }
+                    }
+
+                    if (fields.mainServiceFinal) {
+                        user = {
+                            mainService: (resultMainS.length !== 0) ? resultMainS : undefined,
+                            distinctiveService: (resultDisS.length !== 0) ? resultDisS : undefined,
+                        }
+                    }
+
+                    if (fields.mMediaIn) {
+                        user = {
+                            mMedia: (resultMediS.length !== 0) ? resultMediS : undefined,
+                            mPlatform: (resultPlatS.length !== 0) ? resultPlatS : undefined,
+                        }
+                    }
+
+                    if (fields.newBrochure) {
+                        user = {
+                            brochure: fields.newBrochure ? fields.newBrochure.toString() : undefined,
+                            caseStudy: fields.newCasestudy ? fields.newCasestudy.toString() : undefined,
+                            mainClient: (mainClientReal.length !== 0) ? mainClientReal : undefined,
+                        }
                     }
 
                     const result = dbLayer.updateUser(user, updateData[0]);

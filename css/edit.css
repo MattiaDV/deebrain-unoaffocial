@@ -329,6 +329,57 @@ div.infos-referral input {
     transition: 0.4s;
 }
 
+.nameOfMainClient {
+    position: absolute;
+    margin-top: 260px;
+    max-width: 150px;
+    z-index: 1000;
+}
+
+.nameOfMainClient input {
+    width: 150px !important;
+    max-width: 150px;
+    border-radius: 4px;
+    border: 1px solid #0097b2 !important;
+    color: #adadad !important;
+    padding: 10px !important;
+    display: block !important;
+    opacity: 100 !important;
+    outline: none;
+    transition: 0.4s;
+    font-size: 12px !important;
+    font-weight: 200;
+}
+
+.nameOfMainClient input:focus {
+    background: #0097b2 !important;
+    color: white !important;
+}
+
+.special-b {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start !important;
+    align-items: center;
+    margin-top: 52px;
+}
+
+.special-b input[type = "submit"] {
+    background: #0097b2;
+    color: white !important;
+    border: 1px solid #0097b2 !important;
+    padding: 10px;
+    border-radius: 4px;
+    width: 150px;
+    position: relative !important;
+    margin-bottom: 32px;
+    margin-left: 60px !important;
+    margin-top: 32px !important;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
 .buttons-form input[type = "submit"] {
     background: #0097b2;
     color: white !important;
