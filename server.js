@@ -860,22 +860,60 @@ const server = createServer(async (req, res) => {
                     .filter(partner => refClientFlat.includes(partner.id))
                     .map(partner => `<tr class = 'refC' id = "${partner.id}"><td class = "nSurn">${partner.name} ${partner.surname}</td><td class = "workas">${partner.workAs}</td><td><img class = "imga" src="${baseUrl}/web/image/users_referral_client/${partner.id}/photo"></td><td class = "workWhere">${partner.workWhere}</td><td><input type = "button" class = "remove-ref" value = "-" onclick = "removeClient(${partner.id})"></td></tr>`).join(' ')
             )
-            const mainClientLogo = realReferralClient.replace('{mainClient}', 
-                getMainClient
-                    .filter(partner => mainCliFlat.includes(partner.id))
-                    .map((partner, index) => `<div class = "main-card">
-                                    <div class = "main-client" id = "main-client-${index}">
-                                        <img src = "${baseUrl}/web/image/main_client_logos/${partner.id}/logo">
-                                        <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-${index}" onchange="photoLoad('main-client-${index}', 'mainClient-${index}')">
-                                        <label for = "mainClient-${index}"  style="display: none;">Add photo</label>
-                                        <div class = "nameOfMainClient">
-                                        <span class = "fs-12 light-text">${partner.name}</span>
-                                            <input type = "text" placeholder="Insert name of main client" name = "mainClientName">
+            let mainClientLogo;
+            if (mainCliFlat.length > 0) {
+                mainClientLogo = realReferralClient.replace('{mainClient}', 
+                    getMainClient
+                        .filter(partner => mainCliFlat.includes(partner.id))
+                        .map((partner, index) => `<div class = "main-card">
+                                        <div class = "main-client" id = "main-client-${index}">
+                                            <img src = "${baseUrl}/web/image/main_client_logos/${partner.id}/logo">
+                                            <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-${index}" onchange="photoLoad('main-client-${index}', 'mainClient-${index}')" required>
+                                            <label for = "mainClient-${index}"  style="display: none;">Add photo</label>
+                                            <div class = "nameOfMainClient">
+                                            <span class = "fs-12 light-text">${partner.name}</span>
+                                                <input type = "text" placeholder="Insert name of main client" name = "mainClientName" required>
+                                            </div>
                                         </div>
+                                        <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-${index}')" value = "Remove photo"></div>
+                                    </div>`).join(' ')
+                                    )
+            } else {
+                mainClientLogo = realReferralClient.replace('{mainClient}', `<div class = "main-card">
+                                        <div class = "main-client" id = "main-client-3">
+                                            <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-3" onchange="photoLoad('main-client-3', 'mainClient-3')" required>
+                                            <label for = "mainClient-3"  style="display: block;">Add photo</label>
+                                            <div class = "nameOfMainClient">
+                                            <span class = "fs-12 light-text">NO NAME</span>
+                                                <input type = "text" placeholder="Insert name of main client" name = "mainClientName" required>
+                                            </div>
+                                        </div>
+                                        <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-3')" value = "Remove photo"></div>
                                     </div>
-                                    <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-${index}')" value = "Remove photo"></div>
-                                </div>`).join(' ')
-            )
+                                    <div class = "main-card">
+                                        <div class = "main-client" id = "main-client-4">
+                                            <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-4" onchange="photoLoad('main-client-4', 'mainClient-4')" required>
+                                            <label for = "mainClient-4"  style="display: block;">Add photo</label>
+                                            <div class = "nameOfMainClient">
+                                            <span class = "fs-12 light-text">NO NAME</span>
+                                                <input type = "text" placeholder="Insert name of main client" name = "mainClientName" required>
+                                            </div>
+                                        </div>
+                                        <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-4')" value = "Remove photo"></div>
+                                    </div>
+                                    <div class = "main-card">
+                                        <div class = "main-client" id = "main-client-5">
+                                            <input type = "file" accept=".jpg, .png, .jpeg" name = "clientImage" id = "mainClient-5" onchange="photoLoad('main-client-5', 'mainClient-5')" required>
+                                            <label for = "mainClient-5"  style="display: block;">Add photo</label>
+                                            <div class = "nameOfMainClient">
+                                            <span class = "fs-12 light-text">NO NAME</span>
+                                                <input type = "text" placeholder="Insert name of main client" name = "mainClientName" required>
+                                            </div>
+                                        </div>
+                                        <div class = "remove-photo"><input type = "button" onclick = "unlaodPhoto('main-client-5')" value = "Remove photo"></div>
+                                    </div>
+                                    `)
+            }
             const location = mainClientLogo.replace("{location}", getLocation
                 .filter(partner => locationFlat.includes(partner.id))
                 .map(partner =>

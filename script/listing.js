@@ -19,13 +19,13 @@ let advancedFilter = [];
 
 function fil() {
     let allFil = document.querySelectorAll("input[type='checkbox']");
-    console.log("Sono dentro");
+    // console.log("Sono dentro");
     for (let fil of allFil) {
         advancedFilter.push(fil.id);
     }
 };
 
-console.log(advancedFilter);
+// console.log(advancedFilter);
 
 let checked = [];
 let paroleChiave = [];
@@ -49,23 +49,27 @@ function filter() {
 
     for (let a of agencyTypes) {
         // console.log("Agency type: " + a.id);
-        typeA = a.id.replace("search-", "");
-        typeAgency.push(typeA);
+        if(a.checked) {
+            typeA = a.id.replace("search-", "");
+            typeAgency.push(typeA);
+        }
     }
 
     for (let a of locationFil) {
         // console.log("Agency type: " + a.id);
-        loc = a.id.replace("search-", "");
-        city.push(loc);
+        if (a.checked) {
+            loc = a.id.replace("search-", "");
+            city.push(loc);
+        }
     }
 
-    console.log(typeAgency)
+    // console.log(typeAgency)
 
     for (let advF = 0; advF < advancedFilter.length; advF++) {
         if (document.getElementById(advancedFilter[advF]).checked) {
             if (!checked.includes(advancedFilter[advF])) {
                 checked.push(advancedFilter[advF]);
-                if (advancedFilter[advF] != 'search-' + typeAgency[advF]) {
+                if (advancedFilter[advF] !== 'search-' + typeAgency[advF]) {
                     parola = advancedFilter[advF].replace("search-", "");
                     paroleChiave.push(parola);
                 }
