@@ -282,35 +282,34 @@
                                 </div>
                             </div>
                         </form>
-                        <form method = "post">
                         </div><br><br><br>
                         <div class = "edit-main-service-section-real">
                             <div class = "ref-client">
                                 <table class = "referral-clients" id = "table-ref">
                                     <th class = "fs-16 500-bold">Add or remove referral clients</th>
                                     <tr class = "fs-16 500-bold">
-                                        <td>Name and surname</td>
+                                        <td>Name</td>
+                                        <td>Surname</td>
                                         <td>Profession</td>
                                         <td>Photo</td>
                                         <td>Main client</td>
                                         <td></td>
                                     </tr>
                                     <tr class = "fs-12 normal-text">
-                                        <td><input type = "text" placeholder="Name and surname" name = "nameAndSurname" id = "nameAndSurname"></td>
+                                        <form method = "post" enctype="multipart/form-data" onsubmit="return addReferral()">
+                                        <td><input type = "text" placeholder="Name" name = "nameAndSurname" id = "nameAndSurname"></td>
+                                        <td><input type = "text" placeholder="Surname" name = "surname" id = "surname"></td>
                                         <td><input type = "text" placeholder="Profession" name = "profession" id = "profession"></td>
-                                        <td><input type = "file" placeholder="Photo" name = "photo" id = "photo"></td>
+                                        <td><input type = "file" placeholder="Photo" name = "photoRefferral" id = "photoRefferral"></td>
                                         <td><input type = "text" placeholder="Main client" name = "mainClient" id = "mainClient"></td>
-                                        <td><input type = "button" class = "add-ref" value = "+" onclick = "addReferral()"></td>
+                                        <td><input type = "submit" class = "add-ref" value = "+"></td>
+                                        </form>
                                     </tr>
                                     {refClient}
                                 </table>
                             </div>
                         </div>
                         </div>
-                        <div class = "buttons-form">
-                            <input class = "fs-18 light-text" type = "submit" value = "Save">
-                        </div>
-                    </form>
                     <div class = "space-bottom"></div>
                 </div>
                 <div class = "pagina" id = "sesta-edit">

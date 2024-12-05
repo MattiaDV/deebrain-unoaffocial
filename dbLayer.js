@@ -39,6 +39,7 @@ exports.updateUser = function(param, id) {
         dataAnalysis: param.dataAnalysis,
         adServer: param.adServer,
         AdVerification: param.AdVerification,
+        referralClient: param.referralClient,
     }, callback);
 }
 
@@ -55,9 +56,46 @@ exports.createPageMainClientCards = function(param, name) {
     })
 }
 
+exports.createReferralClient = function(param) {
+    return new Promise((resolve, reject) => {
+        connectionDb.create('users_referral_client', {
+            name: param.name,
+            surname: param.surname,
+            workAs: param.workAs,
+            photo: param.photo,
+            workWhere: param.workWhere,
+        }, (err, partners) => {
+            if (err) {
+                console.error("Errore nella creazione dei Main client: " + JSON.stringify(err));
+                reject(err);
+            } else {
+                resolve(partners);
+            }
+        })
+    })
+}
+
 exports.getIdMainClientPageEdit = function(param, acc) {
     return new Promise((resolve, reject) => {
-        connectionDb.get('main_client_logos', param, (err, partners) => {
+        connectionDb.get('users_referral_client', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                console.log("Fondatori richiesti: ", acc);
+                const sortedPartners = partners.sort((a, b) => b.id - a.id);
+                const firstMatch = sortedPartners.find(partner => partner.name === acc);
+                const cit = firstMatch ? firstMatch.id : null;
+
+                console.log("ID trovato: ", cit);
+                resolve(cit);
+            }
+        });
+    });
+}
+
+exports.getIdReferralClient = function(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('users_referral_client', param, (err, partners) => {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {

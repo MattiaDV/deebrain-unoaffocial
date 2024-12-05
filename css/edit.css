@@ -1208,7 +1208,7 @@ div.agency-type-s > select#agencyType {
     border-bottom: 1px solid #e7e7e7;
 }
 
-input[type = "button"].add-ref {
+input[type = "submit"].add-ref {
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -1224,13 +1224,13 @@ input[type = "button"].add-ref {
     transition: 0.4s;
 }
 
-input[type = "button"].add-ref:focus {
+input[type = "submit"].add-ref:focus {
     background: #0097b2 !important;
     color: white !important;
     border-color: #0097b2 !important;
 }
 
-input[type = "button"].add-ref:hover {
+input[type = "submit"].add-ref:hover {
     background: white !important;
     border-color: #0097b2 !important;
     color: #0097b2 !important;

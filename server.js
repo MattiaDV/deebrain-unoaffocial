@@ -879,7 +879,7 @@ const server = createServer(async (req, res) => {
             const realReferralClient = logoURL.replace('{refClient}', 
                 getReferralClient
                     .filter(partner => refClientFlat.includes(partner.id))
-                    .map(partner => `<tr class = 'refC' id = "${partner.id}"><td class = "nSurn">${partner.name} ${partner.surname}</td><td class = "workas">${partner.workAs}</td><td><img class = "imga" src="${baseUrl}/web/image/users_referral_client/${partner.id}/photo"></td><td class = "workWhere">${partner.workWhere}</td><td><input type = "button" class = "remove-ref" value = "-" onclick = "removeClient(${partner.id})"></td></tr>`).join(' ')
+                    .map(partner => `<tr class = 'refC' id = "${partner.id}"><td class = "nSurn">${partner.name}</td><td>${partner.surname}</td><td class = "workas">${partner.workAs}</td><td><img class = "imga" src="${baseUrl}/web/image/users_referral_client/${partner.id}/photo"></td><td class = "workWhere">${partner.workWhere}</td><td><input type = "button" class = "remove-ref" value = "-" onclick = "removeClient(${partner.id})"></td></tr>`).join(' ')
             )
             let mainClientLogo;
             if (mainCliFlat.length > 0) {
@@ -1105,6 +1105,40 @@ const server = createServer(async (req, res) => {
 
                         user = {
                             mainClient: mainClientReal,
+                        }
+                    }
+
+                    let fileBase64RefC;
+                    let clientRealRef = await dbLayer.getAllDataFromDB(id_cardsAgency);
+                    let cc = clientRealRef 
+                        .filter(partner => partner.email == emailFromCookie)
+                        .map(partner => partner.referralClient)
+                    let refCFlat = cc.flat()
+                    let referralClient = [];
+                    referralClient.push(refCFlat);
+                    let refC = {};
+
+                    console.log(referralClient);
+
+                    if (files.photoRefferral && files.photoRefferral[0]) {
+                        const filePath = files.photoRefferral[0].filepath;
+                        const fileBuffer = fs.readFileSync(filePath);
+                        fileBase64RefC = fileBuffer.toString('base64');
+                        refC = {
+                            name: fields.nameAndSurname.toString(),
+                            surname: fields.surname.toString(),
+                            workAs: fields.profession.toString(),
+                            photo: fileBase64RefC,
+                            workWhere: fields.mainClient.toString(),
+                        }
+                        await dbLayer.createReferralClient(refC);
+                        fs.unlinkSync(filePath);
+                        referralClient.push(await dbLayer.getIdReferralClient(id_cardsAgency, fields.nameAndSurname.toString()));
+
+
+                        console.log(referralClient.flat());
+                        user = {
+                            referralClient: referralClient.flat(),
                         }
                     }
 

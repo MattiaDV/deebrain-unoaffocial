@@ -336,63 +336,10 @@ function addReferral() {
     let mainClientRef = document.getElementById("mainClient").value;
 
     if (nameAndSurname !== "" && profession !== "" && photo !== undefined && mainClientRef !== "") {
-        referralClient.push({
-            nameAndSurname: nameAndSurname,
-            profession: profession,
-            photo: photo,
-            mainClientRef: mainClientRef
-        });
-
-        if (photo) {
-            let reader = new FileReader();
-
-            reader.onload = function(e) {
-                let logoNew = document.getElementById('table-ref');
-                let row = document.createElement('tr');
-                row.id = idd;
-                row.className = "newAdd";
-
-                let nameTd = document.createElement('td');
-                nameTd.textContent = nameAndSurname;
-                row.appendChild(nameTd);
-
-                let professionTd = document.createElement('td');
-                professionTd.textContent = profession;
-                row.appendChild(professionTd);
-
-                let photoTd = document.createElement('td');
-                let img = document.createElement('img');
-                img.src = e.target.result;
-                img.alt = 'New Logo';
-                photoTd.appendChild(img);
-                row.appendChild(photoTd);
-
-                let mainClientRefTd = document.createElement('td');
-                mainClientRefTd.textContent = mainClientRef;
-                row.appendChild(mainClientRefTd);
-
-                let deleteButtonTD = document.createElement('td');
-                let buttonDel = document.createElement('input');
-                buttonDel.type = "button";
-                buttonDel.classList = "remove-ref";
-                buttonDel.onclick = function() {
-                    removeClient(row.id);
-                };
-                buttonDel.value = "-";
-                deleteButtonTD.appendChild(buttonDel);
-                row.appendChild(deleteButtonTD);
-
-                logoNew.appendChild(row);
-            };
-
-            reader.readAsDataURL(photo);
-        }
-
-        idd++;
-        iddd++;
-
+        return true;
     } else {
         alert("Please fill all fields.");
+        return false;
     }
 }
 
