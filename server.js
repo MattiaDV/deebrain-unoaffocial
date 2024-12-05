@@ -467,11 +467,19 @@ const server = createServer(async (req, res) => {
             const caseStudy = brochure.replace('{caseStudyURL}', realName.map(partner => partner.caseStudy).join(''));
             const linkedinFooter = caseStudy.replace('{linkedinFooter}', realName.map(partner => partner.linkedinLink).join(''));
             const websiteFooter = linkedinFooter.replace('{websiteFooter}', realName.map(partner => partner.website).join(''));
+            const planning = websiteFooter.replace("{planning}", realName.map(partner => partner.planning == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const project = planning.replace("{project}", realName.map(partner => partner.project == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const task = project.replace("{task}", realName.map(partner => partner.task == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const platform = task.replace("{platform}", realName.map(partner => partner.platform == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const reporting = platform.replace("{reporting}", realName.map(partner => partner.reporting == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const dataAnalysis = reporting.replace("{dataAnalysis}", realName.map(partner => partner.dataAnalysis == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const adServer = dataAnalysis.replace("{adServer}", realName.map(partner => partner.adServer == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(websiteFooter);
+            res.end(adVerification);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -706,11 +714,19 @@ const server = createServer(async (req, res) => {
             const caseStudy = brochure.replace('{caseStudyURL}', realName.map(partner => partner.caseStudy).join(''));
             const linkedinFooter = caseStudy.replace('{linkedinFooter}', realName.map(partner => partner.linkedinLink).join(''));
             const websiteFooter = linkedinFooter.replace('{websiteFooter}', realName.map(partner => partner.website).join(''));
+            const planning = websiteFooter.replace("{planning}", realName.map(partner => partner.planning == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const project = planning.replace("{project}", realName.map(partner => partner.project == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const task = project.replace("{task}", realName.map(partner => partner.task == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const platform = task.replace("{platform}", realName.map(partner => partner.platform == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const reporting = platform.replace("{reporting}", realName.map(partner => partner.reporting == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const dataAnalysis = reporting.replace("{dataAnalysis}", realName.map(partner => partner.dataAnalysis == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const adServer = dataAnalysis.replace("{adServer}", realName.map(partner => partner.adServer == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+            const adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
             // console.log(nameOfAgency);
             // console.log(emailFromCookie)
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(websiteFooter);
+            res.end(adVerification);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -725,6 +741,7 @@ const server = createServer(async (req, res) => {
         const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
         const emailFromCookie = cookies.email || 'Nessun cookie trovato';
         const getAgencyName = await dbLayer.getAllDataFromDB(id_cardsAgency);
+        const nameOfAgency = await dbLayer.getAllDataFromDB(id_cardsAgency);
         const getReferralClient = await dbLayer.getAllReferralClientFromDb(id_cardsAgency);
         const getMainClient = await dbLayer.getNormalMainClientFromDb(id_cardsAgency);
         const getAllTypes = await dbLayer.getNormalAgencyTypeFromDB(id_cardsAgency);
@@ -739,6 +756,10 @@ const server = createServer(async (req, res) => {
         const platC = await dbLayer.getPlatformFromDb(id_cardsAgency);
 
         try {
+
+            const realName = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.email == emailFromCookie)
 
             const nameAgencyReal = getAgencyName
                 .filter(partner => partner.email == emailFromCookie)
@@ -948,9 +969,17 @@ const server = createServer(async (req, res) => {
             const disSch = mainSch.replace('{disSch}', distsC.join(" "));
             const mediaSch = disSch.replace('{mediaSch}', mediaC.join(" "));
             const platformSch = mediaSch.replace('{platformSch}', platC.join(" "));
+            const planning = platformSch.replace("{planning}", realName.map(partner => partner.planning == true ? `<input type = "checkbox" id = "planning" name = "planning" checked>` : `<input type = "checkbox" id = "planning" name = "planning">`));
+            const project = planning.replace("{project}", realName.map(partner => partner.project == true ? `<input type = "checkbox" id = "project" name = "project" checked>` : `<input type = "checkbox" id = "project" name = "project">`));
+            const task = project.replace("{task}", realName.map(partner => partner.task == true ? `<input type = "checkbox" id = "task" name = "task" checked>` : `<input type = "checkbox" id = "task" name = "task">`));
+            const platform = task.replace("{platform}", realName.map(partner => partner.platform == true ? `<input type = "checkbox" id = "platform" name = "platform" checked>` : `<input type = "checkbox" id = "platform" name = "platform">`));
+            const reporting = platform.replace("{reporting}", realName.map(partner => partner.reporting == true ? `<input type = "checkbox" id = "reporting" name = "reporting" checked>` : `<input type = "checkbox" id = "reporting" name = "reporting">`));
+            const dataAnalysis = reporting.replace("{dataAnalysis}", realName.map(partner => partner.dataAnalysis == true ? `<input type = "checkbox" id = "dataAnalysis" name = "dataAnalysis" checked>` : `<input type = "checkbox" id = "dataAnalysis" name = "dataAnalysis">`));
+            const adServer = dataAnalysis.replace("{adServer}", realName.map(partner => partner.adServer == true ? `<input type = "checkbox" id = "adServer" name = "adServer" checked>` : `<input type = "checkbox" id = "adServer" name = "adServer">`));
+            const adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<input type = "checkbox" id = "AdVerification" name = "AdVerification" checked>` : `<input type = "checkbox" id = "AdVerification" name = "AdVerification">`));
 
             res.writeHead(200, {'ContentType': 'text/html'});
-            res.end(platformSch);
+            res.end(adVerification);
 
         } catch(err) {
             if (err) {
@@ -1122,6 +1151,19 @@ const server = createServer(async (req, res) => {
                             brochure: fields.newBrochure ? fields.newBrochure.toString() : undefined,
                             caseStudy: fields.newCasestudy ? fields.newCasestudy.toString() : undefined,
                             mainClient: (mainClientReal.length !== 0) ? mainClientReal : undefined,
+                        }
+                    }
+
+                    if (fields.planning) {
+                        user = {
+                            planning: fields.planning ? true : false,
+                            project: fields.project ? true : false,
+                            task: fields.task ? true : false,
+                            platform: fields.platform ? true : false,
+                            reporting: fields.reporting ? true : false,
+                            dataAnalysis: fields.dataAnalysis ? true : false,
+                            adServer: fields.adServer ? true : false,
+                            AdVerification: fields.AdVerification ? true : false,
                         }
                     }
 

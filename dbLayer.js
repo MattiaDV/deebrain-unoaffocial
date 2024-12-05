@@ -31,6 +31,14 @@ exports.updateUser = function(param, id) {
         brochure: param.brochure,
         caseStudy: param.caseStudy,
         clientLogos: param.mainClient,
+        planning: param.planning,
+        project: param.project,
+        task: param.task,
+        platform: param.platform,
+        reporting: param.reporting,
+        dataAnalysis: param.dataAnalysis,
+        adServer: param.adServer,
+        AdVerification: param.AdVerification,
     }, callback);
 }
 

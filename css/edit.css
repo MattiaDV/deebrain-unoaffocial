@@ -86,7 +86,7 @@ body {
     margin-left: 40px;
     list-style: none;
     display: flex;
-    margin-top: 20px;
+    margin-top: 80px;
     border-radius: 4px;
     justify-content: center;
     align-items: flex-start;
@@ -858,15 +858,15 @@ div.Mplatform > span {
     max-width: 100%;
 }
 
-.other-personal div.toggle-men div input[type = "checkbox"] {
+div.toggle-men div input[type = "checkbox"] {
     display: none;
 }
 
-.other-personal div.toggle-men div input[type = "checkbox"]:checked ~ .slider {
+div.toggle-men div input[type = "checkbox"]:checked ~ .slider {
     background: #0097b2;
 }
 
-.other-personal div.toggle-men div input[type = "checkbox"]:checked ~ .slider .toggle {
+div.toggle-men div input[type = "checkbox"]:checked ~ .slider .toggle {
     transform: translateX(30px);
     background: white;
 }

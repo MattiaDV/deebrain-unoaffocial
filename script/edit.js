@@ -4,6 +4,7 @@ let terzaEdit = document.getElementById('terza-edit');
 let quartaEdit = document.getElementById('quarta-edit');
 let quintaEdit = document.getElementById('quinta-edit');
 let sestaEdit = document.getElementById('sesta-edit');
+let settimaEdit = document.getElementById('settima-edit');
 
 let accountInfo = document.getElementById("profileInfo");
 let contactInfo = document.getElementById("contactInfos");
@@ -11,9 +12,10 @@ let servicesInfo = document.getElementById('servicesInfo');
 let managedInfo = document.getElementById('managedInfo');
 let clientsInfo = document.getElementById('clientsInfo');
 let bandC = document.getElementById('bandcInfo');
+let tools = document.getElementById('tools');
 
-let menuParts = [accountInfo, contactInfo, servicesInfo, managedInfo, clientsInfo, bandC];
-let editPart = [primaEdit, secondaEdit, terzaEdit, quartaEdit, quintaEdit, sestaEdit];
+let menuParts = [accountInfo, contactInfo, servicesInfo, managedInfo, clientsInfo, bandC, tools];
+let editPart = [primaEdit, secondaEdit, terzaEdit, quartaEdit, quintaEdit, sestaEdit, settimaEdit];
 let parts = document.getElementsByClassName('pagina');
 
 for (let part of parts) {
