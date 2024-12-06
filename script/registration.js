@@ -389,8 +389,8 @@ function sixStep() {
 }
 
 function verify() {
-    if (document.getElementById("mainClient").files.length > 6) {
-        alert("You can only choose 6 main client");
+    if (document.getElementById("mainClient").files.length > 3) {
+        alert("You can only choose 3 main client");
         return false;
     } else if (document.getElementById("mainClient").files.length < 3) {
         alert("You have to choose min 3 main client");

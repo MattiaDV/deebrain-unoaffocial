@@ -91,6 +91,7 @@ const server = createServer(async (req, res) => {
                     let resultDisS = [];
                     let resultMediS = [];
                     let resultPlatS = [];
+                    let mainClientS = [];
 
                     if (fields.selectedCitysFinal) {
                         let finalLocation = fields.selectedCitysFinal;
@@ -155,6 +156,23 @@ const server = createServer(async (req, res) => {
                     let filePath = files.agencyLogo[0].filepath;
                     let fileBuffer = fs.readFileSync(filePath);
                     let fileBase64 = fileBuffer.toString('base64');
+
+
+                    
+                    let mainClientReal = [];
+
+                    if (files.mainClient) {
+                        let names = fields.mainCnames
+                            .flatMap(name => name.split(',').map(part => part.trim()));
+                        for (let a = 0; a < files.mainClient.length; a++) {
+                            let filePathMain = files.mainClient[a].filepath;
+                            let fileBufferMain = fs.readFileSync(filePathMain);
+                            let fileBase64Main = fileBufferMain.toString('base64');
+                            let resultMain = await dbLayer.createPageMainClientCards(fileBase64Main, names[a]);
+                            console.log(resultMain);
+                            mainClientReal.push(resultMain);
+                        }
+                    }
     
                     // console.log(JSON.stringify(files));
     
@@ -181,7 +199,7 @@ const server = createServer(async (req, res) => {
                         // referralClient: await searchIdOfReferralFromDb(id_cardsAgency, fields.nameAndSurnameRef),
                         brochure: fields.brochure?.[0] || null,
                         caseStudy: fields.caseStudy?.[0] || null,
-                        // clientLogos: files.mainClient || [], 
+                        clientLogos: mainClientReal, 
                     };
     
                     // console.log("Utente da creare:", JSON.stringify(user, null, 2));
