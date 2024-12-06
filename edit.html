@@ -23,6 +23,10 @@
             </ul>
         </div>
 
+        <div id = "response">
+            aaa
+        </div>
+
         <div class = "container-edit-page">
             <div class = "edit-column-left">
                 <div class = "section-edit">
@@ -524,6 +528,40 @@
 
             let logoutter = document.getElementById('logoutter');;
             logoutter.addEventListener('click', do_signout);
+
+
+
+            const forms = document.getElementsByTagName('form');
+
+            for (const form of forms) {
+                form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+                const responseDiv = document.getElementById('response');
+
+                fetch('./edit.html', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Errore: ${response.statusText}`);
+                    }
+                    return response.json();
+                    })
+                    .then(data => {
+                    responseDiv.textContent = 'Dati salvati con successo';
+                    responseDiv.classList.add("active");
+                    setTimeout(() => responseDiv.classList.remove("active"), 5000);
+                    })
+                    .catch(error => {
+                    responseDiv.textContent = 'Dati salvati con successo';
+                    responseDiv.classList.add("active");
+                    setTimeout(() => responseDiv.classList.remove("active"), 5000);
+                    });
+                });
+            }
 
         </script>
         

@@ -1,4 +1,4 @@
-const Odoo = require('./node_modules/node-odoo');
+const Odoo = require('node-odoo');
 const sinon = require('sinon');
 
 const connectionDb = new Odoo({

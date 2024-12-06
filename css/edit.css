@@ -381,7 +381,7 @@ div.infos-referral input {
 }
 
 .buttons-form input[type = "submit"] {
-    background: #0097b2;
+    background: #0097b2 !important;
     color: white !important;
     border: 1px solid #0097b2 !important;
     padding: 10px;
@@ -1222,6 +1222,27 @@ input[type = "submit"].add-ref {
     border: 1px solid #0097b2 !important;
     cursor: pointer;
     transition: 0.4s;
+}
+
+#response {
+    position: fixed;
+    top: 150px;
+    right: 10px;
+    background: white;
+    border-radius: 4px;
+    padding: 0px;
+    max-width: 0px;
+    /* box-shadow: 1px 2px 1px 2px #424242;
+    border-bottom: 3px solid lightgreen; */
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+#response.active {
+    min-width: 200px;
+    padding: 10px;
+    border: 1px solid green;
+    border-bottom: 3px solid green;
 }
 
 input[type = "submit"].add-ref:focus {
