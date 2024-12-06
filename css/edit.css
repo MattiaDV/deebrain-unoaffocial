@@ -1236,7 +1236,7 @@ input[type = "submit"].add-ref:hover {
     color: #0097b2 !important;
 }
 
-input[type = "button"].remove-ref {
+input[type = "submit"].remove-ref {
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -1252,7 +1252,7 @@ input[type = "button"].remove-ref {
     transition: 0.4s;
 }
 
-input[type = "button"].remove-ref:hover{
+input[type = "submit"].remove-ref:hover{
     background: white !important;
     border-color: red !important;
     color: red !important;

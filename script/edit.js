@@ -336,6 +336,7 @@ function addReferral() {
     let mainClientRef = document.getElementById("mainClient").value;
 
     if (nameAndSurname !== "" && profession !== "" && photo !== undefined && mainClientRef !== "") {
+        referralClient.push()
         return true;
     } else {
         alert("Please fill all fields.");
@@ -345,8 +346,8 @@ function addReferral() {
 
 
 function removeClient(value) {
-    // let index = referralClient.findIndex(client => client.id === parseFloat(value));
-    // referralClient.splice(index, 1);
+    let index = referralClient.findIndex(client => client.idd === parseFloat(value));
+    referralClient.splice(index, 1);
     document.getElementById(value).remove();
 }
 
@@ -437,6 +438,7 @@ function cityPush() {
     let user;
     for (let elem = 0; elem < refClientA.length; elem++) {
         user = {
+            idd: refClientA[elem].id,
             nameAndSurname: nameAndSurname[elem]?.textContent || "",
             profession: profession[elem]?.textContent || "",
             photo: photo[elem]?.src || "", 
@@ -454,7 +456,7 @@ function cityPush() {
 
 function ref() {
     if (mainClientLogod.length < 3) {
-        alert("Set minimum 3 images");
+        alert("Set minimum 3 referral client");
         return false;
     } else {
         return true;

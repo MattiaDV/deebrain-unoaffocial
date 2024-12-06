@@ -879,7 +879,7 @@ const server = createServer(async (req, res) => {
             const realReferralClient = logoURL.replace('{refClient}', 
                 getReferralClient
                     .filter(partner => refClientFlat.includes(partner.id))
-                    .map(partner => `<tr class = 'refC' id = "${partner.id}"><td class = "nSurn">${partner.name}</td><td>${partner.surname}</td><td class = "workas">${partner.workAs}</td><td><img class = "imga" src="${baseUrl}/web/image/users_referral_client/${partner.id}/photo"></td><td class = "workWhere">${partner.workWhere}</td><td><input type = "button" class = "remove-ref" value = "-" onclick = "removeClient(${partner.id})"></td></tr>`).join(' ')
+                    .map(partner => `<form method = "post"><tr class = 'refC' id = "${partner.id}"><td class = "nSurn">${partner.name}</td><td>${partner.surname}</td><td class = "workas">${partner.workAs}</td><td><img class = "imga" src="${baseUrl}/web/image/users_referral_client/${partner.id}/photo"></td><td class = "workWhere">${partner.workWhere}</td><td><input type = "submit" class = "remove-ref" value = "-""><input type = "hidden" value = "${partner.id}" name = "idDaTogliere"></td></tr></form>`).join(' ')
             )
             let mainClientLogo;
             if (mainCliFlat.length > 0) {
@@ -1142,7 +1142,17 @@ const server = createServer(async (req, res) => {
                         }
                     }
 
-                    console.log(mainClientReal);
+                    if (fields.idDaTogliere) {
+                        let idToRemove = parseFloat(fields.idDaTogliere[0]);
+                        let refCliFlat = referralClient.flat();
+                        let index = refCliFlat.findIndex(client => client == idToRemove);
+                        if (index !== -1) {
+                            refCliFlat.splice(index, 1);
+                        }
+                        user = {
+                            referralClient: refCliFlat,
+                        };
+                    }
 
                     if (fields.agencyName) {
                         user = {
