@@ -81,14 +81,14 @@ body {
     margin-top: 32px;
 }
 
-.search-bar-home form {
+.search-bar-home {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0px;
 }
 
-.search-bar-home form * {
+.search-bar-home * {
     width: calc(100% / 3.1);
     min-height: 50px;
     padding: 10px;
@@ -96,14 +96,14 @@ body {
     background: none;
 }
 
-.search-bar-home form div select {
+.search-bar-home div select {
     border: 1px solid #eef5fe;
     color: #bebebe;
     appearance: none;
     border-radius: 4px;
 }
 
-.search-bar-home form * * {
+.search-bar-home * * {
     padding: 10px;
     min-width: 100%;
     border: 1px solid #424242;
@@ -119,19 +119,19 @@ body {
     transition: 0.4s;
 }
 
-.search-bar-home form * input {
+.search-bar-home * input {
     border-color: #0097b2;
     background: #0097b2;
     color: white;
 }
 
-.search-bar-home form * input:hover {
+.search-bar-home * input:hover {
     border-color: #0097b2;
     background: #fff;
     color: #0097b2;
 }
 
-.search-bar-home form * *:focus {
+.search-bar-home * *:focus {
     border-color: #0097b2;
     background: #0097b2;
     color: white;

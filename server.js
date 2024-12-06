@@ -6,6 +6,7 @@ import cookie from 'cookie';
 import formidable from 'formidable';
 import dbLayer from './dbLayer.js';
 import fs from 'fs';
+import cache from './cache.js';
 
 const mimeTypes = {
     '.html': 'text/html',
@@ -230,33 +231,42 @@ const server = createServer(async (req, res) => {
         
 
     if (method === 'GET' && url === '/listing.html') {
-        try {
-            let htmlContent = await readFile('listing.html', 'utf8');
-            let id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
-            let cardsAgency = await dbLayer.getNewAgencyFromDB(id_cardsAgency);
-            let location = await dbLayer.getLocationsFromDb(id_cardsAgency);
-            let mainS = await dbLayer.getNormalMainFromDb(id_cardsAgency);
-            let disS = await dbLayer.getNormalDisFromDb(id_cardsAgency);
-            let mediaM = await dbLayer.getNormalMediaFromDb(id_cardsAgency);
-            let platformM = await dbLayer.getNormalPlatformFromDb(id_cardsAgency);
-            let agencyTypes = await dbLayer.getAgencyTypeFromDB(id_cardsAgency);
-            let normalLocation = await dbLayer.getNormalLocationsFromDb(id_cardsAgency);
-            let updatedHtmlContent = htmlContent.replace("{cards}", cardsAgency.join(''));
-            let filterAgencyType = updatedHtmlContent.replace("{filter-agencyType}", agencyTypes.join(''));
-            let filterLocation = filterAgencyType.replace("{filter-location}", normalLocation.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
-            let filterMains = filterLocation.replace("{filter-mainService}", mainS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
-            let filterDis = filterMains.replace("{filter-distinctiveService}", disS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked> <option value='${partner.name}'>${partner.name}</option></li>`).join(''));
-            let filterMedia = filterDis.replace("{filter-managedMedia}", mediaM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked> <option value='${partner.name}'>${partner.name}</option></li>`).join(''));
-            let filterPlatform = filterMedia.replace("{filter-managedPlatform}", platformM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+        if (cache.getDataFromCache() === null) {
+            try {
+                let htmlContent = await readFile('listing.html', 'utf8');
+                let id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+                let cardsAgency = await dbLayer.getNewAgencyFromDB(id_cardsAgency);
+                let location = await dbLayer.getLocationsFromDb(id_cardsAgency);
+                let mainS = await dbLayer.getNormalMainFromDb(id_cardsAgency);
+                let disS = await dbLayer.getNormalDisFromDb(id_cardsAgency);
+                let mediaM = await dbLayer.getNormalMediaFromDb(id_cardsAgency);
+                let platformM = await dbLayer.getNormalPlatformFromDb(id_cardsAgency);
+                let agencyTypes = await dbLayer.getAgencyTypeFromDB(id_cardsAgency);
+                let normalLocation = await dbLayer.getNormalLocationsFromDb(id_cardsAgency);
+                let updatedHtmlContent = htmlContent.replace("{cards}", cardsAgency.join(''));
+                let filterAgencyType = updatedHtmlContent.replace("{filter-agencyType}", agencyTypes.join(''));
+                let filterLocation = filterAgencyType.replace("{filter-location}", normalLocation.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+                let filterMains = filterLocation.replace("{filter-mainService}", mainS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+                let filterDis = filterMains.replace("{filter-distinctiveService}", disS.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked> <option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+                let filterMedia = filterDis.replace("{filter-managedMedia}", mediaM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked> <option value='${partner.name}'>${partner.name}</option></li>`).join(''));
+                let filterPlatform = filterMedia.replace("{filter-managedPlatform}", platformM.map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.name.toLowerCase().replace(" ", '-')}" checked><option value='${partner.name}'>${partner.name}</option></li>`).join(''));
 
+                cache.saveDataToCache(filterPlatform);
+
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(filterPlatform);
+            } catch (err) {
+                console.error(err);
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Errore del server interno');
+            }
+            return;
+        } else {
+            let cachedData = cache.getDataFromCache();
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(filterPlatform);
-        } catch (err) {
-            console.error(err);
-            res.writeHead(500, { 'Content-Type': 'text/plain' });
-            res.end('Errore del server interno');
+            res.end(cachedData);
+            return;
         }
-        return;
     }
 
     if (method === 'GET' && url === '/mypage.html') {
