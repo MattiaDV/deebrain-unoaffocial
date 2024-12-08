@@ -174,6 +174,28 @@ const server = createServer(async (req, res) => {
                             mainClientReal.push(resultMain);
                         }
                     }
+
+                    let referralClientReal = [];
+                    let refClient = {};
+
+                    if (files.photoRefClient) {
+                        for (let x = 0; x < files.photoRefClient.length; x++) {
+                            let filePathRef = files.photoRefClient[x].filepath;
+                            let fileBufferRef = fs.readFileSync(filePathRef);
+                            let fileBase64Ref = fileBufferRef.toString('base64');
+                            refClient = {
+                                name: fields.nameRefClient[x],
+                                surname: fields.surnameRefClient[x],
+                                workAs: fields.professionRefClient[x],
+                                photo: fileBase64Ref,
+                                workWhere: fields.mainCrefClient[x],
+                            }
+                            let resultRefClient = await dbLayer.createReferralClient(refClient);
+                            console.log(resultRefClient);
+                            referralClientReal.push(await dbLayer.getIdReferralClient(id_cardsAgency, fields.nameRefClient[x]));
+                            console.log("ARRAY: ", referralClientReal);
+                        }
+                    }
     
                     // console.log(JSON.stringify(files));
     
@@ -197,7 +219,7 @@ const server = createServer(async (req, res) => {
                         managedMedia: resultMediS,
                         managedPlatform: resultPlatS,
                         // Per ora concentriamoci sui precedenti
-                        // referralClient: await searchIdOfReferralFromDb(id_cardsAgency, fields.nameAndSurnameRef),
+                        referralClient: referralClientReal,
                         brochure: fields.brochure?.[0] || null,
                         caseStudy: fields.caseStudy?.[0] || null,
                         clientLogos: mainClientReal, 

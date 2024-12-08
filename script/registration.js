@@ -372,19 +372,15 @@ function fiveStep() {
 
 function sixStep() {
     if (validateFormStep(5)) {
-        if (referralClient.length > 0) {
-            document.getElementById('form-5-an').style.marginRight = -600 + "%";
-            document.getElementById('form-5').style.height = 0 + "%";
-            setTimeout(function() {document.getElementById('form-6-an').style.marginRight = 0 + "%"; document.getElementById('form-6').style.height = "auto";}, 150);
-            document.getElementById("selectedCitysFinal").value = cityChoose.join(",");
-            document.getElementById("mainServicesFinal").value = servicesChoose.join(",");
-            document.getElementById("distinctiveServiceFinal").value = DservicesChoose.join(",");
-            document.getElementById("managedMediaFinal").value = MMediaChoose.join(",");
-            document.getElementById("managedPlatformFinal").value = MPlatformChoose.join(",");
-            document.getElementById("referralClientFinal").value = referralClient.join(",");
-        } else {
-            alert("Enter at least one referral client");
-        }
+        document.getElementById('form-5-an').style.marginRight = -600 + "%";
+        document.getElementById('form-5').style.height = 0 + "%";
+        setTimeout(function() {document.getElementById('form-6-an').style.marginRight = 0 + "%"; document.getElementById('form-6').style.height = "auto";}, 150);
+        document.getElementById("selectedCitysFinal").value = cityChoose.join(",");
+        document.getElementById("mainServicesFinal").value = servicesChoose.join(",");
+        document.getElementById("distinctiveServiceFinal").value = DservicesChoose.join(",");
+        document.getElementById("managedMediaFinal").value = MMediaChoose.join(",");
+        document.getElementById("managedPlatformFinal").value = MPlatformChoose.join(",");
+        document.getElementById("referralClientFinal").value = referralClient.join(",");
     }
 }
 

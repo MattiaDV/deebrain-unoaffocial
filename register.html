@@ -169,7 +169,7 @@
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen managed platform </span><div id = "ManPlatform" class = "choose-citys"></div></div>
                             </div>
 
-                            <span class = "fs-20 medium-bold-text title-referral" style="color: #0097b2;">Add other certification</span>
+                            <!-- <span class = "fs-20 medium-bold-text title-referral" style="color: #0097b2;">Add other certification</span>
 
                             <div class = "double-info quinto infos-referral">
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Platform </span><input type = "text" placeholder = "Google" name = "platformForCert" id = "platformForCert"></div>
@@ -179,7 +179,7 @@
                                 <input type = "button" value = "-" onclick = "removeCertification()">
                                 <input type = "text" placeholder = "Here we placed the new certification" name = "certificationPla" id = "certificationPla" readonly required>
                                 <input type = "button" value = "+" onclick = "addCertification()">
-                            </div>
+                            </div> -->
                             <div class = "form-button">
                                 <input type = "button" onclick = "returnThird()" class = "back" value = "Back">
                                 <input type = "button" onclick = "fiveStep()" value = "Continue">
@@ -208,20 +208,50 @@
                         </div>  
                         <div class = "start-form" id = "form-step-5" method = "get">
                             <span class = "fs-18 medium-bold-text title-referral" style="color: #0097b2;">Add referral client</span><br>
+                            <table class = "tabReferral">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Surname</td>
+                                    <td>Profession</td>
+                                    <td>Photo</td>
+                                    <td>Main client</td>
+                                </tr>
+                                <tr>
+                                    <td><input type = "text" name = "nameRefClient" required></td>
+                                    <td><input type = "text" name = "surnameRefClient" required></td>
+                                    <td><input type = "text" name = "professionRefClient" required></td>
+                                    <td><input type = "file" name = "photoRefClient" required></td>
+                                    <td><input type = "text" name = "mainCrefClient" required></td>
+                                </tr>
+                                <tr>
+                                    <td><input type = "text" name = "nameRefClient" required></td>
+                                    <td><input type = "text" name = "surnameRefClient" required></td>
+                                    <td><input type = "text" name = "professionRefClient" required></td>
+                                    <td><input type = "file" name = "photoRefClient" required></td>
+                                    <td><input type = "text" name = "mainCrefClient" required></td>
+                                </tr>
+                                <tr>
+                                    <td><input type = "text" name = "nameRefClient" required></td>
+                                    <td><input type = "text" name = "surnameRefClient" required></td>
+                                    <td><input type = "text" name = "professionRefClient" required></td>
+                                    <td><input type = "file" name = "photoRefClient" required></td>
+                                    <td><input type = "text" name = "mainCrefClient" required></td>
+                                </tr>
+                            </table>
 
-                            <div class = "double-info quinto infos-referral">
+                            <!-- <div class = "double-info quinto infos-referral">
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Name and surname </span><input type = "text" placeholder = "John Doe" name = "nameAndSurname" id = "nameAndSurname"></div>
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Profession </span><input type = "text" placeholder = "UX/UI designer" name = "profession" id = "profession"></div>
                             </div>
                             <div class = "double-info quinto infos-referral">
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Photo </span><input type = "file" name = "photo" id = "photo"></div>
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client </span><input type = "text" placeholder = "Visual Studio Code" name = "mainClientRef" id = "mainClientRef"></div>
-                            </div>
-                            <div class = "double-info quinto infos-referral">
+                            </div> -->
+                            <!-- <div class = "double-info quinto infos-referral">
                                 <input type = "button" value = "-" onclick = "removeClient()">
                                 <input type = "text" placeholder = "John Doe" name = "nameAndSurnameRef" id = "nameAndSurnameRef" readonly required>
                                 <input type = "button" value = "+" onclick = "addClient()">
-                            </div>
+                            </div> -->
                             <div class = "form-button">
                                 <input type = "button" onclick = "returnFourth()" class = "back" value = "Back">
                                 <input type = "button" onclick = "sixStep()" value = "Continue">
