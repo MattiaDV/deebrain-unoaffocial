@@ -25,6 +25,26 @@ const server = createServer(async (req, res) => {
     if (method === 'GET' && url === '/') {
         try {
             let htmlContent = await readFile('index.html', 'utf8');
+            cache.clearCacheEditPage();
+            cache.clearCacheListing();
+            cache.clearCacheMyPage();
+            console.log("Ho pulito la cache");
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(htmlContent);
+        } catch (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Errore del server interno');
+        }
+        return;
+    } 
+
+    if (method === 'GET' && url === '/login.html') {
+        try {
+            let htmlContent = await readFile('login.html', 'utf8');
+            cache.clearCacheEditPage();
+            cache.clearCacheListing();
+            cache.clearCacheMyPage();
+            console.log("Ho pulito la cache");
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(htmlContent);
         } catch (err) {
