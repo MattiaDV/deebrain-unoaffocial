@@ -44,7 +44,7 @@ const server = createServer(async (req, res) => {
             cache.clearCacheEditPage();
             cache.clearCacheListing();
             cache.clearCacheMyPage();
-            console.log("Ho pulito la cache");
+            console.log("Ho pulito la cache"); 
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(htmlContent);
         } catch (err) {
@@ -183,13 +183,11 @@ const server = createServer(async (req, res) => {
                     let mainClientReal = [];
 
                     if (files.mainClient) {
-                        let names = fields.mainCnames
-                            .flatMap(name => name.split(',').map(part => part.trim()));
                         for (let a = 0; a < files.mainClient.length; a++) {
                             let filePathMain = files.mainClient[a].filepath;
                             let fileBufferMain = fs.readFileSync(filePathMain);
                             let fileBase64Main = fileBufferMain.toString('base64');
-                            let resultMain = await dbLayer.createPageMainClientCards(fileBase64Main, names[a]);
+                            let resultMain = await dbLayer.createPageMainClientCards(fileBase64Main, fields.mainCnames[a]);
                             console.log(resultMain);
                             mainClientReal.push(resultMain);
                         }

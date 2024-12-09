@@ -282,8 +282,27 @@
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Case study </span><input type = "url" value = "https://" name = "caseStudy" required></div>
                             </div>
                             <div class = "double-info primo">
-                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client (logos) </span><input type = "file" id = "mainClient" name = "mainClient" multiple required></div>
-                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client (names, es: art, att, ack) </span><input type = "text" name = "mainCnames" placeholder="Names of main client"></div>
+                                <!-- <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client (logos) </span><input type = "file" id = "mainClient" name = "mainClient" multiple required></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client (names, es: art, att, ack) </span><input type = "text" name = "mainCnames" placeholder="Names of main client"></div> -->
+                                <table>
+                                    <th>Main clients</th>
+                                    <tr>
+                                        <td>Logo</td>
+                                        <td>Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type = "file" id = "mainClient" name = "mainClient" required></td>
+                                        <td><input type = "text" name = "mainCnames" placeholder="Names of main client" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type = "file" id = "mainClient" name = "mainClient" required></td>
+                                        <td><input type = "text" name = "mainCnames" placeholder="Names of main client" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type = "file" id = "mainClient" name = "mainClient" required></td>
+                                        <td><input type = "text" name = "mainCnames" placeholder="Names of main client" required></td>
+                                    </tr>
+                                </table>
                             </div>
                             <input type = "hidden" name = "selectedCitysFinal" id = "selectedCitysFinal">
                             <input type = "hidden" name = "mainServicesFinal" id = "mainServicesFinal">
