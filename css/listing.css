@@ -14,6 +14,12 @@ body {
     flex-direction: row;
 }
 
+.voci {
+    position: absolute !important;
+    top: 60px !important;
+    right: 20px !important;
+}
+
 .upper-part-page {
     display: flex;
     justify-content: flex-start;
