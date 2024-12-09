@@ -57,7 +57,7 @@ const server = createServer(async (req, res) => {
     if (method === 'GET' && url === '/register.html') {
         try {
             let htmlContent = await readFile('register.html', 'utf8');
-            let id_array_location = Array.from({ length: 440 }, (_, i) => i);
+            let id_array_location = Array.from({ length: 1000 }, (_, i) => i);
             let locationAll = await dbLayer.getLocationsFromDb(id_array_location);
             let mainServ = await dbLayer.getMainFromDb(id_array_location);
             let disServ = await dbLayer.getDisFromDb(id_array_location);
@@ -82,7 +82,7 @@ const server = createServer(async (req, res) => {
     if (method === 'POST' && url === '/home.html') {
         try {
             let form = formidable({ multiples: true }); 
-            let id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+            let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
     
             form.parse(req, async (err, fields, files) => {
                 try {
@@ -274,7 +274,7 @@ const server = createServer(async (req, res) => {
         if (cache.getDataFromCache() === null) {
             try {
                 let htmlContent = await readFile('listing.html', 'utf8');
-                let id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+                let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
                 let cardsAgency = await dbLayer.getNewAgencyFromDB(id_cardsAgency);
                 let location = await dbLayer.getLocationsFromDb(id_cardsAgency);
                 let mainS = await dbLayer.getNormalMainFromDb(id_cardsAgency);
@@ -313,7 +313,7 @@ const server = createServer(async (req, res) => {
         if (cache.getDataFromCacheMyPage() === null) {
             try {
                 let htmlContent = await readFile('mypage.html', 'utf8');
-                let id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+                let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
                 let cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
                 let emailFromCookie = cookies.email || 'Nessun cookie trovato';
                 let nameOfAgency = await dbLayer.getAllDataFromDB(id_cardsAgency);
@@ -568,7 +568,7 @@ const server = createServer(async (req, res) => {
     if (method === 'GET' && url === '/paginaD.html') {
         try {
             let htmlContent = await readFile('paginaD.html', 'utf8');
-            let id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+            let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
             let cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
             let emailFromCookie = cookies.website || 'Nessun cookie trovato';
             let nameOfAgency = await dbLayer.getAllDataFromDB(id_cardsAgency);
@@ -816,7 +816,7 @@ const server = createServer(async (req, res) => {
         if (cache.getDataFromCacheEditPage() === null) {
             try {
                 let htmlContent = await readFile('edit.html', 'utf-8');
-                let id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+                let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
                 let cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
                 let emailFromCookie = cookies.email || 'Nessun cookie trovato';
                 let getAgencyName = await dbLayer.getAllDataFromDB(id_cardsAgency);
@@ -1075,7 +1075,7 @@ const server = createServer(async (req, res) => {
     }   
 
     if (method === 'POST' && url === '/edit.html') {
-        let id_cardsAgency = Array.from({ length: 440 }, (_, i) => i);
+        let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
         let cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
         let emailFromCookie = cookies.email || 'Nessun cookie trovato';
         let getAgencyName = await dbLayer.getAllDataFromDB(id_cardsAgency);
