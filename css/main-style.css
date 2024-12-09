@@ -918,7 +918,7 @@
     width: 100%;
     padding: 10px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
@@ -928,14 +928,14 @@
     width: 100%;
     padding: 10px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .innovation-tools-card {
-    width: calc(100% / 4.1);
+    width: calc(100% / 4.2);
     background: var(--background-white);
     border: 1px solid var(--background-gray);
     box-shadow: 0 4px 20px rgba(0.1, 0.1, 0.1, 0.5);

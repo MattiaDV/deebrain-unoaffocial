@@ -1393,6 +1393,25 @@ select:focus {
         margin-top: calc(0%);
         margin-bottom: 10px;
     }
+
+    .edit-column-left {
+        max-width: 30%;
+        margin-right: 40px;
+        margin-top: -180px;
+        overflow-x: visible;
+    }
+
+    .section-edit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .section-edit ul li {
+        max-width: 20%;
+    }
 }
 
 @media screen and (max-width: 1100px) {
