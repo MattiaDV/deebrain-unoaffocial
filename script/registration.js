@@ -384,19 +384,6 @@ function sixStep() {
     }
 }
 
-function verify() {
-    if (document.getElementById("mainClient").files.length > 3) {
-        alert("You can only choose 3 main client");
-        return false;
-    } else if (document.getElementById("mainClient").files.length < 3) {
-        alert("You have to choose min 3 main client");
-        return false;
-    } else {
-        return true;
-    }
-}
-
-
 function returnFirst() {
     document.getElementById('form-2-an').style.marginRight = 600 + "%";
     document.getElementById('form-2').style.height =  0 + "%";
