@@ -40,6 +40,12 @@
 }
 
 @media screen and (max-width: 1250px) {
+    .header-deebrain {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
     .deebrain-menu {
         display: flex !important;
         justify-content: center !important;
