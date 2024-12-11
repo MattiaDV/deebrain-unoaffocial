@@ -1051,7 +1051,7 @@ select {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        top: 260%;
+        top: 250%;
         margin-left: 0%;
         max-width: 90%;
         flex-direction: column;
