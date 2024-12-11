@@ -944,3 +944,17 @@ select {
 .container-awac div:hover {
     cursor: pointer;
 }
+
+@media screen and (max-width: 1250px) {
+    .contain-form {
+        margin-left: 0;
+        position: relative;
+        margin-left: 20%;
+        max-width: 70%;
+    }
+
+    .return-home {
+        margin-left: 15%;
+        padding: 5px !important;
+    }
+}
