@@ -421,7 +421,25 @@ document.getElementById('select-awac').addEventListener('click', function() {
     let display = document.getElementById('container-awac');
     let scritta = document.getElementById('select-awac');
 
-    alert("Click");
+    if (x == 1) {
+        display.style.maxHeight = "200px";
+        display.style.padding = "10px";
+        scritta.innerHTML = "Close the menu ↑";
+        scritta.style.borderColor = "#0097b2";
+        scritta.style.color = "#424242";
+    } else {
+        display.style.maxHeight = "0px";
+        display.style.padding = "0px";
+        scritta.innerHTML = "Open the menu ↓";
+        scritta.style.borderColor = "#e7e7e7";
+        scritta.style.color = "#adadad";
+    }
+})
+
+document.getElementById('select-awac-m').addEventListener('click', function() {
+    x = x * -1;
+    let display = document.getElementById('container-awac-m');
+    let scritta = document.getElementById('select-awac-m');
 
     if (x == 1) {
         display.style.maxHeight = "200px";

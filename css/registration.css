@@ -1028,6 +1028,15 @@ select {
 
     .select-awac {
         z-index: 100;
+        pointer-events: auto;
+        position: relative;
+    }
+    
+    .container-awac {
+        max-height: 0px; /* Menu chiuso */
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0px;
     }
 
     .one-info-plus {
