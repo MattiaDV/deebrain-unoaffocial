@@ -986,3 +986,50 @@ select {
 .container-awac div:hover {
     cursor: pointer;
 }
+
+@media screen and (max-width: 1250px) {
+    body {
+        overflow: scroll !important;
+    }
+
+    .all-infos {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        top: 20px;
+        bottom: 20px;
+    }
+
+    .double-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .one-info {
+        min-width: 100%;
+    }
+
+    .all-infos > div {
+        margin-left: 0%;
+        max-width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .return-home {
+        margin-bottom: 20px;
+    }
+
+    .contain-form {
+        min-width: 100%;
+    }
+    
+    .contain-form-x {
+        min-width: 100%;
+    }
+}
