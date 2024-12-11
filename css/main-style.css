@@ -1260,3 +1260,71 @@ li {
         width: calc(100% / 3.1);
     }
 }
+
+@media screen and (max-width: 1250px) {
+    .no-m {
+        display: none;
+    }
+
+    .header-deebrain {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .deebrain-menu {
+        min-width: 90vw !important;
+    }
+
+    .deebrain-menu li img {
+        max-width: 100px !important;
+    }
+
+    .deebrain-under-menu li details {
+        margin-right: 62px !important;
+    }
+
+    .innovation-tools-card {
+        min-width: calc(100%);
+    }
+
+    .listing-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+    .listing-column-left {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        padding-left: 0%;
+    }
+
+    .column-listing {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .name-listing {
+        font-size: 40px !important;
+    }
+
+    .datas-listing {
+        min-width: 100%;
+    }
+
+    .data-listing svg {
+        min-width: 30px;
+        min-height: 30px;
+    }
+
+    .other-data-listing {
+        max-width: calc(100% / 3.3);
+    }
+}
