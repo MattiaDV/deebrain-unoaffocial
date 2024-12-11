@@ -38,3 +38,42 @@
     background: white;
     color: #0097b2;
 }
+
+@media screen and (max-width: 1250px) {
+    .deebrain-menu {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .background {
+        display: none;
+    }
+
+    .container-left-home {
+        position: relative;
+        min-width: 88%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-wrap: wrap;
+    }
+
+    .ac {
+        min-width: 100%;
+        text-align: center;
+    }
+
+    .search-bar-home {
+        min-width: 100%;
+    }
+
+    .deebrain-under-menu {
+        display: none !important;
+    }
+
+    .deebrain-under-menu li {
+        display: none;
+    }
+}
