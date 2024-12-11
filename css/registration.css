@@ -1031,7 +1031,7 @@ select {
         pointer-events: auto;
         position: relative;
     }
-    
+
     .container-awac {
         max-height: 0px; /* Menu chiuso */
         overflow: hidden;
@@ -1051,7 +1051,7 @@ select {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        top: 270%;
+        top: 260%;
         margin-left: 0%;
         max-width: 90%;
         flex-direction: column;
