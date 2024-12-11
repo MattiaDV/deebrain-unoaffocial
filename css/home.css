@@ -136,3 +136,63 @@ body {
     background: #0097b2;
     color: white;
 }
+
+@media screen and (max-width: 1250px) {
+    .header-deebrain {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .deebrain-menu {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .background {
+        display: none;
+    }
+
+    .container-left-home {
+        position: relative;
+        margin-top: 0px;
+        display: flex;
+        width: 100%;
+        margin-left: 0px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .ac {
+        min-width: 100%;
+        text-align: center;
+        font-size: 30px !important;
+    }
+
+    .search-bar-home {
+        min-width: 100%;
+    }
+
+    div.search-bar-home button {
+        max-width: calc(100% / 3.2) !important;
+        font-size: 12px !important;
+    }
+
+    .deebrain-under-menu {
+        display: none !important;
+    }
+
+    .deebrain-under-menu li {
+        display: none;
+    }
+}
