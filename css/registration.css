@@ -989,7 +989,8 @@ select {
 
 @media screen and (max-width: 1250px) {
     body {
-        overflow: scroll !important;
+        overflow-y: scroll !important;
+        overflow-x: hidden !important;
     }
 
     .all-infos {
@@ -998,7 +999,7 @@ select {
         justify-content: flex-start;
         align-items: center;
         top: 20px;
-        bottom: 20px;
+        bottom: 120px;
     }
 
     .double-info {
@@ -1022,13 +1023,13 @@ select {
     }
 
     .return-home {
-        margin-bottom: 20px;
+        margin-bottom: 120px;
     }
 
     .contain-form {
         min-width: 100%;
     }
-    
+
     .contain-form-x {
         min-width: 100%;
     }
