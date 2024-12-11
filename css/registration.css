@@ -1057,6 +1057,22 @@ select {
         flex-direction: column;
     }
 
+    .tabReferral {
+        overflow-x: scroll;
+        border: 1px solid black;
+        min-width: 120%;
+        max-width: 120%;
+        padding: 20px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .tabReferral tr td input {
+        min-width: 100px;
+    }
+
     .double-info {
         display: flex;
         justify-content: center;
