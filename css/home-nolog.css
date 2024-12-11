@@ -53,10 +53,12 @@
     .container-left-home {
         position: relative;
         min-width: 88%;
+        max-width: 93%;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
+        flex-direction: column;
         flex-wrap: wrap;
     }
 
