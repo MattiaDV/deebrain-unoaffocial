@@ -320,6 +320,279 @@
             </div>
         </form>
 
+        <form id = "mobileForm" class = "mobile-form" action = "home.html" method = "post" enctype="multipart/form-data">
+                <div class = "contain-form form-1" id = "form-1-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Register now</h1>
+                    <a href = "login.html" class = "fs-12 light-text">You are already a member? click here</a>
+                    <div class = "form">
+                        <div class="stepper-container step-1-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2"></div>
+                            <div class="step step-3"></div>
+                            <div class="step step-4"></div>
+                            <div class="step step-5"></div>
+                            <div class="step step-6"></div>
+                        </div><br>        
+                        <div class = "start-form" method = "get">
+                            <div class = "double-info primo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Agency name </span><input class = "fs-10 light-text" type = "text" placeholder = "Agency name" name = "agencyName" required></div>
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Founder name </span><input class = "fs-10 light-text" type = "text" placeholder = "Founder name (John, Elvis)" name = "founderName" id = "founderName" required></div>
+                            </div>
+                            <div class = "double-info secondo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Number of employees </span><input class = "fs-10 light-text" type = "number" min = 0 step = 1 placeholder = "100" name = "numberOfEmployees" required></div>
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Foundation year </span><input class = "fs-10 light-text" type = "date" placeholder = "2020" name = "foundationYear" required></div>
+                            </div>
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Agency type </span><select class = "fs-10 light-text" id = "agencyType" name = "agencyType"><option value = "digital agency">Digital agency</option><option value = "media center">Media center</option><option value = "creative agency">Creative agency</option><option value = "perform agency">Perform agency</option><option value="advertising agency">Advertising agency</option><option value="marketing agency">Marketing agency</option><option value="branding agency">Branding agency</option><option value="design agency">Design agency</option><option value="web agency">Web agency</option><option value="seo agency">SEO agency</option><option value="social media agency">Social media agency</option><option value="public relations agency">Public relations agency</option><option value="event agency">Event agency</option><option value="consulting agency">Consulting agency</option><option value="production agency">Production agency</option><option value="influencer agency">Influencer agency</option><option value="digital marketing agency">Digital marketing agency</option><option value="content agency">Content agency</option><option value="advertising production agency">Advertising production agency</option><option value="motion graphics agency">Motion graphics agency</option><option value="creative consulting agency">Creative consulting agency</option><option value="interactive agency">Interactive agency</option><option value="media buying agency">Media buying agency</option></select></div>
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Your logo </span><input class = "fs-10 light-text" type = "file" accept=".png, .jpg, .jpeg" name = "agencyLogo" required></div>
+                            </div>
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-12 medium-bold-text">Password</span><input type="password" minlength="6" placeholder="Password" id="password"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "return-home-no-log">
+                    <input type="button" class = "return-home fs-20 light-text" onclick="window.location.href = 'index.html'" value="Return home">   
+                </div>
+
+                <div class = "contain-form-x" id = "form-2-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Step 2</h1>
+                    <div class = "form padding-20">
+                        <!-- <span class = "fs-20 light-text">STEP 2/6</span> -->
+                        <div class="stepper-container step-2-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3"></div>
+                            <div class="step step-4"></div>
+                            <div class="step step-5"></div>
+                            <div class="step step-6"></div>
+                        </div>  
+                        <div class = "start-form" method = "get">
+                            <div class = "double-info primo">
+                                <div class = "one-info">
+                                    <span class = "fs-16 medium-bold-text">Managed billing</span>
+                                    <input type="number" placeholder = "50000" id = "billing-r" name = "managedBilling">
+                                </div>
+                                <div class = "one-info-plus">
+                                    <span class = "fs-16 medium-bold-text awacon-title">User preferences</span><br>
+                                    <div class = "select-awac" id = "select-awac">Open the menu ↓</div>
+                                    <div class = "container-awac" id = "container-awac">
+                                        <div class = "main-s-primo"><input type = "checkbox" name = "awareness" checked><span class = "fs-16 light-text">Awareness</span></div>
+                                        <div class = "main-s"><input type = "checkbox" name = "conversion"><span class = "fs-16 light-text">Conversion</span></div>
+                                        <div class = "main-s"><input type = "checkbox" name = "consideration"><span class = "fs-16 light-text">Consideration</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "double-info secondo">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Website </span><input type = "url" placeholder = "yourwebsite.com" name = "agencyWebsite" value = "https://" required></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Linkedin link (optional) </span><input type = "url" placeholder = "Linkedin link" name = "agencyLinkedin"></div>
+                            </div>
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Facebook link (optional) </span><input type = "url" placeholder = "Facebook link" name = "agencyFacebook"></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Email </span><input type = "email" placeholder = "your.email@your.site" id="email" name = "agencyEmail" required></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "contain-form-x" id = "form-3-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Step 3</h1>
+                    <div class = "form padding-20">
+                        <!-- <span class = "fs-20 light-text">STEP 3/6</span> -->
+                        <div class="stepper-container step-2-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3 active"></div>
+                            <div class="step step-4"></div>
+                            <div class="step step-5"></div>
+                            <div class="step step-6"></div>
+                        </div>  
+                        <div class = "start-form" method = "get">
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Location </span><select id = "location" name = "location" required><option value="" disabled selected>Select a city (you can choose more than one)</option>{locations}<option value = "more">Other</option></select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen location </span><div id = "citys" class = "choose-citys"></div></div>
+                            </div>
+                            <div class = "double-info sesto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main services </span><select id = "mainServices" name = "mainServices" required><option value="" disabled selected>Select a service (you can choose more than one)</option>{mainService}</select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen services </span><div id = "services" class = "choose-citys"></div></div>
+                            </div>
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Distinctive services </span><select id = "distinctiveServices" name = "distinctiveServices" required><option value="" disabled selected>Select a service (you can choose more than one)</option>{distinctiveService}</select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen Distinctive </span><div id = "Dservices" class = "choose-citys"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "contain-form-x" id = "form-4-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Step 4</h1>
+                    <div class = "form padding-20">
+                        <!-- <span class = "fs-20 light-text">STEP 4/6</span> -->
+                        <div class="stepper-container step-4-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3 active"></div>
+                            <div class="step step-4 active"></div>
+                            <div class="step step-5"></div>
+                            <div class="step step-6"></div>
+                        </div>  
+                        <div class = "start-form" method = "get">
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Managed media </span><select id = "managedMedia" name = "managedMedia" required><option value="" disabled selected>Select a media (you can choose more than one)</option>{media}</select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen managed media </span><div id = "ManMedia" class = "choose-citys"></div></div>
+                            </div>
+
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Managed platform </span><select id = "managedPlatform" name = "managedPlatform" required><option value="" disabled selected>Select a platform (you can choose more than one)</option>{platform}</select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen managed platform </span><div id = "ManPlatform" class = "choose-citys"></div></div>
+                            </div>
+
+                            <!-- <span class = "fs-20 medium-bold-text title-referral" style="color: #0097b2;">Add other certification</span>
+
+                            <div class = "double-info quinto infos-referral">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Platform </span><input type = "text" placeholder = "Google" name = "platformForCert" id = "platformForCert"></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Certification </span><input type = "text" placeholder = "Certification" name = "certificationFor" id = "certificationFor"></div>
+                            </div>
+                            <div class = "double-info quinto infos-referral">
+                                <input type = "button" value = "-" onclick = "removeCertification()">
+                                <input type = "text" placeholder = "Here we placed the new certification" name = "certificationPla" id = "certificationPla" readonly required>
+                                <input type = "button" value = "+" onclick = "addCertification()">
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class = "contain-form-x" id = "form-5-an">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Step 5</h1>
+                    <div class = "form padding-20">
+                        <!-- <span class = "fs-20 light-text">STEP 5/6</span> -->
+                        <div class="stepper-container step-5-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3 active"></div>
+                            <div class="step step-4 active"></div>
+                            <div class="step step-5 active"></div>
+                            <div class="step step-6"></div>
+                        </div>  
+                        <div class = "start-form" method = "get">
+                            <span class = "fs-18 medium-bold-text title-referral" style="color: #0097b2;">Add referral client</span><br>
+                            <table class = "tabReferral">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Surname</td>
+                                    <td>Profession</td>
+                                    <td>Photo</td>
+                                    <td>Main client</td>
+                                </tr>
+                                <tr>
+                                    <td><input type = "text" name = "nameRefClient" required></td>
+                                    <td><input type = "text" name = "surnameRefClient" required></td>
+                                    <td><input type = "text" name = "professionRefClient" required></td>
+                                    <td><input type = "file" name = "photoRefClient" required></td>
+                                    <td><input type = "text" name = "mainCrefClient" required></td>
+                                </tr>
+                                <tr>
+                                    <td><input type = "text" name = "nameRefClient" required></td>
+                                    <td><input type = "text" name = "surnameRefClient" required></td>
+                                    <td><input type = "text" name = "professionRefClient" required></td>
+                                    <td><input type = "file" name = "photoRefClient" required></td>
+                                    <td><input type = "text" name = "mainCrefClient" required></td>
+                                </tr>
+                                <tr>
+                                    <td><input type = "text" name = "nameRefClient" required></td>
+                                    <td><input type = "text" name = "surnameRefClient" required></td>
+                                    <td><input type = "text" name = "professionRefClient" required></td>
+                                    <td><input type = "file" name = "photoRefClient" required></td>
+                                    <td><input type = "text" name = "mainCrefClient" required></td>
+                                </tr>
+                            </table>
+
+                            <!-- <div class = "double-info quinto infos-referral">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Name and surname </span><input type = "text" placeholder = "John Doe" name = "nameAndSurname" id = "nameAndSurname"></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Profession </span><input type = "text" placeholder = "UX/UI designer" name = "profession" id = "profession"></div>
+                            </div>
+                            <div class = "double-info quinto infos-referral">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Photo </span><input type = "file" name = "photo" id = "photo"></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client </span><input type = "text" placeholder = "Visual Studio Code" name = "mainClientRef" id = "mainClientRef"></div>
+                            </div> -->
+                            <!-- <div class = "double-info quinto infos-referral">
+                                <input type = "button" value = "-" onclick = "removeClient()">
+                                <input type = "text" placeholder = "John Doe" name = "nameAndSurnameRef" id = "nameAndSurnameRef" readonly required>
+                                <input type = "button" value = "+" onclick = "addClient()">
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "contain-form-x">
+                    <img src = "img/logo-db.png" width = "80%" height = "auto" class = "logo-db">
+                    <h1 class = "fs-40 medium-bold-text">Last step</h1>
+                    <div class = "form">
+                        <!-- <span class = "fs-20 light-text">STEP 6/6</span> -->
+                        <div class="stepper-container step-6-active">
+                            <div class="line"></div>
+                            <div class="step step-1 active"></div>
+                            <div class="step step-2 active"></div>
+                            <div class="step step-3 active"></div>
+                            <div class="step step-4 active"></div>
+                            <div class="step step-5 active"></div>
+                            <div class="step step-6 active"></div>
+                        </div>  
+                        <div class = "start-form" method = "get">
+                            <div class = "double-info terzo">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Brochure </span><input type = "url" value = "https://" name = "brochure" required></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Case study </span><input type = "url" value = "https://" name = "caseStudy" required></div>
+                            </div>
+                            <div class = "double-info primo">
+                                <!-- <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client (logos) </span><input type = "file" id = "mainClient" name = "mainClient" multiple required></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Main client (names, es: art, att, ack) </span><input type = "text" name = "mainCnames" placeholder="Names of main client"></div> -->
+                                <table>
+                                    <th>Main clients</th>
+                                    <tr>
+                                        <td>Logo</td>
+                                        <td>Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type = "file" id = "mainClient" name = "mainClient" required></td>
+                                        <td><input type = "text" name = "mainCnames" placeholder="Names of main client" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type = "file" id = "mainClient" name = "mainClient" required></td>
+                                        <td><input type = "text" name = "mainCnames" placeholder="Names of main client" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type = "file" id = "mainClient" name = "mainClient" required></td>
+                                        <td><input type = "text" name = "mainCnames" placeholder="Names of main client" required></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <input type = "hidden" name = "selectedCitysFinal" id = "selectedCitysFinal">
+                            <input type = "hidden" name = "mainServicesFinal" id = "mainServicesFinal">
+                            <input type = "hidden" name = "distinctiveServiceFinal" id = "distinctiveServiceFinal">
+                            <input type = "hidden" name = "managedMediaFinal" id = "managedMediaFinal">
+                            <input type = "hidden" name = "managedPlatformFinal" id = "managedPlatformFinal">
+                            <input type = "hidden" name = "referralClientFinal" id = "referralClientFinal">
+                            <div class = "form-button">
+                                <input type = "submit" id="submit-button" value = "Register">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+
         <script src = "script/registration.js"></script>
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
@@ -372,7 +645,7 @@
 
             };
 
-            let form = document.getElementById('register-form');
+            let form = document.getElementById('register-form') || document.getElementById('mobileForm');
             form.addEventListener('submit', signin_email_psw);
         </script>
         

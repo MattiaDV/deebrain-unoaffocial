@@ -421,6 +421,8 @@ document.getElementById('select-awac').addEventListener('click', function() {
     let display = document.getElementById('container-awac');
     let scritta = document.getElementById('select-awac');
 
+    alert("Click");
+
     if (x == 1) {
         display.style.maxHeight = "200px";
         display.style.padding = "10px";

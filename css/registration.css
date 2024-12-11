@@ -987,19 +987,66 @@ select {
     cursor: pointer;
 }
 
+.mobile-form {
+    display: none;
+}
+
 @media screen and (max-width: 1250px) {
     body {
         overflow-y: scroll !important;
         overflow-x: hidden !important;
     }
 
-    .all-infos {
+    #form-1-an {
+        margin-right: 0% !important;
+    }
+
+    #form-2-an {
+        margin-right: 0% !important;
+    }
+
+    #form-3-an {
+        margin-right: 0% !important;
+    }
+
+    #form-4-an {
+        margin-right: 0% !important;
+    }
+
+    #form-5-an {
+        margin-right: 0% !important;
+    }
+
+    #form-6-an {
+        margin-right: 0% !important;
+    }
+
+    .awacon-title {
+        min-width: 100% !important;
+        text-align: left;
+    }
+
+    .select-awac {
+        z-index: 100;
+        background: red;
+    }
+
+    .one-info-plus {
+        min-width: 100%;
+    }
+
+    .mobile-form {
         position: relative;
+        min-height: 600vh;
+        padding: 20px;
+        overflow-y: visible !important;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        top: 20px;
-        bottom: 120px;
+        top: 250%;
+        margin-left: 0%;
+        max-width: 90%;
+        flex-direction: column;
     }
 
     .double-info {
@@ -1014,23 +1061,23 @@ select {
         min-width: 100%;
     }
 
-    .all-infos > div {
-        margin-left: 0%;
-        max-width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+    .return-home {
+        margin-bottom: 40px;
     }
 
-    .return-home {
-        margin-bottom: 120px;
+    .all-infos {
+        display: none;
     }
 
     .contain-form {
         min-width: 100%;
+        box-shadow: none;
     }
 
     .contain-form-x {
         min-width: 100%;
+        box-shadow: none;
+        border-radius: 0px;
+        border-bottom: 0px solid black;
     }
 }
