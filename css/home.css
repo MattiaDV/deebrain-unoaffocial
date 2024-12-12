@@ -138,18 +138,6 @@ body {
 }
 
 @media screen and (max-width: 1250px) {
-    .header-deebrain {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .deebrain-menu {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
     body {
         display: flex;
         justify-content: center;
@@ -188,11 +176,22 @@ body {
         font-size: 12px !important;
     }
 
-    .deebrain-under-menu {
-        display: none !important;
+    .header-deebrain {
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 99% !important;
+
     }
 
-    .deebrain-under-menu li {
-        display: none;
+    .deebrain-menu {
+        min-width: 75vw !important;
+    }
+
+    .deebrain-menu li img {
+        max-width: 100px !important;
+    }
+
+    .deebrain-under-menu li details {
+        margin-right: 62px !important;
     }
 }
