@@ -1377,6 +1377,7 @@ li {
     .cards-distinctive-listing {
         max-width: 100%;
         display: flex;
+        height: auto !important;
         justify-content: center;
         flex-direction: column;
         background: var(--background-white);
@@ -1399,8 +1400,12 @@ li {
         padding: 20px;
     }
 
+    .arrows-box-card {
+        min-width: 100%;
+    }
+
     .container-card-media-gestiti {
-        max-width: 100%;
+        min-width: 100%;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -1436,17 +1441,22 @@ li {
     }
 
     .container-card-client-refferal {
-        max-width: 100%;
+        max-width: 90% !important;
+        min-width: 70% !important;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        background: var(--background-white);
+        background: var(--background-gray);
         padding: 40px;
         border-radius: 4px;
         overflow-x: visible;
         align-items: center;
         gap: 32px;
         margin-top: 32px;
+    }
+
+    .container-card-main-client {
+        flex-direction: column;
     }
 
     .arrow {
@@ -1475,6 +1485,8 @@ li {
 
     .subscribe-column-right {
         min-width: 90%;
+        justify-content: center;
+        align-items: center;
     }
 
     .subscribe-column-right div a button {

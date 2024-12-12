@@ -1,127 +1,83 @@
-const Pool = require('pg-pool');
+const Odoo = require('node-odoo');
+const sinon = require('sinon');
 
-const pool = new Pool({
-    user: 'admin',      
-    host: 'localhost',  
-    database: 'addons-listing', 
-    password: 'admin',  
-    port: 8069,  
-    // keep_alive: true, 
-    // statement_timeout: 3000,  
-    // query_timeout: 3000,
-    // connectionTimeoutMillis: 10000,
-    // keepAlive: true,
+const connectionDb = new Odoo({
+    host: 'localhost',
+    port: 8069,
+    database: 'addons-listing',
+    username: 'admin',
+    password: 'admin',
 });
 
-
 exports.updateUser = function(param, id) {
-    return new Promise((resolve, reject) => {
-        const query = `
-            UPDATE users_model SET
-                logo = $1,
-                name = $2,
-                agencyType = $3,
-                managedBilling = $4,
-                numberOfEmployees = $5,
-                awareness = $6,
-                conversion = $7,
-                consideration = $8,
-                locations = $9,
-                website = $10,
-                linkedinLink = $11,
-                facebookLink = $12,
-                mainServices = $13,
-                distinctiveServices = $14,
-                managedMedia = $15,
-                managedPlatform = $16,
-                brochure = $17,
-                caseStudy = $18,
-                clientLogos = $19,
-                planning = $20,
-                project = $21,
-                task = $22,
-                platform = $23,
-                reporting = $24,
-                dataAnalysis = $25,
-                adServer = $26,
-                AdVerification = $27,
-                referralClient = $28
-            WHERE id = $29
-        `;
-        const values = [
-            param.logo,
-            param.name,
-            param.agencyType,
-            param.managedBilling,
-            param.numberOfEmployees,
-            param.awareness,
-            param.conversion,
-            param.consideration,
-            param.location,
-            param.website,
-            param.linkedin,
-            param.facebook,
-            param.mainService,
-            param.distinctiveService,
-            param.mMedia,
-            param.mPlatform,
-            param.brochure,
-            param.caseStudy,
-            param.mainClient,
-            param.planning,
-            param.project,
-            param.task,
-            param.platform,
-            param.reporting,
-            param.dataAnalysis,
-            param.adServer,
-            param.AdVerification,
-            param.referralClient,
-            id
-        ];
-        
-        pool.query(query, values)
-            .then(result => resolve(result))
-            .catch(err => reject("Errore nell'aggiornamento dell'utente: " + JSON.stringify(err)));
-    });
+    var callback = sinon.spy();
+    connectionDb.update('users_model', id, {
+        logo: param.logo,
+        name: param.name,
+        agencyType: param.agencyType,
+        managedBilling: param.managedBilling,
+        numberOfEmployees: param.numberOfEmployees,
+        awareness: param.awareness,
+        conversion: param.conversion,
+        consideration: param.consideration,
+        locations: param.location,
+        website: param.website,
+        linkedinLink: param.linkedin,
+        facebookLink: param.facebook,
+        mainServices: param.mainService,
+        distinctiveServices: param.distinctiveService,
+        managedMedia: param.mMedia,
+        managedPlatform: param.mPlatform,
+        brochure: param.brochure,
+        caseStudy: param.caseStudy,
+        clientLogos: param.mainClient,
+        planning: param.planning,
+        project: param.project,
+        task: param.task,
+        platform: param.platform,
+        reporting: param.reporting,
+        dataAnalysis: param.dataAnalysis,
+        adServer: param.adServer,
+        AdVerification: param.AdVerification,
+        referralClient: param.referralClient,
+    }, callback);
 }
 
 exports.createPageMainClientCards = function(param, name) {
     return new Promise((resolve, reject) => {
-        let query = "INSERT INTO main_client_logos (name, logo) VALUES ($1, $2) RETURNING *;";
-        let values = [name, param];
-        pool.query(query, values, (err, result) => {
+        connectionDb.create('main_client_logos', {name: name, logo: param}, (err, partners) => {
             if (err) {
-                console.error("Errore nella creazione dei Main client: " + err.message);
+                console.error("Errore nella creazione dei Main client: " + JSON.stringify(err));
                 reject(err);
             } else {
-                resolve(result.rows[0]);
+                resolve(partners);
             }
-        });
+        })
     })
 }
 
 exports.createReferralClient = function(param) {
     return new Promise((resolve, reject) => {
-        let query = "INSERT INTO users_referral_client (name, surname, workAs, photo, workWhere) VALUES ($1, $2, $3, $4, $5) RETURNING *;";
-        let values = [param.name, param.surname, param.workAs, param.photo, param.workWhere];
-        pool.query(query, values, async (err, result) => {
+        connectionDb.create('users_referral_client', {
+            name: param.name,
+            surname: param.surname,
+            workAs: param.workAs,
+            photo: param.photo,
+            workWhere: param.workWhere,
+        }, (err, partners) => {
             if (err) {
-                console.log("Errore nella creazione dei referral client: " + JSON.stringify(err));
+                console.error("Errore nella creazione dei Main client: " + JSON.stringify(err));
                 reject(err);
             } else {
-                resolve(result.rows[0]);
+                resolve(partners);
             }
         })
-
     })
 }
 
 exports.getIdMainClientPageEdit = function(param, acc) {
     return new Promise((resolve, reject) => {
-        let query = "SELECT id FROM main_client_logos WHERE id=ANY($1)";
-        let values = [param];
-        pool.query(query, values, async (err, partners) => {
+        connectionDb.get('users_referral_client', param, (err, partners) => {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
@@ -133,15 +89,13 @@ exports.getIdMainClientPageEdit = function(param, acc) {
                 console.log("ID trovato: ", cit);
                 resolve(cit);
             }
-        })
+        });
     });
 }
 
 exports.getIdReferralClient = function(param, acc) {
     return new Promise((resolve, reject) => {
-        let query = "SELECT id FROM users_referral_client WHERE id=ANY($1)";
-        let values = [param];
-        pool.query(query, values, async (err, partners) => {
+        connectionDb.get('users_referral_client', param, (err, partners) => {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
@@ -153,27 +107,27 @@ exports.getIdReferralClient = function(param, acc) {
                 console.log("ID trovato: ", cit);
                 resolve(cit);
             }
-        })
+        });
     });
 }
 
 exports.getIdFounders = function(param, acc) {
     return new Promise((resolve, reject) => {
-        let query = "SELECT id FROM founder_name WHERE id=ANY($1)";
-        let values = [param];
-        pool.query(query, values, async (err, partners) => {
+        connectionDb.get('founder_name', param, (err, partners) => {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
                 console.log("Fondatori richiesti: ", acc);
                 const sortedPartners = partners.sort((a, b) => b.id - a.id);
-                const firstMatch = sortedPartners.find(partner => partner.name === acc);
-                const cit = firstMatch ? firstMatch.id : null;
 
-                console.log("ID trovato: ", cit);
+                const cit = sortedPartners
+                    .slice(0, acc.length) 
+                    .map(partner => partner.id);
+
+                console.log("ID trovati: ", cit);
                 resolve(cit);
             }
-        })
+        });
     });
 }
 
@@ -182,18 +136,14 @@ exports.createFounderForDb = function(founderNames) {
         founderNames.map(element => {
             return new Promise((resolve, reject) => {
                 console.log("ELEMENT: " + element);
-                
-                const query = "INSERT INTO founder_name (name) VALUES ($1) RETURNING *;";
-                const values = [element];
-
-                pool.query(query, values)
-                    .then((result) => {
-                        resolve(result.rows[0]);
-                    })
-                    .catch((err) => {
-                        console.error(`Errore nella creazione del founder ${element}: ${err.message}`);
+                connectionDb.create('founder_name', {name: element}, (err, partner) => {
+                    if (err) {
+                        console.error(`Errore nella creazione del founder ${element}: ${JSON.stringify(err)}`);
                         reject(err);
-                    });
+                    } else {
+                        resolve(partner);
+                    }
+                });
             });
         })
     );
@@ -201,29 +151,24 @@ exports.createFounderForDb = function(founderNames) {
 
 exports.searchIdLoc = function(param, acc) {
     return new Promise((resolve, reject) => {
-        let query = "SELECT id FROM location_listing WHERE id=ANY($1)";
-        let values = [param];
-        pool.query(query, values, async (err, partners) => {
+        connectionDb.get('location_listing', param, (err, partners) => {
             if (err) {
-                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+                console.log("Errore nella ricerca degli id delle location: " + JSON.stringify(err));
+                reject(err);
             } else {
-                console.log("Fondatori richiesti: ", acc);
-                const sortedPartners = partners.sort((a, b) => b.id - a.id);
-                const firstMatch = sortedPartners.find(partner => partner.name === acc);
-                const cit = firstMatch ? firstMatch.id : null;
-
-                console.log("ID trovato: ", cit);
-                resolve(cit);
+                const loc = partners 
+                    .filter(partner => acc.includes(partner.name))
+                    .map(partner => partner.id)
+                
+                resolve(loc);
             }
         })
-    });
+    })
 }
 
 exports.searchIdOfLocationFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
-        let query = "SELECT * FROM location_listing WHERE id=ANY($1)";
-        let values = [param];
-        pool.query(query, values, async (err, partners) => {
+        connectionDb.get('location_listing', param, (err, partners) => {
             if (err) {
                 reject("Errore nella ricerca degli id: " + JSON.stringify(err));
             } else {
@@ -241,193 +186,128 @@ exports.searchIdOfLocationFromDb = function(param, acc) {
 
 exports.searchIdOfMediaFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM managed_media WHERE id = ANY($1)";
-        const values = [param]; 
-
-        pool.query(query, values)
-            .then((result) => {
+        connectionDb.get('managed_media', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
                 const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
-                const cit = result.rows
+                const cit = partners
                     .filter(partner => cities.includes(partner.name))
                     .map(partner => partner.id);
-
                 resolve(cit); 
-            })
-            .catch((err) => {
-                console.error("Errore nella ricerca degli id: ", err);
-                reject("Errore nella ricerca degli id: " + err.message);
-            });
+            }
+        });
     });
-}
+}  
 
 exports.searchIdOfPlatformFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM managed_platform WHERE id = ANY($1)";
-        const values = [param];
-
-        pool.query(query, values)
-            .then((result) => {
+        connectionDb.get('managed_platform', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
                 const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
-                const cit = result.rows
+                const cit = partners
                     .filter(partner => cities.includes(partner.name))
                     .map(partner => partner.id);
-
-                resolve(cit);
-            })
-            .catch((err) => {
-                console.error("Errore nella ricerca degli id: ", err);
-                reject("Errore nella ricerca degli id: " + err.message);
-            });
+                resolve(cit); 
+            }
+        });
     });
-}
+}  
 
 exports.searchIdOfMainSFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM main_services WHERE id = ANY($1)";
-        const values = [param];
-
-        pool.query(query, values)
-            .then((result) => {
+        connectionDb.get('main_services', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
                 const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
-                const cit = result.rows
+                const cit = partners
                     .filter(partner => cities.includes(partner.name))
                     .map(partner => partner.id);
-
-                resolve(cit);
-            })
-            .catch((err) => {
-                console.error("Errore nella ricerca degli id: ", err);
-                reject("Errore nella ricerca degli id: " + err.message);
-            });
+                resolve(cit); 
+            }
+        });
     });
-}
+}  
 
 exports.searchIdOfDisFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM distinctive_services WHERE id = ANY($1)";
-        const values = [param];
-
-        pool.query(query, values)
-            .then((result) => {
+        connectionDb.get('distinctive_services', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
                 const cities = acc.flatMap(city => city.split(','));
                 console.log("Città separate: ", cities);
 
-                const cit = result.rows
+                const cit = partners
                     .filter(partner => cities.includes(partner.name))
                     .map(partner => partner.id);
-
-                resolve(cit);
-            })
-            .catch((err) => {
-                console.error("Errore nella ricerca degli id: ", err);
-                reject("Errore nella ricerca degli id: " + err.message);
-            });
+                resolve(cit); 
+            }
+        });
     });
 } 
 
 exports.searchIdOfReferralFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM users_referral_client WHERE id = ANY($1)";
-        const values = [param];
-
-        pool.query(query, values)
-            .then((result) => {
-                const cit = result.rows
+        connectionDb.get('users_referral_client', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cit = partners
                     .filter(partner => acc.includes(partner.name))
                     .map(partner => partner.id);
-
-                resolve(cit);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca degli id: " + err.message);
-            });
+                resolve(cit); 
+            }
+        });
     });
-}
+} 
 
 exports.createUser = function(user) {
     return new Promise((resolve, reject) => {
-        const query = `
-            INSERT INTO users_model 
-            (name, founder_name, number_of_employees, foundation_year, agency_type, logo, managed_billing, awareness, conversion, 
-            website, linkedin_link, facebook_link, email, locations, main_services, distinctive_services, managed_media, 
-            managed_platform, referral_client, brochure, case_study, client_logos) 
-            VALUES 
-            ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) 
-            RETURNING *;
-        `;
-
-        const values = [
-            user.name,
-            user.founderName,
-            user.numberOfEmployees,
-            user.foundationYear,
-            user.agencyType,
-            user.fileBase64,
-            user.managedBilling,
-            user.awareness,
-            user.conversion,
-            user.website,
-            user.linkedinLink,
-            user.facebookLink, 
-            user.email,
-            user.resultLoc,
-            user.resultMainS,
-            user.resultDisS,
-            user.resultMediS,
-            user.resultPlatS,
-            user.referralClientReal,
-            user.brochure,
-            user.caseStudy,
-            user.mainClientReal
-        ];
-
-        pool.query(query, values)
-            .then((result) => {
-                resolve(result.rows[0]);
-            })
-            .catch((err) => {
+        connectionDb.create('users_model', user, function(err, result) {
+            if (err) {
                 reject(err);
-            });
+            } else {
+                resolve(result); 
+            }
+        });
     });
 }
 
 
 exports.getAllDataFromDB = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM users_model WHERE id = ANY($1)";
-        const values = [params];
-
-        pool.query(query, values)
-            .then((result) => {
-                const locationOptions = result.rows;
+        connectionDb.get('users_model', params, (err, part) => {
+            if (err) {
+                reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
+            } else {
+                const locationOptions = part 
                 resolve(locationOptions);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca delle tipologie di agenzia: " + err.message);
-            });
-    });
+            }
+        })
+    })
 }
 
 exports.getAllReferralClientFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM users_referral_client WHERE id = ANY($1)";
-        const values = [params];
-
-        pool.query(query, values)
-            .then((result) => {
-                const locationOptions = result.rows;
+        connectionDb.get('users_referral_client', params, (err, part) => {
+            if (err) {
+                reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
+            } else {
+                const locationOptions = part 
                 resolve(locationOptions);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca delle tipologie di agenzia: " + err.message);
-            });
-    });
+            }
+        })
+    })
 }
 
 let agencyType = [
@@ -465,7 +345,7 @@ exports.getAgencyTypeFromDB = function(params) {
         let art = agencys
             .map(partner => `<li class="fs-16 light-text"><input type="checkbox" id="search-${partner.replace(/ /g, '-').toLowerCase()}" checked> ${partner.toLowerCase()}</li>`);
         resolve(art);
-    });
+    })
 }
 
 exports.getNormalAgencyTypeFromDB = function(params) {
@@ -474,243 +354,256 @@ exports.getNormalAgencyTypeFromDB = function(params) {
         for (let agencyT of agencyType) {
             agencys.push(agencyT);
         }
-        resolve(agencys);
-    });
+        let art = agencys
+            .map(partner => partner);
+        resolve(art);
+    })
 }
 
 exports.getFounderNamesFromDB = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM founder_name WHERE name = $1";
-        const values = [params];
-        pool.query(query, values)
-            .then((result) => {
-                resolve(result.rows);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca dei founder names: " + JSON.stringify(err));
-            });
-    });
+        connectionDb.get('founder_name', params, (err, part) => {
+            if (err) {
+                reject("Errore nella ricerca delle tipologie di agenzia: " + JSON.stringify(err));
+            } else {
+                const locationOptions = part 
+                resolve(locationOptions);
+            }
+        })
+    })
 }
 
 exports.getLocationsFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM location_listing WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                const locationOptions = result.rows
+        connectionDb.get('location_listing', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
                     .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
                 resolve(locationOptions);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca delle location: " + err);
-            });
+            }
+        });
     });
 }
 
 exports.getNormalLocationsFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM location_listing WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                resolve(result.rows);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca delle location: " + err);
-            });
+        connectionDb.get('location_listing', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
     });
 }
 
 exports.getMainFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM main_services WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                const locationOptions = result.rows
+        connectionDb.get('main_services', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei main services: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
                     .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
                 resolve(locationOptions);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca dei main services: " + JSON.stringify(err));
-            });
+            }
+        });
     });
 }
 
 exports.getNormalMainFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM main_services WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                resolve(result.rows);
-            })
-            .catch((err) => {
+        connectionDb.get('main_services', params, (err, partners) => {
+            if (err) {
                 reject("Errore nella ricerca dei main services: " + JSON.stringify(err));
-            });
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
     });
 }
 
 exports.getDisFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM distinctive_services WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                const locationOptions = result.rows
+        connectionDb.get('distinctive_services', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei distinctive service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
                     .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
                 resolve(locationOptions);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca dei distinctive services: " + JSON.stringify(err));
-            });
+            }
+        });
     });
 }
 
 exports.getNormalDisFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM distinctive_services WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                resolve(result.rows);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca dei distinctive services: " + JSON.stringify(err));
-            });
+        connectionDb.get('distinctive_services', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei distinctive service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
     });
 }
 
 exports.getMediaFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM managed_media WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                const locationOptions = result.rows
+        connectionDb.get('managed_media', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca dei managed media service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
                     .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
                 resolve(locationOptions);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca dei managed media services: " + JSON.stringify(err));
-            });
+            }
+        });
     });
 }
 
 exports.getNormalMediaFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM managed_media WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                resolve(result.rows);
-            })
-            .catch((err) => {
+        connectionDb.get('managed_media', params, (err, partners) => {
+            if (err) {
                 reject("Errore nella ricerca dei managed media service: " + JSON.stringify(err));
-            });
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
     });
 }
 
 exports.getPlatformFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM managed_platform WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                const locationOptions = result.rows
+        connectionDb.get('managed_platform', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle managed platform service: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
                     .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
                 resolve(locationOptions);
-            })
-            .catch((err) => {
-                reject("Errore nella ricerca delle managed platform service: " + JSON.stringify(err));
-            });
+            }
+        });
     });
 }
 
 exports.getNormalPlatformFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM managed_platform WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                resolve(result.rows);
-            })
-            .catch((err) => {
+        connectionDb.get('managed_platform', params, (err, partners) => {
+            if (err) {
                 reject("Errore nella ricerca delle managed platform service: " + JSON.stringify(err));
-            });
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
     });
 }
 
 exports.getNormalMainClientFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM main_client_logos WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                resolve(result.rows);
-            })
-            .catch((err) => {
+        connectionDb.get('main_client_logos', params, (err, partners) => {
+            if (err) {
                 reject("Errore nella ricerca dei main client: " + JSON.stringify(err));
-            });
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
     });
 }
 
 exports.getNormalReferralClientFromDb = function(params) {
     return new Promise((resolve, reject) => {
-        const query = "SELECT * FROM users_referral_client WHERE name IS NOT NULL";
-        pool.query(query)
-            .then((result) => {
-                resolve(result.rows);
-            })
-            .catch((err) => {
+        connectionDb.get('users_referral_client', params, (err, partners) => {
+            if (err) {
                 reject("Errore nella ricerca dei referral client: " + JSON.stringify(err));
-            });
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
     });
 }
 
 exports.getNewAgencyFromDB = function(params) {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM users_model WHERE id = $1', [params], async (err, result) => {
+        connectionDb.get('users_model', params, async (err, partners) => {
             if (err) {
-                reject("Errore nella ricerca delle location: " + err);
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
             } else {
-                const partners = result.rows;
-
                 try {
                     const enrichedPartners = await Promise.all(
                         partners.map(async (partner) => {
                             const locationIds = partner.locations; 
 
                             const locations = await new Promise((res, rej) => {
-                                pool.query('SELECT * FROM location_listing WHERE id = ANY($1)', [locationIds], (err, locResult) => {
+                                connectionDb.get('location_listing', locationIds, (err, locationData) => {
                                     if (err) rej(err);
-                                    else res(locResult.rows);
+                                    else res(locationData);
                                 });
                             });
 
                             const mainS = partner.mainServices; 
 
                             const mainSS = await new Promise((res, rej) => {
-                                pool.query('SELECT * FROM main_services WHERE id = ANY($1)', [mainS], (err, mainResult) => {
+                                connectionDb.get('main_services', mainS, (err, mainService) => {
                                     if (err) rej(err);
-                                    else res(mainResult.rows);
+                                    else res(mainService);
                                 });
                             });
 
                             const disS = partner.distinctiveServices; 
 
                             const disSS = await new Promise((res, rej) => {
-                                pool.query('SELECT * FROM distinctive_services WHERE id = ANY($1)', [disS], (err, disResult) => {
+                                connectionDb.get('distinctive_services', disS, (err, distinctiveService) => {
                                     if (err) rej(err);
-                                    else res(disResult.rows);
+                                    else res(distinctiveService);
                                 });
                             });
 
                             const mediaS = partner.managedMedia; 
 
                             const mediaSS = await new Promise((res, rej) => {
-                                pool.query('SELECT * FROM managed_media WHERE id = ANY($1)', [mediaS], (err, mediaResult) => {
+                                connectionDb.get('managed_media', mediaS, (err, medias) => {
                                     if (err) rej(err);
-                                    else res(mediaResult.rows);
+                                    else res(medias);
                                 });
                             });
 
                             const platformS = partner.managedPlatform; 
 
                             const platformSS = await new Promise((res, rej) => {
-                                pool.query('SELECT * FROM managed_platform WHERE id = ANY($1)', [platformS], (err, platformResult) => {
+                                connectionDb.get('managed_platform', platformS, (err, platforms) => {
                                     if (err) rej(err);
-                                    else res(platformResult.rows);
+                                    else res(platforms);
                                 });
                             });
 
@@ -726,52 +619,52 @@ exports.getNewAgencyFromDB = function(params) {
                     );
 
                     const locationOptions = enrichedPartners
-                        .filter(partner => partner.name !== false)
-                        .map(partner => ({
-                            ...partner,
-                            managedBilling: partner.managedBilling > 999999 ? (partner.managedBilling / 1000000) + "M" : partner.managedBilling > 999 ? (partner.managedBilling / 1000) + "k" : partner.managedBilling,
-                        }))
-                        .map(partner => `
-                            <div class="card-account ${partner.agencyType.replace(/ /g, "-")} ${partner.locations.join(' ').toLowerCase()} ${partner.mainSS.join(' ').toLowerCase()} ${partner.disSS.join(' ').toLowerCase()} ${partner.mediaSS.join(' ').toLowerCase()} ${partner.platformSS.join(' ').toLowerCase()}">
-                                <div class="left-part-card">
-                                    <img src="${(partner.logo) ? 'http://127.0.0.1:8069/web/image/users_model/' + partner.id + '/logo' : ''}" alt = "Logo agency">
+                    .filter(partner => partner.name !== false)
+                    .map(partner => ({
+                        ...partner,
+                        managedBilling: partner.managedBilling > 999999 ? (partner.managedBilling / 1000000) + "M" : partner.managedBilling > 999 ? (partner.managedBilling / 1000) + "k" : partner.managedBilling,
+                    }))
+                    .map(partner => `
+                        <div class="card-account ${partner.agencyType.replace(/ /g, "-")} ${partner.locations.join(' ').toLowerCase()} ${partner.mainSS.join(' ').toLowerCase()} ${partner.disSS.join(' ').toLowerCase()} ${partner.mediaSS.join(' ').toLowerCase()} ${partner.platformSS.join(' ').toLowerCase()}">
+                            <div class="left-part-card">
+                                <img src="${(partner.logo) ? 'http://127.0.0.1:8069/web/image/users_model/' + partner.id + '/logo' : ''}" alt = "Logo agency">
+                            </div>
+                            <div class="right-part-card">
+                                <div class="upper-part-card">
+                                    <span class="fs-16 medium-bold-text">
+                                        ${partner.name}
+                                    </span>
+                                    <span class="fs-12 light-text">
+                                        ${partner.agencyType}
+                                    </span>
                                 </div>
-                                <div class="right-part-card">
-                                    <div class="upper-part-card">
-                                        <span class="fs-16 medium-bold-text">
-                                            ${partner.name}
+                                <div class="buttonss-listing-infos">
+                                    <div class="location-a">
+                                        <span class="loco">
+                                            <svg fill="#0097b2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 395.71 395.71" xml:space="preserve" stroke="#0097b2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738 c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388 C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191 c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"></path> </g> </g></svg>${partner.locations.join(', ')} <!-- Elenco nomi delle location -->
                                         </span>
-                                        <span class="fs-12 light-text">
-                                            ${partner.agencyType}
-                                        </span>
+                                        <div class="a">${(partner.awareness == true) ? ' - Awareness - ' : ''}</div>
+                                        <div class="a">${(partner.conversion == true) ? ' - Conversion - ' : ''}</div>
+                                        <div class="a">${(partner.consideration == true) ? ' - Consideration - ' : ''}</div>
                                     </div>
-                                    <div class="buttonss-listing-infos">
-                                        <div class="location-a">
-                                            <span class="loco">
-                                                <svg fill="#0097b2" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 395.71 395.71" xml:space="preserve" stroke="#0097b2"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M197.849,0C122.131,0,60.531,61.609,60.531,137.329c0,72.887,124.591,243.177,129.896,250.388l4.951,6.738 c0.579,0.792,1.501,1.255,2.471,1.255c0.985,0,1.901-0.463,2.486-1.255l4.948-6.738c5.308-7.211,129.896-177.501,129.896-250.388 C335.179,61.609,273.569,0,197.849,0z M197.849,88.138c27.13,0,49.191,22.062,49.191,49.191c0,27.115-22.062,49.191-49.191,49.191 c-27.114,0-49.191-22.076-49.191-49.191C148.658,110.2,170.734,88.138,197.849,88.138z"></path> </g> </g></svg>${partner.locations.join(', ')} <!-- Elenco nomi delle location -->
-                                            </span>
-                                            <div class="a">${(partner.awareness == true) ? ' - Awareness - ' : ''}</div>
-                                            <div class="a">${(partner.conversion == true) ? ' - Conversion - ' : ''}</div>
-                                            <div class="a">${(partner.consideration == true) ? ' - Consideration - ' : ''}</div>
-                                        </div>
-                                        <ul class="infos-card">
-                                            <li class="light-text fs-12">
-                                                <span class="info-agency number-employee light-text fs-18">${partner.agencyType}</span>
-                                            </li>
-                                            <li class="light-text fs-12">
-                                                <span class="info-agency number-employee light-text fs-18">${partner.numberOfEmployees} employees</span>
-                                            </li>
-                                            <li class="light-text fs-12">
-                                                <span class="info-agency managed-billing light-text fs-18">${partner.managedBilling} Billing</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="bb">
-                                        <button class="fs-18 light-text buttons-style-listing" onclick="window.location.href = 'paginaD.html'; document.cookie = 'website=${partner.website}';">Read more</button>
-                                    </div>
+                                    <ul class="infos-card">
+                                        <li class="light-text fs-12">
+                                            <span class="info-agency number-employee light-text fs-18">${partner.agencyType}</span>
+                                        </li>
+                                        <li class="light-text fs-12">
+                                            <span class="info-agency number-employee light-text fs-18">${partner.numberOfEmployees} employees</span>
+                                        </li>
+                                        <li class="light-text fs-12">
+                                            <span class="info-agency managed-billing light-text fs-18">${partner.managedBilling} Billing</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bb">
+                                    <button class="fs-18 light-text buttons-style-listing" onclick="window.location.href = 'paginaD.html'; document.cookie = 'website=${partner.website}';">Read more</button>
                                 </div>
                             </div>
-                        `);
+                        </div>
+                    `);
 
                     resolve(locationOptions);
                 } catch (err) {
@@ -782,11 +675,10 @@ exports.getNewAgencyFromDB = function(params) {
     });
 }
 
-pool.connect((err, client, release) => {
+connectionDb.connect(function(err) {
     if (err) {
         console.error("Connessione non riuscita: ", err);
     } else {
         console.log("Connessione al database riuscita");
-        release();
     }
 });
