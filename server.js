@@ -225,8 +225,9 @@ const server = createServer(async (req, res) => {
                         agencyType: fields.agencyType?.[0] || null,
                         logo: fileBase64,
                         managedBilling: fields.managedBilling?.[0] || null,
-                        awareness: fields.awareness?.[0] === 'on',
-                        conversion: fields.conversion?.[0] === 'on',
+                        awareness: fields.awareness ? true : false,
+                        conversion: fields.conversion ? true : false,
+                        conversion: fields.consideration ? true : false,
                         website: fields.agencyWebsite?.[0] || null,
                         linkedinLink: fields.agencyLinkedin?.[0] || null,
                         facebookLink: fields.agencyFacebook?.[0] || null,
@@ -236,11 +237,18 @@ const server = createServer(async (req, res) => {
                         distinctiveServices: resultDisS,
                         managedMedia: resultMediS,
                         managedPlatform: resultPlatS,
-                        // Per ora concentriamoci sui precedenti
                         referralClient: referralClientReal,
                         brochure: fields.brochure?.[0] || null,
                         caseStudy: fields.caseStudy?.[0] || null,
                         clientLogos: mainClientReal, 
+                        planning: fields.planning ? true : false,
+                        project: fields.project ? true : false,
+                        task: fields.task ? true : false,
+                        platform: fields.platform ? true : false,
+                        reporting: fields.reporting ? true : false,
+                        dataAnalysis: fields.dataAnalysis ? true : false,
+                        adServer: fields.adServer ? true : false,
+                        AdVerification: fields.AdVerification ? true : false
                     };
     
                     // console.log("Utente da creare:", JSON.stringify(user, null, 2));

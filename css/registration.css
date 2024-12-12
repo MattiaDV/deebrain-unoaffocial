@@ -105,6 +105,17 @@ html, body { z-index: -2; background: url('https://myndo.it/wp-content/uploads/2
     transition: 0.5s;
 }
 
+#form-7 {
+    height: 0px;
+    transition: 0.5s;
+}
+
+#form-7-an {
+    margin-right: 600%;
+    height: auto;
+    transition: 0.5s;
+}
+
 .contain-form {
     background: #fff;
     padding: 20px;
@@ -370,26 +381,30 @@ h1 {
 }
 
 .stepper-container.step-1-active .line {
-    background: linear-gradient(to right, #0097b2 16%, #424242 84%);
+    background: linear-gradient(to right, #0097b2 15%, #424242 85%);
 }
 
 .stepper-container.step-2-active .line {
-    background: linear-gradient(to right, #0097b2 32%, #424242 68%);
+    background: linear-gradient(to right, #0097b2 30%, #424242 70%);
 }
 
 .stepper-container.step-3-active .line {
-    background: linear-gradient(to right, #0097b2 48%, #424242 52%);
+    background: linear-gradient(to right, #0097b2 45%, #424242 55%);
 }
 
 .stepper-container.step-4-active .line {
-    background: linear-gradient(to right, #0097b2 64%, #424242 36%);
+    background: linear-gradient(to right, #0097b2 60%, #424242 40%);
 }
 
 .stepper-container.step-5-active .line {
-    background: linear-gradient(to right, #0097b2 88%, #424242 12%);
+    background: linear-gradient(to right, #0097b2 75%, #424242 25%);
 }
 
 .stepper-container.step-6-active .line {
+    background: linear-gradient(to right, #0097b2 90%, #424242 10%);
+}
+
+.stepper-container.step-7-active .line {
     background: #0097b2;
 }
 
@@ -1021,6 +1036,10 @@ select {
         margin-right: 0% !important;
     }
 
+    #form-7-an {
+        margin-right: 0% !important;
+    }
+
     .awacon-title {
         min-width: 100% !important;
         text-align: left;
@@ -1051,7 +1070,7 @@ select {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        top: 250%;
+        top: 320%;
         margin-left: 0%;
         max-width: 90%;
         flex-direction: column;

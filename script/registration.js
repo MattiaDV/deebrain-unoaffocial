@@ -370,6 +370,14 @@ function fiveStep() {
     }
 }
 
+function sevenStep() {
+    if (validateFormStep(5)) {
+        document.getElementById('form-6-an').style.marginRight = -600 + "%";
+        document.getElementById('form-6').style.height = 0 + "%";
+        setTimeout(function() {document.getElementById('form-7-an').style.marginRight = 0 + "%"; document.getElementById('form-7').style.height = "auto";}, 150);
+    }
+}
+
 function sixStep() {
     if (validateFormStep(5)) {
         document.getElementById('form-5-an').style.marginRight = -600 + "%";
@@ -412,6 +420,12 @@ function returnFive() {
     document.getElementById('form-6-an').style.marginRight = 600 + "%";
     document.getElementById('form-6').style.height =  0 + "%";
     setTimeout(function() {document.getElementById('form-5-an').style.marginRight = 0 + "%"; document.getElementById('form-5').style.height = "auto";}, 150);
+}
+
+function returnSix() {
+    document.getElementById('form-7-an').style.marginRight = 600 + "%";
+    document.getElementById('form-7').style.height =  0 + "%";
+    setTimeout(function() {document.getElementById('form-6-an').style.marginRight = 0 + "%"; document.getElementById('form-6').style.height = "auto";}, 150);
 }
 
 let x = -1;
