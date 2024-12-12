@@ -41,15 +41,28 @@
 
 @media screen and (max-width: 1250px) {
     .header-deebrain {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        width: 99% !important;
         position: absolute;
         top: 0;
-        left: 0;
+        left: 0px;
     }
 
     .deebrain-menu {
+        min-width: 90% !important;
+        z-index: 100 !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
+    }
+
+    .deebrain-menu li img {
+        max-width: 100px !important;
+    }
+
+    .deebrain-under-menu li {
+        display: none;
     }
 
     body {
@@ -83,18 +96,20 @@
 
     .search-bar-home {
         min-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar-home button {
+        min-width: 100% !important;
     }
 
     div.search-bar-home button {
         max-width: calc(100% / 2.2) !important;
         font-size: 14px !important;
-    }
-
-    .deebrain-under-menu {
-        display: none !important;
-    }
-
-    .deebrain-under-menu li {
-        display: none;
     }
 }

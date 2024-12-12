@@ -169,6 +169,16 @@ body {
 
     .search-bar-home {
         min-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar-home div {
+        min-width: 100%;
     }
 
     div.search-bar-home button {
@@ -180,11 +190,14 @@ body {
         padding-left: 0px;
         padding-right: 0px;
         width: 99% !important;
-
+        position: absolute;
+        top: 0;
+        left: 0px;
     }
 
     .deebrain-menu {
         min-width: 75vw !important;
+        z-index: 100 !important;
     }
 
     .deebrain-menu li img {
