@@ -1346,6 +1346,20 @@ li {
         width: calc(100%);
     }
 
+    .card-main-services {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background: var(--background-white);
+        padding: 40px;
+        border-radius: 4px;
+        overflow-x: visible;
+        align-items: center;
+        gap: 32px;
+        margin-top: 32px;
+    }
+
     .card-distinctive-listing {
         display: flex;
         justify-content: center;
@@ -1360,6 +1374,20 @@ li {
         text-align: center;
     }
 
+    .cards-distinctive-listing {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background: var(--background-white);
+        padding: 40px;
+        border-radius: 4px;
+        overflow-x: visible;
+        align-items: center;
+        gap: 32px;
+        margin-top: 32px;
+    }
+
     .card-container-gestiti {
         min-width: calc(100%);
         display: flex;
@@ -1371,6 +1399,20 @@ li {
         padding: 20px;
     }
 
+    .container-card-media-gestiti {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background: var(--background-white);
+        padding: 40px;
+        border-radius: 4px;
+        overflow-x: visible;
+        align-items: center;
+        gap: 32px;
+        margin-top: 32px;
+    }
+
     .card-platform-m {
         width: calc(100%);
         display: flex;
@@ -1379,7 +1421,21 @@ li {
         border-radius: 4px;
     }
 
-    .container-card-main-client {
+    .card-platform-managed {
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background: var(--background-white);
+        padding: 40px;
+        border-radius: 4px;
+        overflow-x: visible;
+        align-items: center;
+        gap: 32px;
+        margin-top: 32px;
+    }
+
+    .container-card-client-refferal {
         max-width: 100%;
         display: flex;
         justify-content: center;

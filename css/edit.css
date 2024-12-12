@@ -1490,6 +1490,10 @@ select:focus {
         min-width: 80%;
     }
 
+    div.toggle-men {
+        min-width: 100%;
+    }
+
     .edit-column-right {
         min-width: 95%;
     }
