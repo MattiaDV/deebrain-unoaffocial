@@ -1396,4 +1396,8 @@ li {
     .arrow {
         display: none;
     }
+
+    .listing-column-right {
+        min-width: 100%;
+    }
 }
