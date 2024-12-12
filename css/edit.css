@@ -1445,7 +1445,7 @@ select:focus {
         justify-content: center !important;
         text-align: center !important;
         min-width: 100%;
-        height: 110vh;
+        min-height: 110vh;
         overflow: hidden;
     }
 
