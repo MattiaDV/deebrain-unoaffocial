@@ -1456,4 +1456,29 @@ li {
     .listing-column-right {
         min-width: 100%;
     }
+
+    .subscribe-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .subscribe-column-left {
+        min-width: 90%;
+        text-align: center;
+    }
+
+    .subscribe-column-left span {
+        min-width: 100%;
+    }
+
+    .subscribe-column-right {
+        min-width: 90%;
+    }
+
+    .subscribe-column-right div a button {
+        min-width: 100% !important;
+        margin-top: 10px;
+    }
 }
