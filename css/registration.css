@@ -1070,7 +1070,7 @@ select {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        top: 320%;
+        top: 300%;
         margin-left: 0%;
         max-width: 90%;
         flex-direction: column;
