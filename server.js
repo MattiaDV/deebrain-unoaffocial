@@ -603,13 +603,15 @@ const server = createServer(async (req, res) => {
                 let dataAnalysis = reporting.replace("{dataAnalysis}", realName.map(partner => partner.dataAnalysis == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
                 let adServer = dataAnalysis.replace("{adServer}", realName.map(partner => partner.adServer == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
                 let adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
+                let retention = adVerification.replace('{retention}', realName.map(partner => (partner.retention == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Retention</span>" : ''));
+                let advocacy = retention.replace('{advocacy}', realName.map(partner => (partner.advocacy == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Advocacy</span>" : ''));
 
-                cache.saveDataToCacheMyPage(adVerification);
+                cache.saveDataToCacheMyPage(advocacy);
                 // console.log(nameOfAgency);
                 // console.log(emailFromCookie)
 
                 res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(adVerification);
+                res.end(advocacy);
             } catch (err) {
                 console.error(err);
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -858,11 +860,11 @@ const server = createServer(async (req, res) => {
             let dataAnalysis = reporting.replace("{dataAnalysis}", realName.map(partner => partner.dataAnalysis == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
             let adServer = dataAnalysis.replace("{adServer}", realName.map(partner => partner.adServer == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
             let adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
-            // console.log(nameOfAgency);
-            // console.log(emailFromCookie)
+            let retention = adVerification.replace('{retention}', realName.map(partner => (partner.retention == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Retention</span>" : ''));
+            let advocacy = retention.replace('{advocacy}', realName.map(partner => (partner.advocacy == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Advocacy</span>" : ''));
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(adVerification);
+            res.end(advocacy);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -884,6 +886,8 @@ const server = createServer(async (req, res) => {
                 let getMainClient = await dbLayer.getNormalMainClientFromDb(id_cardsAgency);
                 let getAllTypes = await dbLayer.getNormalAgencyTypeFromDB(id_cardsAgency);
                 let getLocation = await dbLayer.getNormalLocationsFromDb(id_cardsAgency);
+                let getLocationNoIta = await dbLayer.getNormalLocNoItaFromDb(id_cardsAgency);
+                let getLanguages = await dbLayer.getNormalLanguagesFromDb(id_cardsAgency);
                 let getMainService = await dbLayer.getNormalMainFromDb(id_cardsAgency);
                 let getDisService = await dbLayer.getNormalDisFromDb(id_cardsAgency);
                 let getManMedia = await dbLayer.getNormalMediaFromDb(id_cardsAgency);
@@ -912,6 +916,10 @@ const server = createServer(async (req, res) => {
                 let numberOfEmployeesReal = getAgencyName
                     .filter(partner => partner.email == emailFromCookie)
                     .map(partner => partner.numberOfEmployees)
+
+                let sales = getAgencyName
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner => partner.sales)
 
                 let awareness = getAgencyName
                     .filter(partner => partner.email == emailFromCookie)
@@ -965,6 +973,14 @@ const server = createServer(async (req, res) => {
                     .filter(partner => partner.email == emailFromCookie)
                     .map(partner => partner.locations)
 
+                let locationNoItaReal = getAgencyName
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner => partner.locationsNotItaly)
+
+                let languageReal = getAgencyName
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner => partner.languages)
+
                 let mainServReal = getAgencyName
                     .filter(partner => partner.email == emailFromCookie)
                     .map(partner => partner.mainServices)
@@ -988,6 +1004,8 @@ const server = createServer(async (req, res) => {
                 let disServFlat = distServReal.flat()
                 let manaMediaFlat = manaMediaReal.flat()
                 let manaPlatformFlat = manaPlatformReal.flat()
+                let locNoItaFlat = locationNoItaReal.flat();
+                let langFlat = languageReal.flat();
 
                 let agencyName = htmlContent.replace('{agencyName}', nameAgencyReal);
                 let agencyType = agencyName.replace('{agencyType}', getAllTypes
@@ -1123,16 +1141,29 @@ const server = createServer(async (req, res) => {
                 let adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<input type = "checkbox" id = "AdVerification" name = "AdVerification" checked>` : `<input type = "checkbox" id = "AdVerification" name = "AdVerification">`));
                 let retention = adVerification.replace('{retention}', reten.map(partner => (partner == true) ? `<input type = "checkbox" id = "retention" name = "retention" checked>` : `<input type = "checkbox" id = "retention" name = "retention">`));
                 let advocacy = retention.replace('{advocacy}', advoc.map(partner => (partner == true) ? `<input type = "checkbox" id = "advocacy" name = "advocacy" checked>` : `<input type = "checkbox" id = "advocacy" name = "advocacy">`));
+                let locationNoIta = advocacy.replace("{locationNoIta}", getLocationNoIta
+                    .filter(partner => locNoItaFlat.includes(partner.id))
+                    .map(partner =>
+                        `<div class="cityNotItaly" id="${partner.name.toLowerCase().replace("-", " ")}" onclick = "deleteItemNotItaly('${partner.name.toLowerCase().replace("-", " ")}')">${partner.name}<span style="color: white;">X</span></div>`
+                    ).join(" ")
+                )
+                let langu = locationNoIta.replace("{Lang}", getLanguages
+                    .filter(partner => langFlat.includes(partner.id))
+                    .map(partner =>
+                        `<div class="lang" id="${partner.name.toLowerCase().replace("-", " ")}" onclick = "deleteItemLanguages('${partner.name.toLowerCase().replace("-", " ")}')">${partner.name}<span style="color: white;">X</span></div>`
+                    ).join(" ")
+                )
+                let sal = langu.replace('{saless}', sales);
 
-                cache.saveDataToCacheEditPage(adVerification);
+                cache.saveDataToCacheEditPage(sal);
 
                 res.writeHead(200, {'ContentType': 'text/html'});
-                res.end(advocacy);
+                res.end(sal);
 
             } catch(err) {
-                if (err) {
-                    console.log("Errore nel caricamento della pagina: " + err);
-                }
+                console.error(err);
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Errore del server interno');
             }
         } else {
             let cachedData = cache.getDataFromCacheEditPage();
@@ -1197,6 +1228,8 @@ const server = createServer(async (req, res) => {
                         let locationsArray = finalLocation[0].includes(',')
                             ? finalLocation[0].split(',')
                             : [finalLocation[0]];
+
+                        console.log(locationsArray);
                     
                         let locationReal = locationsArray.map(part =>
                             part
@@ -1217,6 +1250,8 @@ const server = createServer(async (req, res) => {
                         let locationsArray = finalLocation[0].includes(',')
                             ? finalLocation[0].split(',')
                             : [finalLocation[0]];
+
+                        console.log(locationsArray);
                     
                         let locationReal = locationsArray.map(part =>
                             part

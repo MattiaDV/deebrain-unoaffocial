@@ -474,6 +474,36 @@ exports.getNormalLocationsFromDb = function(params) {
     });
 }
 
+exports.getNormalLocNoItaFromDb = function(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('location_not_italy_listing', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+exports.getNormalLanguagesFromDb = function(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_languages', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => partner);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
 exports.getMainFromDb = function(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('main_services', params, (err, partners) => {
