@@ -185,26 +185,47 @@ body {
         max-width: calc(100% / 3.2) !important;
         font-size: 12px !important;
     }
-
+    
     .header-deebrain {
-        padding-left: 0px;
-        padding-right: 0px;
-        width: 99% !important;
-        position: absolute;
+        width: 100% !important;
+        margin-top: 0px !important;
+        position: absolute !important;
         top: 0;
-        left: 0px;
+        left: 0;
+        padding: 10px !important;
+        background: white !important;
+        max-height: 150px !important;
+        display: flex !important;
+        /* padding-left: 80px !important; */
+        /* padding-right: 80px !important; */
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-direction: row !important;
     }
 
     .deebrain-menu {
-        min-width: 75vw !important;
-        z-index: 100 !important;
+        max-width: 100% !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
-    .deebrain-menu li img {
-        max-width: 100px !important;
+    
+    .deebrain-menu li svg {
+        min-width: 35px;
+        min-height: 35px;
     }
 
     .deebrain-under-menu li details {
-        margin-right: 62px !important;
+        position: relative !important;
+        /* min-width: 200px !important; */
+        border: none !important;
+        margin-right: 0px !important;
+    }
+
+    .deebrain-menu li img {
+        padding-left: 10px !important;
+        padding-top: 0px !important;
+        margin-top: 0px !important;
+        max-width: 150px !important;
     }
 }
