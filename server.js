@@ -297,6 +297,7 @@ const server = createServer(async (req, res) => {
                         AdVerification: fields.AdVerification ? true : false,
                         locationsNotItaly: resultLocNotItaly,
                         languages: languagesArr,
+                        sales: fields.sales,
                     };
     
                     // console.log("Utente da creare:", JSON.stringify(user, null, 2));
