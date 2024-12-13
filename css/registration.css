@@ -1042,6 +1042,10 @@ select {
         overflow-x: hidden !important;
     }
 
+    .form-button input[type="button"] {
+        display: none;
+    }
+
     #form-1-an {
         margin-right: 0% !important;
     }
@@ -1070,6 +1074,48 @@ select {
         margin-right: 0% !important;
     }
 
+    #form-1 {
+        margin-left: 5% !important;
+        max-width: 100%;
+        min-height: 100vh !important;
+    }
+
+    #form-2 {
+        margin-left: 5% !important;
+        max-width: 100%;
+        min-height: 100vh !important;
+    }
+
+    #form-3 {
+        margin-left: 5% !important;
+        max-width: 100%;
+        min-height: 100vh !important;
+    }
+
+    #form-4 {
+        margin-left: 5% !important;
+        max-width: 100%;
+        min-height: 100vh !important;
+    }
+
+    #form-5 {
+        margin-left: 5% !important;
+        max-width: 100%;
+        min-height: 100vh !important;
+    }
+
+    #form-6 {
+        margin-left: 5% !important;
+        max-width: 100%;
+        min-height: 100vh !important;
+    }
+
+    #form-7 {
+        margin-left: 5% !important;
+        max-width: 100%;
+        min-height: 100vh !important;
+    }
+
     .awacon-title {
         min-width: 100% !important;
         text-align: left;
@@ -1090,20 +1136,6 @@ select {
 
     .one-info-plus {
         min-width: 100%;
-    }
-
-    .mobile-form {
-        position: relative;
-        min-height: 600vh;
-        padding: 20px;
-        overflow-y: visible !important;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        top: 270%;
-        margin-left: 0%;
-        max-width: 90%;
-        flex-direction: column;
     }
 
     .tabReferral {
@@ -1139,16 +1171,29 @@ select {
     }
 
     .all-infos {
-        display: none;
+        position: relative;
+        top: 0%;
+        min-height: 800vh;
+        padding: 20px;
+        top: 350%;
+        overflow-y: visible !important;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 0%;
+        max-width: 90%;
+        flex-direction: column;
     }
 
     .contain-form {
         min-width: 100%;
         box-shadow: none;
+        min-height: auto;
     }
 
     .contain-form-x {
         min-width: 100%;
+        min-height: auto;
         box-shadow: none;
         border-radius: 0px;
         border-bottom: 0px solid black;
