@@ -274,6 +274,8 @@ const server = createServer(async (req, res) => {
                         awareness: fields.awareness ? true : false,
                         conversion: fields.conversion ? true : false,
                         conversion: fields.consideration ? true : false,
+                        retention: fields.retention ? true : false,
+                        advocacy: fields.advocacy ? true : false,
                         website: fields.agencyWebsite?.[0] || null,
                         linkedinLink: fields.agencyLinkedin?.[0] || null,
                         facebookLink: fields.agencyFacebook?.[0] || null,
