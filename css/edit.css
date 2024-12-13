@@ -1454,11 +1454,21 @@ select:focus {
     }
 
     .section-edit {
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 0px !important;
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+        padding: 0px !important;
+        min-width: 0% !important;
+        max-width: 0% !important;
+        z-index: 100;
         display: flex;
+        border-right: 1px solid #0097b2;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        max-width: 100%;
     }
 
     .section-edit ul li {
@@ -1492,13 +1502,29 @@ select:focus {
         flex-direction: column;
     }
 
+    .botto {
+        font-size: 20px !important;
+    } 
+
     .section-edit {
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 0px !important;
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+        padding: 0px !important;
+        width: 0;
+        min-width: 0px;
+        max-width: 0px;
+        min-height: 100vh !important;
+        z-index: 100;
         display: flex;
-        justify-content: center !important;
-        text-align: center !important;
-        min-width: 100%;
-        min-height: 110vh;
-        overflow: hidden;
+        border-right: 1px solid #0097b2;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: 0.4s;
     }
 
     .section-edit span {
@@ -1520,18 +1546,47 @@ select:focus {
     }
 
     .header-deebrain {
-        padding-left: 0px;
-        padding-right: 0px;
-        width: 99% !important;
-
+        width: 100% !important;
+        padding: 10px !important;
+        background: white !important;
+        max-height: 150px !important;
+        display: flex !important;
+        /* padding-left: 80px !important; */
+        /* padding-right: 80px !important; */
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-direction: row !important;
     }
 
     .deebrain-menu {
         min-width: 75vw !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .deebrain-menu li svg {
+        min-width: 35px;
+        min-height: 35px;
     }
 
     .deebrain-menu li img {
-        max-width: 100px !important;
+        padding-left: 10px !important;
+        padding-top: 0px !important;
+        margin-top: 0px !important;
+        max-width: 150px !important;
+    }
+
+    #editBar {
+        z-index: 101;
+    }
+
+    .pagina {
+        padding: 40px;
+        width: 100%;
+        background: #eef5fe;
+        height: 100%;
+        margin-top: 32px;
     }
 
     .deebrain-under-menu li details {

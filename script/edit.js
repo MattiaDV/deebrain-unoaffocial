@@ -14,13 +14,66 @@ let clientsInfo = document.getElementById('clientsInfo');
 let bandC = document.getElementById('bandcInfo');
 let tools = document.getElementById('tools');
 
+let men = document.getElementById('section-edit');
+let menuEdit = document.getElementById('editBar');
+let editMenu = -1;
+
 let menuParts = [accountInfo, contactInfo, servicesInfo, managedInfo, clientsInfo, bandC, tools];
 let editPart = [primaEdit, secondaEdit, terzaEdit, quartaEdit, quintaEdit, sestaEdit, settimaEdit];
 let parts = document.getElementsByClassName('pagina');
 
+let buttons = document.querySelectorAll('.realSub');
+
+window.addEventListener('scroll', function () {
+    let currentScrollPosition = window.scrollY;
+    let threshold = document.documentElement.scrollHeight / 30;
+
+    if (currentScrollPosition > threshold) {
+        for (let elem of buttons) {
+            let computedDisplay = window.getComputedStyle(elem).display;
+            if (computedDisplay === "block") {
+                elem.style.borderRadius = "50%";
+                elem.style.maxWidth = "50px";
+                elem.style.maxHeight = "50px";
+                elem.classList.add('botto');
+                elem.value = "+";
+            }
+        }
+    } else {
+        for (let elem of buttons) {
+            let computedDisplay = window.getComputedStyle(elem).display;
+            if (computedDisplay === "block") {
+                elem.style.borderRadius = "4px";
+                elem.style.maxWidth = "initial";
+                elem.style.maxHeight = "initial";
+                elem.classList.remove('botto');
+                elem.value = "Save";
+            }
+        }
+    }
+});
+
+
+
+
+
 for (let part of parts) {
     part.style.display = (part.id == primaEdit.id) ? "block" : "none";
 }
+
+menuEdit.addEventListener('click', function () {
+    editMenu *= -1;
+
+    if (editMenu === 1) {
+        men.style.setProperty("min-width", "80%", "important");
+        men.style.setProperty("padding", "10px", "important");
+    } else {
+        men.style.setProperty("min-width", "0", "important");
+        men.style.setProperty("padding", "0", "important");
+    }
+});
+
+
 
 function handleMenuClick(clickedMenu, editId) {
     for (let part of parts) {
@@ -40,6 +93,9 @@ for (let x = 0; x < menuParts.length; x++) {
     console.log(menuParts[x]);
     menuParts[x].addEventListener('click', function() {
         handleMenuClick(menuParts[x], editPart[x].id);
+        men.style.setProperty("min-width", "0", "important");
+        men.style.setProperty("padding", "0", "important");
+        editMenu = editMenu * -1;
     })
 }
 
