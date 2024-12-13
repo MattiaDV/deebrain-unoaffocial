@@ -1640,12 +1640,21 @@ select:focus {
     }
 
     .pagina {
-        padding: 40px;
+        margin-top: 32px !important;
+        padding: 0px;
+        padding-top: 32px;
         width: 100%;
         background: #eef5fe;
         height: 100%;
         margin-top: 32px;
     } 
+
+    .special input[type = "submit"] {
+        position: relative !important;
+        margin-bottom: 32px;
+        margin-left: 40px !important;
+        margin-top: -90px !important;
+    }
 
     .edit-parts {
         min-width: 80%;
