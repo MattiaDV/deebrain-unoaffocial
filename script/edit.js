@@ -23,6 +23,7 @@ let editPart = [primaEdit, secondaEdit, terzaEdit, quartaEdit, quintaEdit, sesta
 let parts = document.getElementsByClassName('pagina');
 
 let buttons = document.querySelectorAll('.realSub');
+let realS = document.querySelectorAll('.realS');
 
 window.addEventListener('scroll', function () {
     let currentScrollPosition = window.scrollY;
@@ -32,23 +33,23 @@ window.addEventListener('scroll', function () {
         for (let elem of buttons) {
             let computedDisplay = window.getComputedStyle(elem).display;
             if (computedDisplay === "block") {
-                elem.style.borderRadius = "50%";
-                elem.style.maxWidth = "50px";
-                elem.style.maxHeight = "50px";
-                elem.classList.add('botto');
-                elem.value = "+";
+                elem.style.display = "none";
             }
+        }
+
+        for (let ele of realS) {
+            ele.style.display = "block";
         }
     } else {
         for (let elem of buttons) {
             let computedDisplay = window.getComputedStyle(elem).display;
-            if (computedDisplay === "block") {
-                elem.style.borderRadius = "4px";
-                elem.style.maxWidth = "initial";
-                elem.style.maxHeight = "initial";
-                elem.classList.remove('botto');
-                elem.value = "Save";
+            if (computedDisplay === "none") {
+                elem.style.display = "block";
             }
+        }
+
+        for (let ele of realS) {
+            ele.style.display = "none";
         }
     }
 });
