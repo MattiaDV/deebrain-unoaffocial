@@ -17,6 +17,7 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -10;
+    overflow-x: hidden;
     background: #eef5fe;
 }
 
@@ -1593,10 +1594,11 @@ select:focus {
         width: 70px;
         height: 70px;
         display: flex;
+        margin-right: 0%;
         justify-content: center;
         align-items: center;
         overflow: hidden;
-        display: none;
+        transition: 0.4s;
     }
 
     .realS button {

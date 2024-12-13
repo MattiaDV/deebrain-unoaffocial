@@ -33,23 +33,23 @@ window.addEventListener('scroll', function () {
         for (let elem of buttons) {
             let computedDisplay = window.getComputedStyle(elem).display;
             if (computedDisplay === "block") {
-                elem.style.display = "none";
+                elem.style.marginRight = "200%";
             }
         }
 
         for (let ele of realS) {
-            ele.style.display = "block";
+            ele.style.marginRight = "0px";
         }
     } else {
         for (let elem of buttons) {
             let computedDisplay = window.getComputedStyle(elem).display;
-            if (computedDisplay === "none") {
-                elem.style.display = "block";
+            if (computedDisplay === "block") {
+                elem.style.marginRight = "0%";
             }
         }
 
         for (let ele of realS) {
-            ele.style.display = "none";
+            ele.style.marginRight = "200%";
         }
     }
 });
