@@ -474,6 +474,36 @@ div.city > span {
     color: white;
 }
 
+.cityNotItaly {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #0097b2;
+    border-radius: 4px;
+    color: white;
+    font-size: 10px;
+    font-weight: 200;
+    cursor: pointer;
+    margin-right: 10px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    transition: 0.4s;
+}
+
+div.cityNotItaly > span {
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 4px;
+    color: white;
+}
+
+.cityNotItaly:hover {
+    background: red;
+    color: white;
+}
+
 .service:hover {
     background: red;
     color: white;

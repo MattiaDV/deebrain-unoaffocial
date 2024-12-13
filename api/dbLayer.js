@@ -184,6 +184,42 @@ exports.searchIdOfLocationFromDb = function(param, acc) {
     });
 }
 
+exports.searchIdOfLocationNotItalyFromDb = function(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('location_not_italy_listing', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cities = acc.flatMap(city => city.split(','));
+                console.log("Città separate: ", cities);
+
+                const cit = partners
+                    .filter(partner => cities.includes(partner.name))
+                    .map(partner => partner.id);
+                resolve(cit); 
+            }
+        });
+    });
+}
+
+exports.searchIdOfLanguagesFromDb = function(param, acc) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_languages', param, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca degli id: " + JSON.stringify(err));
+            } else {
+                const cities = acc.flatMap(city => city.split(','));
+                console.log("Città separate: ", cities);
+
+                const cit = partners
+                    .filter(partner => cities.includes(partner.name))
+                    .map(partner => partner.id);
+                resolve(cit); 
+            }
+        });
+    });
+}
+
 exports.searchIdOfMediaFromDb = function(param, acc) {
     return new Promise((resolve, reject) => {
         connectionDb.get('managed_media', param, (err, partners) => {
@@ -376,6 +412,36 @@ exports.getFounderNamesFromDB = function(params) {
 exports.getLocationsFromDb = function(params) {
     return new Promise((resolve, reject) => {
         connectionDb.get('location_listing', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+exports.getLocationsNotItalyFromDb = function(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('location_not_italy_listing', params, (err, partners) => {
+            if (err) {
+                reject("Errore nella ricerca delle location: " + JSON.stringify(err));
+            } else {
+                const locationOptions = partners
+                    .filter(partner => partner.name !== false)
+                    .map(partner => `<option value='${partner.name}'>${partner.name}</option>`);
+                resolve(locationOptions);
+            }
+        });
+    });
+}
+
+exports.getLanguagesFromDb = function(params) {
+    return new Promise((resolve, reject) => {
+        connectionDb.get('managed_languages', params, (err, partners) => {
             if (err) {
                 reject("Errore nella ricerca delle location: " + JSON.stringify(err));
             } else {

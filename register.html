@@ -126,8 +126,12 @@
                         </div>  
                         <div class = "start-form" id = "form-step-3" method = "get">
                             <div class = "double-info quinto">
-                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Location </span><select id = "location" name = "location" required><option value="" disabled selected>Select a city (you can choose more than one)</option>{locations}<option value = "more">Other</option></select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Location (Italy) </span><select id = "location" name = "location" required><option value="" disabled selected>Select a city (you can choose more than one)</option>{locations}</select></div>
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen location </span><div id = "citys" class = "choose-citys"></div></div>
+                            </div>
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Location (Not Italy) </span><select id = "locationNotItaly" name = "locationNotItaly" required><option value="" disabled selected>Select a city (you can choose more than one)</option>{locationsNotItaly}</select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen location </span><div id = "citysNoItaly" class = "choose-citys"></div></div>
                             </div>
                             <div class = "double-info sesto">
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Main services </span><select id = "mainServices" name = "mainServices" required><option value="" disabled selected>Select a service (you can choose more than one)</option>{mainService}</select></div>
@@ -163,6 +167,11 @@
                             <div class="step step-7"></div>
                         </div>  
                         <div class = "start-form" id = "form-step-4" method = "get">
+                            <div class = "double-info quinto">
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Managed languages </span><select id = "managedLanguages" name = "managedLanguages" required><option value="" disabled selected>Select a media (you can choose more than one)</option>{languages}</select></div>
+                                <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen managed languages </span><div id = "managedLanguagesChoose" class = "choose-citys"></div></div>
+                            </div>
+
                             <div class = "double-info quinto">
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Managed media </span><select id = "managedMedia" name = "managedMedia" required><option value="" disabled selected>Select a media (you can choose more than one)</option>{media}</select></div>
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Choosen managed media </span><div id = "ManMedia" class = "choose-citys"></div></div>
@@ -300,12 +309,6 @@
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Ad Server </span><input type = "checkbox" name = "adServer" required></div>
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Ad Verfication </span><input type = "checkbox" name = "AdVerification" required></div>
                             </div>
-                            <input type = "hidden" name = "selectedCitysFinal" id = "selectedCitysFinal">
-                            <input type = "hidden" name = "mainServicesFinal" id = "mainServicesFinal">
-                            <input type = "hidden" name = "distinctiveServiceFinal" id = "distinctiveServiceFinal">
-                            <input type = "hidden" name = "managedMediaFinal" id = "managedMediaFinal">
-                            <input type = "hidden" name = "managedPlatformFinal" id = "managedPlatformFinal">
-                            <input type = "hidden" name = "referralClientFinal" id = "referralClientFinal">
                             <div class = "form-button">
                                 <input type = "button" onclick = "returnFive()" class = "back" value = "Back">
                                 <input type = "button" onclick = "sevenStep()" value = "Continue">
@@ -365,6 +368,8 @@
                             <input type = "hidden" name = "managedMediaFinal" id = "managedMediaFinal">
                             <input type = "hidden" name = "managedPlatformFinal" id = "managedPlatformFinal">
                             <input type = "hidden" name = "referralClientFinal" id = "referralClientFinal">
+                            <input type = "hidden" name = "locationNotItalyFinal" id = "locationNotItalyFinal">
+                            <input type = "hidden" name = "languagesFinal" id = "languagesFinal">
                             <div class = "form-button">
                                 <input type = "button" onclick = "returnSix()" class = "back" value = "Back">
                                 <input type = "submit" id="submit-button" value = "Register">
@@ -629,12 +634,6 @@
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Ad Server </span><input type = "checkbox" name = "adServer" required></div>
                                 <div class = "one-info"><span class = "fs-16 medium-bold-text">Ad Verfication </span><input type = "checkbox" name = "AdVerification" required></div>
                             </div>
-                            <input type = "hidden" name = "selectedCitysFinal" id = "selectedCitysFinal">
-                            <input type = "hidden" name = "mainServicesFinal" id = "mainServicesFinal">
-                            <input type = "hidden" name = "distinctiveServiceFinal" id = "distinctiveServiceFinal">
-                            <input type = "hidden" name = "managedMediaFinal" id = "managedMediaFinal">
-                            <input type = "hidden" name = "managedPlatformFinal" id = "managedPlatformFinal">
-                            <input type = "hidden" name = "referralClientFinal" id = "referralClientFinal">
                             <div class = "form-button">
                                 <input type = "button" onclick = "returnFive()" class = "back" value = "Back">
                                 <input type = "button" onclick = "sevenStep()" value = "Continue">

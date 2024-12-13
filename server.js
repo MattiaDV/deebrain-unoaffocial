@@ -59,18 +59,22 @@ const server = createServer(async (req, res) => {
             let htmlContent = await readFile('register.html', 'utf8');
             let id_array_location = Array.from({ length: 1000 }, (_, i) => i);
             let locationAll = await dbLayer.getLocationsFromDb(id_array_location);
+            let locationNotItaly = await dbLayer.getLocationsNotItalyFromDb(id_array_location);
             let mainServ = await dbLayer.getMainFromDb(id_array_location);
             let disServ = await dbLayer.getDisFromDb(id_array_location);
             let media = await dbLayer.getMediaFromDb(id_array_location);
             let platform = await dbLayer.getPlatformFromDb(id_array_location);
+            let languages = await dbLayer.getLanguagesFromDb(id_array_location);
             let updatedHtmlContent = htmlContent.replace("{locations}", locationAll.join(''));
             let up = updatedHtmlContent.replace('{mainService}', mainServ);
             let upp = up.replace('{distinctiveService}', disServ);
             let uppp = upp.replace('{media}', media);
             let upppp = uppp.replace('{platform}', platform);
+            let uppppp = upppp.replace('{locationsNotItaly}', locationNotItaly);
+            let upppppp = uppppp.replace('{languages}', languages);
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(upppp);
+            res.end(upppppp);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -108,6 +112,8 @@ const server = createServer(async (req, res) => {
                     console.log("ID FOUNDER/S: " + citys);
 
                     let resultLoc = [];
+                    let resultLocNotItaly = [];
+                    let languagesArr = [];
                     let resultMainS = [];
                     let resultDisS = [];
                     let resultMediS = [];
@@ -132,7 +138,47 @@ const server = createServer(async (req, res) => {
                     
                         resultLoc = await dbLayer.searchIdOfLocationFromDb(id_cardsAgency, locationReal);
                         console.log(resultLoc);
-                    }                    
+                    }    
+                    
+                    if (fields.locationNotItalyFinal) {
+                        let finalLocation = fields.locationNotItalyFinal;
+                        let locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+                    
+                        let locationReal = locationsArray.map(part =>
+                            part
+                                .trim()
+                                .split(/[\s\-]/)
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+                                .join(' ')
+                        );
+                    
+                        console.log("Città separate: ", locationReal);
+                    
+                        resultLocNotItaly = await dbLayer.searchIdOfLocationNotItalyFromDb(id_cardsAgency, locationReal);
+                        console.log(resultLoc);
+                    }    
+                    
+                    if (fields.languagesFinal) {
+                        let finalLocation = fields.languagesFinal;
+                        let locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+                    
+                        let locationReal = locationsArray.map(part =>
+                            part
+                                .trim()
+                                .split(/[\s\-]/)
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+                                .join(' ')
+                        );
+                    
+                        console.log("Città separate: ", locationReal);
+                    
+                        languagesArr = await dbLayer.searchIdOfLanguagesFromDb(id_cardsAgency, locationReal);
+                        console.log(resultLoc);
+                    }
 
                     if (fields.mainServicesFinal) {
                         let finalLocation = fields.mainServicesFinal;
@@ -248,7 +294,9 @@ const server = createServer(async (req, res) => {
                         reporting: fields.reporting ? true : false,
                         dataAnalysis: fields.dataAnalysis ? true : false,
                         adServer: fields.adServer ? true : false,
-                        AdVerification: fields.AdVerification ? true : false
+                        AdVerification: fields.AdVerification ? true : false,
+                        locationsNotItaly: resultLocNotItaly,
+                        languages: languagesArr,
                     };
     
                     // console.log("Utente da creare:", JSON.stringify(user, null, 2));
