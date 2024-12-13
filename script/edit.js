@@ -28,7 +28,7 @@ window.addEventListener('scroll', function () {
     let currentScrollPosition = window.scrollY;
     let threshold = document.documentElement.scrollHeight / 30;
 
-    if (currentScrollPosition > threshold) {
+    if (currentScrollPosition > threshold && window.innerWidth < 1250) {
         for (let elem of buttons) {
             let computedDisplay = window.getComputedStyle(elem).display;
             if (computedDisplay === "block") {

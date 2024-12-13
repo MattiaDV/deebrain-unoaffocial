@@ -86,13 +86,13 @@ body {
     margin-left: 40px;
     list-style: none;
     display: flex;
-    margin-top: 80px;
+    margin-top: 0px;
     border-radius: 4px;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     width: 100%;
-    height: calc(100% - 20px);
+    height: calc(100vh - 220px);
     overflow-y: scroll;
 }
 
