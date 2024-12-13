@@ -1559,7 +1559,7 @@ select:focus {
     }
 
     .deebrain-menu {
-        min-width: 75vw !important;
+        max-width: 100% !important;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1569,6 +1569,15 @@ select:focus {
         min-width: 35px;
         min-height: 35px;
     }
+
+    .deebrain-under-menu li details {
+        position: relative !important;
+        /* min-width: 200px !important; */
+        border: none !important;
+        margin-right: 0px !important;
+    }
+
+
 
     .deebrain-menu li img {
         padding-left: 10px !important;
@@ -1587,11 +1596,7 @@ select:focus {
         background: #eef5fe;
         height: 100%;
         margin-top: 32px;
-    }
-
-    .deebrain-under-menu li details {
-        margin-right: 62px !important;
-    }
+    } 
 
     .edit-parts {
         min-width: 80%;
