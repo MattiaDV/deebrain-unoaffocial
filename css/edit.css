@@ -1606,11 +1606,20 @@ select:focus {
         overflow: hidden;
         background: #0097b2;
         border: 1px solid #0097b2;
+        transition: 0.4s;
     }
 
     .realS button svg {
         max-width: 50%;
         max-height: 50%;
+    }
+
+    .realS button:hover {
+        background: white;
+    }
+
+    .realS button:hover svg * {
+        fill: #0097b2;
     }
 
     .deebrain-under-menu li details {
