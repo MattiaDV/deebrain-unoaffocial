@@ -1589,6 +1589,13 @@ select:focus {
         z-index: 101;
     }
 
+    .realSub {
+        border-radius: 4px;
+        max-width: initial;
+        max-height: initial;
+        transition: 0.4s !important;
+    }
+
     .pagina {
         padding: 40px;
         width: 100%;
