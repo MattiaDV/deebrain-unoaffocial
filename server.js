@@ -925,6 +925,14 @@ const server = createServer(async (req, res) => {
                     .filter(partner => partner.email == emailFromCookie)
                     .map(partner => partner.consideration)
 
+                let reten = getAgencyName
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner => partner.retention)
+    
+                let advoc = getAgencyName
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner => partner.advocacy)
+
                 let websiteReal = getAgencyName
                     .filter(partner => partner.email == emailFromCookie)
                     .map(partner => partner.website)
@@ -1113,11 +1121,13 @@ const server = createServer(async (req, res) => {
                 let dataAnalysis = reporting.replace("{dataAnalysis}", realName.map(partner => partner.dataAnalysis == true ? `<input type = "checkbox" id = "dataAnalysis" name = "dataAnalysis" checked>` : `<input type = "checkbox" id = "dataAnalysis" name = "dataAnalysis">`));
                 let adServer = dataAnalysis.replace("{adServer}", realName.map(partner => partner.adServer == true ? `<input type = "checkbox" id = "adServer" name = "adServer" checked>` : `<input type = "checkbox" id = "adServer" name = "adServer">`));
                 let adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<input type = "checkbox" id = "AdVerification" name = "AdVerification" checked>` : `<input type = "checkbox" id = "AdVerification" name = "AdVerification">`));
+                let retention = adVerification.replace('{retention}', reten.map(partner => (partner == true) ? `<input type = "checkbox" id = "retention" name = "retention" checked>` : `<input type = "checkbox" id = "retention" name = "retention">`));
+                let advocacy = retention.replace('{advocacy}', advoc.map(partner => (partner == true) ? `<input type = "checkbox" id = "advocacy" name = "advocacy" checked>` : `<input type = "checkbox" id = "advocacy" name = "advocacy">`));
 
                 cache.saveDataToCacheEditPage(adVerification);
 
                 res.writeHead(200, {'ContentType': 'text/html'});
-                res.end(adVerification);
+                res.end(advocacy);
 
             } catch(err) {
                 if (err) {
@@ -1153,6 +1163,8 @@ const server = createServer(async (req, res) => {
                         .map(part => part.id)
 
                     let resultLoc = [];
+                    let resultLocNotIta = [];
+                    let resultLang = [];
                     let resultMainS = [];
                     let resultDisS = [];
                     let resultMediS = [];
@@ -1178,7 +1190,47 @@ const server = createServer(async (req, res) => {
                     
                         resultLoc = await dbLayer.searchIdOfLocationFromDb(id_cardsAgency, locationReal);
                         console.log(resultLoc);
-                    }                    
+                    }
+
+                    if (fields.finalLocationNoIta) {
+                        let finalLocation = fields.finalLocationNoIta;
+                        let locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+                    
+                        let locationReal = locationsArray.map(part =>
+                            part
+                                .trim()
+                                .split(/[\s\-]/)
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+                                .join(' ')
+                        );
+                    
+                        console.log("Città separate: ", locationReal);
+                    
+                        resultLocNotIta = await dbLayer.searchIdOfLocationNotItalyFromDb(id_cardsAgency, locationReal);
+                        console.log(resultLocNotIta);
+                    }  
+
+                    if (fields.finalLang) {
+                        let finalLocation = fields.finalLang;
+                        let locationsArray = finalLocation[0].includes(',')
+                            ? finalLocation[0].split(',')
+                            : [finalLocation[0]];
+                    
+                        let locationReal = locationsArray.map(part =>
+                            part
+                                .trim()
+                                .split(/[\s\-]/)
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+                                .join(' ')
+                        );
+                    
+                        console.log("Città separate: ", locationReal);
+                    
+                        resultLang = await dbLayer.searchIdOfLanguagesFromDb(id_cardsAgency, locationReal);
+                        console.log(resultLang);
+                    }  
 
                     if (fields.mainServiceFinal) {
                         let finalLocation = fields.mainServiceFinal;
@@ -1307,6 +1359,11 @@ const server = createServer(async (req, res) => {
                             awareness: fields.awareness ? true : false,
                             conversion: fields.conversion ? true : false,
                             consideration: fields.consideration ? true : false,
+                            retention: fields.retention ? true : false,
+                            advocacy: fields.advocacy ? true : false,
+                            sales: fields.sales,
+                            locationsNotItaly: (resultLocNotIta.length !== 0) ? resultLocNotIta : undefined,
+                            languages: (resultLang.length !== 0) ? resultLang : undefined,
                             location: (resultLoc.length !== 0) ? resultLoc : undefined,
                         }
                     }

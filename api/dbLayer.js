@@ -20,6 +20,8 @@ exports.updateUser = function(param, id) {
         awareness: param.awareness,
         conversion: param.conversion,
         consideration: param.consideration,
+        retention: param.retention,
+        advocacy: param.advocacy,
         locations: param.location,
         website: param.website,
         linkedinLink: param.linkedin,
@@ -40,6 +42,9 @@ exports.updateUser = function(param, id) {
         adServer: param.adServer,
         AdVerification: param.AdVerification,
         referralClient: param.referralClient,
+        sales: param.sales,
+        locationsNotItaly: param.locationsNotItaly,
+        languages: param.languages,
     }, callback);
 }
 

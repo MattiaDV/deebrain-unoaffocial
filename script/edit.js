@@ -344,6 +344,90 @@ function addReferral() {
     }
 }
 
+let citysNotItaly = document.getElementById('locationNotItaly');
+let cityChooseNotItalian = [];
+let cityNoInput = document.getElementById('finalLocationNoIta');
+
+citysNotItaly.addEventListener('change', function() {
+    console.log(citysNotItaly.value);
+    if (citysNotItaly.value !== "more") {
+        if (!cityChooseNotItalian.includes(citysNotItaly.value)) {
+            cityChooseNotItalian.push(citysNotItaly.value.replace("-", " "));
+            // console.log(cityChoose);
+            let choose = document.createElement('div');
+            choose.classList.add('cityNotItaly');
+            choose.innerHTML = citysNotItaly.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+            choose.id = citysNotItaly.value.replace("-", " ");
+            choose.onclick = function() {
+                deleteItemNotItaly(choose.id);
+            }
+            document.getElementById('citysNoItaly').appendChild(choose);
+            cityNoInput.value = cityChooseNotItalian;
+        }
+    } 
+})
+
+function deleteItemNotItaly(value) {
+    let city = document.getElementById(value);
+    // console.log(value);
+
+    const index = cityChooseNotItalian.indexOf(value);
+    if (index > -1) {
+        cityChooseNotItalian.splice(index, 1);
+    }
+
+    if (city) {
+        city.remove();
+    }
+
+    if (cityChooseNotItalian.length == 0) {
+        document.getElementById("locationNotItaly").value = "";
+    }
+    cityNoInput.value = cityChooseNotItalian;
+}
+
+let languages = document.getElementById('managedLanguages');
+let languagesChoose = [];
+let langIn = document.getElementById('finalLang');
+
+languages.addEventListener('change', function() {
+    console.log(languages.value);
+    if (languages.value !== "more") {
+        if (!languagesChoose.includes(languages.value)) {
+            languagesChoose.push(languages.value.replace("-", " "));
+            // console.log(cityChoose);
+            let choose = document.createElement('div');
+            choose.classList.add('cityNotItaly');
+            choose.innerHTML = languages.value.replace("-", " ") + "<span style = 'color: white;'>X</span>";
+            choose.id = languages.value.replace("-", " ");
+            choose.onclick = function() {
+                deleteItemLanguages(choose.id);
+            }
+            document.getElementById('managedLanguagesChoose').appendChild(choose);
+            langIn.value = languagesChoose;
+        }
+    } 
+})
+
+function deleteItemLanguages(value) {
+    let city = document.getElementById(value);
+    // console.log(value);
+
+    const index = languagesChoose.indexOf(value);
+    if (index > -1) {
+        languagesChoose.splice(index, 1);
+    }
+
+    if (city) {
+        city.remove();
+    }
+
+    if (languagesChoose.length == 0) {
+        document.getElementById("locationNotItaly").value = "";
+    }
+    langIn.value = languagesChoose;
+}
+
 
 function removeClient(value) {
     // let index = referralClient.findIndex(client => client.idd === parseFloat(value));
@@ -399,6 +483,18 @@ function cityPush() {
     for (let elem of citysCho) {
         cityChoose.push(elem.id.replace("-", " "));
         inputCity.value = cityChoose;
+    }
+
+    let cityNotIta = document.querySelectorAll('.cityNotItaly');
+    for (let elem of cityNotIta) {
+        cityChooseNotItalian.push(elem.id.replace("-", " "));
+        cityNoInput.value = cityChooseNotItalian;
+    }
+
+    let language = document.querySelectorAll('.lang');
+    for (let elem of language) {
+        languagesChoose.push(elem.id.replace("-", " "));
+        langIn.value = languagesChoose;
     }
 
     // serviceChoose
