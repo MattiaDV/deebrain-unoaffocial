@@ -622,5 +622,6 @@ window.addEventListener('click', function(ev) {
     if (ev.clientX >= pageWidth * 0.8 && ev.clientX <= pageWidth) {
         men.style.setProperty("min-width", "0", "important");
         men.style.setProperty("padding", "0", "important");
+        editMenu = editMenu * -1;
     }
 })
