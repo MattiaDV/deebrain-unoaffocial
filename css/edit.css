@@ -1594,7 +1594,7 @@ select:focus {
         width: 70px;
         height: 70px;
         display: flex;
-        margin-right: 0%;
+        margin-right: 200%;
         justify-content: center;
         align-items: center;
         overflow: hidden;

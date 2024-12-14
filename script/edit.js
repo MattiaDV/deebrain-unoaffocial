@@ -54,10 +54,6 @@ window.addEventListener('scroll', function () {
     }
 });
 
-
-
-
-
 for (let part of parts) {
     part.style.display = (part.id == primaEdit.id) ? "block" : "none";
 }
@@ -615,3 +611,16 @@ function ref() {
         return true;
     }
 }
+
+
+window.addEventListener('click', function(ev) {
+    if (ev.target !== this.document.getElementById('men')) {
+        document.getElementById('men').open = false;
+    }
+
+    const pageWidth = window.innerWidth;
+    if (ev.clientX >= pageWidth * 0.8 && ev.clientX <= pageWidth) {
+        men.style.setProperty("min-width", "0", "important");
+        men.style.setProperty("padding", "0", "important");
+    }
+})
