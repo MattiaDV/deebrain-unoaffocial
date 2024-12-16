@@ -8,6 +8,7 @@ import express from 'express';
 const app = express()
 const port = 3000
 import path from 'path';
+import session from 'express-session';
 
 const mimeTypes = {
     '.html': 'text/html',
@@ -19,6 +20,16 @@ const mimeTypes = {
     '.svg': 'image/svg+xml',
 };
 
+
+app.use(session({
+    secret: 'abcdefghi',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: false, 
+        maxAge: 1000 * 60 * 60 * 24 
+    }
+}));
 
     app.get('/', async (req, res) => {
         try {
@@ -331,6 +342,9 @@ const mimeTypes = {
         if (cache.getDataFromCache() === null) {
             try {
                 let htmlContent = await readFile('listing.html', 'utf8');
+                let cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
+                let emailFromCookie = cookies.website || 'Nessun cookie trovato';
+                req.session.user = { username: emailFromCookie };
                 let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
                 let cardsAgency = await dbLayer.getNewAgencyFromDB(id_cardsAgency);
                 let location = await dbLayer.getLocationsFromDb(id_cardsAgency);

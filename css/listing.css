@@ -3,8 +3,8 @@ body {
 } 
 
 .container-page {
-    padding: 20px;
-    width: 90%;
+    padding: 0px;
+    width: 100%;
     margin: 0 auto;
     background: #eef5fe;
     border-radius: 4px;
@@ -146,6 +146,7 @@ details ul li {
     color: #0097b2;
     padding: 20px;
     margin-top: 20px;
+    margin-left: 20px;
     list-style: none;
     display: flex;
     justify-content: center;
@@ -469,6 +470,19 @@ details[open] .subcategory {
         margin-right: 10px;
     }
 
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .buttons li {
+        text-align: center;
+    }
+
     .card-account {
         background: white;
         color: #424242;
@@ -630,5 +644,32 @@ details[open] .subcategory {
     .column-left-container {
         width: 90%;
         max-width: 95% !important;
+    }
+
+    .buttons * button {
+        min-width: 80% !important;
+        font-size: 16px !important;
+        background: none !important;
+        color: #0097b2 !important;
+        border: 1px solid #0097b2 !important;
+        padding: 5px !important;
+        transition: 0.4s;
+    }
+
+    .filter-listing {
+        background: white;
+        color: #0097b2;
+        padding: 0px;
+        margin-top: 20px;
+        margin-left: 0px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        border-radius: 4px;
+        max-width: 100%;
+        height: calc(100% - 20px);
+        overflow-y: scroll;
     }
 }
