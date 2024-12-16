@@ -343,7 +343,7 @@ app.use(session({
             try {
                 let htmlContent = await readFile('listing.html', 'utf8');
                 let cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
-                let emailFromCookie = cookies.website || 'Nessun cookie trovato';
+                let emailFromCookie = cookies.email || 'Nessun cookie trovato';
                 req.session.user = { username: emailFromCookie };
                 let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
                 let cardsAgency = await dbLayer.getNewAgencyFromDB(id_cardsAgency);
