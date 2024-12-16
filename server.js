@@ -7,9 +7,10 @@ import formidable from 'formidable';
 import dbLayer from './api/dbLayer.js';
 import fs from 'fs';
 import cache from './api/cache.js';
-// const express = require('express')
-// const app = express()
-// const port = 3000
+import express from 'express';
+const app = express()
+const port = 3000
+import path from 'path';
 
 const mimeTypes = {
     '.html': 'text/html',
@@ -21,11 +22,8 @@ const mimeTypes = {
     '.svg': 'image/svg+xml',
 };
 
-const server = createServer(async (req, res) => {
-    const { method, url } = req;
 
-    // Gestione della homepage
-    if (method === 'GET' && url === '/') {
+    app.get('/', async (req, res) => {
         try {
             let htmlContent = await readFile('index.html', 'utf8');
             cache.clearCacheEditPage();
@@ -39,9 +37,9 @@ const server = createServer(async (req, res) => {
             res.end('Errore del server interno');
         }
         return;
-    } 
+    });
 
-    if (method === 'GET' && url === '/login.html') {
+    app.get('/login.html', async (req, res) => {
         try {
             let htmlContent = await readFile('login.html', 'utf8');
             cache.clearCacheEditPage();
@@ -55,9 +53,9 @@ const server = createServer(async (req, res) => {
             res.end('Errore del server interno');
         }
         return;
-    } 
+    });
     
-    if (method === 'GET' && url === '/register.html') {
+    app.get('/register.html', async (req, res) => {
         try {
             let htmlContent = await readFile('register.html', 'utf8');
             let id_array_location = Array.from({ length: 1000 }, (_, i) => i);
@@ -84,9 +82,9 @@ const server = createServer(async (req, res) => {
             res.end('Errore del server interno');
         }
         return;
-    }
+    });
 
-    if (method === 'POST' && url === '/home.html') {
+    app.post('/home.html', async (req, res) => {
         try {
             let form = formidable({ multiples: true }); 
             let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
@@ -327,12 +325,12 @@ const server = createServer(async (req, res) => {
                 res.end('Errore del server interno');
             }
         }
-    }    
+    });   
     
     
         
 
-    if (method === 'GET' && url === '/listing.html') {
+    app.get('/listing.html', async (req, res) => {
         if (cache.getDataFromCache() === null) {
             try {
                 let htmlContent = await readFile('listing.html', 'utf8');
@@ -369,9 +367,9 @@ const server = createServer(async (req, res) => {
             res.end(cachedData);
             return;
         }
-    }
+    });
 
-    if (method === 'GET' && url === '/mypage.html') {
+    app.get('/mypage.html', async (req, res) => {
         if (cache.getDataFromCacheMyPage() === null) {
             try {
                 let htmlContent = await readFile('mypage.html', 'utf8');
@@ -652,9 +650,9 @@ const server = createServer(async (req, res) => {
             return;
         }
         return;
-    }
+    });
 
-    if (method === 'GET' && url === '/paginaD.html') {
+    app.get('/paginaD.html', async (req, res) => {
         try {
             let htmlContent = await readFile('paginaD.html', 'utf8');
             let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
@@ -924,9 +922,9 @@ const server = createServer(async (req, res) => {
             res.end('Errore del server interno');
         }
         return;
-    }
+    });
 
-    if (method === 'GET' && url === '/edit.html') {
+    app.get('/edit.html', async (req, res) => {
         if (cache.getDataFromCacheEditPage() === null) {
             try {
                 let htmlContent = await readFile('edit.html', 'utf-8');
@@ -1225,9 +1223,9 @@ const server = createServer(async (req, res) => {
             return;
         }
         return
-    }   
+    }); 
 
-    if (method === 'POST' && url === '/edit.html') {
+    app.post('/edit.html', async (req, res) => {
         let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
         let cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
         let emailFromCookie = cookies.email || 'Nessun cookie trovato';
@@ -1518,29 +1516,16 @@ const server = createServer(async (req, res) => {
             }
         })
         return
-    }
+    });
 
-    let staticPath = './';
-    let filePath = join(staticPath, url);
-    let fileExt = extname(filePath);
+    const staticPath = path.join(process.cwd(), './');
 
-    if (mimeTypes[fileExt]) {
-        try {
-            let fileStream = createReadStream(filePath);
-            res.writeHead(200, { 'Content-Type': mimeTypes[fileExt] });
-            fileStream.pipe(res);
-        } catch (err) {
-            res.writeHead(404, { 'Content-Type': 'text/plain' });
-            res.end('File non trovato');
-        }
-        return;
-    }
+    app.use(express.static(staticPath));
 
-    // Risposta di default
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end('Pagina non trovata');
-});
+    app.use((req, res) => {
+        res.status(404).send('File non trovato');
+    });
 
-server.listen(3000, "127.0.0.1", () => {
+app.listen(port, "127.0.0.1", () => {
     console.log("Listening to 127.0.0.1");
 });
