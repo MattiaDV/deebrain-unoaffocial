@@ -1,36 +1,21 @@
-let billing = document.getElementById("billing");
-let billingFoot = document.getElementById('billing-foot');
-
-billing.addEventListener('mousemove', function() {
-    if (billing.value > 900) {
-        let valore = (billing.value / 1000).toFixed(1);
-        if (valore.endsWith(".0")) {
-            let unique = Math.floor(valore);
-            billingFoot.innerHTML = unique + "M€";
-        } else {
-            billingFoot.innerHTML = valore + "M€";
-        }
-    } else {
-        billingFoot.innerHTML = billing.value + "k€";
-    }
-});
-
 let advancedFilter = [];
-
-function fil() {
-    let allFil = document.querySelectorAll("input[type='checkbox']");
-    // console.log("Sono dentro");
-    for (let fil of allFil) {
-        advancedFilter.push(fil.id);
-    }
-};
-
-// console.log(advancedFilter);
-
 let checked = [];
 let paroleChiave = [];
 let city = [];
 let typeAgency = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    function fil() {
+        let allFil = document.querySelectorAll("input[type='checkbox']");
+        for (let fil of allFil) {
+            advancedFilter.push(fil.id);
+        }
+    }
+
+    fil();
+});
+
+// console.log(advancedFilter);
 
 let cards = document.getElementsByClassName('card-account');
 

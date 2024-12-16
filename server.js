@@ -39,7 +39,13 @@ app.use(session({
             cache.clearCacheMyPage();
             console.log("Ho pulito la cache");
             if (req.session) {
-                req.session.destroy();
+                req.session.destroy(err => {
+                    if (err) {
+                        console.log("Errore nell'eliminazione della sessione: " + JSON.stringify(err));
+                    } else {
+                        console.log("Sessione distrutta correttamente");
+                    }
+                });
             }
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(htmlContent);
@@ -347,9 +353,11 @@ app.use(session({
                 let htmlContent = await readFile('listing.html', 'utf8');
                 let cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
                 let emailFromCookie = cookies.email || 'Nessun cookie trovato';
-                if (!req.session) {
+                if (req.session == undefined) {
                     req.session.user = { username: emailFromCookie };
+                    console.log("Sessione aperta: " + req.session);
                 }
+                console.log("req.session: ", req.session);
                 let id_cardsAgency = Array.from({ length: 1000 }, (_, i) => i);
                 let cardsAgency = await dbLayer.getNewAgencyFromDB(id_cardsAgency);
                 let location = await dbLayer.getLocationsFromDb(id_cardsAgency);
@@ -1520,7 +1528,6 @@ app.use(session({
 
                     cache.clearCacheMyPage();
                     cache.clearCacheListing();
-                    cache.clearCacheEditPage();
 
                     let resp = "Contenuto inviato al db"
                     res.writeHead(200, {'Content-Type': 'application/json'});
