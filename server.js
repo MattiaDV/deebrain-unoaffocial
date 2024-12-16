@@ -1,7 +1,4 @@
-import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
-import { createReadStream, read } from 'node:fs';
-import { extname, join } from 'node:path';
 import cookie from 'cookie';
 import formidable from 'formidable';
 import dbLayer from './api/dbLayer.js';
