@@ -32,6 +32,9 @@
                                 <input type="password" placeholder="Password" id="password" name="password" required>
                             </div>
                         </div>
+                        <div id = "message">
+
+                        </div>
                         <input type="button" id="submit-button" value="Log in">
                     </div>
                 </div>
@@ -61,12 +64,17 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-
         var signin_email_psw = function() {
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
+            let message = document.getElementById('message');
+
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                message.innerHTML = "Please enter a valid email address.";
+                return;
+            }
             
-            if (email.includes('@') && email !== "") {
                 if (password !== "") {
                     signInWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
@@ -78,17 +86,18 @@
                         const errorCode = error.code;
                         const errorMessage = error.message;
 
-                        alert("No users exists");
+                        if (errorCode === 'auth/invalid-login-credentials') {
+                            message.innerHTML = "Wrong password. Try again!";
+                        } else if (errorCode === 'auth/user-not-found') {
+                            message.innerHTML = "No user found with this email";
+                        } else {
+                            message.innerHTML = "Errore: " + errorMessage;
+                        }
                     });
                 } else {
-                    alert("Insert the password");
+                    message.innerHTML = "Insert the password";
                 }
-            } else {
-                alert("Insert a valid email");
-                return;
             }
-
-        };
 
         let submitButton = document.getElementById('submit-button');
         submitButton.addEventListener('click', signin_email_psw);

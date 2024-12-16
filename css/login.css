@@ -803,8 +803,14 @@ input[type = "button"].back {
     color: white;
 }
 
+#message {
+    color: red;
+    font-weight: 600;
+    font-size: 14px;
+}
+
 .form-1 {
-    height: 100vh;
+    min-height: 54vh;
 }
 
 .form-2 {
