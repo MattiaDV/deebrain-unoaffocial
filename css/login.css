@@ -805,7 +805,7 @@ input[type = "button"].back {
 
 #message {
     color: red;
-    font-weight: 600;
+    font-weight: 200;
     font-size: 14px;
 }
 
@@ -962,5 +962,9 @@ select {
     .return-home {
         margin-left: 15%;
         padding: 5px !important;
+    }
+
+    .form-1 {
+        min-height: 65vh;
     }
 }
