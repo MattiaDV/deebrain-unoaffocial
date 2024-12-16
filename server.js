@@ -38,6 +38,9 @@ app.use(session({
             cache.clearCacheListing();
             cache.clearCacheMyPage();
             console.log("Ho pulito la cache");
+            if (req.session) {
+                req.session.destroy();
+            }
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(htmlContent);
         } catch (err) {
