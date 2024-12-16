@@ -7,6 +7,9 @@ import formidable from 'formidable';
 import dbLayer from './api/dbLayer.js';
 import fs from 'fs';
 import cache from './api/cache.js';
+// const express = require('express')
+// const app = express()
+// const port = 3000
 
 const mimeTypes = {
     '.html': 'text/html',
@@ -385,16 +388,28 @@ const server = createServer(async (req, res) => {
                 let managedPlatformLoad = await dbLayer.getNormalPlatformFromDb(id_cardsAgency);
                 let mainClientLoad = await dbLayer.getNormalMainClientFromDb(id_cardsAgency);
                 let referralClientLoad = await dbLayer.getNormalReferralClientFromDb(id_cardsAgency);
+                let languagesLoad = await dbLayer.getNormalLanguagesFromDb(id_cardsAgency);
+                let locationNotItaLoad = await dbLayer.getNormalLocNoItaFromDb(id_cardsAgency);
 
                 let idFounder = nameOfAgency
                     .filter(partner => partner.name !== false)
                     .filter(partner => partner.email == emailFromCookie)
                     .map(partner => partner.founderName)
 
-                let idLocation= nameOfAgency
+                let idLocation = nameOfAgency
                     .filter(partner => partner.name !== false)
                     .filter(partner => partner.email == emailFromCookie)
                     .map(partner => partner.locations)
+
+                let idLanguages = nameOfAgency
+                    .filter(partner => partner.name !== false)
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner => partner.languages)
+
+                let idLocNotIta = nameOfAgency
+                    .filter(partner => partner.name !== false)
+                    .filter(partner => partner.email == emailFromCookie)
+                    .map(partner => partner.locationsNotItaly)
 
                 let idMainServ = nameOfAgency 
                     .filter(partner => partner.name !== false)
@@ -437,6 +452,8 @@ const server = createServer(async (req, res) => {
                 let idPlatformFlat = idPlatform.flat();
                 let idMainClientFlat = idMainClient.flat();
                 let idRefCliFlat = idReferralClient.flat();
+                let idLocNotItaFlat = idLocNotIta.flat();
+                let idLanguagesFlat = idLanguages.flat();
 
                 // console.log(idLocationFlat);
 
@@ -474,6 +491,14 @@ const server = createServer(async (req, res) => {
 
                 let realReferralClient = referralClientLoad
                     .filter(partner => idRefCliFlat.includes(partner.id))
+                    .map(partner => partner)
+                
+                let realLanguages = languagesLoad
+                    .filter(partner => idLanguagesFlat.includes(partner.id))
+                    .map(partner => partner)
+    
+                let realLocNotIta = locationNotItaLoad
+                    .filter(partner => idLocNotItaFlat.includes(partner.id))
                     .map(partner => partner)
 
                 // console.log(realLocation);
@@ -605,13 +630,16 @@ const server = createServer(async (req, res) => {
                 let adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
                 let retention = adVerification.replace('{retention}', realName.map(partner => (partner.retention == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Retention</span>" : ''));
                 let advocacy = retention.replace('{advocacy}', realName.map(partner => (partner.advocacy == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Advocacy</span>" : ''));
+                let sale = advocacy.replace('{sales}', realName.map(partner => partner.sales));
+                let locNoI = sale.replace('{locationNoIt}', realLocNotIta.map(partner => partner.name).join(','));
+                let Langua = locNoI.replace('{languages}', realLanguages.map(partner => partner.name).join(','));
 
-                cache.saveDataToCacheMyPage(advocacy);
+                cache.saveDataToCacheMyPage(Langua);
                 // console.log(nameOfAgency);
                 // console.log(emailFromCookie)
 
                 res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.end(advocacy);
+                res.end(Langua);
             } catch (err) {
                 console.error(err);
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -642,6 +670,8 @@ const server = createServer(async (req, res) => {
             let managedPlatformLoad = await dbLayer.getNormalPlatformFromDb(id_cardsAgency);
             let mainClientLoad = await dbLayer.getNormalMainClientFromDb(id_cardsAgency);
             let referralClientLoad = await dbLayer.getNormalReferralClientFromDb(id_cardsAgency);
+            let languagesLoad = await dbLayer.getNormalLanguagesFromDb(id_cardsAgency);
+            let locationNotItaLoad = await dbLayer.getNormalLocNoItaFromDb(id_cardsAgency);
 
             let idFounder = nameOfAgency
                 .filter(partner => partner.name !== false)
@@ -683,6 +713,16 @@ const server = createServer(async (req, res) => {
                 .filter(partner => partner.website == emailFromCookie)
                 .map(partner => partner.referralClient)
 
+            let idLanguages = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.languages)
+
+            let idLocNotIta = nameOfAgency
+                .filter(partner => partner.name !== false)
+                .filter(partner => partner.website == emailFromCookie)
+                .map(partner => partner.locationsNotItaly)
+
             // console.log(idLocation);
             // console.log(idFounder);
 
@@ -694,6 +734,8 @@ const server = createServer(async (req, res) => {
             let idPlatformFlat = idPlatform.flat();
             let idMainClientFlat = idMainClient.flat();
             let idRefCliFlat = idReferralClient.flat();
+            let idLocNotItaFlat = idLocNotIta.flat();
+            let idLanguagesFlat = idLanguages.flat();
 
             // console.log(idLocationFlat);
 
@@ -731,6 +773,14 @@ const server = createServer(async (req, res) => {
 
             let realReferralClient = referralClientLoad
                 .filter(partner => idRefCliFlat.includes(partner.id))
+                .map(partner => partner)
+                
+            let realLanguages = languagesLoad
+                .filter(partner => idLanguagesFlat.includes(partner.id))
+                .map(partner => partner)
+    
+            let realLocNotIta = locationNotItaLoad
+                .filter(partner => idLocNotItaFlat.includes(partner.id))
                 .map(partner => partner)
 
             // console.log(realLocation);
@@ -862,9 +912,12 @@ const server = createServer(async (req, res) => {
             let adVerification = adServer.replace("{adVerification}", realName.map(partner => partner.AdVerification == true ? `<span class = "active-innovation fs-12 light-text">Featured</span>` : `<span class = "inactive-innovation fs-12 light-text">No</span>`));
             let retention = adVerification.replace('{retention}', realName.map(partner => (partner.retention == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Retention</span>" : ''));
             let advocacy = retention.replace('{advocacy}', realName.map(partner => (partner.advocacy == true) ? "<span class = 'awarenessAndConversion light-text fs-16'>Advocacy</span>" : ''));
+            let sale = advocacy.replace('{sales}', realName.map(partner => partner.sales));
+            let locNoI = sale.replace('{locationNoIt}', realLocNotIta.map(partner => partner.name).join(','));
+            let Langua = locNoI.replace('{languages}', realLanguages.map(partner => partner.name).join(','));
 
             res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(advocacy);
+            res.end(Langua);
         } catch (err) {
             console.error(err);
             res.writeHead(500, { 'Content-Type': 'text/plain' });

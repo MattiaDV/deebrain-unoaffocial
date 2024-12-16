@@ -246,6 +246,10 @@
     align-items: center;
 }
 
+.more-infos {
+    font-size: 14px;
+}
+
 .website-link {
     display: flex;
     justify-content: center;
