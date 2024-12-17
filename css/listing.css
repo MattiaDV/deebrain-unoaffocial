@@ -1,12 +1,12 @@
 body {
-    background: #eef5fe;
+    background: #fff;
 } 
 
 .container-page {
     padding: 0px;
     width: 100%;
     margin: 0 auto;
-    background: #eef5fe;
+    background: #fff;
     border-radius: 4px;
     display: flex;
     justify-content: flex-start;
@@ -20,12 +20,60 @@ body {
     right: 20px !important;
 }
 
+.subcategoryX {
+    display: flex;
+    max-width: 80%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.subcategoryX li input {
+    display: none;
+}
+
+.subcategoryX li {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.subcategoryX li label {
+    padding: 10px;
+    border: 1px solid #00bcd4;
+    border-radius: 24px;
+    color: #00bcd4;
+    cursor: pointer;
+    min-width: 100px !important;
+    text-align: center;
+    transition: 0.4s;
+}
+
+.subcategoryX li label:hover {
+    padding: 10px;
+    border: 1px solid #00bcd4;
+    border-radius: 24px;
+    background: #00bcd4;;
+    color: #fff;
+}
+
+.subcategoryX li input:checked ~ label {
+    padding: 10px;
+    border: 1px solid #00bcd4;
+    border-radius: 24px;
+    background: #00bcd4;;
+    color: #fff;
+}
+
 .upper-part-page {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    background: #0097b2;
+    /* background: #00bcd4; */
     padding: 20px;
     padding-bottom: 0px !important;
     margin-bottom: 32px;
@@ -41,7 +89,7 @@ body {
 }
 
 .column-left-container {
-    width: 30%;
+    width: 20%;
 }
 
 .title-list {
@@ -52,8 +100,40 @@ body {
 }
 
 .subtitle-list {
-    color: #fff;
+    color: #00bcd4;
     margin-left: 0px !important;
+    min-width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.subtitle-list span {
+    flex: 0 0 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtitle-list span input {
+    display: none;
+}
+
+.subtitle-list span input:checked ~ label {
+    background: #00bcd4;
+    color: white;
+}
+
+.subtitle-list span label {
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #00bcd4;
+    border-radius: 24px;
+    transition: 0.4s;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
 }
 
 .title-list-fil {
@@ -66,7 +146,7 @@ body {
 }
 
 .column-right-container {
-    width: 100%;
+    width: 80%;
     padding: 20px;
     display: flex;
     justify-content: flex-start;
@@ -112,7 +192,7 @@ summary {
     font-weight: bold;
     font-size: 16px;
     background: none;
-    color: #0097b2;
+    color: #00bcd4;
     min-width: 100%;
     padding: 10px; 
     position: relative;
@@ -129,7 +209,22 @@ summary li span {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 100% !important;
+    /* min-width: 100% !important; */
+}
+
+.aka {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+details ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 details ul li {
@@ -143,7 +238,7 @@ details ul li {
 
 .filter-listing {
     background: white;
-    color: #0097b2;
+    color: #00bcd4;
     padding: 20px;
     margin-top: 20px;
     margin-left: 20px;
@@ -161,29 +256,42 @@ details ul li {
 .buttons {
     margin-top: 10px;
     display: flex;
-    flex-direction: column;
+    margin-left: 40px;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    flex-direction: column;
+    max-width: 80%;
     gap: 10px;
 }
 
 .buttons * {
-    min-width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding-right: 0px !important;
+}
+
+.title-fil {
+    min-width: 80%;
 }
 
 .buttons * button {
     min-width: 100% !important;
+    max-width: 100% !important;
     font-size: 16px !important;
     background: none !important;
-    color: #0097b2 !important;
-    border: 1px solid #0097b2 !important;
-    padding: 5px !important;
+    color: #00bcd4 !important;
+    border: 1px solid #00bcd4 !important;
+    padding: 10px !important;
+    border-radius: 24px !important;
     transition: 0.4s;
+    margin-right: 0px !important;
 }
 
 .buttons * button:hover {
-    background: #0097b2 !important;
+    background: #00bcd4 !important;
     color: white !important;
 }
 
@@ -204,13 +312,13 @@ ul li {
 }
 
 .title-fil:hover {
-    color: #0097b2;
+    color: #00bcd4;
 }
 
 .subcategory {
     display: none;
     padding-left: 20px;
-    background-color: #0097b2;
+    background-color: #00bcd4;
     border: 1px solid white;
     color: white;
     width: 100%;
@@ -220,6 +328,7 @@ ul li {
 }
 
 details[open] .subcategory {
+    min-width: 100%;
     display: block;
     padding: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -234,6 +343,15 @@ details[open] .subcategory {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 32px;
+    max-width: 90%;
+    margin-left: 60px;
+}
+
+.filtr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
 }
 
 .cat details {
@@ -280,7 +398,7 @@ details[open] .subcategory {
 }
 
 .card-account:hover {
-    border-color: #0097b2;
+    border-color: #00bcd4;
 }
 
 .left-part-card {
@@ -453,9 +571,9 @@ details[open] .subcategory {
 
 .buttons-style-listing {
     font-size: 16px;
-    background: #0097b2;
+    background: #00bcd4;
     color: #fff;
-    border: 1px solid #0097b2;
+    border: 1px solid #00bcd4;
     font-weight: 500;
     border-radius: 4px;
     padding: 20px !important;
@@ -470,7 +588,7 @@ details[open] .subcategory {
 }
 
 .buttons-style-listing:hover {
-    color: #0097b2;
+    color: #00bcd4;
     background: #fff;
 }
 
@@ -495,6 +613,26 @@ details[open] .subcategory {
 }
 
 @media screen and (max-width: 1250px) {
+    .column-right-container {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .upper-part-page {
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .upper-part-page .subtitle-list {
+        min-width: 90%;
+        padding: 0px;
+    }
+
     .left-part-card {
         min-width: 14%;
         margin-right: 10px;
@@ -663,15 +801,15 @@ details[open] .subcategory {
         min-width: 80% !important;
         font-size: 16px !important;
         background: none !important;
-        color: #0097b2 !important;
-        border: 1px solid #0097b2 !important;
+        color: #00bcd4 !important;
+        border: 1px solid #00bcd4 !important;
         padding: 5px !important;
         transition: 0.4s;
     }
 
     .filter-listing {
         background: white;
-        color: #0097b2;
+        color: #00bcd4;
         padding: 0px;
         margin-top: 20px;
         margin-left: 0px;
@@ -684,5 +822,11 @@ details[open] .subcategory {
         max-width: 100%;
         height: calc(100% - 20px);
         overflow-y: scroll;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .column-left-container {
+        min-width: 30%
     }
 }

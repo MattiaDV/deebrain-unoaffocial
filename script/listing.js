@@ -24,8 +24,8 @@ window.addEventListener('scroll', function () {
     if (this.window.innerWidth > 1250) {
         if (window.scrollY > 150) {
             filters.style.position = "fixed";
-            filters.style.top = "20px";
-            filters.style.left = "20px";
+            filters.style.top = "10px";
+            filters.style.left = "10px";
             filters.style.height = "auto";
             filters.style.width = "20%";
         } else {
@@ -134,3 +134,54 @@ function resetFilter() {
 
     filter();
 }
+
+// all performance media digital
+
+let fillAll = document.getElementById('all');
+let perf = document.getElementById('performance');
+let media = document.getElementById('media');
+let digital = document.getElementById('digital');
+
+fillAll.addEventListener('change', function() {
+    for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
+        document.getElementById(advancedFilter[resetA]).checked = true;
+    }
+
+    filter();
+})
+
+perf.addEventListener('change', function() {
+    for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
+        if (advancedFilter[resetA] !== "search-perform-agency") {
+            document.getElementById(advancedFilter[resetA]).checked = false;
+        } else {
+            document.getElementById(advancedFilter[resetA]).checked = true;
+        }
+    }
+
+    filter();
+})
+
+media.addEventListener('change', function() {
+    for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
+        if (advancedFilter[resetA] !== "search-media-center") {
+            document.getElementById(advancedFilter[resetA]).checked = false;
+        } else {
+            document.getElementById(advancedFilter[resetA]).checked = true;
+        }
+    }
+
+    filter();
+})
+
+digital.addEventListener('change', function() {
+    for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
+        if (advancedFilter[resetA] !== "search-digital-agency") {
+            document.getElementById(advancedFilter[resetA]).checked = false;
+        } else {
+            document.getElementById(advancedFilter[resetA]).checked = true;
+        }
+    }
+
+    filter();
+})

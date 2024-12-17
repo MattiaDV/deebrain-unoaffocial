@@ -43,7 +43,7 @@
                                 </ul>
                             </li>
                             </details>
-                            <details>
+                            <!-- <details>
                                <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Main services </span><span>↓</span></span></summary> 
                                     <ul class="subcategory">
                                         {filter-mainService}
@@ -70,7 +70,7 @@
                                         {filter-managedPlatform}
                                     </ul>
                                 </li>
-                            </details>
+                            </details> -->
                             <!-- <details>
                                 <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Billing</span><span>↓</span></span></summary>
                                     <ul class="subcategory">
@@ -79,15 +79,14 @@
                                     </ul>
                                 </li>
                             </details> -->
-                            <details>
-                                <summary><li class="fs-16 medium-bold-text category"><span class = "title-fil"><span>Conversion & Awareness</span><span>↓</span></span></summary>
-                                    <ul class="subcategory">
-                                        <li class="fs-16 light-text"><input type="checkbox" id="search-conversion" checked> Conversion</li>
-                                        <li class="fs-16 light-text"><input type="checkbox" id="search-awareness" checked> Awarness</li>
-                                        <li class="fs-16 light-text"><input type="checkbox" id="search-consideration" checked> Consideration</li>
+                                    <ul class="subcategoryX">
+                                        <div class = "aka">
+                                            <li class="fs-16 light-text"><input type="checkbox" id="search-conversion" checked> <label for = 'search-conversion'>Conversion</label></li>
+                                            <li class="fs-16 light-text"><input type="checkbox" id="search-awareness" checked> <label for="search-awareness">Awareness</label></li>
+                                            <li class="fs-16 light-text"><input type="checkbox" id="search-consideration" checked> <label for="search-consideration">Consideration</label></li>
+                                        </div>
                                     </ul>
                                 </li>
-                            </details>
                         </ul>
 
                         <div class = "buttons">
@@ -101,11 +100,11 @@
             <div class = "column-right-container">
                 <div class = "container-list">
                     <div class = "upper-part-page">
-                        <span class = "fs-70 medium-bold-text title-list">
-                            Listing
-                        </span>
                         <span class = "description fs-12 light-text subtitle-list">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel, voluptates est? Reprehenderit mollitia incidunt tenetur optio laboriosam accusantium, quibusdam modi? Culpa adipisci ea harum labore quas nihil tempore incidunt deserunt!
+                            <span class="filters-ada"><input name="no-fil" type="radio" id="all" checked><label for="all">All</label></span>
+                            <span class="filters-ada"><input name="no-fil" type="radio" id="performance"><label for="performance">Performance</label></span>
+                            <span class="filters-ada"><input name="no-fil" type="radio" id="media"><label for="media">Media</label></span>
+                            <span class="filters-ada"><input name="no-fil" type="radio" id="digital"><label for="digital">Digital</label></span>
                         </span>
                     </div>
                     <div class = "container-cards">

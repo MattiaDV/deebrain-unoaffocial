@@ -90,17 +90,18 @@
 
 
 .listing-container {
-    height: auto;
+    height: 100vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--background-gray);
+    flex-direction: row-reverse;
 }
 
 .column-listing {
     height: auto;
-    width: calc(100% / 2);
+    width: 30%;
     /* padding: 40px; */
     padding-top: 5%;
     padding-bottom: 3%;
@@ -118,6 +119,7 @@
 .listing-column-left {
     padding-left: 10%;
     display: flex;
+    max-width: 70%;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
