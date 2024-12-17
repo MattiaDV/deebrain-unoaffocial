@@ -78,7 +78,7 @@
 
     .container-left-home {
         position: relative;
-        margin-top: 0px;
+        margin-top: 50vh !important;
         display: flex;
         width: 100%;
         margin-left: 0px;
