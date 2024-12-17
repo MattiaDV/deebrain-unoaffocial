@@ -10,16 +10,6 @@ const port = 3000
 import path from 'path';
 import session from 'express-session';
 
-const mimeTypes = {
-    '.html': 'text/html',
-    '.css': 'text/css',
-    '.js': 'application/javascript',
-    '.png': 'image/png',
-    '.jpg': 'image/jpeg',
-    '.jpeg': 'image/jpeg',
-    '.svg': 'image/svg+xml',
-};
-
 
 app.use(session({
     secret: 'abcdefghi',
@@ -32,6 +22,31 @@ app.use(session({
 }));
 
     app.get('/', async (req, res) => {
+        try {
+            let htmlContent = await readFile('index.html', 'utf8');
+            cache.clearCacheEditPage();
+            cache.clearCacheListing();
+            cache.clearCacheMyPage();
+            console.log("Ho pulito la cache");
+            if (req.session) {
+                req.session.destroy(err => {
+                    if (err) {
+                        console.log("Errore nell'eliminazione della sessione: " + JSON.stringify(err));
+                    } else {
+                        console.log("Sessione distrutta correttamente");
+                    }
+                });
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(htmlContent);
+        } catch (err) {
+            res.writeHead(500, { 'Content-Type': 'text/plain' });
+            res.end('Errore del server interno');
+        }
+        return;
+    });
+
+    app.get('/index.html', async (req, res) => {
         try {
             let htmlContent = await readFile('index.html', 'utf8');
             cache.clearCacheEditPage();

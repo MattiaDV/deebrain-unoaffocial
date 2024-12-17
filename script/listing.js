@@ -17,6 +17,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // console.log(advancedFilter);
 
+window.addEventListener('scroll', function () {
+    const filters = document.getElementById('filters');
+    if (this.window.innerWidth > 1250) {
+        if (window.scrollY > 150) {
+            filters.style.position = "fixed";
+            filters.style.top = "20px";
+            filters.style.left = "20px";
+            filters.style.height = "auto";
+            filters.style.width = "20%";
+        } else {
+            filters.style.position = "static";
+            filters.style.width = "96%";
+            filters.style.height = "auto";
+        }
+    }
+});
+
+
 let cards = document.getElementsByClassName('card-account');
 
 function filter() {
