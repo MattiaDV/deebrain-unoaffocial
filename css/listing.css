@@ -100,11 +100,13 @@ body {
 }
 
 .subtitle-list {
-    color: #00bcd4;
+    color: #fff;
     margin-left: 0px !important;
     min-width: 100%;
     display: flex;
     justify-content: flex-start;
+    background: #00bcd4;
+    border-radius: 24px;
     align-items: center;
     gap: 10px;
 }
@@ -121,14 +123,12 @@ body {
 }
 
 .subtitle-list span input:checked ~ label {
-    background: #00bcd4;
-    color: white;
+    color: #424242;
 }
 
 .subtitle-list span label {
     padding: 10px;
     font-size: 20px;
-    border: 1px solid #00bcd4;
     border-radius: 24px;
     transition: 0.4s;
     cursor: pointer;
@@ -717,6 +717,10 @@ details[open] .subcategory {
         gap: 10px;
     }
 
+    .subtitle-list {
+        display: none;
+    }
+
     .infos-card li {
         color: #424242;
         min-width: 100%;
@@ -746,17 +750,24 @@ details[open] .subcategory {
         font-size: 12px;
         min-width: 120px;
         margin-left: 10px;
-    }.header-deebrain {
+    }
+    
+    .header-deebrain {
         width: 100% !important;
         padding: 10px !important;
         background: white !important;
         max-height: 150px !important;
         display: flex !important;
+        z-index: 101 !important;
         /* padding-left: 80px !important; */
         /* padding-right: 80px !important; */
         justify-content: space-between !important;
         align-items: center !important;
         flex-direction: row !important;
+    }
+
+    .voci {
+        z-index: 101;
     }
 
     .deebrain-menu {

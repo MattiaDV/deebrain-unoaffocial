@@ -210,7 +210,7 @@
     padding: 10px;
     height: 200px;
     width: 200px;
-    background: var(--background-white);
+    background: var(--background-gray);
     border-radius: 4px;
     color: var(--button-color-bg);
 }
@@ -1323,6 +1323,8 @@ li {
         justify-content: center;
         align-items: center;
         flex-direction: column-reverse;
+        margin-top: 200px;
+        background: white;
     }
 
     .listing-column-left {
@@ -1348,6 +1350,11 @@ li {
 
     .datas-listing {
         min-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .data-listing svg {
@@ -1356,7 +1363,7 @@ li {
     }
 
     .other-data-listing {
-        max-width: calc(100% / 3.3);
+        max-width: calc(100% / 3.1);
     }
 
     .card-starter {
@@ -1368,6 +1375,19 @@ li {
         padding: 10px;
         border-radius: 4px;
         width: calc(100%);
+    }
+
+    .filtr {
+        border: 1px solid #00bcd4;
+        border-radius: 4px;
+    }
+
+    .subcategory {
+        max-width: 80%;
+    } 
+    
+    .listing-main-services-container {
+        margin-top: 250px;
     }
 
     .card-main-services {
