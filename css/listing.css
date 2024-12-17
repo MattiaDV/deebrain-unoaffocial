@@ -266,8 +266,9 @@ details[open] .subcategory {
     color: #424242;
     border: 1px solid white;
     border-radius: 4px;
-    width: calc(100%);
-    height: 130px;
+    width: calc(100% / 4.2);
+    min-height: 400px;
+    max-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -275,6 +276,7 @@ details[open] .subcategory {
     cursor: default;
     padding-bottom: 10px;
     transition: 0.5s;
+    flex-direction: column;
 }
 
 .card-account:hover {
@@ -282,21 +284,23 @@ details[open] .subcategory {
 }
 
 .left-part-card {
-    width: 10%;
-    margin-top: 10px;
+    width: 100%;
+    /* margin-top: 10px; */
     height: 100%;
     overflow: hidden;
-    margin-right: 16px;
+    /* margin-right: 16px; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .left-part-card img {
-    width: 100px;
+    max-width: 200px;
+    min-width: 200px;
     height: auto;
-    border-radius: 50%;
-    margin: 10px;
+    border-radius: 16px;
+    min-height: 200px;
+    max-height: 200px;
 }
 
 .right-part-card {
@@ -306,11 +310,17 @@ details[open] .subcategory {
     margin-top: 10px;
     display: flex;
     height: 100%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     transition: 0.5s;
     overflow: hidden;
+    gap: 10px;
+}
+
+.buttonss-listing-infos {
+    width: 100%;
+    text-align: center;
 }
 
 .upper-part-card {
@@ -368,10 +378,10 @@ details[open] .subcategory {
 
 .loco {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 5px;
     align-items: center;
-    min-width: 200px;
+    min-width: 100%;
 }
 
 .loco svg {
@@ -429,11 +439,11 @@ details[open] .subcategory {
     overflow: hidden;
     padding-top: 10px;
     padding: 10px;
+    margin-top: 100px !important;
     border-radius: 4px;
     border: 1px solid white;
     background: #0097b2;
     width: 200px;
-    margin-bottom: 20px;
     text-align: center;
     cursor: pointer;
     color: white;
@@ -449,7 +459,7 @@ details[open] .subcategory {
     font-weight: 500;
     border-radius: 4px;
     padding: 20px !important;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     cursor: pointer;
     transition: 0.4s;
     display: flex;
@@ -464,10 +474,52 @@ details[open] .subcategory {
     background: #fff;
 }
 
+@media screen and (max-width: 1350px) {
+    .card-account {
+        background: white;
+        color: #424242;
+        border: 1px solid white;
+        border-radius: 4px;
+        width: calc(100% / 3.2);
+        min-height: 400px;
+        max-height: 400px;
+        display: flex;
+        padding-top: 10px;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        cursor: default;
+        transition: 0.5s;
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 1250px) {
     .left-part-card {
         min-width: 14%;
         margin-right: 10px;
+    }
+
+    .card-account {
+        background: white;
+        color: #424242;
+        border: 1px solid white;
+        border-radius: 4px;
+        width: calc(100%);
+        min-height: 400px;
+        max-height: 400px;
+        display: flex;
+        padding-top: 10px;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        cursor: default;
+        transition: 0.5s;
+        flex-direction: column;
+    }
+
+    .card-account .left-part-card img {
+        border-radius: 4px;
     }
 
     .buttons {
@@ -481,45 +533,6 @@ details[open] .subcategory {
 
     .buttons li {
         text-align: center;
-    }
-
-    .card-account {
-        background: white;
-        color: #424242;
-        border: 1px solid white;
-        border-radius: 4px;
-        width: calc(100%);
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.5s;
-        cursor: default;
-        padding-bottom: 10px;
-        transition: 0.5s;
-    }
-
-    .left-part-card {
-        min-width: 100% !important;
-    }
-
-    .left-part-card img {
-        max-width: 90% !important;
-    }
-
-    .right-part-card {
-        position: relative;
-        width: 90%;
-        margin-right: 10px;
-        margin-top: 10px;
-        display: flex;
-        height: 100%;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: column;
-        transition: 0.5s;
-        overflow: hidden;
     }
 
     .location-a {
@@ -539,7 +552,7 @@ details[open] .subcategory {
         justify-content: center;
         gap: 5px;
         align-items: center;
-        min-width: 200px;
+        min-width: 100%;
     }
 
     .bb {
