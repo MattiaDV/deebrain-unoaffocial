@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    if (window.innerWidth > 1250) {
+        document.querySelector('.filtr').open = true;
+    }
+
     fil();
 });
-
-// console.log(advancedFilter);
 
 window.addEventListener('scroll', function () {
     const filters = document.getElementById('filters');
