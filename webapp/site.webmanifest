@@ -1,0 +1,11 @@
+{
+    "short_name": "DeeBrain",
+    "name": "DeeBrain, the perfect software for your agency",
+    "icons": [{
+        "src": "logo.jpg",
+        "type": "../img/logo-db.png",
+        "sizes": "192x192"
+    }],
+    "theme_color": "#00bcd4",
+    "display": "fullscreen"
+}
