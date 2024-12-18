@@ -52,13 +52,13 @@ body {
     transition: 0.4s;
 }
 
-.subcategoryX li label:hover {
+/* .subcategoryX li label:hover {
     padding: 10px;
     border: 1px solid #00bcd4;
     border-radius: 24px;
     background: #00bcd4;;
     color: #fff;
-}
+} */
 
 .subcategoryX li input:checked ~ label {
     padding: 10px;
