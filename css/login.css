@@ -994,7 +994,11 @@ select {
         padding: 5px !important;
     }
 
-    .form-1 {
+    .contain-form {
         min-height: 75vh;
+    }
+
+    .googleReg {
+        min-width: 100%;
     }
 }
