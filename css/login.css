@@ -14,7 +14,7 @@ html, body { z-index: -2; background: url('https://myndo.it/wp-content/uploads/2
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    background-color: #0097b2;
+    background-color: #00bcd4;
     opacity: 100%;
 }
 
@@ -25,14 +25,14 @@ html, body { z-index: -2; background: url('https://myndo.it/wp-content/uploads/2
     border: 1px solid white;
     border-radius: 4px;
     background: white;
-    color: #0097b2 !important;
+    color: #00bcd4 !important;
     cursor: pointer;
     font-size: 20px !important;
     transition: 0.4s;
 }
 
 .return-home-no-log input[type="button"]:hover {
-    background: #0097b2;
+    background: #00bcd4;
     color: white !important;
 }
 
@@ -84,7 +84,7 @@ input {
 }
 
 input:focus {
-    border-color: #0097b2 !important;
+    border-color: #00bcd4 !important;
     color: #424242 !important;
     background: none !important;
 }
@@ -94,7 +94,7 @@ select {
 }
 
 select:focus {
-    border-color: #0097b2 !important;
+    border-color: #00bcd4 !important;
     color: #424242 !important;
     background: none !important;
 }
@@ -251,8 +251,8 @@ h1 {
     align-items: center !important;
     font-size: 12px !important;
     background: none !important;
-    border-color: #0097b2 !important;
-    color: #0097b2 !important;
+    border-color: #00bcd4 !important;
+    color: #00bcd4 !important;
     font-weight: 600 !important;
 }
 
@@ -261,8 +261,8 @@ h1 {
     padding: 10px;
     width: 100%;
     margin-top: 32px;
-    border: 1px solid #0097b2 !important;
-    background: #0097b2 !important;
+    border: 1px solid #00bcd4 !important;
+    background: #00bcd4 !important;
     color: white !important;
     border-radius: 4px;
     font-size: 12px !important;
@@ -275,7 +275,7 @@ h1 {
 }
 
 .infos-referral input[type = "button"]:hover {
-    background: #0097b2 !important;
+    background: #00bcd4 !important;
     color: white !important;
 }
 
@@ -338,35 +338,35 @@ h1 {
 }
 
 .step.active {
-    background: #0097b2;
+    background: #00bcd4;
 }
 
 .step-5.active {
-    background: #0097b2;
+    background: #00bcd4;
 }
 
 .stepper-container.step-1-active .line {
-    background: linear-gradient(to right, #0097b2 16%, #424242 84%);
+    background: linear-gradient(to right, #00bcd4 16%, #424242 84%);
 }
 
 .stepper-container.step-2-active .line {
-    background: linear-gradient(to right, #0097b2 32%, #424242 68%);
+    background: linear-gradient(to right, #00bcd4 32%, #424242 68%);
 }
 
 .stepper-container.step-3-active .line {
-    background: linear-gradient(to right, #0097b2 48%, #424242 52%);
+    background: linear-gradient(to right, #00bcd4 48%, #424242 52%);
 }
 
 .stepper-container.step-4-active .line {
-    background: linear-gradient(to right, #0097b2 64%, #424242 36%);
+    background: linear-gradient(to right, #00bcd4 64%, #424242 36%);
 }
 
 .stepper-container.step-5-active .line {
-    background: linear-gradient(to right, #0097b2 88%, #424242 12%);
+    background: linear-gradient(to right, #00bcd4 88%, #424242 12%);
 }
 
 .stepper-container.step-6-active .line {
-    background: #0097b2;
+    background: #00bcd4;
 }
 
 
@@ -409,7 +409,7 @@ h1 {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px;
@@ -463,7 +463,7 @@ div.city > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px !important;
@@ -488,7 +488,7 @@ div.service > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px !important;
@@ -513,7 +513,7 @@ div.Mmedia > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px !important;
@@ -538,7 +538,7 @@ div.Mplatform > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px !important;

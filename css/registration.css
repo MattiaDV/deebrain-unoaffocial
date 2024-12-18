@@ -1105,15 +1105,15 @@ select {
     #form-5 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 550px !important;
-        max-height: 700px !important;
+        min-height: 800px !important;
+        max-height: 800px !important;
     }
 
     #form-6 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 700px !important;
-        max-height: 700px !important;
+        min-height: 600px !important;
+        max-height: 600px !important;
     }
 
     #form-7 {
@@ -1121,6 +1121,14 @@ select {
         max-width: 100%;
         min-height: 550px !important;
         max-height: 700px !important;
+    }
+
+    .too {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row-reverse;
+        gap: 10px;
     }
 
     .awacon-title {
@@ -1146,15 +1154,24 @@ select {
     }
 
     .tabReferral {
-        overflow-x: scroll;
-        border: 1px solid black;
-        min-width: 120%;
-        max-width: 120%;
-        padding: 20px;
         border-radius: 4px;
         display: flex;
+        padding-top: 470px;
         justify-content: flex-start;
         align-items: center;
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+
+    .tabReferral tr {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border-bottom: 1px solid #00bcd4;
+        min-width: 100%;
     }
 
     .tabReferral tr td input {
@@ -1180,9 +1197,9 @@ select {
     .all-infos {
         position: relative;
         top: 0%;
-        min-height: 800vh;
+        min-height: 600vh;
         padding: 20px;
-        top: 350%;
+        top: 250%;
         overflow-y: visible !important;
         display: flex;
         justify-content: flex-start;
