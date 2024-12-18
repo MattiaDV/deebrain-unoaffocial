@@ -117,7 +117,6 @@
 }
 
 .listing-column-left {
-    padding-left: 10%;
     display: flex;
     max-width: 70%;
     justify-content: flex-start;
@@ -196,9 +195,10 @@
 
 .other-datas-listing {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
     width: 100%;
+    gap: 10px;
     margin-top: 32px;
 }
 
@@ -208,11 +208,14 @@
     align-items: center;
     flex-direction: column;
     padding: 10px;
-    height: 200px;
-    width: 200px;
-    background: var(--background-gray);
+    min-height: 150px;
+    min-width: 150px;
+    max-height: 150px;
+    max-width: 150px;
+    background: none;
     border-radius: 4px;
     color: var(--button-color-bg);
+    border: 1px solid #424242;
 }
 
 .under-other-data-listing {
@@ -1387,7 +1390,7 @@ li {
     } 
     
     .listing-main-services-container {
-        margin-top: 250px;
+        margin-top: 100px;
     }
 
     .card-main-services {
