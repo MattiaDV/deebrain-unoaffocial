@@ -1098,8 +1098,8 @@ select {
     #form-4 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 800px !important;
-        max-height: 800px !important;
+        min-height: 780px !important;
+        max-height: 780px !important;
     }
 
     #form-5 {
@@ -1231,6 +1231,57 @@ select {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        flex-direction: column;
+    }
+}
+    
+@media screen and (max-height: 852px) {
+    .all-infos {
+        position: relative;
+        top: 0%;
+        min-height: 700vh;
+        padding: 20px;
+        top: 300%;
+        overflow-y: visible !important;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 0%;
+        max-width: 90%;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-height: 720px) {
+    .all-infos {
+        position: relative;
+        top: 0%;
+        min-height: 720vh;
+        padding: 20px;
+        top: 310%;
+        overflow-y: visible !important;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 0%;
+        max-width: 90%;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .all-infos {
+        position: relative;
+        top: 0%;
+        min-height: 800vh;
+        padding: 20px;
+        top: 350%;
+        overflow-y: visible !important;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 0%;
+        max-width: 90%;
         flex-direction: column;
     }
 }
