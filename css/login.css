@@ -73,8 +73,8 @@ html, body { z-index: -2; background: url('https://myndo.it/wp-content/uploads/2
     flex-direction: column;
     border-radius: 4px;
     width: auto;
-    max-height: 450px;
-    height: auto;
+    max-height: 600px !important;
+    min-height: 600px !important;
     box-shadow: 0 16px 80px rgb(116, 116, 116);
 }
 
@@ -986,7 +986,7 @@ select {
         margin-left: 0;
         position: relative;
         margin-left: 20%;
-        max-width: 70%;
+        max-width: 80%;
     }
 
     .return-home {
