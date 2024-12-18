@@ -46,7 +46,7 @@ body {
 }
 
 .section-name {
-    background: #0097b2;
+    background: #00bcd4;
     color: white;
     padding: 20px;
     display: flex;
@@ -86,7 +86,7 @@ body {
 
 .section-edit {
     background: white;
-    color: #0097b2;
+    color: #00bcd4;
     padding: 20px;
     margin-left: 40px;
     list-style: none;
@@ -146,7 +146,7 @@ body {
 }
 
 .edit-parts li.active {
-    background: #0097b2;
+    background: #00bcd4;
     color: white;
     transform: scale(0.95);
 }
@@ -160,7 +160,7 @@ body {
 }
 
 .edit-parts li:hover {
-    background: #0097b2;
+    background: #00bcd4;
     color: white;
     transform: scale(0.95);
 }
@@ -319,9 +319,9 @@ div.infos-referral input {
 }
 
 .special input[type = "submit"] {
-    background: #0097b2;
+    background: #00bcd4;
     color: white !important;
-    border: 1px solid #0097b2 !important;
+    border: 1px solid #00bcd4 !important;
     padding: 10px;
     border-radius: 4px;
     width: 150px;
@@ -345,7 +345,7 @@ div.infos-referral input {
     width: 150px !important;
     max-width: 150px;
     border-radius: 4px;
-    border: 1px solid #0097b2 !important;
+    border: 1px solid #00bcd4 !important;
     color: #adadad !important;
     padding: 10px !important;
     display: block !important;
@@ -357,7 +357,7 @@ div.infos-referral input {
 }
 
 .nameOfMainClient input:focus {
-    background: #0097b2 !important;
+    background: #00bcd4 !important;
     color: white !important;
 }
 
@@ -370,9 +370,9 @@ div.infos-referral input {
 }
 
 .special-b input[type = "submit"] {
-    background: #0097b2;
+    background: #00bcd4;
     color: white !important;
-    border: 1px solid #0097b2 !important;
+    border: 1px solid #00bcd4 !important;
     padding: 10px;
     border-radius: 4px;
     width: 150px;
@@ -386,9 +386,9 @@ div.infos-referral input {
 }
 
 .buttons-form input[type = "submit"] {
-    background: #0097b2 !important;
+    background: #00bcd4 !important;
     color: white !important;
-    border: 1px solid #0097b2 !important;
+    border: 1px solid #00bcd4 !important;
     padding: 10px;
     border-radius: 4px;
     width: 150px;
@@ -402,7 +402,7 @@ div.infos-referral input {
 
 .buttons-form input[type = "submit"]:hover {
     background: white !important;
-    color: #0097b2 !important;
+    color: #00bcd4 !important;
     transform: scale(0.95);
 }
 
@@ -576,7 +576,7 @@ select {
     padding-left: 15px;
     padding-right: 15px;
     min-width: 120px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px;
@@ -602,7 +602,7 @@ select {
     padding-left: 15px;
     padding-right: 15px;
     min-width: 120px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px;
@@ -920,7 +920,7 @@ div.toggle-men div input[type = "checkbox"] {
 }
 
 div.toggle-men div input[type = "checkbox"]:checked ~ .slider {
-    background: #0097b2;
+    background: #00bcd4;
 }
 
 div.toggle-men div input[type = "checkbox"]:checked ~ .slider .toggle {
@@ -940,7 +940,7 @@ div.toggle-men div input[type = "checkbox"]:checked ~ .slider .toggle {
 }
 
 .infos-about-personal div input:focus {
-    border: 1px solid #0097b2;
+    border: 1px solid #00bcd4;
 }
 
 .toggle {
@@ -949,7 +949,7 @@ div.toggle-men div input[type = "checkbox"]:checked ~ .slider .toggle {
     margin-left: 1px;
     margin-top: 1px;
     margin-bottom: 1px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 50%;
     transition: 0.4s;
 }
@@ -1004,7 +1004,7 @@ div.location-stat div div.choose-citys .city {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #0097b2;
+    background: #00bcd4;
     display: flex;
     font-size: 10px;
     margin-top: -10px;
@@ -1024,7 +1024,7 @@ div.location-stat div div.choose-citys .service {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #0097b2;
+    background: #00bcd4;
     display: flex;
     font-size: 10px;
     margin-top: -10px;
@@ -1044,7 +1044,7 @@ div.location-stat div div.choose-citys .serviceD {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #0097b2;
+    background: #00bcd4;
     display: flex;
     font-size: 10px;
     margin-top: -10px;
@@ -1064,7 +1064,7 @@ div.location-stat div div.choose-citys .Mmedia {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #0097b2;
+    background: #00bcd4;
     display: flex;
     font-size: 10px;
     margin-top: -10px;
@@ -1084,7 +1084,7 @@ div.location-stat div div.choose-citys .Mplatformm {
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    background: #0097b2;
+    background: #00bcd4;
     color: white;
     font-size: 12px;
     font-weight: 200;
@@ -1183,12 +1183,16 @@ div.agency-type-s > select#agencyType {
     cursor: pointer;
 }
 
+.account-header {
+    color: #00bcd4;
+}
+
 .or-menu ul li.active-or {
-    color: #0097b2;
+    color: #00bcd4;
 }
 
 .or-menu ul li:hover {
-    color: #0097b2;
+    color: #00bcd4;
 }
 
 .or-menu ul li.none {
@@ -1274,9 +1278,9 @@ input[type = "submit"].add-ref {
     align-items: center;
     font-size: 16px;
     padding: 2px;
-    background: #0097b2 !important;
+    background: #00bcd4 !important;
     color: white !important;
-    border: 1px solid #0097b2 !important;
+    border: 1px solid #00bcd4 !important;
     cursor: pointer;
     transition: 0.4s;
 }
@@ -1303,15 +1307,15 @@ input[type = "submit"].add-ref {
 }
 
 input[type = "submit"].add-ref:focus {
-    background: #0097b2 !important;
+    background: #00bcd4 !important;
     color: white !important;
-    border-color: #0097b2 !important;
+    border-color: #00bcd4 !important;
 }
 
 input[type = "submit"].add-ref:hover {
     background: white !important;
-    border-color: #0097b2 !important;
-    color: #0097b2 !important;
+    border-color: #00bcd4 !important;
+    color: #00bcd4 !important;
 }
 
 input[type = "submit"].remove-ref {
@@ -1430,7 +1434,7 @@ input {
 
 input:focus {
     background: none !important;
-    border-color: #0097b2 !important;
+    border-color: #00bcd4 !important;
     color: #424242 !important;
 }
 
@@ -1441,7 +1445,7 @@ select {
 
 select:focus {
     background: none !important;
-    border-color: #0097b2 !important;
+    border-color: #00bcd4 !important;
     color: #424242 !important;
 }
 
@@ -1470,7 +1474,7 @@ select:focus {
         max-width: 0% !important;
         z-index: 100;
         display: flex;
-        border-right: 1px solid #0097b2;
+        border-right: 1px solid #00bcd4;
         justify-content: center;
         align-items: center;
         flex-direction: column;
@@ -1490,9 +1494,9 @@ select:focus {
 
 @media screen and (max-width: 1250px) {
     .buttons-form input[type = "submit"] {
-        background: #0097b2 !important;
+        background: #00bcd4 !important;
         color: white !important;
-        border: 1px solid #0097b2 !important;
+        border: 1px solid #00bcd4 !important;
         padding: 10px;
         border-radius: 4px;
         width: 150px;
@@ -1540,7 +1544,7 @@ select:focus {
         min-height: 100vh !important;
         z-index: 100;
         display: flex;
-        border-right: 1px solid #0097b2;
+        border-right: 1px solid #00bcd4;
         justify-content: center;
         align-items: center;
         flex-direction: column;
@@ -1621,8 +1625,8 @@ select:focus {
         height: 100%;
         border-radius: 50%;
         overflow: hidden;
-        background: #0097b2;
-        border: 1px solid #0097b2;
+        background: #00bcd4;
+        border: 1px solid #00bcd4;
         transition: 0.4s;
     }
 
@@ -1636,7 +1640,7 @@ select:focus {
     }
 
     .realS button:hover svg * {
-        fill: #0097b2;
+        fill: #00bcd4;
     }
 
     .deebrain-under-menu li details {

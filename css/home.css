@@ -76,23 +76,23 @@ body {
     padding: 10px;
     background: none;
     border-radius: 24px;
-    border: 1px solid #0097b2;
+    border: 1px solid #00bcd4;
     min-width: 100px;
-    color: #0097b2;
+    color: #00bcd4;
     cursor: pointer;
     transition: 0.4s;
 }
 
 .deebrain-under-menu li button:hover {
-    background: #0097b2;
+    background: #00bcd4;
     color: white;
 }
 
 .deebrain-under-menu li:nth-child(1) button {
     padding: 10px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 24px;
-    border: 1px solid #0097b2;
+    border: 1px solid #00bcd4;
     min-width: 100px;
     color: white;
     cursor: pointer;
@@ -101,7 +101,7 @@ body {
 
 .deebrain-under-menu li:nth-child(1) button:hover {
     background: none;
-    color: #0097b2;
+    color: #00bcd4;
 }
 
 .container-left-home {
@@ -169,20 +169,20 @@ body {
 }
 
 .search-bar-home * input {
-    border-color: #0097b2;
-    background: #0097b2;
+    border-color: #00bcd4;
+    background: #00bcd4;
     color: white;
 }
 
 .search-bar-home * input:hover {
-    border-color: #0097b2;
+    border-color: #00bcd4;
     background: #fff;
-    color: #0097b2;
+    color: #00bcd4;
 }
 
 .search-bar-home * *:focus {
-    border-color: #0097b2;
-    background: #0097b2;
+    border-color: #00bcd4;
+    background: #00bcd4;
     color: white;
 }
 

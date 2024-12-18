@@ -1156,7 +1156,7 @@ li {
 }
 
 .deebrain-under-menu li:hover {
-    color: #0097b2 !important;
+    color: #00bcd4 !important;
     cursor: pointer !important;
 }
 
@@ -1170,7 +1170,7 @@ li {
     border-radius: 0px !important;
     font-weight: 400 !important;
     background: none !important;
-    color: #0097b2 !important;
+    color: #00bcd4 !important;
     display: flex !important;
     justify-content: flex-end !important;
     align-items: center !important;
@@ -1178,7 +1178,7 @@ li {
 }
 
 .summary div {
-    border: 1px solid #0097b2 !important;
+    border: 1px solid #00bcd4 !important;
     padding: 10px !important;
     border-radius: 50% !important;
 }
@@ -1207,15 +1207,15 @@ li {
     background: #fff !important;
     width: 100% !important;
     border-radius: 4px !important;
-    border: 1px solid #0097b2 !important;
-    color: #0097b2 !important;
+    border: 1px solid #00bcd4 !important;
+    color: #00bcd4 !important;
     cursor: pointer !important;
     font-size: 12px !important;
     transition: 0.4s !important;
 }
 
 .voce:hover {
-    background: #0097b2 !important;
+    background: #00bcd4 !important;
     color: white !important;
 }
 
