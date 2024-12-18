@@ -220,6 +220,7 @@
 
 .under-other-data-listing {
     color: var(--title-color);
+    text-align: center;
 }
 
 .listing-column-right {

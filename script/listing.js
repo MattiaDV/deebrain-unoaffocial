@@ -151,7 +151,7 @@ fillAll.addEventListener('change', function() {
 })
 
 perf.addEventListener('change', function() {
-    for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
+    for (let resetA = 0; resetA < 23; resetA++) {
         if (advancedFilter[resetA] !== "search-perform-agency") {
             document.getElementById(advancedFilter[resetA]).checked = false;
         } else {
@@ -163,7 +163,7 @@ perf.addEventListener('change', function() {
 })
 
 media.addEventListener('change', function() {
-    for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
+    for (let resetA = 0; resetA < 23; resetA++) {
         if (advancedFilter[resetA] !== "search-media-center") {
             document.getElementById(advancedFilter[resetA]).checked = false;
         } else {
@@ -175,7 +175,7 @@ media.addEventListener('change', function() {
 })
 
 digital.addEventListener('change', function() {
-    for (let resetA = 0; resetA < advancedFilter.length; resetA++) {
+    for (let resetA = 0; resetA < 23; resetA++) {
         if (advancedFilter[resetA] !== "search-digital-agency") {
             document.getElementById(advancedFilter[resetA]).checked = false;
         } else {
