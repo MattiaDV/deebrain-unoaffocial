@@ -14,7 +14,7 @@ html, body { z-index: -2; background: url('https://myndo.it/wp-content/uploads/2
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    background-color: #0097b2;
+    background-color: #00bcd4;
     opacity: 100%;
 }
 
@@ -138,7 +138,7 @@ input {
 }
 
 input:focus {
-    border-color: #0097b2 !important;
+    border-color: #00bcd4 !important;
     color: #424242 !important;
     background: none !important;
 }
@@ -148,7 +148,7 @@ select {
 }
 
 select:focus {
-    border-color: #0097b2 !important;
+    border-color: #00bcd4 !important;
     color: #424242 !important;
     background: none !important;
 }
@@ -304,13 +304,13 @@ h1 {
     align-items: center !important;
     font-size: 12px !important;
     background: none !important;
-    border-color: #0097b2 !important;
-    color: #0097b2 !important;
+    border-color: #00bcd4 !important;
+    color: #00bcd4 !important;
     font-weight: 600 !important;
 }
 
 .infos-referral input[type = "button"]:hover {
-    background: #0097b2 !important;
+    background: #00bcd4 !important;
     color: white !important;
 }
 
@@ -373,39 +373,39 @@ h1 {
 }
 
 .step.active {
-    background: #0097b2;
+    background: #00bcd4;
 }
 
 .step-5.active {
-    background: #0097b2;
+    background: #00bcd4;
 }
 
 .stepper-container.step-1-active .line {
-    background: linear-gradient(to right, #0097b2 15%, #424242 85%);
+    background: linear-gradient(to right, #00bcd4 15%, #424242 85%);
 }
 
 .stepper-container.step-2-active .line {
-    background: linear-gradient(to right, #0097b2 30%, #424242 70%);
+    background: linear-gradient(to right, #00bcd4 30%, #424242 70%);
 }
 
 .stepper-container.step-3-active .line {
-    background: linear-gradient(to right, #0097b2 45%, #424242 55%);
+    background: linear-gradient(to right, #00bcd4 45%, #424242 55%);
 }
 
 .stepper-container.step-4-active .line {
-    background: linear-gradient(to right, #0097b2 60%, #424242 40%);
+    background: linear-gradient(to right, #00bcd4 60%, #424242 40%);
 }
 
 .stepper-container.step-5-active .line {
-    background: linear-gradient(to right, #0097b2 75%, #424242 25%);
+    background: linear-gradient(to right, #00bcd4 75%, #424242 25%);
 }
 
 .stepper-container.step-6-active .line {
-    background: linear-gradient(to right, #0097b2 90%, #424242 10%);
+    background: linear-gradient(to right, #00bcd4 90%, #424242 10%);
 }
 
 .stepper-container.step-7-active .line {
-    background: #0097b2;
+    background: #00bcd4;
 }
 
 
@@ -448,7 +448,7 @@ h1 {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px;
@@ -478,7 +478,7 @@ div.city > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px;
@@ -532,7 +532,7 @@ div.cityNotItaly > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px !important;
@@ -557,7 +557,7 @@ div.service > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px !important;
@@ -582,7 +582,7 @@ div.Mmedia > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px !important;
@@ -607,7 +607,7 @@ div.Mplatform > span {
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    background: #0097b2;
+    background: #00bcd4;
     border-radius: 4px;
     color: white;
     font-size: 10px !important;
@@ -647,14 +647,14 @@ div.Dservice > span {
     border: 1px solid white;
     border-radius: 4px;
     background: white;
-    color: #0097b2 !important;
+    color: #00bcd4 !important;
     cursor: pointer;
     font-size: 20px !important;
     transition: 0.4s;
 }
 
 .return-home-no-log input[type="button"]:hover {
-    background: #0097b2;
+    background: #00bcd4;
     color: white !important;
 }
 
@@ -1077,43 +1077,50 @@ select {
     #form-1 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 100vh !important;
+        min-height: 550px !important;
+        max-height: 700px !important;
     }
 
     #form-2 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 100vh !important;
+        min-height: 700px !important;
+        max-height: 700px !important;
     }
 
     #form-3 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 100vh !important;
+        min-height: 800px !important;
+        max-height: 800px !important;
     }
 
     #form-4 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 100vh !important;
+        min-height: 800px !important;
+        max-height: 800px !important;
     }
 
     #form-5 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 100vh !important;
+        min-height: 550px !important;
+        max-height: 700px !important;
     }
 
     #form-6 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 100vh !important;
+        min-height: 700px !important;
+        max-height: 700px !important;
     }
 
     #form-7 {
         margin-left: 5% !important;
         max-width: 100%;
-        min-height: 100vh !important;
+        min-height: 550px !important;
+        max-height: 700px !important;
     }
 
     .awacon-title {
@@ -1197,5 +1204,16 @@ select {
         box-shadow: none;
         border-radius: 0px;
         border-bottom: 0px solid black;
+    }
+
+    .container-form {
+        width: 100vw;
+        min-height: 450px !important;
+        max-height: 500px !important;
+        margin-left: -65px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
     }
 }
