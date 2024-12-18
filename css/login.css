@@ -534,6 +534,35 @@ div.Mplatform > span {
     color: white;
 }
 
+.googleReg {
+    background: white;
+    width: 89%;
+    border: 1px solid #424242;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.googleReg:hover {
+    transform: scale(0.95);
+}
+
+.googleReg svg {
+    width: 10%;
+    height: auto;
+}
+
+.googleReg {
+    color: black;
+    font-size: 14px;
+}
+
 .Dservice {
     padding: 5px;
     padding-left: 15px;
@@ -807,6 +836,7 @@ input[type = "button"].back {
     color: red;
     font-weight: 200;
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .form-1 {
@@ -965,6 +995,6 @@ select {
     }
 
     .form-1 {
-        min-height: 65vh;
+        min-height: 75vh;
     }
 }
