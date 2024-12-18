@@ -74,19 +74,19 @@
         function signInWithGoogle() {
         signInWithPopup(auth, provider)
             .then((result) => {
-            const user = result.user;
-            console.log("Utente autenticato:", user);
-            const emailGoogle = result.user.email;
-            document.cookie = "email=" + emailGoogle;
+                const user = result.user;
+                console.log("Utente autenticato:", user);
+                const emailGoogle = result.user.email;
+                document.cookie = "email=" + emailGoogle;
 
-            window.location.href = "home.html";
+                window.location.href = "home.html";
 
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            console.log("Token:", token);
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                console.log("Token:", token);
             })
             .catch((error) => {
-            console.error("Errore di autenticazione:", error.message);
+                console.error("Errore di autenticazione:", error.message);
             });
         }
 
