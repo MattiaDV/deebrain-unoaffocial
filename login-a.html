@@ -54,6 +54,7 @@
     <script type="module">
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
         import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
       
         const firebaseConfig = {
@@ -117,8 +118,10 @@
 
                         if (errorCode === 'auth/invalid-login-credentials') {
                             message.innerHTML = "Wrong password. Try again!";
-                        } else if (errorCode === 'auth/user-not-found') {
-                            message.innerHTML = "No user found with this email";
+                        } 
+                        
+                        if (errorCode === 'auth/email-already-in-use') {
+                            message.innerHTML = "Email already in use";
                         } else {
                             message.innerHTML = "Errore: " + errorMessage;
                         }
