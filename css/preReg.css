@@ -1,0 +1,118 @@
+:root {
+    --color: #00bcd4;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.container-all {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.left-part {
+    min-width: 50%;
+    max-width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.right-part {
+    min-width: 50%;
+    max-width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--color);
+}
+
+.typeOf {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 50%;
+}
+
+p {
+    font-size: 14px;
+}
+
+.typeOf input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.blue{
+    color: var(--color) !important;
+}
+
+.white{
+    color: white !important;
+}
+
+.btn-primary {
+    background: var(--color);
+    color: white;
+    border: 1px solid var(--color);
+    border-radius: 24px;
+}
+
+.btn-primary:hover {
+    background: white;
+    color: var(--color);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--color);
+    border: 1px solid white;
+    border-radius: 24px;
+}
+
+.btn-secondary:hover {
+    background: var(--color);
+    color: white;
+}
+
+.svg {
+    width: 80px;
+    height: 80px;
+}
+
+@media screen and (max-width: 1250px) {
+    .container-all {
+        flex-direction: column;
+    }
+
+    .right-part {
+        min-width: 100%;
+        max-height: 50vh;
+    }
+
+    .left-part {
+        min-width: 100%;
+        max-height: 50vh;
+    }
+
+    .typeOf {
+        text-align: center;
+    }
+}

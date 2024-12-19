@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="manifest" href="./webapp/site.webmanifest">
+    <title>Registration - DEEBRAIN</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/main-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg"></div>
+
+    <form class="all-infos" method="post">
+        <div class="container-form form-1" id="form-1">
+            <div class="contain-form form-1" id="form-1-an">
+                <img src="img/logo-db.png" width="80%" height="auto" class="logo-db">
+                <h1 class="fs-40 medium-bold-text">Sign Up</h1>
+                <a href = "login.html" class = "fs-12 light-text">You are a member? click here</a>
+                <div class="form">
+                    <div class="start-form" id="form-step-1">
+                        <div class="double-info primo">
+                            <div class="one-info">
+                                <span class="fs-16 medium-bold-text">Email</span>
+                                <input type="email" placeholder="your.email@your.site" id="email" name="agencyEmail" required>
+                            </div>
+                            <div class="one-info">
+                                <span class="fs-16 medium-bold-text">Password</span>
+                                <input type="password" placeholder="Password" id="password" name="password" required>
+                            </div>
+                        </div>
+                        <p>OR<br></p>
+                        <div class = "googleReg" id = "googleReg">
+                            <svg viewBox="-3 0 262 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"></path><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"></path><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"></path><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"></path></g></svg>
+                            <p>Sign Up with google</p>
+                        </div>
+                        <div id = "message">
+
+                        </div>
+                        <input type="button" id="submit-button" value="Sign Up">
+                    </div>
+                </div>
+            </div>
+            <div class = "return-home-no-log">
+                <input type="button" class = "return-home fs-12 light-text" onclick="window.location.href = 'index.html'" value="Return home">   
+            </div>
+        </div>
+    </form>
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+      
+        const firebaseConfig = {
+            apiKey: "AIzaSyDxTTVf3tQ2nAp3eTe7q5FAW9NRC01nDJQ",
+            authDomain: "login---listing.firebaseapp.com",
+            projectId: "login---listing",
+            storageBucket: "login---listing.firebasestorage.app",
+            messagingSenderId: "168231985672",
+            appId: "1:168231985672:web:e33e32eb9fa24d9378e7bd",
+            measurementId: "G-Q32EVYNFR7"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        function signInWithGoogle() {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const user = result.user;
+                console.log("Utente autenticato:", user);
+                const emailGoogle = result.user.email;
+                document.cookie = "email=" + emailGoogle;
+
+                window.location.href = "home.html";
+
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                console.log("Token:", token);
+            })
+            .catch((error) => {
+                console.error("Errore di autenticazione:", error.message);
+            });
+        }
+
+            let googleSign = document.getElementById('googleReg');
+            googleSign.addEventListener('click', signInWithGoogle);
+
+        var signin_email_psw = function() {
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            let message = document.getElementById('message');
+
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                message.innerHTML = "Please enter a valid email address.";
+                return;
+            }
+            
+                if (password !== "") {
+                    createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        document.cookie = "email=" + email;
+                        window.location.href = 'listing.html'; 
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+
+                        if (errorCode === 'auth/invalid-login-credentials') {
+                            message.innerHTML = "Wrong password. Try again!";
+                        } else if (errorCode === 'auth/user-not-found') {
+                            message.innerHTML = "No user found with this email";
+                        } else {
+                            message.innerHTML = "Errore: " + errorMessage;
+                        }
+                    });
+                } else {
+                    message.innerHTML = "Insert the password";
+                }
+            }
+
+        let submitButton = document.getElementById('submit-button');
+        submitButton.addEventListener('click', signin_email_psw);
+
+    </script>
+
+</body>
+</html>
