@@ -54,7 +54,6 @@
     <script type="module">
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
         import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, sendPasswordResetEmail, getIdToken } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
       
         const firebaseConfig = {
@@ -110,6 +109,7 @@
                     .then((userCredential) => {
                         const user = userCredential.user;
                         document.cookie = "email=" + email;
+
                         window.location.href = 'listing.html'; 
                     })
                     .catch((error) => {
