@@ -90,7 +90,7 @@
 
 
 .listing-container {
-    height: 100vh;
+    height: 80vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -232,7 +232,7 @@
 
 .logo-listing img {
     border-radius: 4px;
-    width: 310px;
+    width: 26vw;
     height: auto;
 }
 
@@ -1331,6 +1331,18 @@ li {
         background: white;
     }
 
+    .logo-listing {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 150px;
+    }
+
+    .logo-listing img {
+        min-width: 80%;
+    }
+
     .listing-column-left {
         width: 90%;
         display: flex;
@@ -1391,7 +1403,7 @@ li {
     } 
     
     .listing-main-services-container {
-        margin-top: 150px;
+        margin-top: 400px;
     }
 
     .card-main-services {
