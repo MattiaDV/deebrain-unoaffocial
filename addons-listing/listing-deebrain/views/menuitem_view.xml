@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="users_menu_root" name="Listing infos">
+        <menuitem id="users_first_level_menu" name="Listing">
+            <menuitem id="users_model_menu_action" action="user_model_action"/>
+        </menuitem>
+        <menuitem id="users_first_level_menu_infos" name="Infos">
+            <menuitem id="users_model_referral_menu_action" action="users_model_referral_action"/>
+            <menuitem id="users_model_location_menu_action" action="users_model_location_action"/>
+            <menuitem id="users_model_location_not_italy_menu_action" action="location_not_italy_action"/>
+            <menuitem id="users_model_managed_languages_menu_action" action="managed_languages_action"/>
+            <menuitem id="users_model_founder_menu_action" action="users_model_founder_action"/>
+        </menuitem>
+        <menuitem id="users_first_level_menu_services" name="Services">
+            <menuitem id="users_model_main_service_menu_action" action="users_model_main_services_action"/>
+            <menuitem id="users_model_distinctive_service_menu_action" action="users_model_distinctive_service_action"/>
+        </menuitem>
+        <menuitem id="users_first_level_menu_main_client" name="Main clients">
+            <menuitem id="users_model_logos_menu_action" action="users_model_logos_action"/>
+        </menuitem>
+        <menuitem id="users_first_level_menu_managed" name="Managed">
+            <menuitem id="users_model_managed_media_menu_action" action="users_model_managed_media_action"/>
+            <menuitem id="users_model_managed_platform_menu_action" action="users_model_managed_platform_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

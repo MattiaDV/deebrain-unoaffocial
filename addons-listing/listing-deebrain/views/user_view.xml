@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <data>
+        <record id="users_model_form_view" model="ir.ui.view">
+            <field name="name">users_model.form</field>
+            <field name="model">users_model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="founderName" widget="many2many_tags"/>
+                                <field name="numberOfEmployees"/>
+                                <field name="foundationYear"/>
+                                <field name="agencyType"/>
+                                <field name="sales"/>
+                                <field name="logo" widget='image'/>
+                            </group>
+                            <group>
+                                <field name="planning"/>
+                                <field name="project"/>
+                                <field name="task"/>
+                                <field name="platform"/>
+                                <field name="reporting"/>
+                                <field name="dataAnalysis"/>
+                                <field name="adServer"/>
+                                <field name="AdVerification" />
+                            </group>
+                            <group>
+                                <field name="managedBilling"/>
+                                <field name="awareness"/>
+                                <field name="conversion"/>
+                                <field name="consideration"/>
+                                <field name="retention"/>
+                                <field name="advocacy"/>
+                                <field name="website"/>
+                                <field name="linkedinLink"/>
+                                <field name="facebookLink"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="locations" widget="many2many_tags"/>
+                                <field name="locationsNotItaly" widget="many2many_tags"/>
+                                <field name="languages" widget="many2many_tags"/>
+                                <field name="mainServices" widget="many2many_tags"/>
+                                <field name="distinctiveServices" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="managedMedia" widget="many2many_tags"/>
+                                <field name="managedPlatform" widget="many2many_tags"/>
+                                <field name="referralClient" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="brochure" widget='file'/>
+                                <field name="caseStudy" widget='file'/>
+                                <field name="clientLogos" widget="many2many_tags"/>
+                                <field name="typeAcc" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="users_model_referral_form_view" model="ir.ui.view">
+            <field name="name">users_referral_client.form</field>
+            <field name="model">users_referral_client</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="surname"/>
+                            <field name="photo"/>
+                            <field name="workWhere"/>
+                            <field name="workAs"/>
+                            <field name="mainClient" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="users_model_location_form_view" model="ir.ui.view">
+            <field name="name">location_listing.form</field>
+            <field name="model">location_listing</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="users_model_location_not_italy_listing_form_view" model="ir.ui.view">
+            <field name="name">location_not_italy_listing.form</field>
+            <field name="model">location_not_italy_listing</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="users_model_managed_media_form_view" model="ir.ui.view">
+            <field name="name">managed_media.form</field>
+            <field name="model">managed_media</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="users_model_managed_platform_form_view" model="ir.ui.view">
+            <field name="name">managed_platform.form</field>
+            <field name="model">managed_platform</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="users_model_managed_languages_form_view" model="ir.ui.view">
+            <field name="name">managed_languages.form</field>
+            <field name="model">managed_languages</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="users_model_founder_form_view" model="ir.ui.view">
+            <field name="name">founder_name.form</field>
+            <field name="model">founder_name</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="agency" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="users_model_main_service_form_view" model="ir.ui.view">
+            <field name="name">main_services.form</field>
+            <field name="model">main_services</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="users_model_distinctive_service_form_view" model="ir.ui.view">
+            <field name="name">distinctive_services.form</field>
+            <field name="model">distinctive_services</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="users_model_logos_form_view" model="ir.ui.view">
+            <field name="name">main_client_logos.form</field>
+            <field name="model">main_client_logos</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="logo"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+        <record id="users_model_referral_tree_view" model="ir.ui.view">
+            <field name="name">users_referral_client.tree</field>
+            <field name="model">users_referral_client</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="surname"/>
+                    <field name="photo"/>
+                    <field name="workWhere"/>
+                    <field name="workAs"/>
+                    <field name="mainClient"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_logos_tree_view" model="ir.ui.view">
+            <field name="name">main_client_logos.tree</field>
+            <field name="model">main_client_logos</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="logo"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_location_tree_view" model="ir.ui.view">
+            <field name="name">location_listing.tree</field>
+            <field name="model">location_listing</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_locations_not_italy_tree_view" model="ir.ui.view">
+            <field name="name">location_not_italy_listing.tree</field>
+            <field name="model">location_not_italy_listing</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_managed_media_tree_view" model="ir.ui.view">
+            <field name="name">managed_media.tree</field>
+            <field name="model">managed_media</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_managed_platform_tree_view" model="ir.ui.view">
+            <field name="name">managed_platform.tree</field>
+            <field name="model">managed_platform</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_managed_languages_tree_view" model="ir.ui.view">
+            <field name="name">managed_languages.tree</field>
+            <field name="model">managed_languages</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_main_service_tree_view" model="ir.ui.view">
+            <field name="name">main_services.tree</field>
+            <field name="model">main_services</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_distinctive_service_tree_view" model="ir.ui.view">
+            <field name="name">distinctive_services.tree</field>
+            <field name="model">distinctive_services</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_founder_tree_view" model="ir.ui.view">
+            <field name="name">founder_name.tree</field>
+            <field name="model">founder_name</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="agency"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="users_model_tree_view" model="ir.ui.view">
+            <field name="name">users_model.tree</field>
+            <field name="model">users_model</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="founderName"/>
+                    <field name="numberOfEmployees"/>
+                    <field name="foundationYear"/>
+                    <field name="agencyType"/>
+                    <field name="logo"/>
+                    <field name="managedBilling"/>
+                    <field name="awareness"/>
+                    <field name="conversion"/>
+                    <field name="consideration"/>
+                    <field name="retention"/>
+                    <field name="advocacy"/>
+                    <field name="planning"/>
+                    <field name="sales"/>
+                    <field name="project"/>
+                    <field name="task"/>
+                    <field name="platform"/>
+                    <field name="reporting"/>
+                    <field name="dataAnalysis"/>
+                    <field name="adServer"/>
+                    <field name="AdVerification" />
+                    <field name="website"/>
+                    <field name="linkedinLink"/>
+                    <field name="facebookLink"/>
+                    <field name="email"/>
+                    <field name="locations"/>
+                    <field name="mainServices"/>
+                    <field name="distinctiveServices"/>
+                    <field name="managedMedia"/>
+                    <field name="managedPlatform"/>
+                    <field name="referralClient"/>
+                    <field name="brochure"/>
+                    <field name="caseStudy"/>
+                    <field name="clientLogos"/>
+                    <field name="typeAcc" />
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+        <record id = "users_model_referral_action" model="ir.actions.act_window">
+            <field name="name">Referral client</field>
+            <field name="res_model">users_referral_client</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_referral_tree_view"/>
+        </record>
+
+        <record id = "users_model_managed_media_action" model="ir.actions.act_window">
+            <field name="name">Managed Media</field>
+            <field name="res_model">managed_media</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_managed_media_tree_view"/>
+        </record>
+
+        <record id = "users_model_managed_platform_action" model="ir.actions.act_window">
+            <field name="name">Managed Platform</field>
+            <field name="res_model">managed_platform</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_managed_platform_tree_view"/>
+        </record>
+
+        <record id = "users_model_logos_action" model="ir.actions.act_window">
+            <field name="name">Main client logos</field>
+            <field name="res_model">main_client_logos</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_logos_tree_view"/>
+        </record>
+
+        <record id = "users_model_main_services_action" model="ir.actions.act_window">
+            <field name="name">Main service</field>
+            <field name="res_model">main_services</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_main_service_tree_view"/>
+        </record>
+
+        <record id = "users_model_distinctive_service_action" model="ir.actions.act_window">
+            <field name="name">Distinctive service</field>
+            <field name="res_model">distinctive_services</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_distinctive_service_tree_view"/>
+        </record>
+
+        <record id = "users_model_founder_action" model="ir.actions.act_window">
+            <field name="name">Founder</field>
+            <field name="res_model">founder_name</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_founder_tree_view"/>
+        </record>
+
+        <record id = "users_model_location_action" model="ir.actions.act_window">
+            <field name="name">Locations</field>
+            <field name="res_model">location_listing</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_location_tree_view"/>
+        </record>
+
+        <record id = "user_model_action" model="ir.actions.act_window">
+            <field name="name">Listing Deebrain</field>
+            <field name="res_model">users_model</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_tree_view"/>
+            <field name="help" type="html">
+                <p class = "o_view_nocontent_smiling_face">
+                    Create a property to advertise
+                </p>
+            </field>
+        </record>
+
+        <record id = "location_not_italy_action" model="ir.actions.act_window">
+            <field name="name">Location (Not Italy)</field>
+            <field name="res_model">location_not_italy_listing</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_locations_not_italy_tree_view"/>
+        </record>
+
+        <record id = "managed_languages_action" model="ir.actions.act_window">
+            <field name="name">Managed Languages</field>
+            <field name="res_model">managed_languages</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="users_model_managed_languages_tree_view"/>
+        </record>
+    </data>
+</odoo>

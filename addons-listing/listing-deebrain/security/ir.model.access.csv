@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_users_model,access_users_model,listing-deebrain.model_users_model,base.group_user,1,1,1,1
+access_users_referral_client,access_users_referral_client,listing-deebrain.model_users_referral_client,base.group_user,1,1,1,1
+access_location_listing,access_location_listing,listing-deebrain.model_location_listing,base.group_user,1,1,1,1
+access_founder_name,access_founder_name,listing-deebrain.model_founder_name,base.group_user,1,1,1,1
+access_main_services,access_main_services,listing-deebrain.model_main_services,base.group_user,1,1,1,1
+access_distinctive_services,access_distinctive_services,listing-deebrain.model_distinctive_services,base.group_user,1,1,1,1
+access_main_client_logos,access_main_client_logos,listing-deebrain.model_main_client_logos,base.group_user,1,1,1,1
+access_managed_media,access_managed_media,listing-deebrain.model_managed_media,base.group_user,1,1,1,1
+access_managed_platform,access_managed_platform,listing-deebrain.model_managed_platform,base.group_user,1,1,1,1
+access_location_not_italy_listing,access_location_not_italy_listing,listing-deebrain.model_location_not_italy_listing,base.group_user,1,1,1,1
+access_managed_languages,access_managed_languages,listing-deebrain.model_managed_languages,base.group_user,1,1,1,1
