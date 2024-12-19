@@ -228,6 +228,10 @@ body {
         flex-direction: column;
     }
 
+    .ag {
+        font-size: 20px !important;
+    }
+
     .ac {
         min-width: 100%;
         text-align: center;
