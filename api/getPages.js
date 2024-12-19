@@ -45,6 +45,36 @@ exports.getLogin = async function(req, res) {
     return;
 }
 
+exports.getTypeReg = async function(req, res) {
+    try {
+        let htmlContent = await readFile('typeReg.html', 'utf8');
+        cache.clearCacheEditPage();
+        cache.clearCacheListing();
+        cache.clearCacheMyPage();
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(htmlContent);
+    } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Errore del server interno');
+    }
+    return;
+}
+
+exports.regiAgency = async function(req, res) {
+    try {
+        let htmlContent = await readFile('login-a.html', 'utf8');
+        cache.clearCacheEditPage();
+        cache.clearCacheListing();
+        cache.clearCacheMyPage();
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(htmlContent);
+    } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Errore del server interno');
+    }
+    return;
+}
+
 exports.getRegister = async function(req,res) {
     try {
         let htmlContent = await readFile('register.html', 'utf8');

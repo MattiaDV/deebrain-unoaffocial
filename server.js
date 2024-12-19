@@ -39,6 +39,14 @@ app.get('/register.html', async (req, res) => {
     getPages.getRegister(req,res);
 });
 
+app.get('/typeReg.html', async (req, res) => {
+    getPages.getTypeReg(req, res);
+});
+
+app.get('/login-a.html', async (req, res) => {
+    getPages.regiAgency(req, res);
+});
+
 app.post('/home.html', async (req, res) => {
     postPages.postHome(req,res);
 });   
